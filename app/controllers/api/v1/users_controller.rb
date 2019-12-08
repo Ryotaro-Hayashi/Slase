@@ -11,6 +11,12 @@ module Api
         end
       end
 
+      # ユーザーの一覧表示
+      def index
+        users = User.all
+        render json: users
+      end
+
       # 外部から使えないように制限
       private
       # Strong Parametersを使い、必須のパラメータと許可されたパラメータを指定
