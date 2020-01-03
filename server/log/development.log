@@ -479,3 +479,17 @@ Processing by Api::V1::UsersController#index as HTML
 Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/api/v1/users" for ::1 at 2020-01-04 02:09:47 +0900
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.8ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:17
+Completed 200 OK in 8ms (Views: 6.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/v1/users" for ::1 at 2020-01-04 02:10:57 +0900
+Processing by Api::V1::UsersController#index as HTML
+  [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  ↳ app/controllers/api/v1/users_controller.rb:17
+Completed 200 OK in 6ms (Views: 4.9ms | ActiveRecord: 0.6ms)
+
+
