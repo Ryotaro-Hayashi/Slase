@@ -1,9 +1,6 @@
 <template>
   <div class="create">
     <p>{{ results}}</p>
-    <p>{{ results[0]}}</p>
-    <p>{{ results[0].id }}</p>
-    <p>{{ results[0].name }}</p>
   </div>
 </template>
 
