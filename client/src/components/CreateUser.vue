@@ -1,6 +1,16 @@
 <template>
   <div class="create">
     <p>{{ results}}</p>
+    <v-app>
+      <!-- v-cardコンポーネントでパネルを作成 -->
+      <v-card width="400px" class="mx-auto mt-5">
+      <!-- パネルのタイトル -->
+      <v-card-title>
+        <!-- display-1は文字の大きさを設定するvuetifyで設定されているclass -->
+        <h1 class="display-1">ログイン</h1>
+      </v-card-title>
+    </v-card>
+    </v-app>
   </div>
 </template>
 
