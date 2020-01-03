@@ -10,6 +10,11 @@ export default new Router({
       path: '/',
       name: 'HelloWorld',
       component: HelloWorld
+    },
+    {
+      path: '/users',
+      name: 'CreateUser',
+      component: CreateUser
     }
   ]
 })
