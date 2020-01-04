@@ -1,16 +1,12 @@
 <template>
-  <div class="hello">
+  <div class="create">
     <p>{{ results}}</p>
-    <p>{{ results[0]}}</p>
-    <p>{{ results[0].id }}</p>
-    <p>{{ results[0].name }}</p>
-    <router-link to="/users">ユーザー登録ページ</router-link>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'HelloWorld',
+  name: 'CreateUser',
   data () {
       return {
         msg: 'Welcome to Your Vue.js App',
