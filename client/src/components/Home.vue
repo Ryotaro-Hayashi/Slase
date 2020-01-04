@@ -1,8 +1,8 @@
 <template>
 <div class="home">
   <v-app>
-    <!-- レスポンシブなナビゲーションメニューの追加 -->
-    <v-navigation-drawer app v-model="drawer">ナビゲーションメニュー</v-navigation-drawer>
+    <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
+    <v-navigation-drawer app v-model="drawer" clipped>ナビゲーションメニュー</v-navigation-drawer>
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#33CCCC" dark app>
       <!-- ハンバーガーメニュー（引き出し）の追加 -->
