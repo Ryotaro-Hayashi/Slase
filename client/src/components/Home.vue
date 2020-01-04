@@ -1,7 +1,8 @@
 <template>
 <div class="home">
   <v-app>
-    <!-- <v-navigation-drawer app>kjfldas</v-navigation-drawer> -->
+    <!-- レスポンシブなナビゲーションメニューの追加 -->
+    <v-navigation-drawer app>ナビゲーションメニュー</v-navigation-drawer>
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#33CCCC" dark app>
       <v-toolbar-title>Slase</v-toolbar-title>
