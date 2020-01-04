@@ -2,9 +2,11 @@
 <div class="home">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加 -->
-    <v-navigation-drawer app>ナビゲーションメニュー</v-navigation-drawer>
+    <v-navigation-drawer app v-model="drawer">ナビゲーションメニュー</v-navigation-drawer>
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#33CCCC" dark app>
+      <!-- ハンバーガーメニュー（引き出し）の追加 -->
+      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Slase</v-toolbar-title>
         <!-- <v-toolbar></v-toolbar> -->
         <!-- <router-link to="/">Slase logo</router-link>
@@ -22,7 +24,13 @@
 
 <script>
 export default {
-  name: 'Home'
+  name: 'Home',
+  data () {
+    return {
+      // ナビゲーションメニューの引き出しを管理するプロパティ
+      drawer: false
+    }
+  }
 }
 </script>
 
