@@ -1,11 +1,11 @@
 <template>
-  <div class="create">
-    <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
-    <v-app>
-      <!-- v-cardコンポーネントでパネルを作成 -->
-      <!-- mx-auto mt-5 は、vuetifyクラス -->
-      <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
-      <v-card width="400px" class="mx-auto mt-10">
+<div class="create">
+  <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
+  <v-app>
+    <!-- v-cardコンポーネントでパネルを作成 -->
+    <!-- mx-auto mt-5 は、vuetifyクラス -->
+    <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
+    <v-card width="400px" class="mx-auto mt-10">
       <!-- パネルのタイトルエリア -->
       <v-card-title>
         <!-- display-1は文字の大きさを設定するvuetifyで設定されているclass -->
@@ -27,10 +27,7 @@
           <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
           <!-- クリックイベントを追加 -->
           <!-- showPasswordプロパティの真偽で、アイコンを変更するようにする -->
-          <v-text-field v-bind:type="showPassword ? 'text' : 'password'"
-          prepend-icon="mdi-lock" label="パスワード"
-          v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
-          @click:append="showPassword = !showPassword" />
+          <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" />
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
             <router-link to="/login">既存のアカウントでログイン</router-link>
@@ -40,17 +37,27 @@
         </v-form>
       </v-card-text>
     </v-card>
-    </v-app>
-  </div>
+  </v-app>
+</div>
 </template>
 
 <script>
+const data = {
+  name: 'Yohei',
+  email: 'Munesada',
+  password: 'Munesada'
+}
+
 export default {
   name: 'CreateUser',
   data: () => ({
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
-    showPassword : false
+    showPassword: false
   }),
+  mounted() {
+    this.$axios.post('http://localhost:3000/api/v1/users', data)
+    
+  }
 }
 </script>
 
