@@ -32,7 +32,7 @@
           <v-card-actions class="mt-5">
             <router-link to="/login">既存のアカウントでログイン</router-link>
             <!-- vuetifyクラスでボタンの色を変更 -->
-            <v-btn class="info ml-auto">ユーザー登録</v-btn>
+            <v-btn class="info ml-auto" v-on:click="register">ユーザー登録</v-btn>
           </v-card-actions>
         </v-form>
       </v-card-text>
@@ -54,9 +54,13 @@ export default {
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
     showPassword: false
   }),
-  mounted() {
-    this.$axios.post('http://localhost:3000/api/v1/users', data)
-    
+  // mounted() {
+  //   this.$axios.post('http://localhost:3000/api/v1/users', data)
+  // },
+  methods: {
+    register () {
+      this.$axios.post('http://localhost:3000/api/v1/users', data)
+    }
   }
 }
 </script>
