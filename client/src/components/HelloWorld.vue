@@ -18,7 +18,7 @@ export default {
       }
     },
     mounted() {
-      axios.get("http://localhost:3000/api/v1/users")
+      this.$axios.get("http://localhost:3000/api/v1/users")
       .then(response => {this.results = response.data})
     }
 }
