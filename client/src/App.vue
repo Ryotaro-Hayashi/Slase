@@ -10,7 +10,7 @@
       <v-toolbar-title>Slase</v-toolbar-title>
       <!-- スペースを取る -->
       <v-spacer></v-spacer>
-      <v-btn text outlined x-large to="/users">ユーザー登録</v-btn>
+      <v-btn text outlined x-large to="/user">ユーザー登録</v-btn>
 
       <!-- ドロップダウンメニュー -->
       <!-- <v-toolbar-items>

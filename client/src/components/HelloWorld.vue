@@ -1,11 +1,9 @@
 <template>
   <div class="hello">
-    <p>{{ results}}</p>
+    <p>{{ results }}</p>
     <p>{{ results[0]}}</p>
     <p>{{ results[0].id }}</p>
     <p>{{ results[0].name }}</p>
-    <router-link to="/users">ユーザー登録ページ</router-link>
-    <router-link to="/home">Home</router-link>
   </div>
 </template>
 
