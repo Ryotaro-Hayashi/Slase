@@ -2,38 +2,54 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-model="drawer" clipped>ナビゲーションメニュー</v-navigation-drawer>
+    <!-- <v-navigation-drawer app v-if="drawer" clipped>ナビゲーションメニュー</v-navigation-drawer> -->
     <!-- ナビゲーションバーの領域を確保 -->
-    <v-app-bar color="#33CCCC" dark app>
+    <v-app-bar color="#FFFFFF" light app>
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
-      <v-toolbar-title>Slase</v-toolbar-title>
+      <v-toolbar-items>
+      <v-btn text to="/">Slase</v-btn>
+    </v-toolbar-items>
       <!-- スペースを取る -->
       <v-spacer></v-spacer>
-      <v-btn text outlined x-large to="/user">ユーザー登録</v-btn>
 
-      <!-- ドロップダウンメニュー -->
-      <!-- <v-toolbar-items>
+
+      <v-toolbar-items>
+        <!-- ドロップダウンメニューを作成 -->
+        <!-- offset-y で縦方向の位置関係を補正 -->
         <v-menu offset-y>
+          <!-- on はイベントハンドラ -->
           <template v-slot:activator="{on}">
-            <v-btn text v-on="on">設定</v-btn>
+            <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
+            <!-- ボタンだと自動的にクリックイベントになる -->
+            <!-- v-iconタグでアイコンを設定 -->
+            <v-btn text v-on="on">
+              <v-icon>mdi-settings</v-icon>設定<v-icon>mdi-menu-down</v-icon>
+            </v-btn>
           </template>
+          <!-- ポップアップの内容 -->
           <v-list>
-            <v-list-item>
+            <v-list-item v-for="option in options" :key="option.name" :to="option.link">
+              <v-list-item-icon>
+                <v-icon>{{ option.icon }}</v-icon>
+              </v-list-item-icon>
               <v-list-item-content>
-                <v-list-item-title>aaa</v-list-item-title>
+                <v-list-item-title>{{ option.name }}</v-list-item-title>
               </v-list-item-content>
             </v-list-item>
           </v-list>
         </v-menu>
-      </v-toolbar-items> -->
+      </v-toolbar-items>
+      <v-btn text outlined x-large to="/user">
+        <v-icon>mdi-account-plus</v-icon>ユーザー登録
+      </v-btn>
 
     </v-app-bar>
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
       <router-view />
     </v-content>
-    <v-footer color="#33CCCC" dark app>
+    <v-footer color="#FFFFFF" light app>
       <span class="mx-auto">copy right : Ryotaro Hayashi</span>
     </v-footer>
   </v-app>
@@ -46,7 +62,11 @@ export default {
   data() {
     return {
       // ナビゲーションメニューの引き出しを管理するプロパティ
-      drawer: null
+      drawer: null,
+      options: [
+        {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
+        {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
+      ]
     }
   }
 }
