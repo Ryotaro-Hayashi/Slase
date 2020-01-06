@@ -2,9 +2,9 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-model="drawer" clipped>ナビゲーションメニュー</v-navigation-drawer>
+    <!-- <v-navigation-drawer app v-if="drawer" clipped>ナビゲーションメニュー</v-navigation-drawer> -->
     <!-- ナビゲーションバーの領域を確保 -->
-    <v-app-bar color="#33CCCC" dark app>
+    <v-app-bar color="#00CC99" dark app>
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
       <v-toolbar-title>Slase</v-toolbar-title>
@@ -33,7 +33,7 @@
     <v-content>
       <router-view />
     </v-content>
-    <v-footer color="#33CCCC" dark app>
+    <v-footer color="#00CC99" dark app>
       <span class="mx-auto">copy right : Ryotaro Hayashi</span>
     </v-footer>
   </v-app>
@@ -46,7 +46,8 @@ export default {
   data() {
     return {
       // ナビゲーションメニューの引き出しを管理するプロパティ
-      drawer: null
+      drawer: null,
+      themeColor: '#00CC99'
     }
   }
 }
