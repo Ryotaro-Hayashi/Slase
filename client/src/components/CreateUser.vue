@@ -61,7 +61,7 @@ export default {
     register () {
       this.$axios.post('http://localhost:3000/api/v1/users', this.data)
       // リダイレクト
-      .then(document.location = "/")
+      .then(document.location = "/users")
     }
   }
 }

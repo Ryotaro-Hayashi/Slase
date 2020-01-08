@@ -8,11 +8,10 @@
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
       <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
       <v-toolbar-items>
-      <v-btn text to="/">Slase</v-btn>
-    </v-toolbar-items>
+        <v-btn text to="/">Slase</v-btn>
+      </v-toolbar-items>
       <!-- スペースを取る -->
       <v-spacer></v-spacer>
-
 
       <v-toolbar-items>
         <!-- ドロップダウンメニューを作成 -->
@@ -24,7 +23,7 @@
             <!-- ボタンだと自動的にクリックイベントになる -->
             <!-- v-iconタグでアイコンを設定 -->
             <v-btn text v-on="on">
-              <v-icon>mdi-settings</v-icon>設定<v-icon>mdi-menu-down</v-icon>
+              <v-icon class="icon-space">mdi-settings</v-icon>設定<v-icon>mdi-menu-down</v-icon>
             </v-btn>
           </template>
           <!-- ポップアップの内容 -->
@@ -39,10 +38,12 @@
             </v-list-item>
           </v-list>
         </v-menu>
+
+        <v-btn text to="/user">
+          <v-icon class="icon-space">mdi-account-plus</v-icon>ログイン
+        </v-btn>
       </v-toolbar-items>
-      <v-btn text outlined x-large to="/user">
-        <v-icon>mdi-account-plus</v-icon>ユーザー登録
-      </v-btn>
+
 
     </v-app-bar>
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
@@ -73,5 +74,7 @@ export default {
 </script>
 
 <style>
-
+.icon-space {
+  margin-right: 10px;
+}
 </style>
