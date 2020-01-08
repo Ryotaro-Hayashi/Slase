@@ -2,7 +2,20 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-if="drawer" clipped>ナビゲーションメニュー</v-navigation-drawer>
+    <v-navigation-drawer app v-if="drawer" clipped>
+      <v-container>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>
+              navigation list
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+        <!-- 仕切りを追加 -->
+        <v-divider></v-divider>
+      </v-container>
+      ナビゲーションメニュー
+    </v-navigation-drawer>
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#FFFFFF" light app>
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
