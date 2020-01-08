@@ -21,7 +21,7 @@
         </v-list-item>
       </v-container>
     </v-navigation-drawer>
-    
+
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#FFFFFF" light app>
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
@@ -83,15 +83,16 @@
           <v-icon class="icon-space">mdi-account-plus</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>
-
-
     </v-app-bar>
+
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
       <router-view />
     </v-content>
-    <v-footer color="#FFFFFF" light app>
-      <span class="mx-auto">copy right : Ryotaro Hayashi</span>
+
+    <!-- フッター -->
+    <v-footer color="#EEEEEE" light app>
+      <span class="mx-auto">© 2020 Ryotaro Hayashi</span>
     </v-footer>
   </v-app>
 </div>
