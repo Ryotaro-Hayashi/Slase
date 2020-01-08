@@ -2,20 +2,26 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-if="drawer" clipped>
+    <v-navigation-drawer app v-if="drawer">
       <v-container>
-        <v-list-item>
+        <!-- 仕切りを追加 -->
+        <v-divider></v-divider>
+        <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+          <!-- アイコン -->
+          <v-list-item-icon>
+            <v-icon>{{ nav_list.icon}}</v-icon>
+          </v-list-item-icon>
+          <!-- コンテンツ -->
           <v-list-item-content>
+            <!-- コンテンツ内の文字 -->
             <v-list-item-title>
-              navigation list
+              {{nav_list.name}}
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <!-- 仕切りを追加 -->
-        <v-divider></v-divider>
       </v-container>
-      ナビゲーションメニュー
     </v-navigation-drawer>
+    
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#FFFFFF" light app>
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
@@ -99,6 +105,10 @@ export default {
       // ナビゲーションメニューの引き出しを管理するプロパティ
       drawer: null,
       options: [
+        {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
+        {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
+      ],
+      nav_lists: [
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
       ]
