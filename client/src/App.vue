@@ -14,6 +14,27 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
+        <v-btn>
+          キーワード検索
+        </v-btn>
+        <v-btn>
+          ホーム
+        </v-btn>
+        <v-btn>
+          マイページ
+        </v-btn>
+        <v-btn>
+          メッセージ
+        </v-btn>
+        <v-btn>
+          カテゴリ
+        </v-btn>
+        <v-btn>
+          質問する
+        </v-btn>
+        <v-btn>
+          回答する
+        </v-btn>
         <!-- ドロップダウンメニューを作成 -->
         <!-- offset-y で縦方向の位置関係を補正 -->
         <v-menu offset-y>
