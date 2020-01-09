@@ -12,7 +12,7 @@
         <p class="mx-auto">Slase-logo</p>
       </v-card-title>
       <v-card-title>
-        <p class="mx-auto">ユーザー登録</p>
+        <p class="mx-auto">ログイン</p>
       </v-card-title>
       <!-- パネルのテキストエリア -->
       <v-card-text>
@@ -30,9 +30,9 @@
           <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="data.password" />
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
-            <router-link to="/login">既存のアカウントでログイン</router-link>
+            <router-link to="/login">新しくユーザー登録</router-link>
             <!-- vuetifyクラスでボタンの色を変更 -->
-            <v-btn class="info ml-auto" v-on:click="register">ユーザー登録</v-btn>
+            <v-btn class="info ml-auto" v-on:click="register">ログイン</v-btn>
           </v-card-actions>
         </v-form>
       </v-card-text>
