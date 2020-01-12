@@ -33,7 +33,7 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn>
+        <!-- <v-btn>
           キーワード検索
         </v-btn>
         <v-btn>
@@ -53,7 +53,7 @@
         </v-btn>
         <v-btn>
           回答する
-        </v-btn>
+        </v-btn> -->
         <!-- ドロップダウンメニューを作成 -->
         <!-- offset-y で縦方向の位置関係を補正 -->
         <v-menu offset-y>
@@ -79,7 +79,7 @@
           </v-list>
         </v-menu>
 
-        <v-btn text to="/user">
+        <v-btn text to="/login">
           <v-icon class="icon-space">mdi-account-plus</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>
@@ -121,5 +121,13 @@ export default {
 <style>
 .icon-space {
   margin-right: 10px;
+}
+
+.center {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
 }
 </style>
