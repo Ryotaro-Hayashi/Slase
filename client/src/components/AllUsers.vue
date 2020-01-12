@@ -1,8 +1,8 @@
 <template>
 <div class="users">
-  <h1>ユーザー一覧</h1>
+  <h1 class="center">ユーザー一覧</h1>
   <ul>
-    <li v-for="result in results" :key="result.id">No.{{ result.id }} {{result.name }}</li>
+    <li v-for="result in results" :key="result.id" class="center">No.{{ result.id }} {{result.name }}</li>
   </ul>
 </div>
 </template>
