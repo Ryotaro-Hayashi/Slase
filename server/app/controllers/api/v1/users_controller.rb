@@ -21,7 +21,7 @@ module Api
       private
       # Strong Parametersを使い、必須のパラメータと許可されたパラメータを指定
       def user_params
-        # userモデルを必須にして、name,emailカラムを許可
+        # userモデルを必須にして、name,email,passwordカラムを許可
         params.require(:user).permit(:name, :email, :password)
       end
     end
