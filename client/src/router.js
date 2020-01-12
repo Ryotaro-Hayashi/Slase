@@ -3,6 +3,7 @@ import Router from 'vue-router'
 
 import Home from '@/components/Home'
 import CreateUser from '@/components/CreateUser'
+import Login from '@/components/Login'
 import AllUsers from '@/components/AllUsers'
 
 
@@ -20,6 +21,11 @@ export default new Router({
       path: '/user',
       name: 'CreateUser',
       component: CreateUser
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
       path: '/users',

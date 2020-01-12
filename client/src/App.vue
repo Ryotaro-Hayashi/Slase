@@ -79,7 +79,7 @@
           </v-list>
         </v-menu>
 
-        <v-btn text to="/user">
+        <v-btn text to="/login">
           <v-icon class="icon-space">mdi-account-plus</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>
@@ -121,5 +121,9 @@ export default {
 <style>
 .icon-space {
   margin-right: 10px;
+}
+
+.center {
+  text-align: center;
 }
 </style>
