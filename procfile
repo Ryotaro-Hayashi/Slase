@@ -1,2 +1,0 @@
-server: exec /usr/bin/env sh -c 'cd server && npm start'
-client: exec /usr/bin/env PORT=3000 sh -c 'cd client && npm start'
