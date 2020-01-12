@@ -23,3 +23,26 @@ Ruby on Rails 5.2.4
 Vue.js 2.6.11  
 Vuetify  
 (未使用→ AWS, Docker, CircleCI)
+
+# ディレクトリ構成
+Slase  
+|  
+---- client (Vue.js)  
+|  
+---- server (Ruby on Rails)  
+
+# 導入
+```
+$ git clone https://github.com/Ryotaro-Hayashi/Slase.git
+```
+CLI 1つ目
+```
+$ cd Slase/client
+$ npm run serve
+```
+CLI 2つ目
+```
+$ cd Slase/server
+$ rails server
+```
+http://localhost:8080/
