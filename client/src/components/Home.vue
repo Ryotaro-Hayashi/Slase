@@ -1,6 +1,6 @@
 <template>
 <div class="home">
-  <h1>Home</h1>
+  <h1 class="center">Home</h1>
 </div>
 </template>
 
@@ -11,4 +11,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.center {
+  text-align: center; 
+}
 </style>
