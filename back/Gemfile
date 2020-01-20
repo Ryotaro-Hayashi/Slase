@@ -2,22 +2,27 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
-
 gem 'rails', '~> 5.2.4'
-
 gem 'puma', '~> 3.11'
+
+# Reduces boot times through caching; required in config/boot.rb
+# gem 'bootsnap', '>= 1.1.0', require: false
 
 # ユーザーデータをJSONでやり取りするためのjbuilder
 gem 'jbuilder', '~> 2.5'
-
-# Reduces boot times through caching; required in config/boot.rb
-gem 'bootsnap', '>= 1.1.0', require: false
 
 # クロスドメイン対策
 gem 'rack-cors'
 
 # MySQLを追加
 gem 'mysql2'
+
+# トークンベースの認証を行うためのgem
+gem 'devise'
+gem 'devise_token_auth'
+
+# 外部情報を使った認証に必要なGem
+gem 'omniauth'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
