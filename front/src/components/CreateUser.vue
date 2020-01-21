@@ -58,7 +58,7 @@ export default {
   // },
   methods: {
     register () {
-      this.$axios.post('http://localhost:3000/api/v1/users', this.data)
+      this.$axios.post('http://localhost:3000/api/auth', this.data)
       // リダイレクト
       .then(document.location = "/users")
     }
