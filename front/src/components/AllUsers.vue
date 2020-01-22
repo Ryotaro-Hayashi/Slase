@@ -16,7 +16,7 @@ export default {
     }
   },
   mounted() {
-    this.$axios.get("http://localhost:3000/api/v1/users")
+    this.$axios.get("http://localhost:3000/api/auth/sign_up")
       .then(response => {
         this.results = response.data
       })
