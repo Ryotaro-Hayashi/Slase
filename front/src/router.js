@@ -4,7 +4,10 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import CreateUser from '@/components/CreateUser'
 import Login from '@/components/Login'
+import MyPage from '@/components/MyPage'
+
 import AllUsers from '@/components/AllUsers'
+
 
 
 Vue.use(Router)
@@ -18,7 +21,7 @@ export default new Router({
       component: Home
     },
     {
-      path: '/user',
+      path: '/user/new',
       name: 'CreateUser',
       component: CreateUser
     },
@@ -31,6 +34,11 @@ export default new Router({
       path: '/users',
       name: 'AllUsers',
       component: AllUsers
+    },
+    {
+      path: '/mypage',
+      name: 'MyPage',
+      component: MyPage
     }
   ]
 })
