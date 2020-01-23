@@ -51,7 +51,8 @@ export default {
       name: '',
       email: '',
       password: ''
-    }
+    },
+    Tokens: {}
   }),
   // mounted() {
   //   this.$axios.post('http://localhost:3000/api/v1/users', data)
@@ -59,8 +60,20 @@ export default {
   methods: {
     register () {
       this.$axios.post('http://localhost:3000/api/auth', this.data)
-      // リダイレクト
-      // .then(document.location = "/mypage")
+      .then(response => {
+        if (response.status === 200) {
+          this.Tokens = {
+            accessToken: response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          }
+          this.$router.push("/mypage")
+          // document.location = "/mypage"
+        }
+      })
+      // .catch(error => {
+      //   this.$router.push("/users")
+      // })
     }
   }
 }
