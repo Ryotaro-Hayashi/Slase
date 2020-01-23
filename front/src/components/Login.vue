@@ -30,7 +30,7 @@
           <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="data.password" />
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
-            <router-link to="/user">新しくユーザー登録</router-link>
+            <router-link to="/user/new">新しくユーザー登録</router-link>
             <!-- vuetifyクラスでボタンの色を変更 -->
             <v-btn class="info ml-auto" v-on:click="register">ログイン</v-btn>
           </v-card-actions>
@@ -61,7 +61,7 @@ export default {
     register () {
       this.$axios.post('http://localhost:3000//api/auth', this.data)
       // リダイレクト
-      .then(document.location = "/users")
+      // .then(document.location = "/users")
     }
   }
 }

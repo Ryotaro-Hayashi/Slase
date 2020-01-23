@@ -15,12 +15,12 @@ export default {
       results: []
     }
   },
-  mounted() {
-    this.$axios.get("http://localhost:3000/api/auth/sign_up")
-      .then(response => {
-        this.results = response.data
-      })
-  }
+  // mounted() {
+  //   this.$axios.get("http://localhost:3000/api/auth/sign_up")
+  //     .then(response => {
+  //       this.results = response.data
+  //     })
+  // }
 }
 </script>
 
