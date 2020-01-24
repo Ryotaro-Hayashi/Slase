@@ -20,7 +20,6 @@
         <v-form>
           <!-- iライブラリをインストールしているので、mdiを使える -->
           <!-- マテリアルデザインアイコンを使うときは、アイコン名の先頭に「mdi-」を付ける -->
-          <v-text-field prepend-icon="mdi-account-circle" label="ユーザ名" v-model="data.name" />
           <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="data.email" />
           <!-- type="password"を入れて、入力内容を隠す -->
           <!-- prepend-icon で前に、append-icon で後ろにアイコンを配置-->
@@ -49,19 +48,28 @@ export default {
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
     showPassword: false,
     data: {
-      name: '',
       email: '',
-      password: ''
-    }
+      password: '',
+    },
+    Tokens: {}
   }),
   // mounted() {
   //   this.$axios.post('http://localhost:3000//api/auth', data)
   // },
   methods: {
     register () {
-      this.$axios.post('http://localhost:3000//api/auth', this.data)
-      // リダイレクト
-      // .then(document.location = "/users")
+      this.$axios.post('http://localhost:3000//api/auth/sign_in', this.data)
+      .then(response => {
+        if (response.status === 200) {
+          this.Tokens = {
+            accessToken: response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          }
+          this.$router.push("/mypage")
+          // document.location = "/mypage"
+        }
+      })
     }
   }
 }
