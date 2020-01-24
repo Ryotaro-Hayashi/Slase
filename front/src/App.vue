@@ -33,11 +33,8 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <!-- <v-btn>
-          キーワード検索
-        </v-btn>
         <v-btn>
-          ホーム
+          キーワード検索
         </v-btn>
         <v-btn>
           マイページ
@@ -53,7 +50,7 @@
         </v-btn>
         <v-btn>
           回答する
-        </v-btn> -->
+        </v-btn>
         <!-- ドロップダウンメニューを作成 -->
         <!-- offset-y で縦方向の位置関係を補正 -->
         <v-menu offset-y>
@@ -79,8 +76,12 @@
           </v-list>
         </v-menu>
 
+        <v-btn text to="/logout">
+          <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
+        </v-btn>
+
         <v-btn text to="/login">
-          <v-icon class="icon-space">mdi-account-plus</v-icon>ログイン
+          <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
