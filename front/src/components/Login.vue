@@ -49,8 +49,9 @@ export default {
     showPassword: false,
     data: {
       email: '',
-      password: ''
-    }
+      password: '',
+    },
+    Tokens: {}
   }),
   // mounted() {
   //   this.$axios.post('http://localhost:3000//api/auth', data)
@@ -58,8 +59,17 @@ export default {
   methods: {
     register () {
       this.$axios.post('http://localhost:3000//api/auth/sign_in', this.data)
-      // リダイレクト
-      // .then(document.location = "/users")
+      .then(response => {
+        if (response.status === 200) {
+          this.Tokens = {
+            accessToken: response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          }
+          this.$router.push("/mypage")
+          // document.location = "/mypage"
+        }
+      })
     }
   }
 }
