@@ -37,9 +37,6 @@
           キーワード検索
         </v-btn>
         <v-btn>
-          ホーム
-        </v-btn>
-        <v-btn>
           マイページ
         </v-btn>
         <v-btn>
@@ -79,8 +76,12 @@
           </v-list>
         </v-menu>
 
+        <v-btn text to="/logout">
+          <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
+        </v-btn>
+
         <v-btn text to="/login">
-          <v-icon class="icon-space">mdi-account-plus</v-icon>ログイン
+          <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>
     </v-app-bar>
