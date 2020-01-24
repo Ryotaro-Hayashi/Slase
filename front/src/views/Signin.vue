@@ -1,5 +1,5 @@
 <template>
-<div class="create">
+<div class="signin">
   <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
   <v-app>
     <!-- v-cardコンポーネントでパネルを作成 -->
@@ -43,7 +43,7 @@
 <script>
 
 export default {
-  name: 'CreateUser',
+  name: 'Signin',
   data: () => ({
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
     showPassword: false,
