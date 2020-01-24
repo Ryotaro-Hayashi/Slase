@@ -6,10 +6,14 @@
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
     <v-card width="400px" class="mx-auto mt-10">
+
       <!-- パネルのタイトルエリア -->
       <v-card-title>
         <!-- display-1は文字の大きさを設定するvuetifyで設定されているclass -->
-        <p class="mx-auto">Slase-logo</p>
+        <p class="mx-auto">Slase-logo</p><br>
+      </v-card-title>
+      <v-card-title>
+        <p v-if="log" class="mx-auto">ログイン済</p>
       </v-card-title>
       <v-card-title>
         <p class="mx-auto">ログイン</p>
@@ -51,11 +55,9 @@ export default {
       email: '',
       password: '',
     },
-    Tokens: {}
+    Tokens: {},
+    log: false
   }),
-  // mounted() {
-  //   this.$axios.post('http://localhost:3000//api/auth', data)
-  // },
   methods: {
     register () {
       this.$axios.post('http://localhost:3000//api/auth/sign_in', this.data)
@@ -66,8 +68,8 @@ export default {
             client: response.headers.client,
             uid: response.headers.uid
           }
-          this.$router.push("/mypage")
-          // document.location = "/mypage"
+          // this.$router.push("/mypage")
+          this.log = true
         }
       })
     }
