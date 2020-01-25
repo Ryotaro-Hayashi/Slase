@@ -5,8 +5,6 @@ import router from './router'
 
 Vue.use(Vuex)
 
-// Vue.$http = axios;
-
  const store = new Vuex.Store({
   state: {
     name: '',
@@ -14,11 +12,15 @@ Vue.use(Vuex)
     password: ''
   },
   mutations: {
-
+    updateAuthData (state, payload) {
+      state.name = payload.name,
+      state.email = payload.email,
+      state.password = payload.password
+    }
   },
   actions: {
     signup ({ commit }, authData) {
-      commit("signup", authData);
+      commit("updateAuthData", authData);
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
         email: authData.email,

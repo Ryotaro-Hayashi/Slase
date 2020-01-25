@@ -8711,3 +8711,57 @@ Unpermitted parameters: :name, :registration
 Completed 200 OK in 236ms (Views: 0.2ms | ActiveRecord: 10.2ms)
 
 
+Started POST "/api/auth" for ::1 at 2020-01-26 03:52:13 +0900
+  [1m[35m (0.5ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (4.9ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"RyotaroHayashi", "email"=>"hys.rtr.forit@gmail.com", "password"=>"[FILTERED]", "registration"=>{"name"=>"RyotaroHayashi", "email"=>"hys.rtr.forit@gmail.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :name, :registration
+Unpermitted parameters: :name, :registration
+Unpermitted parameters: :name, :registration
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (1.6ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'hys.rtr.forit@gmail.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (1.7ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `email`, `created_at`, `updated_at`) VALUES ('hys.rtr.forit@gmail.com', '$2a$11$AXwxL5bpAkopag4KPYe2RukwPYHpPsBeyBtkfBI38wPwdxH52arxi', 'hys.rtr.forit@gmail.com', '2020-01-25 18:52:13', '2020-01-25 18:52:13')[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"-EMEDm8iAv3J2w8TvUVsyg\":{\"token\":\"$2a$10$efTaFgC2GBgENB85u5xFVuobiJATsejTlxyfUq/2kH8fYtRsTo57.\",\"expiry\":1581187933}}' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 246ms (Views: 0.2ms | ActiveRecord: 19.8ms)
+
+
+Started POST "/api/auth" for ::1 at 2020-01-26 03:53:08 +0900
+Processing by DeviseTokenAuth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"YuzukaMasuda", "email"=>"masuda@example.com", "password"=>"[FILTERED]", "registration"=>{"name"=>"YuzukaMasuda", "email"=>"masuda@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameters: :name, :registration
+Unpermitted parameters: :name, :registration
+Unpermitted parameters: :name, :registration
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'masuda@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `email`, `created_at`, `updated_at`) VALUES ('masuda@example.com', '$2a$11$ejgtg0LNa.YxTW4ezEPun.ch.s5OM0u6GS/79QIDP/UGjMJq0vIU.', 'masuda@example.com', '2020-01-25 18:53:08', '2020-01-25 18:53:08')[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"Q9WNUSXHL8dM_uNWW_kUGg\":{\"token\":\"$2a$10$SF1xL82GNnBn5hWyIz3OVOcYQEC.6ih3G3p9xUT57BR2ITvlF0yUi\",\"expiry\":1581187988}}' WHERE `users`.`id` = 3[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 154ms (Views: 0.1ms | ActiveRecord: 2.3ms)
+
+
