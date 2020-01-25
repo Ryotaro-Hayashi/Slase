@@ -21,7 +21,6 @@
         <!-- iライブラリをインストールしているので、mdiを使える -->
         <!-- マテリアルデザインアイコンを使うときは、アイコン名の先頭に「mdi-」を付ける -->
         <v-text-field prepend-icon="mdi-account-circle" label="ユーザ名" v-model="name" />
-        <!-- <EmailForm></EmailForm> -->
         <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" />
         <!-- type="password"を入れて、入力内容を隠す -->
         <!-- prepend-icon で前に、append-icon で後ろにアイコンを配置-->

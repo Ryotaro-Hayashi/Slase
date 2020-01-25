@@ -80,7 +80,7 @@
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
-        <v-btn text to="/login">
+        <v-btn text to="/signin">
           <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>

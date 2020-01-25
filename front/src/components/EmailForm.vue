@@ -1,16 +1,9 @@
 <template>
-  <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="data.email" />
+  <v-text-field prepend-icon="mdi-email" label="メールアドレス" />
 </template>
 
 <script>
 export default {
-  data: () => ({
-    data: {
-      name: '',
-      email: '',
-      password: ''
-    }
-  })
 }
 </script>
 
