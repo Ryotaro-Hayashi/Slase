@@ -52,7 +52,6 @@ Vue.use(Vuex)
       .then(response => {
         if (response.status === 200) {
           router.push("/mypage")
-          this.log = true
         }
           // this.$router.push("/mypage")
 
