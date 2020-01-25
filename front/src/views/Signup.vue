@@ -16,13 +16,12 @@
       </v-card-title>
       <!-- パネルのテキストエリア -->
       <v-card-text>
-      <!-- </MailPasswordForm> -->
       <!-- フォームを用意 -->
       <v-form>
         <!-- iライブラリをインストールしているので、mdiを使える -->
         <!-- マテリアルデザインアイコンを使うときは、アイコン名の先頭に「mdi-」を付ける -->
         <v-text-field prepend-icon="mdi-account-circle" label="ユーザ名" v-model="data.name" />
-        <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="data.email" />
+        <EmailForm></EmailForm>
         <!-- type="password"を入れて、入力内容を隠す -->
         <!-- prepend-icon で前に、append-icon で後ろにアイコンを配置-->
         <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
@@ -42,13 +41,13 @@
 </template>
 
 <script>
-// import MailPasswordForm from '@/components/MailPasswordForm.vue'
+import EmailForm from '@/components/EmailForm.vue'
 
 export default {
   name: 'Signup',
-  // components: {
-  //   MailPasswordForm
-  // },
+  components: {
+    EmailForm
+  },
   data: () => ({
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
     showPassword: false,
