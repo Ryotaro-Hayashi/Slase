@@ -55,7 +55,7 @@ Vue.use(Vuex)
           commit("updateSignupData", authData);
           commit("updateLoggedIn", true);
           commit("updateUser", {
-            user:response.data.data
+            user: response.data.data
           });
           router.push("/mypage")
         } else {
@@ -72,6 +72,9 @@ Vue.use(Vuex)
       .then(response => {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
+          commit("updateUser", {
+            user: response.data.data
+          })
           router.push("/mypage")
         }
           // this.$router.push("/mypage")
