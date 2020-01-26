@@ -7,6 +7,8 @@ Vue.use(Vuex)
 
  const store = new Vuex.Store({
   state: {
+    user: {},
+    token: {},
     name: '',
     email: '',
     password: '',
@@ -30,11 +32,14 @@ Vue.use(Vuex)
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
+    },
+    updateUser (state, data) {
+      state.user = data
+
     }
   },
   actions: {
     signup ({ commit }, authData) {
-      commit("updateSignupData", authData);
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
         email: authData.email,
@@ -47,7 +52,11 @@ Vue.use(Vuex)
           //   client: response.headers.client,
           //   uid: response.headers.uid
           // }
+          commit("updateSignupData", authData);
           commit("updateLoggedIn", true);
+          commit("updateUser", {
+            user:response.data.data
+          });
           router.push("/mypage")
         } else {
           router.push("/")

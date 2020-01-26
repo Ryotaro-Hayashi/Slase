@@ -1,12 +1,18 @@
 <template>
 <div class="mypage">
   <h1 class="center">Welcome</h1>
+  <p>こんにちは{{ userInfo }}さん</p>
 </div>
 </template>
 
 <script>
 export default {
-  name: 'Welcome'
+  name: 'MyPage',
+  computed: {
+    userInfo () {
+      return this.$store.state.user
+    }
+  }
 }
 </script>
 
