@@ -29,7 +29,7 @@ Vue.use(Vuex)
     },
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
-      state.loggedin = boolean
+      state.loggedIn = boolean
     }
   },
   actions: {
