@@ -25,12 +25,13 @@ ActiveRecord::Schema.define(version: 2020_01_21_155916) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "name"
-    t.string "email"
+    t.string "name", default: "", null: false
+    t.string "email", default: "", null: false
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["name"], name: "index_users_on_name", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
