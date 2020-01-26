@@ -9,7 +9,12 @@ Vue.use(Vuex)
   state: {
     name: '',
     email: '',
-    password: ''
+    password: '',
+    loggedIn: false,
+    // successLoginがtrueだとログイン成功,falseならログイン失敗
+    successLogin: false,
+    // successLogoutがtrueだとログイン成功,falseならログイン失敗
+    successLogout: false
   },
   mutations: {
     updateSignupData (state, payload) {
@@ -20,7 +25,11 @@ Vue.use(Vuex)
     updateSigninData (state, payload) {
       state.email = payload.email,
       state.password = payload.password
-    }
+    // },
+    // updateLoggedIn (state, boolean) {
+    //   state.loggedin = boolean
+    // }
+
   },
   actions: {
     signup ({ commit }, authData) {
@@ -37,6 +46,7 @@ Vue.use(Vuex)
           //   client: response.headers.client,
           //   uid: response.headers.uid
           // }
+          // commit("updateLoggedIn", true);
           router.push("/mypage")
         } else {
           router.push("/")
