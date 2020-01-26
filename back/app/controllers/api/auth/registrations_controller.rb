@@ -10,7 +10,7 @@ module Api
       def account_update_params
         params.permit(:name, :email)
       end
-
+      
     end
   end
 end

@@ -2,14 +2,23 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from './router'
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
  const store = new Vuex.Store({
   state: {
+    user: {},
+    token: {},
     name: '',
     email: '',
-    password: ''
+    password: '',
+    // ログイン状態
+    loggedIn: false,
+    // successLoginがtrueだとログイン成功,falseならログイン失敗
+    successLogin: false,
+    // successLogoutがtrueだとログイン成功,falseならログイン失敗
+    successLogout: false
   },
   mutations: {
     updateSignupData (state, payload) {
@@ -20,11 +29,18 @@ Vue.use(Vuex)
     updateSigninData (state, payload) {
       state.email = payload.email,
       state.password = payload.password
+    },
+    // ログイン状態の更新
+    updateLoggedIn (state, boolean) {
+      state.loggedIn = boolean
+    },
+    updateUser (state, data) {
+      state.user = data
+
     }
   },
   actions: {
     signup ({ commit }, authData) {
-      commit("updateSignupData", authData);
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
         email: authData.email,
@@ -37,6 +53,11 @@ Vue.use(Vuex)
           //   client: response.headers.client,
           //   uid: response.headers.uid
           // }
+          commit("updateSignupData", authData);
+          commit("updateLoggedIn", true);
+          commit("updateUser", {
+            user: response.data.data
+          });
           router.push("/mypage")
         } else {
           router.push("/")
@@ -51,14 +72,22 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
+          commit("updateLoggedIn", true);
+          commit("updateUser", {
+            user: response.data.data
+          })
           router.push("/mypage")
         }
           // this.$router.push("/mypage")
-
-
       })
+    },
+    signout ({ commit }, out) {
+      commit("updateLoggedIn", out);
     }
-  }
+  },
+  plugins: [
+    createPersistedState()
+  ]
 })
 
 export default store;

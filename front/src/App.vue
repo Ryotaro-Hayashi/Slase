@@ -76,11 +76,11 @@
           </v-list>
         </v-menu>
 
-        <v-btn text to="/logout">
+        <v-btn text to="/logout" v-show="loggedIn" @click="logout">
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
-        <v-btn text to="/signin">
+        <v-btn text to="/signin" v-show="!loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
         </v-btn>
       </v-toolbar-items>
@@ -114,6 +114,16 @@ export default {
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
       ]
+    }
+  },
+  computed: {
+    loggedIn () {
+      return this.$store.state.loggedIn
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch("signout", false)
     }
   }
 }
