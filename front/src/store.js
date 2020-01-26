@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import axios from 'axios'
 import router from './router'
+import createPersistedState from 'vuex-persistedstate';
 
 Vue.use(Vuex)
 
@@ -83,7 +84,10 @@ Vue.use(Vuex)
     signout ({ commit }, out) {
       commit("updateLoggedIn", out);
     }
-  }
+  },
+  plugins: [
+    createPersistedState()
+  ]
 })
 
 export default store;
