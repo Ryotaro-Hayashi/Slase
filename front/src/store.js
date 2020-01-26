@@ -10,6 +10,7 @@ Vue.use(Vuex)
     name: '',
     email: '',
     password: '',
+    // ログイン状態
     loggedIn: false,
     // successLoginがtrueだとログイン成功,falseならログイン失敗
     successLogin: false,
@@ -25,11 +26,11 @@ Vue.use(Vuex)
     updateSigninData (state, payload) {
       state.email = payload.email,
       state.password = payload.password
-    // },
-    // updateLoggedIn (state, boolean) {
-    //   state.loggedin = boolean
-    // }
-
+    },
+    // ログイン状態の更新
+    updateLoggedIn (state, boolean) {
+      state.loggedin = boolean
+    }
   },
   actions: {
     signup ({ commit }, authData) {
@@ -46,7 +47,7 @@ Vue.use(Vuex)
           //   client: response.headers.client,
           //   uid: response.headers.uid
           // }
-          // commit("updateLoggedIn", true);
+          commit("updateLoggedIn", true);
           router.push("/mypage")
         } else {
           router.push("/")
@@ -61,6 +62,7 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
+          commit("updateLoggedIn", true);
           router.push("/mypage")
         }
           // this.$router.push("/mypage")
