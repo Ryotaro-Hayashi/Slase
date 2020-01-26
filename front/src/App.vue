@@ -76,7 +76,7 @@
           </v-list>
         </v-menu>
 
-        <v-btn text to="/logout" v-show="loggedIn">
+        <v-btn text to="/logout" v-show="loggedIn" @click="logout">
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
@@ -119,6 +119,11 @@ export default {
   computed: {
     loggedIn () {
       return this.$store.state.loggedIn
+    }
+  },
+  methods: {
+    logout () {
+      this.$store.dispatch("signout", false)
     }
   }
 }

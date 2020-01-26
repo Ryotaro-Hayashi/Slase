@@ -66,9 +66,10 @@ Vue.use(Vuex)
           router.push("/mypage")
         }
           // this.$router.push("/mypage")
-
-
       })
+    },
+    signout ({ commit }, out) {
+      commit("updateLoggedIn", out);
     }
   }
 })
