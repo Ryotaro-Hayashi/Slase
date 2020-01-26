@@ -1,7 +1,7 @@
 <template>
 <div class="mypage">
   <h1 class="center">Welcome</h1>
-  <p>こんにちは{{ userInfo }}さん</p>
+  <p>こんにちは{{ userInfo.user.name }}さん</p>
 </div>
 </template>
 
