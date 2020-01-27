@@ -13,9 +13,6 @@
         <p class="mx-auto">Slase-logo</p><br>
       </v-card-title>
       <v-card-title>
-        <p v-if="log" class="mx-auto">ログイン済</p>
-      </v-card-title>
-      <v-card-title>
         <p class="mx-auto">ログイン</p>
       </v-card-title>
       <!-- パネルのテキストエリア -->

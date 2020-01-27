@@ -10,10 +10,7 @@ Vue.use(Vuex)
   // 共有データ
   state: {
     user: {},
-    token: {},
-    name: '',
-    email: '',
-    password: '',
+    // token: {},
     // ログイン状態
     loggedIn: false,
     // successLoginがtrueだとログイン成功,falseならログイン失敗
@@ -23,15 +20,6 @@ Vue.use(Vuex)
   },
   // stateの値を更新する関数
   mutations: {
-    updateSignupData (state, payload) {
-      state.name = payload.name,
-      state.email = payload.email,
-      state.password = payload.password
-    },
-    updateSigninData (state, payload) {
-      state.email = payload.email,
-      state.password = payload.password
-    },
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
@@ -59,7 +47,6 @@ Vue.use(Vuex)
           //   uid: response.headers.uid
           // }
           // commitで第2引数を引数に渡して、第1引数のmutationsを呼び出し
-          commit("updateSignupData", authData);
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
@@ -78,7 +65,6 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
-          commit("updateSigninData", authData);
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
@@ -90,6 +76,7 @@ Vue.use(Vuex)
     // ログアウト処理
     signout ({ commit }, out) {
       commit("updateLoggedIn", out);
+      commit("updateUser", {})
     }
   },
   // localstrageにstateを保存
