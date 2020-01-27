@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  devise_for :users
+  # devise_for :users
 
   namespace 'api' do
 
@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
     namespace 'post' do
 
-      resources :question
+      resources :questions
 
     end
   end
