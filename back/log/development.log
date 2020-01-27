@@ -10948,3 +10948,312 @@ Migrating to CreateQuestions (20200127094824)
   ↳ bin/rails:9
   [1m[35m (0.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
   ↳ bin/rails:9
+Started POST "//api/auth/sign_in" for ::1 at 2020-01-28 03:35:19 +0900
+  [1m[35m (0.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 45ms (Views: 0.2ms | ActiveRecord: 8.4ms)
+
+
+Started POST "//api/auth/sign_in" for ::1 at 2020-01-28 03:35:21 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 401 Unauthorized in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/auth" for ::1 at 2020-01-28 03:36:15 +0900
+Processing by DeviseTokenAuth::RegistrationsController#create as HTML
+  Parameters: {"name"=>"testman", "email"=>"test@example.com", "password"=>"[FILTERED]", "registration"=>{"name"=>"testman", "email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :registration
+Unpermitted parameter: :registration
+Unpermitted parameter: :registration
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Exists (0.2ms)[0m  [1m[34mSELECT  1 AS one FROM `users` WHERE `users`.`email` = BINARY 'test@example.com' AND `users`.`provider` = 'email' LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Create (0.2ms)[0m  [1m[32mINSERT INTO `users` (`uid`, `encrypted_password`, `name`, `email`, `created_at`, `updated_at`) VALUES ('test@example.com', '$2a$11$32gUR9DuP7nUHuGABZrh1OStzwV0mXVjNwU7dM098BcM4zGPtxIJW', 'testman', 'test@example.com', '2020-01-27 18:36:15', '2020-01-27 18:36:15')[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"DQEPQojdDiPwA6iqRAIIeA\":{\"token\":\"$2a$10$JDWKJ3cwuAq9oOlQVZy7kuxhvONB9Yg2dB/woV/UUzrIlHoZjMD.6\",\"expiry\":1581359775}}' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 170ms (Views: 0.2ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:37:07 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"初投稿", "body"=>"テスト", "question"=>{"title"=>"初投稿", "body"=>"テスト"}}
+Completed 500 Internal Server Error in 112ms (ActiveRecord: 7.6ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<Api::Post::QuestionsController:0x00007fe697a1fcb8>
+Did you mean?  current_api_user):
+  
+app/controllers/api/post/questions_controller.rb:4:in `create'
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:39:29 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"初投稿", "body"=>"テスト", "question"=>{"title"=>"初投稿", "body"=>"テスト"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO `questions` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('初投稿', 'テスト', 1, '2020-01-27 18:39:29', '2020-01-27 18:39:29')[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+Completed 200 OK in 52ms (Views: 0.3ms | ActiveRecord: 15.9ms)
+
+
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:41:14 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"2回目の投稿", "body"=>"２回目テスト", "question"=>{"title"=>"2回目の投稿", "body"=>"２回目テスト"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[35m (0.2ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+No template found for Api::Post::QuestionsController#create, rendering head :no_content
+Completed 204 No Content in 33ms (ActiveRecord: 17.0ms)
+
+
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:41:24 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"2回目の投稿", "body"=>"２回目テスト", "question"=>{"title"=>"2回目の投稿", "body"=>"２回目テスト"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+No template found for Api::Post::QuestionsController#create, rendering head :no_content
+Completed 204 No Content in 8ms (ActiveRecord: 0.5ms)
+
+
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:42:03 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"2回目の投稿", "body"=>"２回目テスト", "question"=>{"title"=>"2回目の投稿", "body"=>"２回目テスト"}}
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[35m (0.1ms)[0m  [1m[31mROLLBACK[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+No template found for Api::Post::QuestionsController#create, rendering head :no_content
+Completed 204 No Content in 34ms (ActiveRecord: 18.2ms)
+
+
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:42:30 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"2回目の投稿", "body"=>"２回目テスト", "question"=>{"title"=>"2回目の投稿", "body"=>"２回目テスト"}}
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO `questions` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('2回目の投稿', '２回目テスト', 1, '2020-01-27 18:42:30', '2020-01-27 18:42:30')[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/post/questions_controller.rb:5
+Completed 200 OK in 34ms (Views: 0.3ms | ActiveRecord: 16.2ms)
+
+
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:45:10 +0900
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"3回目の投稿", "body"=>"3回目テスト", "question"=>{"title"=>"3回目の投稿", "body"=>"3回目テスト"}}
+Completed 500 Internal Server Error in 104ms (ActiveRecord: 7.6ms)
+
+
+  
+NameError (undefined local variable or method `current_user' for #<Api::Post::QuestionsController:0x00007fe69d9cd340>
+Did you mean?  current_api_user):
+  
+app/controllers/api/post/questions_controller.rb:4:in `create'
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:55:40 +0900
+  [1m[35m (0.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::Post::QuestionsController#create as */*
+  Parameters: {"title"=>"3回目の投稿", "body"=>"3回目テスト", "question"=>{"title"=>"3回目の投稿", "body"=>"3回目テスト"}}
+Completed 500 Internal Server Error in 15ms (ActiveRecord: 10.7ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/api/post/questions_controller.rb:4:in `create'
+Started POST "/api/post/questions" for ::1 at 2020-01-28 03:58:03 +0900
+  
+ActionController::RoutingError (No route matches [POST] "/api/post/questions"):
+  
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "/api/post/question" for ::1 at 2020-01-28 03:58:38 +0900
+  
+ActionController::RoutingError (uninitialized constant Api::Post::QuestionController):
+  
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:285:in `const_get'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:285:in `block in constantize'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.4) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.4) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started POST "//api/auth/sign_in" for ::1 at 2020-01-28 04:00:14 +0900
+  [1m[35m (0.3ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.6ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"DQEPQojdDiPwA6iqRAIIeA\":{\"token\":\"$2a$10$JDWKJ3cwuAq9oOlQVZy7kuxhvONB9Yg2dB/woV/UUzrIlHoZjMD.6\",\"expiry\":1581359775},\"Pw7cLGN7CkkhCFeBgSFziA\":{\"token\":\"$2a$10$E3oQok9ftxr77DQRSBJlgOUOtQBTSsoBfeGjuuOfjmPUP0fBiTzKO\",\"expiry\":1581361215}}', `updated_at` = '2020-01-27 19:00:15' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-01-27 19:00:15', `last_sign_in_at` = '2020-01-27 19:00:15', `current_sign_in_ip` = '::1', `last_sign_in_ip` = '::1' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 203ms (Views: 1.0ms | ActiveRecord: 10.7ms)
+
+
+Started POST "/api/post/question" for ::1 at 2020-01-28 04:00:24 +0900
+  
+ActionController::RoutingError (uninitialized constant Api::Post::QuestionController):
+  
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:285:in `const_get'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:285:in `block in constantize'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:281:in `each'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:281:in `inject'
+activesupport (5.2.4) lib/active_support/inflector/methods.rb:281:in `constantize'
+actionpack (5.2.4) lib/action_dispatch/http/request.rb:88:in `controller_class_for'
+actionpack (5.2.4) lib/action_dispatch/http/request.rb:81:in `controller_class'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:46:in `controller'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:38:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
