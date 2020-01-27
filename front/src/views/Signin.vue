@@ -13,9 +13,6 @@
         <p class="mx-auto">Slase-logo</p><br>
       </v-card-title>
       <v-card-title>
-        <p v-if="log" class="mx-auto">ログイン済</p>
-      </v-card-title>
-      <v-card-title>
         <p class="mx-auto">ログイン</p>
       </v-card-title>
       <!-- パネルのテキストエリア -->
@@ -52,9 +49,7 @@ export default {
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
     showPassword: false,
     email: '',
-    password: '',
-    Tokens: {},
-    log: false
+    password: ''
   }),
   methods: {
     login () {

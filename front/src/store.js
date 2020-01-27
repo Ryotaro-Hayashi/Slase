@@ -7,12 +7,10 @@ import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex)
 
  const store = new Vuex.Store({
+  // 共有データ
   state: {
     user: {},
-    token: {},
-    name: '',
-    email: '',
-    password: '',
+    // token: {},
     // ログイン状態
     loggedIn: false,
     // successLoginがtrueだとログイン成功,falseならログイン失敗
@@ -20,16 +18,8 @@ Vue.use(Vuex)
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false
   },
+  // stateの値を更新する関数
   mutations: {
-    updateSignupData (state, payload) {
-      state.name = payload.name,
-      state.email = payload.email,
-      state.password = payload.password
-    },
-    updateSigninData (state, payload) {
-      state.email = payload.email,
-      state.password = payload.password
-    },
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
@@ -40,6 +30,8 @@ Vue.use(Vuex)
     }
   },
   actions: {
+    // ユーザー登録処理
+    // 第2引数は呼び出された時の引数を受け継ぐ
     signup ({ commit }, authData) {
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
@@ -47,13 +39,14 @@ Vue.use(Vuex)
         password: authData.password
       })
       .then(response => {
+        // リクエストが成功
         if (response.status === 200) {
           // this.Tokens = {
           //   accessToken: response.headers["access-token"],
           //   client: response.headers.client,
           //   uid: response.headers.uid
           // }
-          commit("updateSignupData", authData);
+          // commitで第2引数を引数に渡して、第1引数のmutationsを呼び出し
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
@@ -64,8 +57,8 @@ Vue.use(Vuex)
         }
       })
     },
+    // ログイン処理
     signin ({ commit }, authData) {
-      commit("updateSigninData", authData);
       axios.post('http://localhost:3000//api/auth/sign_in', {
         email: authData.email,
         password: authData.password
@@ -78,13 +71,15 @@ Vue.use(Vuex)
           })
           router.push("/mypage")
         }
-          // this.$router.push("/mypage")
       })
     },
+    // ログアウト処理
     signout ({ commit }, out) {
       commit("updateLoggedIn", out);
+      commit("updateUser", {})
     }
   },
+  // localstrageにstateを保存
   plugins: [
     createPersistedState()
   ]

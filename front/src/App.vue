@@ -34,22 +34,23 @@
 
       <v-toolbar-items>
         <v-btn>
-          キーワード検索
+          <v-icon class="icon-space">mdi-feature-search</v-icon>キーワード検索
         </v-btn>
+
         <v-btn>
-          マイページ
+          <v-icon class="icon-space">mdi-label</v-icon>カテゴリ
         </v-btn>
-        <v-btn>
-          メッセージ
+
+        <span v-show="loggedIn">
+
+        </span>
+
+        <v-btn text to="/mypage">
+          <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
+
         <v-btn>
-          カテゴリ
-        </v-btn>
-        <v-btn>
-          質問する
-        </v-btn>
-        <v-btn>
-          回答する
+          <v-icon class="icon-space">mdi-email</v-icon>メッセージ
         </v-btn>
         <!-- ドロップダウンメニューを作成 -->
         <!-- offset-y で縦方向の位置関係を補正 -->
@@ -76,7 +77,7 @@
           </v-list>
         </v-menu>
 
-        <v-btn text to="/logout" v-show="loggedIn" @click="logout">
+        <v-btn text to="/logout" @click="logout">
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
