@@ -36,7 +36,7 @@
         <v-btn>
           キーワード検索
         </v-btn>
-        <v-btn>
+        <v-btn text to="/mypage" v-show="loggedIn">
           マイページ
         </v-btn>
         <v-btn>
