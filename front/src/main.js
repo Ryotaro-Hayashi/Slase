@@ -7,8 +7,6 @@ import store from './store'
 
 Vue.config.productionTip = false
 
-// Vue.$http = axios;
-
 new Vue({
   // el: '#app',
   router,

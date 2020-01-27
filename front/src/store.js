@@ -7,6 +7,7 @@ import createPersistedState from 'vuex-persistedstate';
 Vue.use(Vuex)
 
  const store = new Vuex.Store({
+  // 共有データ
   state: {
     user: {},
     token: {},
@@ -20,6 +21,7 @@ Vue.use(Vuex)
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false
   },
+  // stateの値を更新する関数
   mutations: {
     updateSignupData (state, payload) {
       state.name = payload.name,
@@ -40,6 +42,8 @@ Vue.use(Vuex)
     }
   },
   actions: {
+    // ユーザー登録処理
+    // 第2引数は呼び出された時の引数を受け継ぐ
     signup ({ commit }, authData) {
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
@@ -47,12 +51,14 @@ Vue.use(Vuex)
         password: authData.password
       })
       .then(response => {
+        // リクエストが成功
         if (response.status === 200) {
           // this.Tokens = {
           //   accessToken: response.headers["access-token"],
           //   client: response.headers.client,
           //   uid: response.headers.uid
           // }
+          // commitで第2引数を引数に渡して、第1引数のmutationsを呼び出し
           commit("updateSignupData", authData);
           commit("updateLoggedIn", true);
           commit("updateUser", {
@@ -64,27 +70,29 @@ Vue.use(Vuex)
         }
       })
     },
+    // ログイン処理
     signin ({ commit }, authData) {
-      commit("updateSigninData", authData);
       axios.post('http://localhost:3000//api/auth/sign_in', {
         email: authData.email,
         password: authData.password
       })
       .then(response => {
         if (response.status === 200) {
+          commit("updateSigninData", authData);
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
           })
           router.push("/mypage")
         }
-          // this.$router.push("/mypage")
       })
     },
+    // ログアウト処理
     signout ({ commit }, out) {
       commit("updateLoggedIn", out);
     }
   },
+  // localstrageにstateを保存
   plugins: [
     createPersistedState()
   ]

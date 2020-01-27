@@ -9,6 +9,7 @@
 export default {
   name: 'MyPage',
   computed: {
+    // 算出プロパティでstateのuserを呼び出し
     userInfo () {
       return this.$store.state.user
     }

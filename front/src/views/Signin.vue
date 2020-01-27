@@ -52,9 +52,7 @@ export default {
     // showPasswordプロパティでパスワードの表示・非表示を切り替える
     showPassword: false,
     email: '',
-    password: '',
-    Tokens: {},
-    log: false
+    password: ''
   }),
   methods: {
     login () {
