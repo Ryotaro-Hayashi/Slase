@@ -6,10 +6,10 @@ class Api::Post::QuestionsController < ApplicationController
     end
   end
 
-  # def index
-  #   questions = Question.all
-  #   render json: questions
-  # end
+  def index
+    questions = Question.all
+    render json: questions
+  end
 
   private
 
