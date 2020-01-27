@@ -5,6 +5,8 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :body, null: false
 
+      t.references :user
+
       t.timestamps
     end
   end
