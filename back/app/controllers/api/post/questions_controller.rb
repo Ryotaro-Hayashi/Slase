@@ -1,12 +1,15 @@
 module Api
   module Post
     class QuestionsController < ApplicationController
+      # before_action :authenticate_api_user!
+
       def create
         question = Question.new(question_params)
-        question.user_id = 1
-        que = user_signed_in?
+        question.user_id = current_api_user.id
         if question.save
-          render json: que
+          render json: question
+        else
+          render json: nil
         end
       end
 
