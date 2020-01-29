@@ -10,7 +10,7 @@ Vue.use(Vuex)
   // 共有データ
   state: {
     user: {},
-    // token: {},
+    token: {},
     // ログイン状態
     loggedIn: false,
     // successLoginがtrueだとログイン成功,falseならログイン失敗
@@ -26,7 +26,9 @@ Vue.use(Vuex)
     },
     updateUser (state, data) {
       state.user = data
-
+    },
+    updateToken (state, token) {
+      state.token = {}
     }
   },
   actions: {
@@ -41,11 +43,11 @@ Vue.use(Vuex)
       .then(response => {
         // リクエストが成功
         if (response.status === 200) {
-          // this.Tokens = {
-          //   accessToken: response.headers["access-token"],
-          //   client: response.headers.client,
-          //   uid: response.headers.uid
-          // }
+          this.token = {
+            accessToken: response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          }
           // commitで第2引数を引数に渡して、第1引数のmutationsを呼び出し
           commit("updateLoggedIn", true);
           commit("updateUser", {
@@ -65,6 +67,11 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
+          this.token = {
+            accessToken: response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          }
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
@@ -77,6 +84,7 @@ Vue.use(Vuex)
     signout ({ commit }, out) {
       commit("updateLoggedIn", out);
       commit("updateUser", {})
+      commit("updateToken", {})
     }
   },
   // localstrageにstateを保存
