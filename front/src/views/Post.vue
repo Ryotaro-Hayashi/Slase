@@ -7,9 +7,9 @@
 
         <v-form>
           <v-text-field label="タイトル" outlined class="posting"></v-text-field>
-          <v-textarea label="本文" outlined height="700" class="posting"></v-textarea>
+          <v-textarea label="本文" outlined height="500" class="posting"></v-textarea>
           <v-card-actions class="mt-5">
-            <v-btn class="info ml-auto">投稿</v-btn>
+            <v-btn class="info ml-auto" @click="post">投稿</v-btn>
           </v-card-actions>
         </v-form>
 
@@ -23,7 +23,11 @@
 <script>
 
 export default {
-  name: 'Post'
+  name: 'Post',
+  methods: {
+    post () {
+    }
+  }
 }
 </script>
 
