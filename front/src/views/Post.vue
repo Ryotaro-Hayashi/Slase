@@ -24,8 +24,16 @@
 
 export default {
   name: 'Post',
+  data: {
+    title: '',
+    body: ''
+  }
   methods: {
-    post () {
+    question () {
+      this.$store.dispatch("post", {
+        title: this.title,
+        body: this.body
+      })
     }
   }
 }
