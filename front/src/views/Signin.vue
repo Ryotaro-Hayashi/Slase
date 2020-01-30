@@ -31,7 +31,7 @@
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
             <router-link to="/signup">新しくユーザー登録</router-link>
-            <!-- vuetifyクラスでボタンの色を変更 -->
+            <!-- vuetifyクラスinfoでボタンの色を変更 -->
             <v-btn class="info ml-auto" v-on:click="login">ログイン</v-btn>
           </v-card-actions>
         </v-form>
