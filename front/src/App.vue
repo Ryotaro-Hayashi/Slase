@@ -33,6 +33,10 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
+        <v-btn text to="/post">
+          <v-icon class="icon-space">mdi-post</v-icon>投稿
+        </v-btn>
+
         <v-btn>
           <v-icon class="icon-space">mdi-feature-search</v-icon>キーワード検索
         </v-btn>
