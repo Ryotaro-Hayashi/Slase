@@ -16,7 +16,8 @@ Vue.use(Vuex)
     // successLoginがtrueだとログイン成功,falseならログイン失敗
     successLogin: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
-    successLogout: false
+    successLogout: false,
+    question: {}
   },
   // stateの値を更新する関数
   mutations: {
@@ -28,7 +29,7 @@ Vue.use(Vuex)
       state.user = data
     },
     updateToken (state, token) {
-      state.token = {}
+      state.token = token
     }
   },
   actions: {
@@ -85,6 +86,15 @@ Vue.use(Vuex)
       commit("updateLoggedIn", out);
       commit("updateUser", {})
       commit("updateToken", {})
+    },
+    post ({ commit }, post) {
+      axios.post('http://localhost:3000//api/post/questions', {
+        headers: {
+          
+        },
+        question: post
+      })
+      commit("postQuestion", post);
     }
   },
   // localstrageにstateを保存
