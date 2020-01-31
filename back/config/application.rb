@@ -40,6 +40,8 @@ module Slase
           origins '*'
           resource '*',
             :headers => :any,
+            # これでundefinedにならない
+            :expose  => ['access-token', 'expiry', 'token-type', 'uid', 'client'],
             :methods => [:get, :post, :options, :patch, :delete]
         end
       end
