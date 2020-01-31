@@ -6,6 +6,7 @@ import Signup from './views/Signup'
 import Signin from './views/Signin'
 import MyPage from './views/MyPage'
 import AllUsers from './views/AllUsers'
+import Post from './views/Post'
 
 Vue.use(Router)
 
@@ -36,6 +37,11 @@ export default new Router({
       path: '/users',
       name: 'AllUsers',
       component: AllUsers
+    },
+    {
+      path: '/post',
+      name: 'Post',
+      component: Post
     }
   ]
 })
