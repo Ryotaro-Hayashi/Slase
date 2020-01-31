@@ -30,6 +30,9 @@ Vue.use(Vuex)
     },
     updateToken (state, token) {
       state.token = token
+    },
+    postQuestion (state, post) {
+      state.question = post
     }
   },
   actions: {
@@ -44,15 +47,15 @@ Vue.use(Vuex)
       .then(response => {
         // リクエストが成功
         if (response.status === 200) {
-          this.token = {
-            accessToken: response.headers["access-token"],
-            client: response.headers.client,
-            uid: response.headers.uid
-          }
           // commitで第2引数を引数に渡して、第1引数のmutationsを呼び出し
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
+          });
+          commit("updateToken", {
+            "access-token": response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
           });
           router.push("/mypage")
         } else {
@@ -68,15 +71,15 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
-          this.token = {
-            accessToken: response.headers["access-token"],
-            client: response.headers.client,
-            uid: response.headers.uid
-          }
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
-          })
+          });
+          commit("updateToken", {
+            "access-token": response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          });
           router.push("/mypage")
         }
       })
@@ -88,11 +91,13 @@ Vue.use(Vuex)
       commit("updateToken", {})
     },
     post ({ commit }, post) {
-      axios.post('http://localhost:3000//api/post/questions', {
-        headers: {
-          
-        },
-        question: post
+      axios.post('http://localhost:3000//api/post/questions',
+      {
+        title: post.title,
+        body: post.body
+      },
+      {
+        headers: post.token
       })
       commit("postQuestion", post);
     }
