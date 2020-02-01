@@ -1,7 +1,9 @@
 <template>
   <div class="posts">
     <h1>"allposts"</h1>
-    <p>{{ allQuestions }}</p>
+    <ul>
+      <li v-for="question in allQuestions" :key="question.id">{{ question }}</li>
+    </ul>
   </div>
 </template>
 
