@@ -103,6 +103,11 @@ Vue.use(Vuex)
       {
         headers: post.token
       })
+      .then(response => {
+        if (response.status === 200) {
+          router.push("/posts")
+        }
+      })
       commit("postQuestion", post);
     },
     posts ({ commit }) {
