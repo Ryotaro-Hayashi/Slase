@@ -19,7 +19,8 @@ Vue.use(Vuex)
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     question: {},
-    questions: {}
+    questions: {},
+    myQuestions: {}
   },
   // stateの値を更新する関数
   mutations: {
@@ -41,6 +42,9 @@ Vue.use(Vuex)
     },
     AllQuestions (state, posts) {
       state.questions = posts
+    },
+    myQuestions (state, posts) {
+      state.myQuestions = posts
     }
   },
   actions: {
@@ -74,7 +78,7 @@ Vue.use(Vuex)
     },
     // ログイン処理
     signin ({ commit }, authData) {
-      axios.post('http://localhost:3000//api/auth/sign_in', {
+      axios.post('http://localhost:3000/api/auth/sign_in', {
         email: authData.email,
         password: authData.password
       })
@@ -100,7 +104,7 @@ Vue.use(Vuex)
       commit("updateToken", {})
     },
     post ({ commit }, post) {
-      axios.post('http://localhost:3000//api/post/questions',
+      axios.post('http://localhost:3000/api/post/questions',
       {
         title: post.title,
         body: post.body
@@ -116,9 +120,15 @@ Vue.use(Vuex)
       commit("postQuestion", post);
     },
     posts ({ commit }) {
-      axios.get('http://localhost:3000//api/post/questions')
+      axios.get('http://localhost:3000/api/post/questions')
       .then(response => {
         commit("AllQuestions", response.data)
+      })
+    },
+    myposts ({ commit }, id) {
+      axios.get('http://localhost:3000/api/post/questions/' + id)
+      .then(response => {
+        commit("myQuestions", response.data)
       })
     }
   },
