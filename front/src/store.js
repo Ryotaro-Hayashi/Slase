@@ -17,7 +17,8 @@ Vue.use(Vuex)
     successLogin: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
-    question: {}
+    question: {},
+    questions: {}
   },
   // stateの値を更新する関数
   mutations: {
@@ -33,6 +34,9 @@ Vue.use(Vuex)
     },
     postQuestion (state, post) {
       state.question = post
+    },
+    AllQuestions (state, posts) {
+      state.questions = posts
     }
   },
   actions: {
@@ -100,6 +104,14 @@ Vue.use(Vuex)
         headers: post.token
       })
       commit("postQuestion", post);
+    },
+    posts ({ commit }, posts) {
+      axios.get('http://localhost:3000//api/post/questions', {
+        headers: posts.token
+      })
+      .then(response => {
+        commit("AllQuestions", response.data)
+      })
     }
   },
   // localstrageにstateを保存
