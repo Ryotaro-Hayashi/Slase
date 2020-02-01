@@ -10,6 +10,7 @@ Vue.use(Vuex)
   // 共有データ
   state: {
     user: {},
+    users: [],
     token: {},
     // ログイン状態
     loggedIn: false,
@@ -17,7 +18,8 @@ Vue.use(Vuex)
     successLogin: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
-    question: {}
+    question: {},
+    questions: {}
   },
   // stateの値を更新する関数
   mutations: {
@@ -28,11 +30,17 @@ Vue.use(Vuex)
     updateUser (state, data) {
       state.user = data
     },
+    addUser (state, data) {
+      state.users.push(data)
+    },
     updateToken (state, token) {
       state.token = token
     },
     postQuestion (state, post) {
       state.question = post
+    },
+    AllQuestions (state, posts) {
+      state.questions = posts
     }
   },
   actions: {
@@ -52,6 +60,7 @@ Vue.use(Vuex)
           commit("updateUser", {
             user: response.data.data
           });
+          commit("addUser", response.data)
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -99,7 +108,18 @@ Vue.use(Vuex)
       {
         headers: post.token
       })
+      .then(response => {
+        if (response.status === 200) {
+          router.push("/posts")
+        }
+      })
       commit("postQuestion", post);
+    },
+    posts ({ commit }) {
+      axios.get('http://localhost:3000//api/post/questions')
+      .then(response => {
+        commit("AllQuestions", response.data)
+      })
     }
   },
   // localstrageにstateを保存
