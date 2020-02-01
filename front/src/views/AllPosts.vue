@@ -23,9 +23,7 @@ export default {
   },
   methods: {
     questions () {
-      this.$store.dispatch("posts", {
-        token: this.userToken
-      })
+      this.$store.dispatch("posts")
     }
   },
   mounted: function() {

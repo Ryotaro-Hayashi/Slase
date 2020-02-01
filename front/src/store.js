@@ -105,10 +105,8 @@ Vue.use(Vuex)
       })
       commit("postQuestion", post);
     },
-    posts ({ commit }, posts) {
-      axios.get('http://localhost:3000//api/post/questions', {
-        headers: posts.token
-      })
+    posts ({ commit }) {
+      axios.get('http://localhost:3000//api/post/questions')
       .then(response => {
         commit("AllQuestions", response.data)
       })

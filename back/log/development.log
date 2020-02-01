@@ -15482,3 +15482,168 @@ Processing by Api::Post::QuestionsController#index as HTML
 Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
 
 
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:51:19 +0900
+  [1m[35m (1.0ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:51:21 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:51:50 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 4ms (Views: 3.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:51:58 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 6ms (Views: 5.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "//api/post/questions" for ::1 at 2020-02-01 15:52:09 +0900
+Processing by Api::Post::QuestionsController#create as HTML
+  Parameters: {"title"=>"増田柚花", "body"=>"yuzumon", "question"=>{"title"=>"増田柚花", "body"=>"yuzumon"}}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+
+  
+NoMethodError (undefined method `id' for nil:NilClass):
+  
+app/controllers/api/post/questions_controller.rb:8:in `create'
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:52:13 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:52:18 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:52:30 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:53:09 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 1ms (Views: 1.0ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:53:19 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 1ms (Views: 1.1ms | ActiveRecord: 0.2ms)
+
+
+Started POST "//api/auth/sign_in" for ::1 at 2020-02-01 15:54:12 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"lVgQW68utUqX6GsO59Hwjg\":{\"token\":\"$2a$10$keb2cWaTSGIa4nvCTict5.hRPMZCbjJS81SYWULKqMpSxv.bKNrX6\",\"expiry\":1581695724},\"p4FEUhBH9c1E9wkUGtcxmA\":{\"token\":\"$2a$10$BNiccrU11s7eBkcI0uvzfOe.6XLh2zKdGsfQbmBniueyfYBtIS/9a\",\"expiry\":1581695797},\"bXUIFnbHdADNRTIH4Sinfw\":{\"token\":\"$2a$10$E8DPLpW3n66NYykuBPXUPuXXy4yb5WAx2h0i95UN7GCJKqz0PO132\",\"expiry\":1581695894},\"WVmSSKLa_9ckmdPHkZd-RA\":{\"token\":\"$2a$10$Nv1ne1k4nceCBWmjjNA4SeqGON5Hz5j5DBWtDXXaJDNqgxHRnJyni\",\"expiry\":1581695945},\"RkA4LZ83vS_wzao3eNnV_g\":{\"token\":\"$2a$10$MADBf.xIYDrMiobTCeywhuXSbILT3vqqyLK0kJO/.9/opptPYhVNG\",\"expiry\":1581696141},\"qiw1M-rGPUpaWp6vLC51dw\":{\"token\":\"$2a$10$zWWFcdsqH32d1vrqM7KJqOAt4b2axnDeXSxXee.7/nAeZcxMxWgrG\",\"expiry\":1581696841},\"EPgQm-VWfpZiriGDfCi5oA\":{\"token\":\"$2a$10$24TD0TdB24Rzf9PsPd7I3OxuR0IymMtBCFG4m.b.vmWeMyJ3NEtD.\",\"expiry\":1581742871},\"8hJfKVu1ju7j56fV-5n0eQ\":{\"token\":\"$2a$10$IqP0MJj5CV6F.qpQcJM8tecBai2qUwbgcV8RybE9oAe1hfaJlxYzW\",\"expiry\":1581744914},\"7uUV9I9rrJ_rCtpqq9wa_A\":{\"token\":\"$2a$10$Gxi3jBsPvl8zNCs0iys.UeDie6LE9XJLkpTmyusxrzamdiJbTMDSy\",\"expiry\":1581745164},\"HxGmfNTU0W6kRtlWs_UXYQ\":{\"token\":\"$2a$10$RO2Qc.OfRRrcRMZWkLzr5.JBLM90BYjBTYQ2Y75QOZt2E2Wr27Bry\",\"expiry\":1581749652}}', `updated_at` = '2020-02-01 06:54:12' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 57, `current_sign_in_at` = '2020-02-01 06:54:12', `last_sign_in_at` = '2020-02-01 05:39:24' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 174ms (Views: 0.2ms | ActiveRecord: 9.7ms)
+
+
+Started POST "//api/post/questions" for ::1 at 2020-02-01 15:54:25 +0900
+Processing by Api::Post::QuestionsController#create as HTML
+  Parameters: {"title"=>"増田", "body"=>"柚花", "question"=>{"title"=>"増田", "body"=>"柚花"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO `questions` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('増田', '柚花', 1, '2020-02-01 06:54:25', '2020-02-01 06:54:25')[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 71ms (Views: 0.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:54:30 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:54:48 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:55:01 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.3ms | ActiveRecord: 0.2ms)
+
+
+Started POST "//api/post/questions" for ::1 at 2020-02-01 15:55:09 +0900
+Processing by Api::Post::QuestionsController#create as HTML
+  Parameters: {"title"=>"klj", "body"=>"kjlk", "question"=>{"title"=>"klj", "body"=>"kjlk"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:8
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO `questions` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('klj', 'kjlk', 1, '2020-02-01 06:55:09', '2020-02-01 06:55:09')[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 15:55:13 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 2ms (Views: 1.4ms | ActiveRecord: 0.2ms)
+
+
