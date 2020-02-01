@@ -10,6 +10,7 @@ Vue.use(Vuex)
   // 共有データ
   state: {
     user: {},
+    users: [],
     token: {},
     // ログイン状態
     loggedIn: false,
@@ -28,6 +29,9 @@ Vue.use(Vuex)
     },
     updateUser (state, data) {
       state.user = data
+    },
+    addUser (state, data) {
+      state.users.push(data)
     },
     updateToken (state, token) {
       state.token = token
@@ -56,6 +60,7 @@ Vue.use(Vuex)
           commit("updateUser", {
             user: response.data.data
           });
+          commit("addUser", response.data)
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
