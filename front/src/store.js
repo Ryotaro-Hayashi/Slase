@@ -60,7 +60,7 @@ Vue.use(Vuex)
           commit("updateUser", {
             user: response.data.data
           });
-          commit("addUser", response.data)
+          commit("addUser", response.data.data)
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,

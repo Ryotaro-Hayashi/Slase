@@ -2,7 +2,10 @@
 <div class="mypage">
   <h1 class="center">Welcome</h1>
   <p>こんにちは{{ userInfo.user.name }}さん</p>
-  <p>{{ allUser }}</p>
+  <br>
+  <ul>
+    <li v-for="user in allUser" :key="user.id">{{ user }}</li>
+  </ul>
 </div>
 </template>
 
@@ -17,6 +20,9 @@ export default {
     allUser () {
       return this.$store.state.users
     }
+  },
+  methods: {
+    
   }
 }
 </script>
