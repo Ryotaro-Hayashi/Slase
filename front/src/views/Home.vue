@@ -1,10 +1,19 @@
 <template>
   <div class="home">
-    <h1>"allposts"</h1>
-    <ul>
-      <li v-for="question in allQuestions" :key="question.id">{{ question.title }}<br>{{ question.created_at}}<br><br></li>
-      <li v-for="question in allQuestions" :key="question.id">{{ question }}</li>
-    </ul>
+    <v-app>
+      <v-card width="600px" class="mx-auto mt-10">
+        <v-card-title>
+          <p class="mx-auto">投稿一覧</p>
+        </v-card-title>
+        <v-card-text>
+          <ul>
+            <li v-for="question in allQuestions" :key="question.id" class="title">{{ question.title }}<br>{{ question.created_at}}<br><br></li>
+            <li v-for="question in allQuestions" :key="question.id">{{ question }}</li>
+          </ul>
+        </v-card-text>
+      </v-card>
+    </v-app>
+
   </div>
 </template>
 
