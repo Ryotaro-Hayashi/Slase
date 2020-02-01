@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <ul>
-            <li v-for="question in allQuestions" :key="question.id" class="title">{{ question.title }}<br>{{ question.created_at}}<br><br></li>
+            <li v-for="question in allQuestions" :key="question.id"><div class="title font-weight-bold">{{ question.title }}</div>by {{ question.user_id }}  {{ question.created_at}}<v-divider></v-divider></li>
             <li v-for="question in allQuestions" :key="question.id">{{ question }}</li>
           </ul>
         </v-card-text>
