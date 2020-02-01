@@ -15986,3 +15986,555 @@ Processing by Api::Post::QuestionsController#index as HTML
 Completed 200 OK in 4ms (Views: 3.7ms | ActiveRecord: 0.5ms)
 
 
+Started GET "//api/post/questions" for ::1 at 2020-02-01 16:58:23 +0900
+  [1m[35m (0.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 3ms (Views: 2.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2020-02-01 17:01:11 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-5.2.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-5.2.4/lib/rails/templates/rails/welcome/index.html.erb (2.8ms)
+Completed 200 OK in 7ms (Views: 4.6ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/favicon.ico" for ::1 at 2020-02-01 17:01:11 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/favicon.ico"):
+  
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/post/question" for ::1 at 2020-02-01 17:01:23 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/post/question"):
+  
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/post/question/1" for ::1 at 2020-02-01 17:01:36 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/post/question/1"):
+  
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/post/questions/1" for ::1 at 2020-02-01 17:01:40 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 406 Not Acceptable in 23ms (ActiveRecord: 8.9ms)
+
+
+  
+ActionController::UnknownFormat (Api::Post::QuestionsController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.4) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/post/questions" for ::1 at 2020-02-01 17:01:46 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/question" for ::1 at 2020-02-01 17:01:50 +0900
+  
+ActionController::RoutingError (No route matches [GET] "/api/post/question"):
+  
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:65:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/" for ::1 at 2020-02-01 17:02:36 +0900
+Processing by Rails::WelcomeController#index as HTML
+  Rendering /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-5.2.4/lib/rails/templates/rails/welcome/index.html.erb
+  Rendered /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/railties-5.2.4/lib/rails/templates/rails/welcome/index.html.erb (1.9ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-01 17:02:46 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 3ms (Views: 2.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-01 17:02:48 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 406 Not Acceptable in 6ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionController::UnknownFormat (Api::Post::QuestionsController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.4) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/post/questions/1" for ::1 at 2020-02-01 17:02:53 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 406 Not Acceptable in 6ms (ActiveRecord: 0.3ms)
+
+
+  
+ActionController::UnknownFormat (Api::Post::QuestionsController#show is missing a template for this request format and variant.
+
+request.formats: ["text/html"]
+request.variant: []
+
+NOTE! For XHR/Ajax or API requests, this action would normally respond with 204 No Content: an empty white screen. Since you're loading it in a web browser, we assume that you expected to actually render a template, not nothing, so we're showing an error to be extra-clear. If you expect 204 No Content, carry on. That's what you'll get from an XHR or API request. Give it a shot.):
+  
+actionpack (5.2.4) lib/action_controller/metal/implicit_render.rb:55:in `default_render'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `block in send_action'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `tap'
+actionpack (5.2.4) lib/action_controller/metal/basic_implicit_render.rb:6:in `send_action'
+actionpack (5.2.4) lib/abstract_controller/base.rb:194:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/rendering.rb:30:in `process_action'
+actionpack (5.2.4) lib/abstract_controller/callbacks.rb:42:in `block in process_action'
+activesupport (5.2.4) lib/active_support/callbacks.rb:132:in `run_callbacks'
+actionpack (5.2.4) lib/abstract_controller/callbacks.rb:41:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/rescue.rb:22:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/instrumentation.rb:34:in `block in process_action'
+activesupport (5.2.4) lib/active_support/notifications.rb:168:in `block in instrument'
+activesupport (5.2.4) lib/active_support/notifications/instrumenter.rb:23:in `instrument'
+activesupport (5.2.4) lib/active_support/notifications.rb:168:in `instrument'
+actionpack (5.2.4) lib/action_controller/metal/instrumentation.rb:32:in `process_action'
+actionpack (5.2.4) lib/action_controller/metal/params_wrapper.rb:256:in `process_action'
+activerecord (5.2.4) lib/active_record/railties/controller_runtime.rb:24:in `process_action'
+actionpack (5.2.4) lib/abstract_controller/base.rb:134:in `process'
+actionview (5.2.4) lib/action_view/rendering.rb:32:in `process'
+actionpack (5.2.4) lib/action_controller/metal.rb:191:in `dispatch'
+actionpack (5.2.4) lib/action_controller/metal.rb:252:in `dispatch'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:52:in `dispatch'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:34:in `serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:52:in `block in serve'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `each'
+actionpack (5.2.4) lib/action_dispatch/journey/router.rb:35:in `serve'
+actionpack (5.2.4) lib/action_dispatch/routing/route_set.rb:840:in `call'
+warden (1.2.8) lib/warden/manager.rb:36:in `block in call'
+warden (1.2.8) lib/warden/manager.rb:34:in `catch'
+warden (1.2.8) lib/warden/manager.rb:34:in `call'
+rack (2.0.7) lib/rack/etag.rb:25:in `call'
+rack (2.0.7) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.7) lib/rack/head.rb:12:in `call'
+activerecord (5.2.4) lib/active_record/migration.rb:559:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:28:in `block in call'
+activesupport (5.2.4) lib/active_support/callbacks.rb:98:in `run_callbacks'
+actionpack (5.2.4) lib/action_dispatch/middleware/callbacks.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/debug_exceptions.rb:61:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/show_exceptions.rb:33:in `call'
+railties (5.2.4) lib/rails/rack/logger.rb:38:in `call_app'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `block in call'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `block in tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:28:in `tagged'
+activesupport (5.2.4) lib/active_support/tagged_logging.rb:71:in `tagged'
+railties (5.2.4) lib/rails/rack/logger.rb:26:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/remote_ip.rb:81:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/request_id.rb:27:in `call'
+rack (2.0.7) lib/rack/runtime.rb:22:in `call'
+activesupport (5.2.4) lib/active_support/cache/strategy/local_cache_middleware.rb:29:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/executor.rb:14:in `call'
+actionpack (5.2.4) lib/action_dispatch/middleware/static.rb:127:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+rack (2.0.7) lib/rack/sendfile.rb:111:in `call'
+rack-cors (1.1.1) lib/rack/cors.rb:100:in `call'
+railties (5.2.4) lib/rails/engine.rb:524:in `call'
+puma (3.12.2) lib/puma/configuration.rb:227:in `call'
+puma (3.12.2) lib/puma/server.rb:674:in `handle_request'
+puma (3.12.2) lib/puma/server.rb:476:in `process_client'
+puma (3.12.2) lib/puma/server.rb:334:in `block in run'
+puma (3.12.2) lib/puma/thread_pool.rb:135:in `block in spawn_thread'
+Started GET "/api/post/questions/1" for ::1 at 2020-02-01 17:03:20 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 24ms (Views: 0.3ms | ActiveRecord: 7.1ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-01 17:03:27 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/3" for ::1 at 2020-02-01 17:03:31 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 3 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/post/questions/6" for ::1 at 2020-02-01 17:04:14 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"6"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 6 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/3" for ::1 at 2020-02-01 17:04:38 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+Completed 404 Not Found in 13ms (ActiveRecord: 7.9ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question without an ID):
+  
+app/controllers/api/post/questions_controller.rb:22:in `show'
+Started GET "/api/post/questions/3" for ::1 at 2020-02-01 17:04:50 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"3"}
+Completed 500 Internal Server Error in 92ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `user_id' for #<Api::Post::QuestionsController:0x00007ffe1cc31988>):
+  
+app/controllers/api/post/questions_controller.rb:22:in `show'
+Started GET "/api/post/questions/1" for ::1 at 2020-02-01 17:05:01 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 500 Internal Server Error in 103ms (ActiveRecord: 0.0ms)
+
+
+  
+NameError (undefined local variable or method `user_id' for #<Api::Post::QuestionsController:0x00007ffe1c6c6c00>):
+  
+app/controllers/api/post/questions_controller.rb:22:in `show'
+Started GET "/api/post/questions/1" for ::1 at 2020-02-01 17:05:35 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+Completed 404 Not Found in 12ms (ActiveRecord: 7.0ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question without an ID):
+  
+app/controllers/api/post/questions_controller.rb:22:in `show'
+Started GET "/api/post/questions/1" for ::1 at 2020-02-01 17:05:45 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 16ms (Views: 0.3ms | ActiveRecord: 7.0ms)
+
+
+Started GET "/api/post/questions/11" for ::1 at 2020-02-01 17:05:56 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"11"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 11 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/11" for ::1 at 2020-02-01 17:06:21 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"11"}
+Completed 404 Not Found in 12ms (ActiveRecord: 7.2ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question without an ID):
+  
+app/controllers/api/post/questions_controller.rb:22:in `show'
+Started GET "/api/post/questions/11" for ::1 at 2020-02-01 17:06:43 +0900
+  [1m[35m (0.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"11"}
+Completed 404 Not Found in 25ms (ActiveRecord: 7.4ms)
+
+
+  
+ActiveRecord::RecordNotFound (Couldn't find Question without an ID):
+  
+app/controllers/api/post/questions_controller.rb:22:in `show'
+Started POST "//api/auth/sign_in" for ::1 at 2020-02-01 17:10:43 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.4ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"p4FEUhBH9c1E9wkUGtcxmA\":{\"token\":\"$2a$10$BNiccrU11s7eBkcI0uvzfOe.6XLh2zKdGsfQbmBniueyfYBtIS/9a\",\"expiry\":1581695797},\"bXUIFnbHdADNRTIH4Sinfw\":{\"token\":\"$2a$10$E8DPLpW3n66NYykuBPXUPuXXy4yb5WAx2h0i95UN7GCJKqz0PO132\",\"expiry\":1581695894},\"WVmSSKLa_9ckmdPHkZd-RA\":{\"token\":\"$2a$10$Nv1ne1k4nceCBWmjjNA4SeqGON5Hz5j5DBWtDXXaJDNqgxHRnJyni\",\"expiry\":1581695945},\"RkA4LZ83vS_wzao3eNnV_g\":{\"token\":\"$2a$10$MADBf.xIYDrMiobTCeywhuXSbILT3vqqyLK0kJO/.9/opptPYhVNG\",\"expiry\":1581696141},\"qiw1M-rGPUpaWp6vLC51dw\":{\"token\":\"$2a$10$zWWFcdsqH32d1vrqM7KJqOAt4b2axnDeXSxXee.7/nAeZcxMxWgrG\",\"expiry\":1581696841},\"EPgQm-VWfpZiriGDfCi5oA\":{\"token\":\"$2a$10$24TD0TdB24Rzf9PsPd7I3OxuR0IymMtBCFG4m.b.vmWeMyJ3NEtD.\",\"expiry\":1581742871},\"8hJfKVu1ju7j56fV-5n0eQ\":{\"token\":\"$2a$10$IqP0MJj5CV6F.qpQcJM8tecBai2qUwbgcV8RybE9oAe1hfaJlxYzW\",\"expiry\":1581744914},\"7uUV9I9rrJ_rCtpqq9wa_A\":{\"token\":\"$2a$10$Gxi3jBsPvl8zNCs0iys.UeDie6LE9XJLkpTmyusxrzamdiJbTMDSy\",\"expiry\":1581745164},\"HxGmfNTU0W6kRtlWs_UXYQ\":{\"token\":\"$2a$10$RO2Qc.OfRRrcRMZWkLzr5.JBLM90BYjBTYQ2Y75QOZt2E2Wr27Bry\",\"expiry\":1581749652},\"r-uvN8vRCb0dvHec8Qnq7Q\":{\"token\":\"$2a$10$MetTeLH3zy2iz5yPnrL..OcYt4wBNdk/RvgzPxMdTRkMRmsPuEeaW\",\"expiry\":1581754243}}', `updated_at` = '2020-02-01 08:10:43' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 58, `current_sign_in_at` = '2020-02-01 08:10:43', `last_sign_in_at` = '2020-02-01 06:54:12' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 178ms (Views: 0.2ms | ActiveRecord: 10.1ms)
+
+
+Started POST "//api/post/questions" for ::1 at 2020-02-01 17:10:54 +0900
+Processing by Api::Post::QuestionsController#create as HTML
+  Parameters: {"title"=>"名前", "body"=>"名前大事", "question"=>{"title"=>"名前", "body"=>"名前大事"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:8
+Completed 500 Internal Server Error in 71ms (ActiveRecord: 7.4ms)
+
+
+  
+NoMethodError (undefined method `user_name=' for #<Question:0x00007fdf9cdb4ec0>
+Did you mean?  user_id=):
+  
+app/controllers/api/post/questions_controller.rb:8:in `create'
+Started POST "//api/post/questions" for ::1 at 2020-02-01 17:11:54 +0900
+Processing by Api::Post::QuestionsController#create as HTML
+  Parameters: {"title"=>"名前", "body"=>"名前大事", "question"=>{"title"=>"名前", "body"=>"名前大事"}}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mQuestion Create (0.3ms)[0m  [1m[32mINSERT INTO `questions` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('名前', '名前大事', 1, '2020-02-01 08:11:54', '2020-02-01 08:11:54')[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 95ms (Views: 0.2ms | ActiveRecord: 16.4ms)
+
+
+Started GET "//api/post/questions" for ::1 at 2020-02-01 17:11:54 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions`[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 3ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+
+
