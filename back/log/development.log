@@ -20290,3 +20290,172 @@ Processing by Api::Post::QuestionsController#index as HTML
 Completed 200 OK in 2ms (Views: 1.8ms | ActiveRecord: 0.5ms)
 
 
+Started GET "/api/post/questions/2" for ::1 at 2020-02-02 04:34:32 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-02 05:52:53 +0900
+  [1m[35m (1.0ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (5.1ms)[0m  [1m[34mSELECT `schema_migrations`.`version` FROM `schema_migrations` ORDER BY `schema_migrations`.`version` ASC[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (1.5ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 45ms (Views: 7.8ms | ActiveRecord: 16.5ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-02 05:52:58 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-02 05:53:05 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-02 06:06:01 +0900
+  [1m[35m (0.2ms)[0m  [1m[35mSET  @@SESSION.sql_mode = CONCAT(CONCAT(@@sql_mode, ',STRICT_ALL_TABLES'), ',NO_AUTO_VALUE_ON_ZERO'),  @@SESSION.sql_auto_is_null = 0, @@SESSION.wait_timeout = 2147483[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-02 06:06:08 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 06:06:34 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test2@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test2@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (2.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test2@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (1.1ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"N5NyggcEzsD4Iqwbs0KxwA\":{\"token\":\"$2a$10$U3gAQ1C.6/gWqSxCCUiXUeJiqcciOaXXrSdfIXH9bVSOjhn/sTO6e\",\"expiry\":1581792584},\"DBAdwPX3-BIvbMm3KaIYWQ\":{\"token\":\"$2a$10$z/mGLwTc.uKpeIBnQiv2xeGok9FeIRmjIR1fkcyC7fU10PBoQ2EAu\",\"expiry\":1581795185},\"3DmEjArR6qlu2alUN-w1dg\":{\"token\":\"$2a$10$3LSVpOaKFnAdmEwX8w5RzeyxGCoxeeVgFPaNlxE/0POqkTulHIwTK\",\"expiry\":1581800794}}', `updated_at` = '2020-02-01 21:06:34' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 2, `current_sign_in_at` = '2020-02-01 21:06:34' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 198ms (Views: 0.2ms | ActiveRecord: 14.3ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 06:06:56 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"Tp0nfF2HDV7LRofzWXVQYg\":{\"token\":\"$2a$10$KayXLVf3SofUIJULiS8XS.4.qFB5W327Qii9HRW75NzNRSAZ3jzoy\",\"expiry\":1581792556},\"QX5X_qLJClpfprU7mpfMsg\":{\"token\":\"$2a$10$uctbCB/3IrNLtBlA1bx2CONB8BVRRBhLOOhyPED9qIz0qQZANJ6qS\",\"expiry\":1581793321},\"9MD6LrDJSp-cMmT2EicVLA\":{\"token\":\"$2a$10$kOwtH53q9g7Jpk7Y.s0wB.oNW.yA.TMf2CNli1S7t8da0hwNQ659W\",\"expiry\":1581793393},\"2-RV_7JfRJELsTBiQam1Vw\":{\"token\":\"$2a$10$Bs9VRRp4IqTU0vjgSosWROAyby.FmtTpNPmZGopZKxKERi6xAhCci\",\"expiry\":1581793567},\"S4fi7v0_MHy5SdWNw8x5lw\":{\"token\":\"$2a$10$XY2hDIQTVCcExhGysdYoDO6LzbFyqcQOEbOE49GHzA8fVPN4Fk84e\",\"expiry\":1581794514},\"O3MOfRsj7rHX_yfSS5nQeg\":{\"token\":\"$2a$10$VJ56oDdXARWpE4ap1E79yuILIOqtcmcIAGO4bTXJ1Wgzgpz28NB96\",\"expiry\":1581800816}}', `updated_at` = '2020-02-01 21:06:56' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.7ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 5, `current_sign_in_at` = '2020-02-01 21:06:56', `last_sign_in_at` = '2020-02-01 19:21:54' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.4ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 158ms (Views: 0.1ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/api/post/questions/1" for ::1 at 2020-02-02 06:07:12 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/1" for ::1 at 2020-02-02 06:07:17 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 06:07:38 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test2@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test2@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test2@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"N5NyggcEzsD4Iqwbs0KxwA\":{\"token\":\"$2a$10$U3gAQ1C.6/gWqSxCCUiXUeJiqcciOaXXrSdfIXH9bVSOjhn/sTO6e\",\"expiry\":1581792584},\"DBAdwPX3-BIvbMm3KaIYWQ\":{\"token\":\"$2a$10$z/mGLwTc.uKpeIBnQiv2xeGok9FeIRmjIR1fkcyC7fU10PBoQ2EAu\",\"expiry\":1581795185},\"3DmEjArR6qlu2alUN-w1dg\":{\"token\":\"$2a$10$3LSVpOaKFnAdmEwX8w5RzeyxGCoxeeVgFPaNlxE/0POqkTulHIwTK\",\"expiry\":1581800794},\"ZOdynov39k3yXy-343FMSg\":{\"token\":\"$2a$10$dcwy25XT9XaitLBQXURYy.Q/vE9ReaieNNw0ljYf6nA6MClUlivJi\",\"expiry\":1581800858}}', `updated_at` = '2020-02-01 21:07:38' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.2ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 3, `current_sign_in_at` = '2020-02-01 21:07:38', `last_sign_in_at` = '2020-02-01 21:06:34' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (5.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 163ms (Views: 0.1ms | ActiveRecord: 7.8ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-02 06:07:49 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-02 06:07:50 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-02 06:07:50 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
