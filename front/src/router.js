@@ -7,6 +7,7 @@ import Signin from './views/Signin'
 import MyPage from './views/MyPage'
 import AllUsers from './views/AllUsers'
 import Post from './views/Post'
+import AllPosts from './views/AllPosts'
 
 Vue.use(Router)
 
@@ -42,6 +43,11 @@ export default new Router({
       path: '/post',
       name: 'Post',
       component: Post
+    },
+    {
+      path: '/posts',
+      name: 'AllPosts',
+      component: AllPosts
     }
   ]
 })
