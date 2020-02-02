@@ -20,7 +20,9 @@ module Api
 
       def show
         question = Question.find(params[:id])
+        # user = User.find_by(id: question.user_id)
         render json: question
+        # render json: user
       end
 
       private
