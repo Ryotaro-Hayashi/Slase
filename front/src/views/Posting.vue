@@ -1,13 +1,8 @@
 <template>
 <div class="posting">
-  <v-app>
-    <v-btn @click="getMyPosts"></v-btn>
-    <ul>
-      <li v-for="user in allUser" :key="user.id">{{ user }}</li>
-
-      <li>{{ myPosts }}</li>
-    </ul>
-  </v-app>
+  <ul>
+    <li>{{ myPosts }}</li>
+  </ul>
 </div>
 </template>
 
@@ -25,11 +20,6 @@ export default {
     myPosts () {
       return this.$store.state.myQuestions
     }
-  },
-  methods: {
-    getMyPosts () {
-      this.$store.dispatch("myposts", this.userInfo.user.id)
-   }
   }
 
 }
