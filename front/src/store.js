@@ -18,6 +18,7 @@ Vue.use(Vuex)
     successLogin: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
+    q: {},
     question: {},
     questions: {},
     myQuestions: {}
@@ -38,13 +39,16 @@ Vue.use(Vuex)
       state.token = token
     },
     postQuestion (state, post) {
-      state.question = post
+      state.q = post
     },
     AllQuestions (state, posts) {
       state.questions = posts
     },
     myQuestions (state, posts) {
       state.myQuestions = posts
+    },
+    detailQuestion (state, post) {
+      state.question = post
     }
   },
   actions: {
@@ -125,10 +129,10 @@ Vue.use(Vuex)
         commit("AllQuestions", response.data)
       })
     },
-    myposts ({ commit }, id) {
+    posting ({ commit }, id) {
       axios.get('http://localhost:3000/api/post/questions/' + id)
       .then(response => {
-        commit("myQuestions", response.data)
+        commit("detailQuestion", response.data)
       })
     }
   },

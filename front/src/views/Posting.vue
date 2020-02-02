@@ -1,7 +1,7 @@
 <template>
 <div class="posting">
   <ul>
-    <li>{{ myPosts }}</li>
+    <li>{{ Posting }}</li>
   </ul>
 </div>
 </template>
@@ -17,8 +17,8 @@ export default {
     allUser () {
       return this.$store.state.users
     },
-    myPosts () {
-      return this.$store.state.myQuestions
+    Posting () {
+      return this.$store.state.question
     }
   }
 

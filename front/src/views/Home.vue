@@ -34,7 +34,7 @@ export default {
       this.$store.dispatch("posts")
     },
     getId (id) {
-      this.$store.dispatch("myposts", id)
+      this.$store.dispatch("posting", id)
     }
   },
   mounted: function() {
