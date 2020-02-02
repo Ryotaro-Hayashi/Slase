@@ -25,6 +25,11 @@ module Api
         # render json: user
       end
 
+      def mypost
+        user = User.find(params[:id])
+        render json: user.questions
+      end
+
       private
 
       def question_params
