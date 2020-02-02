@@ -3,14 +3,11 @@
   <h1 class="center">Welcome</h1>
   <p>こんにちは{{ userInfo.user.name }}さん</p>
   <br>
-  <v-app>
-    <v-btn @click="getMyPosts"></v-btn>
-    <ul>
+  <ul>
+    <p>このユーザーの投稿一覧</p>
+    <li>{{ myPosts }}</li>
+  </ul>
 
-      <p>このユーザーの投稿一覧</p>
-      <li>{{ myPosts }}</li>
-    </ul>
-  </v-app>
 </div>
 </template>
 
@@ -30,7 +27,10 @@ export default {
     getMyPosts () {
       this.$store.dispatch("myposts", this.userInfo.user.id)
    }
-  }
+ },
+ mounted: function () {
+   this.getMyPosts()
+ }
 
 }
 </script>

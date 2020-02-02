@@ -24621,3 +24621,182 @@ Processing by Api::Post::QuestionsController#index as HTML
 Completed 200 OK in 7ms (Views: 6.0ms | ActiveRecord: 1.0ms)
 
 
+Started POST "/api/post/questions" for ::1 at 2020-02-02 19:16:14 +0900
+Processing by Api::Post::QuestionsController#create as HTML
+  Parameters: {"title"=>"3回目", "body"=>"っk", "question"=>{"title"=>"3回目", "body"=>"っk"}}
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`uid` = 'test2@example.com' LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:8
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[36mQuestion Create (0.2ms)[0m  [1m[32mINSERT INTO `questions` (`title`, `body`, `user_id`, `created_at`, `updated_at`) VALUES ('3回目', 'っk', 2, '2020-02-02 10:16:14', '2020-02-02 10:16:14')[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ app/controllers/api/post/questions_controller.rb:9
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (0.59ms)
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 66ms (Views: 1.0ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-02 19:16:18 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (6.01ms)
+Completed 200 OK in 8ms (Views: 6.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-02 19:18:54 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m  [["id", 2], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (5.31ms)
+Completed 200 OK in 7ms (Views: 5.7ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/post/mypost/2" for ::1 at 2020-02-02 19:19:16 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 2[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.36ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 19:20:10 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"uxgZbdpAWIL5PYRb7PmM_w\":{\"token\":\"$2a$10$Yjt/I12XjhfVrawEbyXfqeArAcGoS3ixt6E87a5auUUe4PMK1I/B2\",\"expiry\":1581842440},\"Jh8giMIcBLqdL494tlvqUg\":{\"token\":\"$2a$10$8ccvSZrHN5yD/JAhrjGAQulbYOhbmxnQeftoZEEyv29Pr/zo6AgKS\",\"expiry\":1581848410}}', `updated_at` = '2020-02-02 10:20:10' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (1.0ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-02-02 10:20:10', `last_sign_in_at` = '2020-02-02 10:20:10', `current_sign_in_ip` = '::1', `last_sign_in_ip` = '::1' WHERE `users`.`id` = 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.5ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.07ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 160ms (Views: 4.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-02 19:22:34 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.7ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.6ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.27ms)
+Completed 200 OK in 6ms (Views: 3.5ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 19:22:56 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test2@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test2@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test2@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.05ms)
+Completed 401 Unauthorized in 106ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 19:22:58 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test2@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test2@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test2@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+Completed 401 Unauthorized in 108ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/api/auth/sign_in" for ::1 at 2020-02-02 19:23:15 +0900
+Processing by DeviseTokenAuth::SessionsController#create as HTML
+  Parameters: {"email"=>"test2@example.com", "password"=>"[FILTERED]", "session"=>{"email"=>"test2@example.com", "password"=>"[FILTERED]"}}
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE (BINARY email = 'test2@example.com' AND provider= 'email') ORDER BY `users`.`id` ASC LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Unpermitted parameter: :session
+Unpermitted parameter: :session
+  [1m[35m (0.1ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `tokens` = '{\"Jo1HM6laRH5QOgYXjFzL8A\":{\"token\":\"$2a$10$WDhgzdKQTa0ot4aTjW0rP.6XApo7G2uZrYbfK1cmAOlwa4vKFQnU2\",\"expiry\":1581843164},\"u_B35qbINuwi2z6ZMVdewA\":{\"token\":\"$2a$10$YApE.RCJV.rqytW1yXO3beGa2c8nL.Zp8.pFwtGtgjQB6z.EocF56\",\"expiry\":1581848595}}', `updated_at` = '2020-02-02 10:23:15' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.9ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.2ms)[0m  [1m[35mBEGIN[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[36mUser Update (0.3ms)[0m  [1m[33mUPDATE `users` SET `sign_in_count` = 1, `current_sign_in_at` = '2020-02-02 10:23:15', `last_sign_in_at` = '2020-02-02 10:23:15', `current_sign_in_ip` = '::1', `last_sign_in_ip` = '::1' WHERE `users`.`id` = 2[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+  [1m[35m (0.6ms)[0m  [1m[35mCOMMIT[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+[active_model_serializers] Rendered ActiveModel::Serializer::Null with Hash (0.06ms)
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ /Users/ryotarohayashi/.rbenv/versions/2.6.5/lib/ruby/gems/2.6.0/gems/activerecord-5.2.4/lib/active_record/log_subscriber.rb:98
+Completed 200 OK in 159ms (Views: 0.3ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/api/post/mypost/2" for ::1 at 2020-02-02 19:23:15 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 2[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.71ms)
+Completed 200 OK in 5ms (Views: 3.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/post/mypost/2" for ::1 at 2020-02-02 19:26:01 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 2[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.36ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.5ms)
+
+
