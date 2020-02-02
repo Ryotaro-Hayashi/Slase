@@ -2,7 +2,7 @@
 <div class="users">
   <h1 class="center">ユーザー一覧</h1>
   <ul>
-    <li v-for="result in results" :key="result.id" class="center">No.{{ result.id }} {{result.name }}</li>
+<li v-for="user in allUser" :key="user.id">{{ user }}</li>
   </ul>
 </div>
 </template>
@@ -15,12 +15,12 @@ export default {
       results: []
     }
   },
-  // mounted() {
-  //   this.$axios.get("http://localhost:3000/api/auth/sign_up")
-  //     .then(response => {
-  //       this.results = response.data
-  //     })
-  // }
+  computed: {
+    allUser () {
+      return this.$store.state.users
+    }
+  }
+
 }
 </script>
 

@@ -33,10 +33,6 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text to="/posts">
-          <v-icon class="icon-space">mdi-post</v-icon>投稿一覧
-        </v-btn>
-
         <v-btn text to="/post">
           <v-icon class="icon-space">mdi-post</v-icon>投稿
         </v-btn>

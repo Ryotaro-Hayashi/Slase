@@ -18,8 +18,10 @@ Vue.use(Vuex)
     successLogin: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
+    q: {},
     question: {},
-    questions: {}
+    questions: {},
+    myQuestions: {}
   },
   // stateの値を更新する関数
   mutations: {
@@ -37,10 +39,16 @@ Vue.use(Vuex)
       state.token = token
     },
     postQuestion (state, post) {
-      state.question = post
+      state.q = post
     },
     AllQuestions (state, posts) {
       state.questions = posts
+    },
+    myQuestions (state, posts) {
+      state.myQuestions = posts
+    },
+    detailQuestion (state, post) {
+      state.question = post
     }
   },
   actions: {
@@ -60,7 +68,7 @@ Vue.use(Vuex)
           commit("updateUser", {
             user: response.data.data
           });
-          commit("addUser", response.data)
+          commit("addUser", response.data.data)
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -74,7 +82,7 @@ Vue.use(Vuex)
     },
     // ログイン処理
     signin ({ commit }, authData) {
-      axios.post('http://localhost:3000//api/auth/sign_in', {
+      axios.post('http://localhost:3000/api/auth/sign_in', {
         email: authData.email,
         password: authData.password
       })
@@ -100,7 +108,7 @@ Vue.use(Vuex)
       commit("updateToken", {})
     },
     post ({ commit }, post) {
-      axios.post('http://localhost:3000//api/post/questions',
+      axios.post('http://localhost:3000/api/post/questions',
       {
         title: post.title,
         body: post.body
@@ -116,9 +124,21 @@ Vue.use(Vuex)
       commit("postQuestion", post);
     },
     posts ({ commit }) {
-      axios.get('http://localhost:3000//api/post/questions')
+      axios.get('http://localhost:3000/api/post/questions')
       .then(response => {
         commit("AllQuestions", response.data)
+      })
+    },
+    posting ({ commit }, id) {
+      axios.get('http://localhost:3000/api/post/questions/' + id)
+      .then(response => {
+        commit("detailQuestion", response.data)
+      })
+    },
+    myposts ({ commit}, id) {
+      axios.get('http://localhost:3000/api/post/mypost/' + id)
+      .then(response => {
+        commit("myQuestions", response.data)
       })
     }
   },

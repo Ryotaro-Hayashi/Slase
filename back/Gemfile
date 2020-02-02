@@ -8,8 +8,8 @@ gem 'puma', '~> 3.11'
 # キャッシュを利用して起動時間を最適化するGem
 # gem 'bootsnap', '>= 1.1.0', require: false
 
-# ユーザーデータをJSONでやり取りするためのjbuilder
-gem 'jbuilder', '~> 2.5'
+# レスポンスボディの加工
+gem 'active_model_serializers'
 
 # クロスドメイン対策
 gem 'rack-cors'

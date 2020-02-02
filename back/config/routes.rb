@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
     namespace 'post' do
       resources :questions
+      get '/mypost/:id', to: 'questions#mypost'
     end
 
   end

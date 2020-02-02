@@ -14,13 +14,20 @@ module Api
       end
 
       def index
-        questions = Question.all
+        questions = Question.all.order(created_at: :desc)
         render json: questions
       end
 
       def show
         question = Question.find(params[:id])
+        # user = User.find_by(id: question.user_id)
         render json: question
+        # render json: user
+      end
+
+      def mypost
+        user = User.find(params[:id])
+        render json: user.questions
       end
 
       private
