@@ -5,12 +5,14 @@
   <br>
   <v-app>
     <v-btn @click="getMyPosts"></v-btn>
-  </v-app>
-  <ul>
-    <li v-for="user in allUser" :key="user.id">{{ user }}</li>
+    <ul>
+      <p>ユーザー一覧</p>
+      <li v-for="user in allUser" :key="user.id">{{ user }}</li>
 
-    <li>{{ myPosts }}</li>
-  </ul>
+      <p>このユーザーの投稿一覧</p>
+      <li>{{ myPosts }}</li>
+    </ul>
+  </v-app>
 </div>
 </template>
 
