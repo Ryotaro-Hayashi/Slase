@@ -4,4 +4,6 @@ class UserSerializer < ActiveModel::Serializer
              :email,
              :created_at,
              :password
+
+  has_many :questions
 end
