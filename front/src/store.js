@@ -134,6 +134,12 @@ Vue.use(Vuex)
       .then(response => {
         commit("detailQuestion", response.data)
       })
+    },
+    myposts ({ commit}, id) {
+      axios.get('http://localhost:3000/api/post/mypost/' + id)
+      .then(response => {
+        commit("myQuestions", response.data)
+      })
     }
   },
   // localstrageにstateを保存
