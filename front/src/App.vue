@@ -33,11 +33,7 @@
       <v-spacer></v-spacer>
 
       <v-toolbar-items>
-        <v-btn text to="/post">
-          <v-icon class="icon-space">mdi-post</v-icon>投稿
-        </v-btn>
-
-        <v-btn>
+        <!-- <v-btn>
           <v-icon class="icon-space">mdi-feature-search</v-icon>キーワード検索
         </v-btn>
 
@@ -45,31 +41,24 @@
           <v-icon class="icon-space">mdi-label</v-icon>カテゴリ
         </v-btn>
 
-        <span v-show="loggedIn">
-
-        </span>
-
-        <v-btn text to="/mypage">
-          <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
-        </v-btn>
-
         <v-btn>
           <v-icon class="icon-space">mdi-email</v-icon>メッセージ
-        </v-btn>
+        </v-btn> -->
+
         <!-- ドロップダウンメニューを作成 -->
         <!-- offset-y で縦方向の位置関係を補正 -->
-        <v-menu offset-y>
+        <!-- <v-menu offset-y> -->
           <!-- on はイベントハンドラ -->
-          <template v-slot:activator="{on}">
+          <!-- <template v-slot:activator="{on}"> -->
             <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
             <!-- ボタンだと自動的にクリックイベントになる -->
             <!-- v-iconタグでアイコンを設定 -->
-            <v-btn text v-on="on">
-              <v-icon class="icon-space">mdi-settings</v-icon>設定<v-icon>mdi-menu-down</v-icon>
-            </v-btn>
-          </template>
+            <!-- <v-btn text v-on="on"> -->
+              <!-- <v-icon class="icon-space">mdi-settings</v-icon>設定<v-icon>mdi-menu-down</v-icon> -->
+            <!-- </v-btn> -->
+          <!-- </template> -->
           <!-- ポップアップの内容 -->
-          <v-list>
+          <!-- <v-list>
             <v-list-item v-for="option in options" :key="option.name" :to="option.link">
               <v-list-item-icon>
                 <v-icon>{{ option.icon }}</v-icon>
@@ -79,9 +68,17 @@
               </v-list-item-content>
             </v-list-item>
           </v-list>
-        </v-menu>
+        </v-menu> -->
 
-        <v-btn text to="/logout" @click="logout">
+        <v-btn text to="/post">
+          <v-icon class="icon-space">mdi-post</v-icon>投稿
+        </v-btn>
+
+        <v-btn text to="/mypage">
+          <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
+        </v-btn>
+
+        <v-btn text to="/logout" @click="logout" v-show="loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
