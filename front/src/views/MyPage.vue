@@ -7,7 +7,7 @@
       <ul>
         <p>こんにちは{{ userInfo.user.name }}さん</p>
         <span v-if="myPosts=!null">
-          <p>このユーザーの投稿一覧</p>
+          <p>My投稿一覧</p>
           <li v-for="myPost in myPosts" :key="myPost.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link><br>{{ myPost.created_at}}<v-divider></v-divider></li>
         </span>
         <span v-if="myPosts=null">
