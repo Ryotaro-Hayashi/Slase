@@ -90,7 +90,7 @@
 
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
-      <router-view />
+      <router-view/>
     </v-content>
 
     <!-- フッター -->

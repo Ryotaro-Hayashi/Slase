@@ -12,7 +12,6 @@
         </v-card-text>
       </v-card>
     </v-app>
-
   </div>
 </template>
 
@@ -24,18 +23,22 @@ export default {
     }
   },
   computed: {
+    // 全てのユーザーの全ての投稿を表示
     allQuestions () {
       return this.$store.state.questions
     }
   },
   methods: {
+    // ステートの投稿一覧を更新
     questions () {
       this.$store.dispatch("posts")
     },
+    // 詳細表示する投稿情報を更新
     getId (id) {
       this.$store.dispatch("posting", id)
     }
   },
+  // マウント時にステートの投稿一覧を更新
   mounted: function() {
     this.questions()
   }
