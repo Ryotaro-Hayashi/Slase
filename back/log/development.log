@@ -25607,3 +25607,11 @@ Processing by Api::Post::QuestionsController#index as HTML
 Completed 200 OK in 2ms (Views: 1.6ms | ActiveRecord: 0.3ms)
 
 
+Started GET "/api/post/questions" for ::1 at 2020-02-04 18:59:18 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.05ms)
+Completed 200 OK in 2ms (Views: 1.7ms | ActiveRecord: 0.3ms)
+
+

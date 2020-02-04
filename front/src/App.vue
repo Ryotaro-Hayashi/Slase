@@ -70,11 +70,11 @@
           </v-list>
         </v-menu> -->
 
-        <v-btn text to="/post">
+        <v-btn text to="/post" v-show="loggedIn">
           <v-icon class="icon-space">mdi-post</v-icon>投稿
         </v-btn>
 
-        <v-btn text to="/mypage">
+        <v-btn text to="/mypage" v-show="loggedIn">
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
