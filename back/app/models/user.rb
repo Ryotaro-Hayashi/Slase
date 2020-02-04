@@ -8,8 +8,5 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :questions
-
-  # def questions
-  #   return Question.where(user_id: self.id)
-  # end
+  
 end

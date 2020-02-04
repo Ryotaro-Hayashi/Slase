@@ -3,6 +3,7 @@ module Api
     class RegistrationsController < DeviseTokenAuth::RegistrationsController
 
       private
+      # ストロングバラメーター
       def sign_up_params
         params.permit(:name, :email, :password, :password_confirmation)
       end

@@ -9,8 +9,11 @@ Vue.use(Vuex)
  const store = new Vuex.Store({
   // 共有データ
   state: {
+    // ログイン中のユーザー情報
     user: {},
+    // ユーザー登録済みのユーザー情報
     users: [],
+    // トークン情報
     token: {},
     // ログイン状態
     loggedIn: false,
@@ -19,8 +22,11 @@ Vue.use(Vuex)
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     q: {},
+    // 詳細表示する投稿情報
     question: {},
+    // 全投稿
     questions: {},
+    // ログイン中のユーザーの全投稿
     myQuestions: {}
   },
   // stateの値を更新する関数
@@ -29,11 +35,14 @@ Vue.use(Vuex)
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
     },
-    updateUser (state, data) {
-      state.user = data
+    // ログイン中のユーザー情報を更新
+    updateUser (state, user) {
+      state.user = user
     },
-    addUser (state, data) {
-      state.users.push(data)
+    // 登録済みのユーザーを追加
+    addUser (state, user) {
+      // 他と違いユーザー情報を蓄積していくので、配列に追加していく
+      state.users.push(user)
     },
     updateToken (state, token) {
       state.token = token
@@ -53,7 +62,6 @@ Vue.use(Vuex)
   },
   actions: {
     // ユーザー登録処理
-    // 第2引数は呼び出された時の引数を受け継ぐ
     signup ({ commit }, authData) {
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
@@ -63,7 +71,6 @@ Vue.use(Vuex)
       .then(response => {
         // リクエストが成功
         if (response.status === 200) {
-          // commitで第2引数を引数に渡して、第1引数のmutationsを呼び出し
           commit("updateLoggedIn", true);
           commit("updateUser", {
             user: response.data.data
@@ -75,8 +82,6 @@ Vue.use(Vuex)
             uid: response.headers.uid
           });
           router.push("/mypage")
-        } else {
-          router.push("/")
         }
       })
     },
@@ -107,34 +112,39 @@ Vue.use(Vuex)
       commit("updateUser", {})
       commit("updateToken", {})
     },
+    // 投稿の処理
     post ({ commit }, post) {
       axios.post('http://localhost:3000/api/post/questions',
       {
         title: post.title,
         body: post.body
       },
+      // リクエストヘッダーにトークンを追加
       {
         headers: post.token
       })
       .then(response => {
         if (response.status === 200) {
           router.push("/")
+          commit("postQuestion", post);
         }
       })
-      commit("postQuestion", post);
     },
+    // 投稿一覧を取得
     posts ({ commit }) {
       axios.get('http://localhost:3000/api/post/questions')
       .then(response => {
         commit("AllQuestions", response.data)
       })
     },
+    // 投稿の詳細を取得
     posting ({ commit }, id) {
       axios.get('http://localhost:3000/api/post/questions/' + id)
       .then(response => {
         commit("detailQuestion", response.data)
       })
     },
+    // ログインユーザーの投稿一覧を取得
     myposts ({ commit}, id) {
       axios.get('http://localhost:3000/api/post/mypost/' + id)
       .then(response => {
