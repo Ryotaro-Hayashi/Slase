@@ -25977,3 +25977,376 @@ Processing by Api::Post::QuestionsController#index as HTML
 Completed 200 OK in 18ms (Views: 17.3ms | ActiveRecord: 0.7ms)
 
 
+Started GET "/api/post/questions/2" for ::1 at 2020-02-04 23:35:25 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:24
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (1.5ms)
+Completed 200 OK in 3ms (Views: 1.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:35:27 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.52ms)
+Completed 200 OK in 5ms (Views: 4.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:35:29 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.19ms)
+Completed 200 OK in 4ms (Views: 2.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:35:37 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.2ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-04 23:35:40 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:24
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (1.57ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:35:43 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.11ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:36:13 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.24ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:36:20 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.71ms)
+Completed 200 OK in 5ms (Views: 4.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:36:31 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.28ms)
+Completed 200 OK in 4ms (Views: 2.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:36:35 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.6ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (3.83ms)
+Completed 200 OK in 5ms (Views: 4.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:37:15 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.22ms)
+Completed 200 OK in 3ms (Views: 2.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:37:17 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.15ms)
+Completed 200 OK in 3ms (Views: 2.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/post/questions/1" for ::1 at 2020-02-04 23:37:19 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:24
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (1.5ms)
+Completed 200 OK in 3ms (Views: 1.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:37:21 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.85ms)
+Completed 200 OK in 4ms (Views: 3.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:37:23 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.1ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:42:48 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.62ms)
+Completed 200 OK in 4ms (Views: 3.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-04 23:42:54 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:24
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (2.22ms)
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:43:00 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.22ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:45:23 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.91ms)
+Completed 200 OK in 3ms (Views: 2.0ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:47:55 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.06ms)
+Completed 200 OK in 5ms (Views: 2.6ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:48:04 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.33ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:48:07 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.38ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:48:30 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (0.89ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:48:47 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.46ms)
+Completed 200 OK in 5ms (Views: 3.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:48:51 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.03ms)
+Completed 200 OK in 3ms (Views: 2.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:48:57 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.64ms)
+Completed 200 OK in 5ms (Views: 3.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:49:24 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.23ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/questions/1" for ::1 at 2020-02-04 23:49:25 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:24
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (2.22ms)
+Completed 200 OK in 4ms (Views: 2.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:49:27 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.2ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (1.44ms)
+Completed 200 OK in 4ms (Views: 2.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:49:34 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.99ms)
+Completed 200 OK in 5ms (Views: 3.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/mypost/1" for ::1 at 2020-02-04 23:49:36 +0900
+Processing by Api::Post::QuestionsController#mypost as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:29
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` WHERE `questions`.`user_id` = 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:30
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (11.45ms)
+Completed 200 OK in 15ms (Views: 12.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/api/post/questions/2" for ::1 at 2020-02-04 23:49:38 +0900
+Processing by Api::Post::QuestionsController#show as HTML
+  Parameters: {"id"=>"2"}
+  [1m[36mQuestion Load (0.3ms)[0m  [1m[34mSELECT  `questions`.* FROM `questions` WHERE `questions`.`id` = 2 LIMIT 1[0m
+  ↳ app/controllers/api/post/questions_controller.rb:22
+[active_model_serializers]   [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:24
+[active_model_serializers] Rendered QuestionSerializer with ActiveModelSerializers::Adapter::Attributes (1.83ms)
+Completed 200 OK in 3ms (Views: 1.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/api/post/questions" for ::1 at 2020-02-04 23:49:40 +0900
+Processing by Api::Post::QuestionsController#index as HTML
+  [1m[36mQuestion Load (0.4ms)[0m  [1m[34mSELECT `questions`.* FROM `questions` ORDER BY `questions`.`created_at` DESC[0m
+  ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mUser Load (0.2ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers]   [1m[36mCACHE User Load (0.0ms)[0m  [1m[34mSELECT  `users`.* FROM `users` WHERE `users`.`id` = 1 LIMIT 1[0m  [["id", 1], ["LIMIT", 1]]
+[active_model_serializers]   ↳ app/controllers/api/post/questions_controller.rb:18
+[active_model_serializers] Rendered ActiveModel::Serializer::CollectionSerializer with ActiveModelSerializers::Adapter::Attributes (2.86ms)
+Completed 200 OK in 5ms (Views: 3.8ms | ActiveRecord: 0.7ms)
+
+

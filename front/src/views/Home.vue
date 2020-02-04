@@ -8,7 +8,6 @@
         <v-card-text>
           <ul>
             <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>by {{ question.user.name }}  {{ question.created_at}}<v-divider></v-divider></li>
-            <li v-for="question in allQuestions" :key="question.id">{{ question }}</li>
           </ul>
         </v-card-text>
       </v-card>
