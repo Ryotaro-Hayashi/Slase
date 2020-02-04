@@ -5,7 +5,9 @@ module Api
 
       def create
         question = Question.new(question_params)
+        # ユーザーとの紐付け
         question.user_id = current_api_user.id
+
         if question.save
           render json: question
         else
@@ -14,19 +16,21 @@ module Api
       end
 
       def index
+        # 作成時間順でquestion全部を取り出し
         questions = Question.all.order(created_at: :desc)
         render json: questions
       end
 
       def show
+        # questionのidで取り出し
         question = Question.find(params[:id])
-        # user = User.find_by(id: question.user_id)
         render json: question
-        # render json: user
       end
 
       def mypost
+        # ユーザーのidでユーザーを取り出し
         user = User.find(params[:id])
+        # 取り出したユーザーが作成したquestionを返す
         render json: user.questions
       end
 
