@@ -1,13 +1,22 @@
 <template>
 <div class="mypage">
-  <h1 class="center">Welcome</h1>
-  <p>こんにちは{{ userInfo.user.name }}さん</p>
-  <br>
-  <ul>
-    <p>このユーザーの投稿一覧</p>
-    <li>{{ myPosts }}</li>
-  </ul>
-
+  <v-app>
+    <v-card width="800px" class="mx-auto">
+      <h1 class="center">Welcome</h1>
+      <p>こんにちは{{ userInfo.user.name }}さん</p>
+      <br>
+      <ul>
+        <span v-if="myPosts=null">
+          <p>このユーザーの投稿一覧</p>
+          <li>{{ myPosts }}</li>
+        </span>
+        <span v-if="myPosts=!null">
+          <p>まだ投稿がありません</p>
+          <router-link to="/post">投稿してみる</router-link>
+        </span>
+      </ul>
+    </v-card>
+  </v-app>
 </div>
 </template>
 
