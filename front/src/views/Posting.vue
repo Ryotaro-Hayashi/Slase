@@ -1,8 +1,15 @@
 <template>
 <div class="posting">
-  <ul>
-    <li>{{ Posting }}</li>
-  </ul>
+  <v-app>
+    <v-card width="800px" class="mx-auto mt-10">
+      <ul>
+        <h1>{{ Posting.title}}</h1>
+        <p>by:{{ Posting.user.name}}</p>
+        <p>投稿日；{{ Posting.created_at}}</p>
+        <h3>{{ Posting.body }}</h3>
+      </ul>
+    </v-card>
+  </v-app>
 </div>
 </template>
 

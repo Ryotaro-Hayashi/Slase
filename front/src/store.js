@@ -118,7 +118,7 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
-          router.push("/posts")
+          router.push("/")
         }
       })
       commit("postQuestion", post);

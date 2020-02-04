@@ -1,9 +1,7 @@
 <template>
   <div class="post">
-    <h1 class="center">{{ userToken }}</h1>
-
     <v-app>
-      <v-card width="1200px" class="mx-auto">
+      <v-card width="1200px" class="mx-auto mt-10">
 
         <v-form>
           <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
