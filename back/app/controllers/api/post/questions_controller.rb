@@ -31,7 +31,7 @@ module Api
         # ユーザーのidでユーザーを取り出し
         user = User.find(params[:id])
         # 取り出したユーザーが作成したquestionを返す
-        render json: user.questions
+        render json: user.questions.order(created_at: :desc)
       end
 
       private
