@@ -14,7 +14,7 @@
         <!-- 投稿があれば表示 -->
         <span v-if="myPosts=!null">
           <p>My投稿一覧</p>
-          <li v-for="myPost in myPosts" :key="myPost.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link><br>{{ myPost.created_at}}<v-divider></v-divider></li>
+          <li v-for="myPost in myPosts" :key="myPost.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link><br>{{ myPost.date }}{{ myPost.time }}<v-divider></v-divider></li>
         </span>
       </ul>
     </v-card>
