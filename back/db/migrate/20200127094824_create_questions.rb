@@ -5,6 +5,8 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
       t.string :title, null: false
       t.text :body, null: false
 
+      t.string :date
+
       # 誰が投稿したかが分かるようにuser.idを追加する
       t.references :user
 
