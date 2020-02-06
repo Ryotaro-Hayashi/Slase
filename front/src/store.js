@@ -29,6 +29,10 @@ Vue.use(Vuex)
     // ログイン中のユーザーの全投稿
     myQuestions: {}
   },
+  // 複数回使うcomputedをまとめて定義する
+  getters: {
+    userInfo: state => state.user
+  },
   // stateの値を更新する関数
   mutations: {
     // ログイン状態の更新

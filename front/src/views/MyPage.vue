@@ -28,7 +28,7 @@ export default {
   computed: {
     // ログイン中のユーザーの情報を表示
     userInfo () {
-      return this.$store.state.user
+      return this.$store.getters.userInfo
     },
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
