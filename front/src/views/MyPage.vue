@@ -5,7 +5,7 @@
       <h1 class="center">マイページ</h1>
       <br>
       <ul>
-        <p>こんにちは{{ userInfo.user.name }}さん</p>
+        <p>こんにちは{{ userInfo.name }}さん</p>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>

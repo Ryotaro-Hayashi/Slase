@@ -3,7 +3,7 @@
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
     <v-navigation-drawer app v-if="drawer">
-      <v-list>
+      <v-list v-if="loggedIn">
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>{{ userInfo.name }}</v-list-item-title>
@@ -11,7 +11,6 @@
           </v-list-item-content>
         </v-list-item>
       </v-list>
-
 
         <!-- 仕切りを追加 -->
         <v-divider></v-divider>
