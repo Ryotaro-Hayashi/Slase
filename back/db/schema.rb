@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.string "title", null: false
     t.text "body", null: false
     t.string "date"
+    t.string "time"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
