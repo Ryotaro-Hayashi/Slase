@@ -12,6 +12,10 @@ module Api
         params.permit(:name, :email)
       end
 
+      # def configure_account_update_params
+      #   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :image, :image_cache, :remove_image])
+      # end
+
     end
   end
 end

@@ -24,6 +24,11 @@ gem 'devise_token_auth'
 # 外部情報を使った認証に必要なGem
 gem 'omniauth'
 
+# 画像のアップロードするためのGem
+gem 'carrierwave'
+# 画像をリサイズするためのGem
+gem 'rmagick'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
