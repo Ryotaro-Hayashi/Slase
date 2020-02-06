@@ -3,7 +3,16 @@
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
     <v-navigation-drawer app v-if="drawer">
-      <v-container>
+      <v-list>
+        <v-list-item>
+          <v-list-item-content>
+            <v-list-item-title>{{ userInfo.name }}</v-list-item-title>
+            <v-list-item-subtitle>{{ userInfo.email }}</v-list-item-subtitle>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
+
+
         <!-- 仕切りを追加 -->
         <v-divider></v-divider>
         <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
@@ -19,7 +28,7 @@
             </v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-      </v-container>
+
     </v-navigation-drawer>
 
     <!-- ナビゲーションバーの領域を確保 -->
@@ -121,6 +130,9 @@ export default {
   computed: {
     loggedIn () {
       return this.$store.state.loggedIn
+    },
+    userInfo () {
+      return this.$store.getters.userInfo.user
     }
   },
   methods: {
