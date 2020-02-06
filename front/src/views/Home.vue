@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <ul>
-            <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>by {{ question.user.name }}  {{ question.created_at}}<v-divider></v-divider></li>
+            <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>投稿者：{{ question.user.name }} 投稿日時：{{ question.date}}{{ question.time}}<v-divider></v-divider></li>
           </ul>
         </v-card-text>
       </v-card>

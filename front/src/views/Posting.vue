@@ -4,8 +4,8 @@
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
         <h1>{{ Posting.title}}</h1>
-        <p>by:{{ Posting.user.name}}</p>
-        <p>投稿日；{{ Posting.created_at}}</p>
+        <p>投稿者:{{ Posting.user.name }}</p>
+        <p>投稿日時:{{ Posting.date }}{{ Posting.time }}</p>
         <h3>{{ Posting.body }}</h3>
       </ul>
     </v-card>
