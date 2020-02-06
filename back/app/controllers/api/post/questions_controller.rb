@@ -4,15 +4,18 @@ module Api
       # before_action :authenticate_api_user!
 
       def create
-        question = Question.new(question_params)
+        question = Question.create(question_params)
         # ユーザーとの紐付け
         question.user_id = current_api_user.id
 
         if question.save
+          # save後にcreated_atが使用可能になるのでここでdateを定義
+          question.date = question.created_at.to_s(:date)
+          # データベースに保存
+          question.save
           render json: question
-        else
-          render json: nil
         end
+
       end
 
       def index
