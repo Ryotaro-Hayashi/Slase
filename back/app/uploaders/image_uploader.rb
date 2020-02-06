@@ -76,4 +76,5 @@ class ImageUploader < CarrierWave::Uploader::Base
       name = time.strftime('%Y%m%d%H%M%S') + '.jpg'
       name.downcase
     end
+  end
 end

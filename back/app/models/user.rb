@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
   include DeviseTokenAuth::Concerns::User
 
   has_many :questions
-  
+
+  mount_uploader :image, ImageUploader
+
 end
