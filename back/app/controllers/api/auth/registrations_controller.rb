@@ -5,12 +5,16 @@ module Api
       private
       # ストロングバラメーター
       def sign_up_params
-        params.permit(:name, :email, :image, :password, :password_confirmation)
+        params.permit(:name, :email, :password, :password_confirmation)
       end
 
       def account_update_params
-        params.permit(:name, :email, :image)
+        params.permit(:name, :email)
       end
+
+      # def configure_account_update_params
+      #   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :image, :image_cache, :remove_image])
+      # end
 
     end
   end
