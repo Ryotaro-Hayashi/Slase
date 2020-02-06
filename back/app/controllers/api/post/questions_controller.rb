@@ -9,8 +9,10 @@ module Api
         question.user_id = current_api_user.id
 
         if question.save
-          # save後にcreated_atが使用可能になるのでここでdateを定義
+          # save後にcreated_atが使用可能になるのでここで作成日時を定義
           question.date = question.created_at.to_s(:date)
+          question.time = question.created_at.to_s(:time)
+
           # データベースに保存
           question.save
           render json: question
