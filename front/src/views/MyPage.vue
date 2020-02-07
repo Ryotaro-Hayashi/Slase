@@ -38,7 +38,7 @@ export default {
   methods: {
     // ログイン中のユーザーの投稿一覧を更新
     getMyPosts () {
-      this.$store.dispatch("myposts", this.userInfo.user.id)
+      this.$store.dispatch("myposts", this.userInfo.id)
     },
     // 詳細表示する投稿情報を更新
     getId (id) {
