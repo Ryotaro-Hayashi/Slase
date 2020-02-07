@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <ul>
-            <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>投稿者：{{ question.user.name }} 投稿日時：{{ question.date}}{{ question.time}}<v-divider></v-divider></li>
+            <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link> 投稿日時：{{ question.date }}{{ question.time }}<v-divider></v-divider></li>
           </ul>
         </v-card-text>
       </v-card>
@@ -36,11 +36,15 @@ export default {
     // 詳細表示する投稿情報を更新
     getId (id) {
       this.$store.dispatch("posting", id)
+    },
+    getUser (user) {
+      this.$store.dispatch("myposts", user.id)
+      this.$store.commit("detailUser", user)
     }
   },
   // マウント時にステートの投稿一覧を更新
   mounted: function() {
-    this.questions()
+    this.questions();
   }
 }
 </script>
