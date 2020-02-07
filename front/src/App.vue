@@ -6,8 +6,8 @@
       <v-list v-if="loggedIn">
         <v-list-item>
           <v-list-item-content>
-            <v-list-item-title>{{ userInfo.name }}</v-list-item-title>
-            <v-list-item-subtitle>{{ userInfo.email }}</v-list-item-subtitle>
+            <v-list-item-title>{{ loggedInUserInfo.name }}</v-list-item-title>
+            <v-list-item-subtitle>{{ loggedInUserInfo.email }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -130,8 +130,8 @@ export default {
     loggedIn () {
       return this.$store.state.loggedIn
     },
-    userInfo () {
-      return this.$store.getters.userInfo.user
+    loggedInUserInfo () {
+      return this.$store.getters.loggedInUserInfo.user
     }
   },
   methods: {
