@@ -7,7 +7,7 @@
         </v-card-title>
         <v-card-text>
           <ul>
-            <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>投稿者：<router-link to="/user" @click.native="getUserId(question.user.id)">{{ question.user.name }}</router-link> 投稿日時：{{ question.date}}{{ question.time}}<v-divider></v-divider></li>
+            <li v-for="question in allQuestions" :key="question.id"><router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link><br>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link> 投稿日時：{{ question.date }}{{ question.time }}<v-divider></v-divider></li>
           </ul>
         </v-card-text>
       </v-card>
@@ -26,9 +26,6 @@ export default {
     // 全てのユーザーの全ての投稿を表示
     allQuestions () {
       return this.$store.state.questions
-    },
-    userInfo () {
-      return this.$store.getters.userInfo.user
     }
   },
   methods: {
@@ -40,8 +37,9 @@ export default {
     getId (id) {
       this.$store.dispatch("posting", id)
     },
-    getUserId (id) {
-      this.$store.dispatch("myposts", id)
+    getUser (user) {
+      this.$store.dispatch("myposts", user.id)
+      this.$store.commit("detailUser", user)
     }
   },
   // マウント時にステートの投稿一覧を更新
