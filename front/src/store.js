@@ -11,6 +11,7 @@ Vue.use(Vuex)
   state: {
     // ログイン中のユーザー情報
     user: {},
+    loggedInUser: {},
     // ユーザー登録済みのユーザー情報
     users: [],
     // トークン情報
@@ -31,7 +32,8 @@ Vue.use(Vuex)
   },
   // 複数回使うcomputedをまとめて定義する
   getters: {
-    userInfo: state => state.user
+    loggedInUserInfo: state => state.loggedInUser,
+    detailUserInfo: state => state.user
   },
   // stateの値を更新する関数
   mutations: {
@@ -41,7 +43,7 @@ Vue.use(Vuex)
     },
     // ログイン中のユーザー情報を更新
     updateUser (state, user) {
-      state.user = user
+      state.loggedInUser = user
     },
     // 登録済みのユーザーを追加
     addUser (state, user) {
@@ -62,6 +64,9 @@ Vue.use(Vuex)
     },
     detailQuestion (state, post) {
       state.question = post
+    },
+    detailUser (state, user) {
+      state.user = user
     }
   },
   actions: {
