@@ -5,7 +5,7 @@
       <h1 class="center">マイページ</h1>
       <br>
       <ul>
-        <p>こんにちは{{ userInfo.name }}さん</p>
+        <p>こんにちは{{ loggedInUserInfo.name }}さん</p>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
@@ -14,7 +14,7 @@
         <!-- 投稿があれば表示 -->
         <span v-if="myPosts=!null">
           <p>My投稿一覧</p>
-          <li v-for="myPost in myPosts" :key="myPost.id"><router-link class="title font-weight-bold" to="posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link><br>{{ myPost.date }}{{ myPost.time }}<v-divider></v-divider></li>
+          <li v-for="myPost in myPosts" :key="myPost.id"><router-link class="title font-weight-bold" to="/posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link><br>{{ myPost.date }}{{ myPost.time }}<v-divider></v-divider></li>
         </span>
       </ul>
     </v-card>
@@ -27,8 +27,8 @@ export default {
   name: 'MyPage',
   computed: {
     // ログイン中のユーザーの情報を表示
-    userInfo () {
-      return this.$store.getters.userInfo.user
+    loggedInUserInfo () {
+      return this.$store.getters.loggedInUserInfo.user
     },
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {

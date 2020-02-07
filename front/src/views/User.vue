@@ -3,7 +3,7 @@
   <v-app>
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
-        <p></p>
+        <li>{{ detailUserInfo.name }}</li>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
@@ -26,6 +26,9 @@ export default {
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
       return this.$store.state.myQuestions
+    },
+    detailUserInfo () {
+      return this.$store.getters.detailUserInfo
     }
   },
   methods: {
