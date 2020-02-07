@@ -8,6 +8,7 @@ import MyPage from './views/MyPage'
 import AllUsers from './views/AllUsers'
 import Post from './views/Post'
 import Posting from './views/Posting'
+import User from './views/User'
 
 Vue.use(Router)
 
@@ -48,6 +49,11 @@ export default new Router({
       path: '/posting',
       name: 'Posting',
       component: Posting
+    },
+    {
+      path: '/user',
+      name: 'User',
+      component: User
     }
   ]
 })
