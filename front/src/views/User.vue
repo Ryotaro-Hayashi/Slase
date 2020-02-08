@@ -4,7 +4,10 @@
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
         <li>{{ detailUserInfo.name }}</li>
-        <v-file-input label="プロフィール画像を選択"></v-file-input>
+        <v-file-input label="プロフィール画像を選択" @change="getFileName"></v-file-input>
+        <v-btn>プロフィール画像を決定</v-btn>
+        <!-- ファイル名を表示 -->
+        <li>{{ fileName }}</li>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
@@ -23,6 +26,10 @@
 <script>
 export default {
   name: 'MyPage',
+  data: () => ({
+    // ファイル名
+    fileName: ''
+  }),
   computed: {
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
@@ -36,6 +43,10 @@ export default {
     // 詳細表示する投稿情報を更新
     getId (id) {
       this.$store.dispatch("posting", id)
+    },
+    // ファイル名を取得
+    getFileName (file) {
+      this.fileName = file.name
     }
  }
 
