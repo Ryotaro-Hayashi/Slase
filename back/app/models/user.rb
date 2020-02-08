@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   # questionsを紐付け
   has_many :questions
 
+  # uploaderをuserにマウント
+  mount_uploader :avatar, AvatarUploader
 end
