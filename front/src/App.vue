@@ -8,9 +8,7 @@
           <v-list-item-content>
             <v-avatar>
               <img :src="loggedInUserInfo.avatar.url">
-              <!-- <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John"> -->
             </v-avatar>
-            <v-list-item-title>{{ loggedInUserInfo.avatar.url }}</v-list-item-title>
             <v-list-item-title>{{ loggedInUserInfo.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ loggedInUserInfo.email }}</v-list-item-subtitle>
           </v-list-item-content>

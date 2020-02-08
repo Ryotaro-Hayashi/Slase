@@ -167,6 +167,9 @@ Vue.use(Vuex)
       axios.put('http://localhost:3000/api/auth',
       {
         avatar: data.avatar
+        // avatar: {
+        //   url: data.avatar
+        // }
       },
       // リクエストヘッダーにトークンを追加
       {
