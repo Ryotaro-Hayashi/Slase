@@ -4,6 +4,14 @@
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
         <li>{{ detailUserInfo.name }}</li>
+        <!-- labelで囲った範囲がファイル選択のクリック範囲になる -->
+        <label>
+          <input type="file" accept="image/jpeg, image/png" @change="onAvatarChange"/>
+          <v-avatar>
+            <v-img :src="avatar" />
+          </v-avatar>
+        </label>
+        <v-btn @click="setAvatar">保存</v-btn>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
@@ -22,6 +30,9 @@
 <script>
 export default {
   name: 'MyPage',
+  data: () => ({
+    avatar: ''
+  }),
   computed: {
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
@@ -29,15 +40,42 @@ export default {
     },
     detailUserInfo () {
       return this.$store.getters.detailUserInfo
+    },
+    userToken () {
+      return this.$store.state.token
     }
   },
   methods: {
     // 詳細表示する投稿情報を更新
     getId (id) {
       this.$store.dispatch("posting", id)
+    },
+    getBase64 (file) {
+      return new Promise((resolve) => {
+        // FileReaderはファイルの読み取りアクセスを行うオブジェクト
+        const reader = new FileReader()
+        // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
+        reader.readAsDataURL(file)
+        // onloadメソッドは、読み込みが完了した時に発火するメソッド
+        // resolveは同期処理の成功時の処理を書き、thenに渡される
+        reader.onload = () => resolve(reader.result)
+      })
+    },
+    onAvatarChange(e) {
+      // filesプロパティは複数ファイルを管理できるように配列になっている
+      const images = e.target.files
+      // ドラッグアンドドロップも有効にするなら || e.dataTransfer.files を追加
+      this.getBase64(images[0])
+        // imageはresolveで渡されたreader.result
+       .then(image => this.avatar = image)
+    },
+    setAvatar () {
+      this.$store.dispatch("setavatar", {
+        avatar: this.avatar,
+        token: this.userToken
+      })
     }
- }
-
+  }
 }
 </script>
 

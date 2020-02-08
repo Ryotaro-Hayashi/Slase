@@ -27,7 +27,7 @@ gem 'omniauth'
 # 画像のアップロードするためのGem
 gem 'carrierwave'
 # 画像をリサイズするためのGem
-gem 'rmagick'
+gem 'mini_magick'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]

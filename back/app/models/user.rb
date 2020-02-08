@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  # questionsを紐付け
   has_many :questions
 
-  mount_uploader :image, ImageUploader
-
+  # uploaderをuserにマウント
+  mount_uploader :avatar, AvatarUploader
 end

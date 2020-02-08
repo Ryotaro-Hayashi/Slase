@@ -6,6 +6,9 @@
       <v-list v-if="loggedIn">
         <v-list-item>
           <v-list-item-content>
+            <v-avatar>
+              <img :src="loggedInUserInfo.avatar.url">
+            </v-avatar>
             <v-list-item-title>{{ loggedInUserInfo.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ loggedInUserInfo.email }}</v-list-item-subtitle>
           </v-list-item-content>
