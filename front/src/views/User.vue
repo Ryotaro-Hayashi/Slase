@@ -11,6 +11,7 @@
             <v-img :src="avatar" />
           </v-avatar>
         </label>
+        <v-btn @click="setAvatar">保存</v-btn>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
@@ -39,6 +40,9 @@ export default {
     },
     detailUserInfo () {
       return this.$store.getters.detailUserInfo
+    },
+    userToken () {
+      return this.$store.state.token
     }
   },
   methods: {
@@ -64,6 +68,12 @@ export default {
       this.getBase64(images[0])
         // imageはresolveで渡されたreader.result
        .then(image => this.avatar = image)
+    },
+    setAvatar () {
+      this.$store.dispatch("setavatar", {
+        avatar: this.avatar,
+        token: this.userToken
+      })
     }
   }
 }
