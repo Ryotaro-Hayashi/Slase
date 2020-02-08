@@ -4,12 +4,13 @@
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
         <li>{{ detailUserInfo.name }}</li>
-        <v-file-input label="プロフィール画像を選択" v-on:change="onFileChange"></v-file-input>
-        <v-btn @click="setAvatar">プロフィール画像を決定</v-btn>
-        <img v-show="uploadedImage" :src="uploadedImage" />
-        <input type="file" v-on:change="onFileChange">
-        <!-- ファイル名を表示 -->
-        <li>{{ fileName }}</li>
+        <!-- labelで囲った範囲がファイル選択のクリック範囲になる -->
+        <label>
+          <input type="file" accept="image/jpeg, image/png" @change="onAvatarChange"/>
+          <v-avatar>
+            <v-img :src="avatar" />
+          </v-avatar>
+        </label>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
@@ -29,7 +30,7 @@
 export default {
   name: 'MyPage',
   data: () => ({
-    uploadedImage: ''
+    avatar: ''
   }),
   computed: {
     // ログイン中のユーザーの投稿一覧表示
@@ -45,20 +46,26 @@ export default {
     getId (id) {
       this.$store.dispatch("posting", id)
     },
-    onFileChange(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      this.createImage(files[0]);
+    getBase64 (file) {
+      return new Promise((resolve) => {
+        // FileReaderはファイルの読み取りアクセスを行うオブジェクト
+        const reader = new FileReader()
+        // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
+        reader.readAsDataURL(file)
+        // onloadメソッドは、読み込みが完了した時に発火するメソッド
+        // resolveは同期処理の成功時の処理を書き、thenに渡される
+        reader.onload = () => resolve(reader.result)
+      })
     },
-    // アップロードした画像を表示
-    createImage(file) {
-      let reader = new FileReader();
-      reader.onload = (e) => {
-        this.uploadedImage = e.target.result;
-      };
-      reader.readAsDataURL(file);
+    onAvatarChange(e) {
+      // filesプロパティは複数ファイルを管理できるように配列になっている
+      const images = e.target.files
+      // ドラッグアンドドロップも有効にするなら || e.dataTransfer.files を追加
+      this.getBase64(images[0])
+        // imageはresolveで渡されたreader.result
+       .then(image => this.avatar = image)
     }
- }
-
+  }
 }
 </script>
 
