@@ -4,8 +4,10 @@
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
         <li>{{ detailUserInfo.name }}</li>
-        <v-file-input label="プロフィール画像を選択" @change="getFileName"></v-file-input>
-        <v-btn>プロフィール画像を決定</v-btn>
+        <v-file-input label="プロフィール画像を選択" v-on:change="onFileChange"></v-file-input>
+        <v-btn @click="setAvatar">プロフィール画像を決定</v-btn>
+        <img v-show="uploadedImage" :src="uploadedImage" />
+        <input type="file" v-on:change="onFileChange">
         <!-- ファイル名を表示 -->
         <li>{{ fileName }}</li>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
@@ -27,8 +29,7 @@
 export default {
   name: 'MyPage',
   data: () => ({
-    // ファイル名
-    fileName: ''
+    uploadedImage: ''
   }),
   computed: {
     // ログイン中のユーザーの投稿一覧表示
@@ -44,9 +45,17 @@ export default {
     getId (id) {
       this.$store.dispatch("posting", id)
     },
-    // ファイル名を取得
-    getFileName (file) {
-      this.fileName = file.name
+    onFileChange(e) {
+      let files = e.target.files || e.dataTransfer.files;
+      this.createImage(files[0]);
+    },
+    // アップロードした画像を表示
+    createImage(file) {
+      let reader = new FileReader();
+      reader.onload = (e) => {
+        this.uploadedImage = e.target.result;
+      };
+      reader.readAsDataURL(file);
     }
  }
 
