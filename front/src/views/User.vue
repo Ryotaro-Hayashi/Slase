@@ -4,6 +4,7 @@
     <v-card width="800px" class="mx-auto mt-10">
       <ul>
         <li>{{ detailUserInfo.name }}</li>
+        <v-file-input label="プロフィール画像を選択"></v-file-input>
         <!-- ログイン中のユーザーに投稿がなければ非表示 -->
         <span v-if="myPosts=null">
           <p>まだ投稿がありません</p>
