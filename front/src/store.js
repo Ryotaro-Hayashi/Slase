@@ -67,6 +67,9 @@ Vue.use(Vuex)
     },
     detailUser (state, user) {
       state.user = user
+    },
+    updateAvatar (state, avatar) {
+      state.loggedInUser.user.avatar.url = avatar
     }
   },
   actions: {
@@ -158,6 +161,22 @@ Vue.use(Vuex)
       axios.get('http://localhost:3000/api/post/mypost/' + id)
       .then(response => {
         commit("myQuestions", response.data)
+      })
+    },
+    setavatar ({ commit }, data) {
+      axios.put('http://localhost:3000/api/auth',
+      {
+        avatar: data.avatar
+      },
+      // リクエストヘッダーにトークンを追加
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updateAvatar", data.avatar)
+          router.push("/")
+        }
       })
     }
   },
