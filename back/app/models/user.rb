@@ -10,7 +10,4 @@ class User < ActiveRecord::Base
   # questionsを紐付け
   has_many :questions
 
-  # Userモデルに1つの画像ファイルを添付
-  has_one_attached :avatar
-
 end
