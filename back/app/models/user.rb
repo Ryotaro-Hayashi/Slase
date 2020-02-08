@@ -7,6 +7,10 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
   include DeviseTokenAuth::Concerns::User
 
+  # questionsを紐付け
   has_many :questions
-  
+
+  # Userモデルに1つの画像ファイルを添付
+  has_one_attached :avatar
+
 end
