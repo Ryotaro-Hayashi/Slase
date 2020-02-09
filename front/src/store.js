@@ -168,7 +168,7 @@ Vue.use(Vuex)
       {
         // avatar: data.avatar
         avatar: {
-          url: data.avatar
+          url: String(data.avatar)
         }
       },
       // リクエストヘッダーにトークンを追加
