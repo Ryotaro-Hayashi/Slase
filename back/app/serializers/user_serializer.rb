@@ -7,5 +7,6 @@ class UserSerializer < ActiveModel::Serializer
              :created_at,
              :password
 
+  has_one :url
   has_many :questions
 end
