@@ -166,10 +166,10 @@ Vue.use(Vuex)
     setavatar ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth',
       {
-        avatar: data.avatar
-        // avatar: {
-        //   url: data.avatar
-        // }
+        // avatar: data.avatar
+        avatar: {
+          url: String(data.avatar)
+        }
       },
       // リクエストヘッダーにトークンを追加
       {
