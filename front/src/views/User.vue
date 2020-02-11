@@ -70,7 +70,8 @@ export default {
     },
     setAvatar () {
       this.$store.dispatch("setavatar", {
-        avatar: this.avatarUrl,
+        avatarUrl: this.avatarUrl,
+        avatarFile: this.avatarFile,
         token: this.userToken
       })
     }
