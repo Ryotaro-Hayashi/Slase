@@ -129,7 +129,8 @@ Vue.use(Vuex)
       axios.post('http://localhost:3000/api/post/questions',
       {
         title: post.title,
-        body: post.body
+        body: post.body,
+        image: post.imageFile
       },
       // リクエストヘッダーにトークンを追加
       {

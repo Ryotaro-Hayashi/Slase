@@ -42,6 +42,7 @@ export default {
       this.$store.dispatch("post", {
         title: this.title,
         body: this.body,
+        image: this.imageFile,
         token: this.userToken
       })
     },
