@@ -11,5 +11,5 @@ class User < ActiveRecord::Base
   has_many :questions
 
   # uploaderをuserにマウント
-  # mount_uploader :avatar, AvatarUploader
+  mount_uploader :avatar, AvatarUploader
 end
