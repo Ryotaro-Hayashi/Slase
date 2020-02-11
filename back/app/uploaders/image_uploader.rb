@@ -33,11 +33,17 @@ class ImageUploader < CarrierWave::Uploader::Base
   #   process resize_to_fit: [50, 50]
   # end
 
-  # Add a white list of extensions which are allowed to be uploaded.
-  # For images you might use something like this:
-  # def extension_whitelist
-  #   %w(jpg jpeg gif png)
-  # end
+  # 許可する画像の拡張子
+  def extension_whitelist
+    %w(jpg jpeg gif png)
+  end
+
+  # 変換したファイルのファイル名の規則
+  def filename
+    if original_filename.present?
+      "#{Time.zone.now.strftime('%Y%m%d%H%M%S')}.jpg"
+    end
+  end
 
   # Override the filename of the uploaded files:
   # Avoid using model.id or version_name here, see uploader/store.rb for details.
