@@ -8,7 +8,7 @@
         <label>
           <input type="file" accept="image/jpeg, image/png" @change="onAvatarChange"/>
           <v-avatar>
-            <v-img :src="avatar" />
+            <v-img :src="avatarUrl" />
           </v-avatar>
         </label>
         <v-btn @click="setAvatar">保存</v-btn>
@@ -31,7 +31,8 @@
 export default {
   name: 'MyPage',
   data: () => ({
-    avatar: ''
+    avatarUrl: '',
+    avatarFile: ''
   }),
   computed: {
     // ログイン中のユーザーの投稿一覧表示
@@ -51,27 +52,25 @@ export default {
       this.$store.dispatch("posting", id)
     },
     getBase64 (file) {
-      return new Promise((resolve) => {
         // FileReaderはファイルの読み取りアクセスを行うオブジェクト
         const reader = new FileReader()
         // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
         reader.readAsDataURL(file)
-        // onloadメソッドは、読み込みが完了した時に発火するメソッド
-        // resolveは同期処理の成功時の処理を書き、thenに渡される
-        reader.onload = () => resolve(reader.result)
-      })
+        // 読み込み（load）終わったら中身が発火する
+        reader.addEventListener("load", () => {
+          this.avatarUrl = reader.result
+          this.avatarFile = file[0]
+        })
     },
     onAvatarChange(e) {
       // filesプロパティは複数ファイルを管理できるように配列になっている
       const images = e.target.files
       // ドラッグアンドドロップも有効にするなら || e.dataTransfer.files を追加
       this.getBase64(images[0])
-        // imageはresolveで渡されたreader.result
-       .then(image => this.avatar = image)
     },
     setAvatar () {
       this.$store.dispatch("setavatar", {
-        avatar: this.avatar,
+        avatar: this.avatarUrl,
         token: this.userToken
       })
     }
