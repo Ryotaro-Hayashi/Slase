@@ -131,11 +131,6 @@ Vue.use(Vuex)
       formData.append("body", post.body)
       formData.append("image", post.image)
       axios.post('http://localhost:3000/api/post/questions', formData,
-      // {
-      //   title: post.title,
-      //   body: post.body,
-      //   image: post.image
-      // },
       // リクエストヘッダーにトークンを追加
       {
         headers: post.token
