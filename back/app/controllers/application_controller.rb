@@ -8,6 +8,6 @@ class ApplicationController < ActionController::API
   def configure_permitted_parameters
     # サインアップ時にnameのストロングパラメータを追加
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name])
-    # devise_parameter_sanitizer.permit(:account_update, keys: [avatar: [:url]])
+    devise_parameter_sanitizer.permit(:account_update, keys: [:avatar])
   end
 end
