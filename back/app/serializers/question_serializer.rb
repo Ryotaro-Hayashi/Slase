@@ -4,6 +4,7 @@ class QuestionSerializer < ActiveModel::Serializer
   attributes :id,
              :title,
              :body,
+             :image,
              :date,
              :time,
              :created_at,
