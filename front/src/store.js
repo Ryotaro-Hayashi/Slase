@@ -164,13 +164,9 @@ Vue.use(Vuex)
       })
     },
     setavatar ({ commit }, data) {
-      axios.put('http://localhost:3000/api/auth',
-      {
-        // avatar: data.avatar
-        avatar: {
-          url: String(data.avatarUrl)
-        }
-      },
+      let formData = new FormData ()
+      formData.append("avatar", data.avatarFile)
+      axios.put('http://localhost:3000/api/auth', formData,
       // リクエストヘッダーにトークンを追加
       {
         headers: data.token
