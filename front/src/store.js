@@ -168,7 +168,7 @@ Vue.use(Vuex)
       {
         // avatar: data.avatar
         avatar: {
-          url: String(data.avatar)
+          url: String(data.avatarUrl)
         }
       },
       // リクエストヘッダーにトークンを追加
@@ -177,7 +177,7 @@ Vue.use(Vuex)
       })
       .then(response => {
         if (response.status === 200) {
-          commit("updateAvatar", data.avatar)
+          commit("updateAvatar", data.avatarUrl)
           router.push("/")
         }
       })
