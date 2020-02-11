@@ -126,12 +126,16 @@ Vue.use(Vuex)
     },
     // 投稿の処理
     post ({ commit }, post) {
-      axios.post('http://localhost:3000/api/post/questions',
-      {
-        title: post.title,
-        body: post.body,
-        image: post.imageFile
-      },
+      let formData = new FormData()
+      formData.append("title", post.title)
+      formData.append("body", post.body)
+      formData.append("image", post.image)
+      axios.post('http://localhost:3000/api/post/questions', formData,
+      // {
+      //   title: post.title,
+      //   body: post.body,
+      //   image: post.image
+      // },
       // リクエストヘッダーにトークンを追加
       {
         headers: post.token

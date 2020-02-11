@@ -17,7 +17,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.text "body", null: false
     t.string "date"
     t.string "time"
-    t.string "image", default: ""
+    t.string "image"
     t.bigint "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
