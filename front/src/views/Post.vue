@@ -7,6 +7,8 @@
         <v-form>
           <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
           <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
+          <input type="file" accept="image/jpeg, image/png" @change="onImageChange"/>
+          <v-img :src="question_image" />
           <!-- スペースを用意 -->
           <v-card-actions class="mt-5">
             <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
