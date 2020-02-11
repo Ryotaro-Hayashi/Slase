@@ -126,9 +126,11 @@ Vue.use(Vuex)
     },
     // 投稿の処理
     post ({ commit }, post) {
+      // 画像を送信するためのフォームデータ
       let formData = new FormData()
       formData.append("title", post.title)
       formData.append("body", post.body)
+      // urlのことはあまり気にしないで良い
       formData.append("image", post.image)
       axios.post('http://localhost:3000/api/post/questions', formData,
       // リクエストヘッダーにトークンを追加

@@ -8,8 +8,8 @@
           <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
           <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
           <input type="file" accept="image/jpeg, image/png" @change="onImageChange"/>
+          <!-- プレビューゾーン -->
           <v-img :src="imageUrl" />
-          <p>{{imagefile}}</p>
           <!-- スペースを用意 -->
           <v-card-actions class="mt-5">
             <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
@@ -35,9 +35,6 @@ export default {
     // トークンを取得
     userToken () {
       return this.$store.state.token
-    },
-    imagefile () {
-      return this.imageFile
     }
   },
   methods: {
@@ -50,6 +47,7 @@ export default {
         token: this.userToken
       })
     },
+    // 画像の読み取り
     onImageChange(e) {
       // filesプロパティは複数ファイルを管理できるように配列になっている
       const files = e.target.files
