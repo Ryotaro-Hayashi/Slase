@@ -4,9 +4,14 @@ module Api
       # before_action :authenticate_api_user!
 
       def create
-        question = Question.create(question_params)
+        question = Question.new
+
+        question.title = params[:title]
+        question.body = params[:body]
+        question.image = params[:image]
         # ユーザーとの紐付け
         question.user_id = current_api_user.id
+
 
         if question.save
           # save後にcreated_atが使用可能になるのでここで作成日時を定義
@@ -39,11 +44,6 @@ module Api
         render json: user.questions.order(created_at: :desc)
       end
 
-      private
-
-      def question_params
-        params.require(:question).permit(:title, :body, :image)
-      end
     end
   end
 end
