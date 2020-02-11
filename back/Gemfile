@@ -25,7 +25,7 @@ gem 'devise_token_auth'
 gem 'omniauth'
 
 # 画像のアップロードするためのGem
-# gem 'carrierwave'
+gem 'carrierwave'
 # 画像をリサイズするためのGem
 # gem 'mini_magick'
 
