@@ -51,27 +51,23 @@ export default {
     getId (id) {
       this.$store.dispatch("posting", id)
     },
-    getBase64 (file) {
-        // FileReaderはファイルの読み取りアクセスを行うオブジェクト
-        const reader = new FileReader()
-        // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
-        reader.readAsDataURL(file)
-        // 読み込み（load）終わったら中身が発火する
-        reader.addEventListener("load", () => {
-          this.avatarUrl = reader.result
-          this.avatarFile = file[0]
-        })
-    },
     onAvatarChange(e) {
       // filesプロパティは複数ファイルを管理できるように配列になっている
-      const images = e.target.files
-      // ドラッグアンドドロップも有効にするなら || e.dataTransfer.files を追加
-      this.getBase64(images[0])
+      const files = e.target.files
+      // FileReaderはファイルの読み取りアクセスを行うオブジェクト
+      const fr = new FileReader()
+      // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
+      fr.readAsDataURL(files[0])
+      // 読み込み（load）終わったら中身が発火する
+      fr.addEventListener("load", () => {
+        this.imageUrl = fr.result
+        this.imageFile = files[0]
+      })
     },
     setAvatar () {
       this.$store.dispatch("setavatar", {
         avatarUrl: this.avatarUrl,
-        avatarFile: this.avatarFile,
+        avatar: this.avatarFile,
         token: this.userToken
       })
     }
