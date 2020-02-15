@@ -31,6 +31,36 @@
           </v-list-item-content>
         </v-list-item>
 
+        <!-- ドロップダウンメニューを作成 -->
+        <v-menu offset-y>
+          <template v-slot:activator="{on}">
+            <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
+            <!-- ボタンだと自動的にクリックイベントになる -->
+            <!-- v-iconタグでアイコンを設定 -->
+            <v-list-item text v-on="on">
+              <v-list-item-icon>
+                <v-icon class="icon-space">mdi-settings</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content app>
+                <v-list-item-title>
+                  設定<v-icon>mdi-menu-down</v-icon>
+                </v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </template>
+          <!-- ポップアップの内容 -->
+          <v-list>
+            <v-list-item v-for="option in options" :key="option.name" :to="option.link">
+              <v-list-item-icon>
+                <v-icon>{{ option.icon }}</v-icon>
+              </v-list-item-icon>
+              <v-list-item-content>
+                <v-list-item-title>{{ option.name }}</v-list-item-title>
+              </v-list-item-content>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+
     </v-navigation-drawer>
 
     <!-- ナビゲーションバーの領域を確保 -->
@@ -55,31 +85,6 @@
         <v-btn>
           <v-icon class="icon-space">mdi-email</v-icon>メッセージ
         </v-btn> -->
-
-        <!-- ドロップダウンメニューを作成 -->
-        <!-- offset-y で縦方向の位置関係を補正 -->
-        <!-- <v-menu offset-y> -->
-          <!-- on はイベントハンドラ -->
-          <!-- <template v-slot:activator="{on}"> -->
-            <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
-            <!-- ボタンだと自動的にクリックイベントになる -->
-            <!-- v-iconタグでアイコンを設定 -->
-            <!-- <v-btn text v-on="on"> -->
-              <!-- <v-icon class="icon-space">mdi-settings</v-icon>設定<v-icon>mdi-menu-down</v-icon> -->
-            <!-- </v-btn> -->
-          <!-- </template> -->
-          <!-- ポップアップの内容 -->
-          <!-- <v-list>
-            <v-list-item v-for="option in options" :key="option.name" :to="option.link">
-              <v-list-item-icon>
-                <v-icon>{{ option.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>{{ option.name }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-menu> -->
 
         <v-btn text to="/post" v-show="loggedIn">
           <v-icon class="icon-space">mdi-post</v-icon>投稿
