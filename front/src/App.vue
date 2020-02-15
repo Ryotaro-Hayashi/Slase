@@ -39,11 +39,11 @@
             <!-- v-iconタグでアイコンを設定 -->
             <v-list-item text v-on="on">
               <v-list-item-icon>
-                <v-icon class="icon-space">mdi-settings</v-icon>
+                <v-icon class="icon-space">mdi-account</v-icon>
               </v-list-item-icon>
               <v-list-item-content app>
                 <v-list-item-title>
-                  設定<v-icon>mdi-menu-down</v-icon>
+                  アカウント設定<v-icon>mdi-menu-down</v-icon>
                 </v-list-item-title>
               </v-list-item-content>
             </v-list-item>
@@ -125,8 +125,8 @@ export default {
       // ナビゲーションメニューの引き出しを管理するプロパティ
       drawer: null,
       options: [
-        {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
-        {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
+        {name: 'メールアドレス', icon: 'mdi-email', link: '/user/edit'},
+        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/profile'}
       ],
       nav_lists: [
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
