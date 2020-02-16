@@ -10,7 +10,7 @@
           <p>現在のメールアドレス：{{ loggedInUserInfo.email }}</p>
           <v-text-field prepend-icon="mdi-email" label="新しいメールアドレス" v-model="email" />
           <v-card-actions class="mt-5">
-            <v-btn class="info ml-auto">変更</v-btn>
+            <v-btn class="info ml-auto" @click="changeEmail">変更</v-btn>
           </v-card-actions>
           {{ email }}
         </v-form>
@@ -31,6 +31,17 @@ export default {
   computed: {
     loggedInUserInfo () {
       return this.$store.getters.loggedInUserInfo.user
+    },
+    userToken () {
+      return this.$store.state.token
+    }
+  },
+  methods: {
+    changeEmail () {
+      this.$store.dispatch("email", {
+        email: this.email,
+        token: this.userToken
+      })
     }
   }
 }

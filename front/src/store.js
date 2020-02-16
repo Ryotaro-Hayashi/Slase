@@ -70,6 +70,9 @@ Vue.use(Vuex)
     },
     updateAvatar (state, avatar) {
       state.loggedInUser.user.avatar.url = avatar
+    },
+    updateEmail (state, email) {
+      state.user.email = email
     }
   },
   actions: {
@@ -176,6 +179,20 @@ Vue.use(Vuex)
       .then(response => {
         if (response.status === 200) {
           commit("updateAvatar", data.avatarUrl)
+          router.push("/")
+        }
+      })
+    },
+    email ({ commit }, data) {
+      axios.put('http://localhost:3000/api/auth', {
+        email: data.email
+      },
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updateEmail", data.email)
           router.push("/")
         }
       })
