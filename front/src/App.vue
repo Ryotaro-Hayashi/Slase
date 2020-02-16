@@ -125,8 +125,8 @@ export default {
       // ナビゲーションメニューの引き出しを管理するプロパティ
       drawer: null,
       options: [
-        {name: 'メールアドレス', icon: 'mdi-email', link: '/user/edit'},
-        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/profile'}
+        {name: 'メールアドレス', icon: 'mdi-email', link: '/user/email'},
+        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/user/password'}
       ],
       nav_lists: [
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},

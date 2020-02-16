@@ -9,6 +9,7 @@ import AllUsers from './views/AllUsers'
 import Post from './views/Post'
 import Posting from './views/Posting'
 import User from './views/User'
+import Email from './views/Email'
 
 Vue.use(Router)
 
@@ -54,6 +55,11 @@ export default new Router({
       path: '/user',
       name: 'User',
       component: User
+    },
+    {
+      path: '/user/email',
+      name: 'Email',
+      component: Email
     }
   ]
 })
