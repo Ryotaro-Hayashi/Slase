@@ -12,7 +12,6 @@
           <v-card-actions class="mt-5">
             <v-btn class="info ml-auto" @click="changeEmail">変更</v-btn>
           </v-card-actions>
-          {{ email }}
         </v-form>
       </v-card-text>
     </v-card>
