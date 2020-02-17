@@ -7,7 +7,6 @@
       </v-card-title>
       <v-card-text>
         <v-form>
-          <p>現在のメールアドレス：{{ loggedInUserInfo.password }}</p>
           <v-text-field prepend-icon="mdi-lock" label="新しいパスワード" v-model="password" />
           <v-card-actions class="mt-5">
             <v-btn class="info ml-auto" @click="changePassword">変更</v-btn>
