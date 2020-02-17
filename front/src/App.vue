@@ -17,19 +17,20 @@
 
         <!-- 仕切りを追加 -->
         <v-divider></v-divider>
-        <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+
+        <!-- <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link"> -->
           <!-- アイコン -->
-          <v-list-item-icon>
+          <!-- <v-list-item-icon>
             <v-icon>{{ nav_list.icon}}</v-icon>
-          </v-list-item-icon>
+          </v-list-item-icon> -->
           <!-- コンテンツ -->
-          <v-list-item-content>
+          <!-- <v-list-item-content> -->
             <!-- コンテンツ内の文字 -->
-            <v-list-item-title>
+            <!-- <v-list-item-title>
               {{nav_list.name}}
             </v-list-item-title>
           </v-list-item-content>
-        </v-list-item>
+        </v-list-item> -->
 
         <!-- ドロップダウンメニューを作成 -->
         <v-menu offset-y>
