@@ -163,4 +163,8 @@ export default {
 ul {
   list-style: none;
 }
+
+a {
+    text-decoration: none;
+}
 </style>
