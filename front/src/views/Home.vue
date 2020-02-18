@@ -1,18 +1,32 @@
 <template>
   <div class="home">
     <v-app>
-      <v-card width="600px" class="mx-auto mt-10">
+      <v-card width="600px" class="mx-auto mt-10 mb-10">
         <v-card-title>
           <p class="mx-auto">投稿一覧</p>
         </v-card-title>
         <v-card-text>
-          <ul>
-            <li v-for="question in allQuestions" :key="question.id">
-              <router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link>
-              <br>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link>
-              投稿日時：{{ question.date }}{{ question.time }}<v-divider></v-divider>
-            </li>
-          </ul>
+
+            <v-list three-line>
+              <template v-for="question in allQuestions">
+                <v-list-item :key="question.id">
+                <!-- tileで枠線を視覚にする -->
+                  <v-list-item-avatar color="blue" tile>
+                    <v-icon dark>mdi-account-circle</v-icon>
+                  </v-list-item-avatar>
+
+                <!-- <v-avatar>
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
+                </v-avatar> -->
+
+                <v-list-item-content>
+                  <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link></v-list-item-title>
+                  <v-list-item-subtitle>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link>投稿日時：{{ question.date }}</v-list-item-subtitle>
+                  <v-divider></v-divider>
+                </v-list-item-content>
+              </v-list-item>
+              </template>
+            </v-list>
         </v-card-text>
       </v-card>
     </v-app>
@@ -54,5 +68,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
-
+.right-align {
+  margin-left: 60px;
+}
 </style>
