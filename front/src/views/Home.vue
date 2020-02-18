@@ -3,7 +3,7 @@
     <v-app>
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <v-card-title>
-          <p class="mx-auto">投稿一覧</p>
+          <p class="title font-weight-bold mx-auto">投稿一覧</p>
         </v-card-title>
         <v-card-text>
 
