@@ -10,6 +10,7 @@ import Post from './views/Post'
 import Posting from './views/Posting'
 import User from './views/User'
 import Email from './views/Email'
+import Password from './views/Password'
 
 Vue.use(Router)
 
@@ -60,6 +61,11 @@ export default new Router({
       path: '/user/email',
       name: 'Email',
       component: Email
+    },
+    {
+      path: '/user/password',
+      name: 'Pasword',
+      component: Password
     }
   ]
 })

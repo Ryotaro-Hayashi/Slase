@@ -73,6 +73,9 @@ Vue.use(Vuex)
     },
     updateEmail (state, email) {
       state.user.email = email
+    },
+    updatePassword (state, password) {
+      state.user.password = password
     }
   },
   actions: {
@@ -193,6 +196,20 @@ Vue.use(Vuex)
       .then(response => {
         if (response.status === 200) {
           commit("updateEmail", data.email)
+          router.push("/")
+        }
+      })
+    },
+    password ({ commit }, data) {
+      axios.put('http://localhost:3000/api/auth', {
+        password: data.password
+      },
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updatePassword", data.password)
           router.push("/")
         }
       })
