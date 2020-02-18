@@ -164,7 +164,7 @@ ul {
   list-style: none;
 }
 
-li a {
+a {
     text-decoration: none;
 }
 </style>
