@@ -21,7 +21,12 @@
 
                 <v-list-item-content>
                   <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link></v-list-item-title>
-                  <v-list-item-subtitle>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link>投稿日時：{{ question.date }}</v-list-item-subtitle>
+                  <v-list-item-subtitle>
+                    <v-row>
+                      <v-col>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link></v-col>
+                      <v-col>投稿日時：{{ question.date }}</v-col>
+                    </v-row>
+                  </v-list-item-subtitle>
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
