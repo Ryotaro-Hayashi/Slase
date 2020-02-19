@@ -3,7 +3,6 @@
   <v-app>
     <v-card width="800px" class="mx-auto mt-10">
       <v-card-title>
-        <!-- <v-row> -->
           <v-col :cols="1">
         <v-avatar color="blue" tile>
           <v-icon large dark>mdi-account-circle</v-icon>
@@ -13,9 +12,8 @@
         <span class="title font-weight-light">{{ Posting.user.name }}</span>
       </v-col>
       <v-col :cols="5">
-        <span class="font-wight-light">{{ Posting.date }}{{ Posting.time }}に投稿</span>
+        <v-card-subtitle>{{ Posting.date }}{{ Posting.time }}に投稿</v-card-subtitle>
       </v-col>
-      <!-- </v-row> -->
       </v-card-title>
 
       <v-card-title><span class="headline font-weight-bold">{{ Posting.title }}</span></v-card-title>
