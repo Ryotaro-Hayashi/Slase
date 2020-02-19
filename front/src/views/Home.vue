@@ -12,7 +12,7 @@
                 <v-list-item :key="question.id">
                 <!-- tileで枠線を視覚にする -->
                   <v-list-item-avatar color="blue" tile>
-                    <v-icon dark>mdi-account-circle</v-icon>
+                    <v-icon large dark>mdi-account-circle</v-icon>
                   </v-list-item-avatar>
 
                 <!-- <v-avatar>

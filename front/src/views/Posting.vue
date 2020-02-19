@@ -2,12 +2,27 @@
 <div class="posting">
   <v-app>
     <v-card width="800px" class="mx-auto mt-10">
-      <ul>
-        <h1>{{ Posting.title}}</h1>
-        <p>投稿者:{{ Posting.user.name }}</p>
-        <p>投稿日時:{{ Posting.date }}{{ Posting.time }}</p>
-        <h3>{{ Posting.body }}</h3>
-      </ul>
+      <v-card-title>
+          <v-col :cols="1">
+        <v-avatar color="blue" tile>
+          <v-icon large dark>mdi-account-circle</v-icon>
+        </v-avatar>
+      </v-col>
+      <v-col :cols="6">
+        <span class="title font-weight-light">{{ Posting.user.name }}</span>
+      </v-col>
+      <v-col :cols="5">
+        <v-card-subtitle>{{ Posting.date }}{{ Posting.time }}に投稿</v-card-subtitle>
+      </v-col>
+      </v-card-title>
+
+      <v-card-title><span class="headline font-weight-bold">{{ Posting.title }}</span></v-card-title>
+
+
+      <v-card-text class="font-weight-bold">
+      <h3>{{ Posting.body }}</h3>
+      </v-card-text>
+
     </v-card>
   </v-app>
 </div>
@@ -27,4 +42,5 @@ export default {
 </script>
 
 <style lang="css" scoped>
+
 </style>
