@@ -8,7 +8,7 @@
         </v-card-title>
 
         <v-divider></v-divider>
-        
+
         <v-card-text>
           <v-list three-line>
             <template v-for="question in allQuestions">
@@ -76,8 +76,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.right-align {
-  /* padding-left: 10px; */
-  margin-left: 10px;
-}
 </style>
