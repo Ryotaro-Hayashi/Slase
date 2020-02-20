@@ -17,6 +17,12 @@
               <v-col>ここにフォローボタンを表示</v-col>
             </v-row>
 
+            <v-row>
+              <v-col><span class="yet">ここにプロフィール説明文を表示</span></v-col>
+            </v-row>
+
+            <v-divider></v-divider>
+
             <v-list three-line>
               <template v-for="myPost in myPosts">
                 <v-list-item :key="myPost.id">
