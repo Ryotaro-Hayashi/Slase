@@ -3,10 +3,10 @@
     <v-app>
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <v-card-title>
-          <p class="title font-weight-bold mx-auto">投稿一覧</p>
+          <v-icon>mdi-format-list-bulleted-square</v-icon>
+          <span class="title font-weight-bold right-align">latest</span>
         </v-card-title>
         <v-card-text>
-
             <v-list three-line>
               <template v-for="question in allQuestions">
                 <v-list-item :key="question.id">
@@ -74,6 +74,7 @@ export default {
 
 <style lang="css" scoped>
 .right-align {
-  margin-left: 60px;
+  /* padding-left: 10px; */
+  margin-left: 10px;
 }
 </style>
