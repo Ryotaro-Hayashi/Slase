@@ -3,17 +3,20 @@
     <v-app>
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <v-card-title>
-          <p class="title font-weight-bold mx-auto">投稿一覧</p>
+          <v-icon>mdi-format-list-bulleted-square</v-icon>
+          <span class="title font-weight-bold right-align">latest</span>
         </v-card-title>
-        <v-card-text>
 
-            <v-list three-line>
-              <template v-for="question in allQuestions">
-                <v-list-item :key="question.id">
+        <v-divider></v-divider>
+
+        <v-card-text>
+          <v-list three-line>
+            <template v-for="question in allQuestions">
+              <v-list-item :key="question.id">
                 <!-- tileで枠線を視覚にする -->
-                  <v-list-item-avatar color="blue" tile>
-                    <v-icon large dark>mdi-account-circle</v-icon>
-                  </v-list-item-avatar>
+                <v-list-item-avatar color="blue" tile>
+                  <v-icon large dark>mdi-account-circle</v-icon>
+                </v-list-item-avatar>
 
                 <!-- <v-avatar>
                 <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
@@ -30,8 +33,8 @@
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
-              </template>
-            </v-list>
+            </template>
+          </v-list>
         </v-card-text>
       </v-card>
     </v-app>
@@ -73,7 +76,4 @@ export default {
 </script>
 
 <style lang="css" scoped>
-.right-align {
-  margin-left: 60px;
-}
 </style>

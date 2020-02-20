@@ -1,22 +1,51 @@
 <template>
 <div class="mypage">
   <v-app>
-    <v-card width="800px" class="mx-auto mt-10">
-      <h1 class="center">マイページ</h1>
-      <br>
-      <ul>
-        <p>こんにちは{{ loggedInUserInfo.name }}さん</p>
-        <!-- ログイン中のユーザーに投稿がなければ非表示 -->
-        <span v-if="myPosts=null">
-          <p>まだ投稿がありません</p>
-          <router-link to="/post">投稿してみる</router-link>
-        </span>
-        <!-- 投稿があれば表示 -->
-        <span v-if="myPosts=!null">
-          <p>My投稿一覧</p>
-          <li v-for="myPost in myPosts" :key="myPost.id"><router-link class="title font-weight-bold" to="/posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link><br>{{ myPost.date }}{{ myPost.time }}<v-divider></v-divider></li>
-        </span>
-      </ul>
+    <v-card width="1200px" class="mx-auto mt-10 mb-10">
+      <v-card-text>
+        <v-row>
+          <v-col class="yet">ここにプロフィール詳細を表示</v-col>
+
+          <v-col>
+            <v-row>
+              <v-col>
+                <v-avatar color="blue" tile size="100">
+                  <v-icon large dark>mdi-account-circle</v-icon>
+                </v-avatar>
+                <div class="display-1 font-weight-bold">{{ loggedInUserInfo.name }}</div>
+              </v-col>
+              <v-col>ここにフォローボタンを表示</v-col>
+            </v-row>
+
+            <v-row>
+              <v-col><span class="yet">ここにプロフィール説明文を表示</span></v-col>
+            </v-row>
+
+            <v-divider></v-divider>
+
+            <v-list three-line>
+              <template v-for="myPost in myPosts">
+                <v-list-item :key="myPost.id">
+                  <v-list-item-avatar color="blue" tile>
+                    <v-icon large dark>mdi-account-circle</v-icon>
+                  </v-list-item-avatar>
+
+                  <v-list-item-content>
+                    <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link></v-list-item-title>
+                    <v-list-item-subtitle>
+                      <v-row>
+                        <v-col>投稿者：{{ myPost.user.name }}</v-col>
+                        <v-col>投稿日時：{{ myPost.date }}</v-col>
+                      </v-row>
+                    </v-list-item-subtitle>
+                    <v-divider></v-divider>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list>
+          </v-col>
+        </v-row>
+      </v-card-text>
     </v-card>
   </v-app>
 </div>

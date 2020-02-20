@@ -167,4 +167,13 @@ ul {
 a {
     text-decoration: none;
 }
+
+.right-align {
+  /* padding-left: 10px; */
+  margin-left: 10px;
+}
+
+.yet {
+  background-color: silver;
+}
 </style>
