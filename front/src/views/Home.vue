@@ -6,6 +6,9 @@
           <v-icon>mdi-format-list-bulleted-square</v-icon>
           <span class="title font-weight-bold right-align">latest</span>
         </v-card-title>
+
+        <v-divider></v-divider>
+        
         <v-card-text>
           <v-list three-line>
             <template v-for="question in allQuestions">
