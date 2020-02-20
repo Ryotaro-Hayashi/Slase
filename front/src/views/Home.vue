@@ -7,13 +7,13 @@
           <span class="title font-weight-bold right-align">latest</span>
         </v-card-title>
         <v-card-text>
-            <v-list three-line>
-              <template v-for="question in allQuestions">
-                <v-list-item :key="question.id">
+          <v-list three-line>
+            <template v-for="question in allQuestions">
+              <v-list-item :key="question.id">
                 <!-- tileで枠線を視覚にする -->
-                  <v-list-item-avatar color="blue" tile>
-                    <v-icon large dark>mdi-account-circle</v-icon>
-                  </v-list-item-avatar>
+                <v-list-item-avatar color="blue" tile>
+                  <v-icon large dark>mdi-account-circle</v-icon>
+                </v-list-item-avatar>
 
                 <!-- <v-avatar>
                 <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="John">
@@ -30,8 +30,8 @@
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
-              </template>
-            </v-list>
+            </template>
+          </v-list>
         </v-card-text>
       </v-card>
     </v-app>
