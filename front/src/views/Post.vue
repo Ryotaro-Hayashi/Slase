@@ -2,31 +2,35 @@
   <div class="post">
     <v-app>
       <v-card class="mx-auto mt-10 mb-10" width="1200px">
-      <v-card-text>
-        <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
-      </v-card-text>
-      <v-card-text>
-        <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
-      </v-card-text>
-      <v-card-text>
-        <v-row>
-          <v-col>
-            <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
-            <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
-          </v-col>
-          <v-col>
-            <!-- プレビューゾーン -->
-            <v-img :src="imageUrl" />
-          </v-col>
-        </v-row>
-      </v-card-text>
+        <v-card-text>
+          <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
+        </v-card-text>
 
+        <v-card-text>
+          <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
+        </v-card-text>
 
-        <!-- スペースを用意 -->
-        <v-card-actions class="mt-5">
-          <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
-        </v-card-actions>
-    </v-card>
+        <v-card-text>
+          <v-row>
+            <v-col>
+              <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
+              <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
+            </v-col>
+            <v-col>
+              <!-- プレビューゾーン -->
+              <v-img :src="imageUrl" />
+            </v-col>
+          </v-row>
+        </v-card-text>
+
+        <v-card-text>
+          <!-- スペースを用意 -->
+          <v-card-actions class="mt-5">
+            <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
+          </v-card-actions>
+        </v-card-text>
+        
+      </v-card>
     </v-app>
   </div>
 </template>
