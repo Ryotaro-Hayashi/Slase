@@ -1,9 +1,13 @@
 <template>
   <div class="post">
     <v-app>
-      <v-form>
+      <v-card>
+      <v-card-text>
         <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
+      </v-card-text>
+      <v-card-text>
         <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
+        </v-card-text>
         <input type="file" accept="image/jpeg, image/png" @change="onImageChange"/>
         <!-- プレビューゾーン -->
         <v-img :src="imageUrl" />
@@ -11,7 +15,7 @@
         <v-card-actions class="mt-5">
           <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
         </v-card-actions>
-      </v-form>
+    </v-card>
     </v-app>
   </div>
 </template>
