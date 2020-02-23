@@ -3,7 +3,7 @@ default: &default
   pool: 5
   username: Slase
   password: Rtrhys331
-  host: localhost
+  host: db
   socket: /tmp/mysql.sock
 
 development:
