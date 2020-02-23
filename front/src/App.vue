@@ -3,7 +3,7 @@
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
     <v-navigation-drawer app v-if="drawer">
-      <v-list v-if="loggedIn">
+      <v-list>
         <v-list-item>
           <v-list-item-content>
             <v-avatar>
@@ -15,59 +15,58 @@
         </v-list-item>
       </v-list>
 
-        <!-- 仕切りを追加 -->
-        <v-divider></v-divider>
+      <!-- 仕切りを追加 -->
+      <v-divider></v-divider>
 
-        <!-- <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link"> -->
-          <!-- アイコン -->
-          <!-- <v-list-item-icon>
-            <v-icon>{{ nav_list.icon}}</v-icon>
-          </v-list-item-icon> -->
-          <!-- コンテンツ -->
-          <!-- <v-list-item-content> -->
-            <!-- コンテンツ内の文字 -->
-            <!-- <v-list-item-title>
-              {{nav_list.name}}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item> -->
+      <!-- <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link"> -->
+        <!-- アイコン -->
+        <!-- <v-list-item-icon>
+          <v-icon>{{ nav_list.icon}}</v-icon>
+        </v-list-item-icon> -->
+        <!-- コンテンツ -->
+        <!-- <v-list-item-content> -->
+          <!-- コンテンツ内の文字 -->
+          <!-- <v-list-item-title>
+            {{nav_list.name}}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item> -->
 
-        <!-- ドロップダウンメニューを作成 -->
-        <v-menu offset-y>
-          <template v-slot:activator="{on}">
-            <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
-            <!-- ボタンだと自動的にクリックイベントになる -->
-            <!-- v-iconタグでアイコンを設定 -->
-            <v-list-item text v-on="on">
-              <v-list-item-icon>
-                <v-icon class="icon-space">mdi-account</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content app>
-                <v-list-item-title>
-                  アカウント設定<v-icon>mdi-menu-down</v-icon>
-                </v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </template>
-          <!-- ポップアップの内容 -->
-          <v-list>
-            <v-list-item v-for="option in options" :key="option.name" :to="option.link">
-              <v-list-item-icon>
-                <v-icon>{{ option.icon }}</v-icon>
-              </v-list-item-icon>
-              <v-list-item-content>
-                <v-list-item-title>{{ option.name }}</v-list-item-title>
-              </v-list-item-content>
-            </v-list-item>
-          </v-list>
-        </v-menu>
-
+      <!-- ドロップダウンメニューを作成 -->
+      <v-menu offset-y>
+        <template v-slot:activator="{on}">
+          <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
+          <!-- ボタンだと自動的にクリックイベントになる -->
+          <!-- v-iconタグでアイコンを設定 -->
+          <v-list-item text v-on="on">
+            <v-list-item-icon>
+              <v-icon class="icon-space">mdi-account</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content app>
+              <v-list-item-title>
+                アカウント設定<v-icon>mdi-menu-down</v-icon>
+              </v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </template>
+        <!-- ポップアップの内容 -->
+        <v-list>
+          <v-list-item v-for="option in options" :key="option.name" :to="option.link">
+            <v-list-item-icon>
+              <v-icon>{{ option.icon }}</v-icon>
+            </v-list-item-icon>
+            <v-list-item-content>
+              <v-list-item-title>{{ option.name }}</v-list-item-title>
+            </v-list-item-content>
+          </v-list-item>
+        </v-list>
+      </v-menu>
     </v-navigation-drawer>
 
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#FFFFFF" light app>
       <!-- ナビゲーションメニュー（引き出し）の追加 -->
-      <v-app-bar-nav-icon @click="drawer=!drawer"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="drawer=!drawer" v-if="loggedIn"></v-app-bar-nav-icon>
       <v-toolbar-items>
         <v-btn text to="/">Slase</v-btn>
       </v-toolbar-items>
