@@ -9,9 +9,10 @@
         <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
       </v-card-text>
       <v-card-text>
-        <v-text-field label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
-      </v-card-text>
+        <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
         <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
+      </v-card-text>
+
         <!-- プレビューゾーン -->
         <v-img :src="imageUrl" />
         <!-- スペースを用意 -->
@@ -31,7 +32,8 @@ export default {
     title: '',
     body: '',
     imageUrl: '',
-    imageFile: ''
+    imageFile: '',
+    imageName: ''
   }),
   computed: {
     // トークンを取得
@@ -57,6 +59,7 @@ export default {
     onImageChange(e) {
       // filesプロパティは複数ファイルを管理できるように配列になっている
       const files = e.target.files
+      this.imageName = files[0].name
       // FileReaderはファイルの読み取りアクセスを行うオブジェクト
       const fr = new FileReader()
       // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
