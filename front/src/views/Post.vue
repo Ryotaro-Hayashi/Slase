@@ -1,14 +1,17 @@
 <template>
   <div class="post">
     <v-app>
-      <v-card>
+      <v-card class="mx-auto mt-10 mb-10" width="1200px">
       <v-card-text>
         <v-text-field label="タイトル" outlined class="posting" v-model="title"></v-text-field>
       </v-card-text>
       <v-card-text>
         <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
-        </v-card-text>
-        <input type="file" accept="image/jpeg, image/png" @change="onImageChange"/>
+      </v-card-text>
+      <v-card-text>
+        <v-text-field label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
+      </v-card-text>
+        <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
         <!-- プレビューゾーン -->
         <v-img :src="imageUrl" />
         <!-- スペースを用意 -->
@@ -45,6 +48,10 @@ export default {
         image: this.imageFile,
         token: this.userToken
       })
+    },
+    // 選択された画像ファイルの処理
+    pickFile() {
+      this.$refs.image.click()
     },
     // 画像の読み取り
     onImageChange(e) {
