@@ -9,12 +9,19 @@
         <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
       </v-card-text>
       <v-card-text>
-        <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
-        <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
+        <v-row>
+          <v-col>
+            <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
+            <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
+          </v-col>
+          <v-col>
+            <!-- プレビューゾーン -->
+            <v-img :src="imageUrl" />
+          </v-col>
+        </v-row>
       </v-card-text>
 
-        <!-- プレビューゾーン -->
-        <v-img :src="imageUrl" />
+
         <!-- スペースを用意 -->
         <v-card-actions class="mt-5">
           <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
