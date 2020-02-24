@@ -1,22 +1,22 @@
 default: &default
   adapter: mysql2
-  pool: 5
+  encoding: utf8
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: Slase
   password: Rtrhys331
   host: db
-  socket: /tmp/mysql.sock
 
 development:
   <<: *default
-  database: db/development_mysql2
+  database: docker_development
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: db/test_mysql2
+  database: docker_test
 
 production:
   <<: *default
-  database: db/production_mysql2
+  database: docker_production
