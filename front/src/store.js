@@ -129,6 +129,7 @@ Vue.use(Vuex)
       commit("updateLoggedIn", out);
       commit("updateUser", {})
       commit("updateToken", {})
+      router.push("/")
     },
     // 投稿の処理
     post ({ commit }, post) {
