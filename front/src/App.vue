@@ -94,7 +94,7 @@
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
-        <v-btn text to="/logout" @click="logout" v-show="loggedIn">
+        <v-btn text to="/logout" @click="alert = true" v-show="loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
@@ -106,7 +106,25 @@
 
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
+
+      <v-alert v-model="alert" elevation="2" dismissible transition="scale-transition" width="400px" class="mx-auto mt-10">
+        <v-row>
+          <span class="mx-auto">ログアウトしますか？</span>
+        </v-row>
+        <v-row>
+            <v-col>
+              <v-btn @click=logout>ログアウト</v-btn>
+            </v-col>
+
+            <v-col>
+              <v-btn>キャンセル</v-btn>
+            </v-col>
+        </v-row>
+
+      </v-alert>
+
       <router-view/>
+
     </v-content>
 
     <!-- フッター -->
@@ -131,7 +149,8 @@ export default {
       nav_lists: [
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
-      ]
+      ],
+      alert: false
     }
   },
   computed: {
@@ -144,6 +163,7 @@ export default {
   },
   methods: {
     logout () {
+      this.alert = !this.alert
       this.$store.dispatch("signout", false)
     }
   }
