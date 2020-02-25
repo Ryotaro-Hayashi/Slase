@@ -94,20 +94,28 @@
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
-        <v-dialog v-model="dialog" width="500px" class="mx-auto">
+        <v-dialog v-model="dialog" width="300px" class="mx-auto">
           <template v-slot:activator="{ on }">
             <v-btn text v-on="on" v-show="loggedIn">
-              <!-- @click="alert = true"  -->
               <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
             </v-btn>
           </template>
 
-          <v-card width="500px">
-            <v-card-title>ログアウトしますか？</v-card-title>
-            <v-card-text>ログアウトしますか？</v-card-text>
+          <v-card width="300px">
+            <v-card-title>
+              <span class="mx-auto font-weight-bold title">ログアウトしますか？</span>
+            </v-card-title>
+
             <v-card-actions>
-              <v-btn @click="logout">ログアウト</v-btn>
-              <v-btn @click="dialog = false">キャンセル</v-btn>
+              <v-row justify="space-between">
+                <v-col class="center">
+                  <v-btn @click="logout" color="primary">ログアウト</v-btn>
+                </v-col>
+
+                <v-col class="center">
+                  <v-btn @click="dialog = false">キャンセル</v-btn>
+                </v-col>
+              </v-row>
             </v-card-actions>
           </v-card>
         </v-dialog>
