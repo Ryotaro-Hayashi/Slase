@@ -106,7 +106,7 @@
             <v-card-title>ログアウトしますか？</v-card-title>
             <v-card-text>ログアウトしますか？</v-card-text>
             <v-card-actions>
-              <v-btn>ログアウト</v-btn>
+              <v-btn @click="logout">ログアウト</v-btn>
               <v-btn>キャンセル</v-btn>
             </v-card-actions>
           </v-card>
@@ -161,7 +161,6 @@ export default {
   },
   methods: {
     logout () {
-      this.alert = !this.alert
       this.$store.dispatch("signout", false)
     }
   }
