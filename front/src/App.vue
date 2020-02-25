@@ -96,8 +96,8 @@
 
         <v-dialog v-model="dialog" width="500px" class="mx-auto">
           <template v-slot:activator="{ on }">
-            <v-btn text v-on="on">
-              <!-- @click="alert = true" v-show="loggedIn" -->
+            <v-btn text v-on="on" v-show="loggedIn">
+              <!-- @click="alert = true"  -->
               <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
             </v-btn>
           </template>
@@ -107,7 +107,7 @@
             <v-card-text>ログアウトしますか？</v-card-text>
             <v-card-actions>
               <v-btn @click="logout">ログアウト</v-btn>
-              <v-btn>キャンセル</v-btn>
+              <v-btn @click="dialog = false">キャンセル</v-btn>
             </v-card-actions>
           </v-card>
         </v-dialog>
@@ -161,6 +161,7 @@ export default {
   },
   methods: {
     logout () {
+      this.dialog = false
       this.$store.dispatch("signout", false)
     }
   }
