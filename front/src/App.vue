@@ -94,7 +94,7 @@
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
-        <v-btn text to="/logout" @click="alert = true" v-show="loggedIn">
+        <v-btn text @click="alert = true" v-show="loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
         </v-btn>
 
