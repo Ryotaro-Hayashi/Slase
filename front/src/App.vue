@@ -94,9 +94,23 @@
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
-        <v-btn text @click="alert = true" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
-        </v-btn>
+        <v-dialog v-model="dialog" width="500px" class="mx-auto">
+          <template v-slot:activator="{ on }">
+            <v-btn text v-on="on">
+              <!-- @click="alert = true" v-show="loggedIn" -->
+              <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
+            </v-btn>
+          </template>
+
+          <v-card width="500px">
+            <v-card-title>ログアウトしますか？</v-card-title>
+            <v-card-text>ログアウトしますか？</v-card-text>
+            <v-card-actions>
+              <v-btn>ログアウト</v-btn>
+              <v-btn>キャンセル</v-btn>
+            </v-card-actions>
+          </v-card>
+        </v-dialog>
 
         <v-btn text to="/signin" v-show="!loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
@@ -106,22 +120,6 @@
 
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
-
-      <v-alert v-model="alert" elevation="2" dismissible transition="scale-transition" width="400px" class="mx-auto mt-10">
-        <v-row>
-          <span class="mx-auto">ログアウトしますか？</span>
-        </v-row>
-        <v-row>
-            <v-col>
-              <v-btn @click=logout>ログアウト</v-btn>
-            </v-col>
-
-            <v-col>
-              <v-btn>キャンセル</v-btn>
-            </v-col>
-        </v-row>
-
-      </v-alert>
 
       <router-view/>
 
@@ -150,7 +148,7 @@ export default {
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
       ],
-      alert: false
+      dialog: false
     }
   },
   computed: {
