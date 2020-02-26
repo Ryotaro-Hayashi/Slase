@@ -109,6 +109,7 @@ Vue.use(Vuex)
             uid: response.headers.uid
           });
           router.push("/mypage")
+          commit("changeSuccessSnackbar", true)
         }
       })
     },
