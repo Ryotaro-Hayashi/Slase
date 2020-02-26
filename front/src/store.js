@@ -138,13 +138,15 @@ Vue.use(Vuex)
           });
           router.push("/mypage")
           commit("changeSuccessSnackbar", true)
-          commit("changeErrorSnackbar", false)
         }
       })
       .catch(error => {
         // とりあえずerrorを使う
         commit("updateError", error)
         commit("changeErrorSnackbar", true)
+        setTimeout(function() {
+          commit("changeErrorSnackbar", false)
+        }, 4000)
       })
     },
     // ログアウト処理
