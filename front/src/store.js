@@ -18,8 +18,8 @@ Vue.use(Vuex)
     token: {},
     // ログイン状態
     loggedIn: false,
-    // loginSnackbarが、0だと非表示,1だとsuccess,2だとerror
-    loggedInSnackbar: false,
+    //
+    userSuccessSnackbar: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     q: {},
@@ -78,8 +78,8 @@ Vue.use(Vuex)
       state.user.password = password
     },
     // スナックバーで認証成功表示
-    userSuccessSnackbar (state) {
-      state.loggedInSnackbar = true
+    changeSuccessSnackbar (state) {
+      state.userSuccessSnackbar = true
     },
     // スナックバーで認証エラー表示
     userErrorSnackbar (state) {
@@ -129,7 +129,7 @@ Vue.use(Vuex)
             client: response.headers.client,
             uid: response.headers.uid
           });
-          commit("userSuccessSnackbar")
+          commit("changeSuccessSnackbar")
           router.push("/mypage")
         }
       })

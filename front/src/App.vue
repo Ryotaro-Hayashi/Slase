@@ -129,9 +129,8 @@
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
 
-      <v-snackbar v-model="loggedInSnackbar" left top color="success" timeout=2500 class="top-align">
-        {{ text }}
-        <v-btn text @click="loggedInSnackbar = false">Close</v-btn>
+      <v-snackbar v-model="userSuccessSnackbar" left top color="success" timeout=2500 class="top-align">
+        こんにちは {{  loggedInUserInfo.name }}さん
       </v-snackbar>
 
       <router-view/>
@@ -161,8 +160,7 @@ export default {
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
       ],
-      dialog: false,
-      text: 'Hello, I\'m a snackbar'
+      dialog: false
     }
   },
   computed: {
@@ -172,8 +170,8 @@ export default {
     loggedInUserInfo () {
       return this.$store.getters.loggedInUserInfo.user
     },
-    loggedInSnackbar () {
-      return this.$store.state.loggedInSnackbar
+    userSuccessSnackbar () {
+      return this.$store.state.userSuccessSnackbar
     }
 
   },
