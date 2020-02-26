@@ -18,8 +18,10 @@ Vue.use(Vuex)
     token: {},
     // ログイン状態
     loggedIn: false,
-    //
+    // 成功時のスナックバー
     userSuccessSnackbar: false,
+    // エラー時のスナックバー
+    userErrorSnackbar: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     q: {},
@@ -28,7 +30,8 @@ Vue.use(Vuex)
     // 全投稿
     questions: {},
     // ログイン中のユーザーの全投稿
-    myQuestions: {}
+    myQuestions: {},
+    error: ""
   },
   // 複数回使うcomputedをまとめて定義する
   getters: {
@@ -82,8 +85,11 @@ Vue.use(Vuex)
       state.userSuccessSnackbar = boolean
     },
     // スナックバーで認証エラー表示
-    userErrorSnackbar (state) {
-      state.loggedInSnackbar = false
+    changeErrorSnackbar (state, boolean) {
+      state.userErrorSnackbar = boolean
+    },
+    updateError (state, error) {
+      state.error = error
     }
   },
   actions: {
@@ -132,7 +138,13 @@ Vue.use(Vuex)
           });
           router.push("/mypage")
           commit("changeSuccessSnackbar", true)
+          commit("changeErrorSnackbar", false)
         }
+      })
+      .catch(error => {
+        // とりあえずerrorを使う
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
       })
     },
     // ログアウト処理

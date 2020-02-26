@@ -2,6 +2,9 @@
 <div class="signin">
   <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
   <v-app>
+    <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
+      エラーがあります
+    </v-snackbar>
     <!-- v-cardコンポーネントでパネルを作成 -->
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
@@ -51,6 +54,11 @@ export default {
     email: '',
     password: ''
   }),
+  computed: {
+    userErrorSnackbar () {
+      return this.$store.state.userErrorSnackbar
+    }
+  },
   methods: {
     login () {
       this.$store.dispatch("signin", {
