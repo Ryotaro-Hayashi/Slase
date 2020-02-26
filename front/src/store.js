@@ -84,7 +84,8 @@ Vue.use(Vuex)
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
         email: authData.email,
-        password: authData.password
+        password: authData.password,
+        password_confirmation: authData.password_confirmation
       })
       .then(response => {
         // リクエストが成功
