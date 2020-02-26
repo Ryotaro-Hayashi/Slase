@@ -129,6 +129,13 @@
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
 
+      <v-snackbar v-model="userSuccessSnackbar" left top color="success" timeout=2500 class="top-align">
+        <v-icon>mdi-account</v-icon>こんにちは {{ loggedInUserInfo.name }}さん
+        <v-btn text @click="closeSnackbar">
+          Close
+        </v-btn>
+      </v-snackbar>
+
       <router-view/>
 
     </v-content>
@@ -165,12 +172,19 @@ export default {
     },
     loggedInUserInfo () {
       return this.$store.getters.loggedInUserInfo.user
+    },
+    userSuccessSnackbar () {
+      return this.$store.state.userSuccessSnackbar
     }
+
   },
   methods: {
     logout () {
       this.dialog = false
       this.$store.dispatch("signout", false)
+    },
+    closeSnackbar () {
+      this.$store.commit("changeSuccessSnackbar", false)
     }
   }
 }
@@ -193,9 +207,15 @@ a {
     text-decoration: none;
 }
 
+/* アイコンとその次の文字との間に入れる空間のためのCSS */
 .right-align {
   /* padding-left: 10px; */
   margin-left: 10px;
+}
+
+/* スナックバーの表示位置を調整するためのCSS */
+.top-align {
+  margin-top: 70px
 }
 
 .yet {

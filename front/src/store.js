@@ -18,8 +18,10 @@ Vue.use(Vuex)
     token: {},
     // ログイン状態
     loggedIn: false,
-    // successLoginがtrueだとログイン成功,falseならログイン失敗
-    successLogin: false,
+    // 成功時のスナックバー
+    userSuccessSnackbar: false,
+    // エラー時のスナックバー
+    userErrorSnackbar: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     q: {},
@@ -28,7 +30,8 @@ Vue.use(Vuex)
     // 全投稿
     questions: {},
     // ログイン中のユーザーの全投稿
-    myQuestions: {}
+    myQuestions: {},
+    error: ""
   },
   // 複数回使うcomputedをまとめて定義する
   getters: {
@@ -76,6 +79,17 @@ Vue.use(Vuex)
     },
     updatePassword (state, password) {
       state.user.password = password
+    },
+    // スナックバーで認証成功表示
+    changeSuccessSnackbar (state, boolean) {
+      state.userSuccessSnackbar = boolean
+    },
+    // スナックバーで認証エラー表示
+    changeErrorSnackbar (state, boolean) {
+      state.userErrorSnackbar = boolean
+    },
+    updateError (state, error) {
+      state.error = error
     }
   },
   actions: {
@@ -101,7 +115,16 @@ Vue.use(Vuex)
             uid: response.headers.uid
           });
           router.push("/mypage")
+          commit("changeSuccessSnackbar", true)
         }
+      })
+      .catch(error => {
+        // とりあえずerrorを使う
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
+        setTimeout(function() {
+          commit("changeErrorSnackbar", false)
+        }, 2500)
       })
     },
     // ログイン処理
@@ -122,13 +145,23 @@ Vue.use(Vuex)
             uid: response.headers.uid
           });
           router.push("/mypage")
+          commit("changeSuccessSnackbar", true)
         }
+      })
+      .catch(error => {
+        // とりあえずerrorを使う
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
+        setTimeout(function() {
+          commit("changeErrorSnackbar", false)
+        }, 2500)
       })
     },
     // ログアウト処理
     signout ({ commit }, out) {
+      commit("changeSuccessSnackbar", false)
       commit("updateLoggedIn", out);
-      commit("updateUser", {})
+      commit("updateUser", {user: {name: ""}})
       commit("updateToken", {})
       router.push("/")
     },
