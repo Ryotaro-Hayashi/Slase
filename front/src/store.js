@@ -40,6 +40,7 @@ Vue.use(Vuex)
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
+      state.successLogin = true
     },
     // ログイン中のユーザー情報を更新
     updateUser (state, user) {

@@ -129,9 +129,9 @@
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
 
-      <v-snackbar v-model="snackbar" left top color="success">
+      <v-snackbar v-model="snackbar" left top color="success" timeout="2500" class="top-align">
         {{ text }}
-        <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
+        <v-btn text @click="snackbar = false">Close</v-btn>
       </v-snackbar>
 
       <v-btn dark @click="snackbar = true">Open Snackbar</v-btn>
@@ -202,9 +202,15 @@ a {
     text-decoration: none;
 }
 
+/* アイコンとその次の文字との間に入れる空間のためのCSS */
 .right-align {
   /* padding-left: 10px; */
   margin-left: 10px;
+}
+
+/* スナックバーの表示位置を調整するためのCSS */
+.top-align {
+  margin-top: 70px
 }
 
 .yet {
