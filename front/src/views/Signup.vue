@@ -23,6 +23,7 @@
         <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
         <!-- showPasswordプロパティの真偽で、アイコンを変更するようにする -->
         <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" />
+        <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワードを再入力" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password_confirmation" />
         <!-- ユーザー登録ボタンの配置エリア -->
         <v-card-actions class="mt-5">
           <v-btn class="info ml-auto" v-on:click="register">ユーザー登録</v-btn>
@@ -47,7 +48,8 @@ export default {
     showPassword: false,
     name: '',
     email: '',
-    password: ''
+    password: '',
+    password_confirmation: ''
   }),
   methods: {
     // ユーザー登録ボタンで引数にname,....を与えて、storeのsignupミューテーションを呼び出し
@@ -55,7 +57,8 @@ export default {
       this.$store.dispatch("signup", {
         name: this.name,
         email: this.email,
-        password: this.password
+        password: this.password,
+        password_confirmation: this.password_confirmation
       })
     }
   }
