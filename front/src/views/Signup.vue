@@ -2,6 +2,10 @@
 <div class="signup">
   <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
   <v-app>
+    <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
+      エラーがあります
+    </v-snackbar>
+
     <!-- v-cardコンポーネントでパネルを作成 -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
     <v-card width="400px" class="mx-auto mt-10">
@@ -51,6 +55,11 @@ export default {
     password: '',
     password_confirmation: ''
   }),
+  computed: {
+    userErrorSnackbar () {
+      return this.$store.state.userErrorSnackbar
+    }
+  },
   methods: {
     // ユーザー登録ボタンで引数にname,....を与えて、storeのsignupミューテーションを呼び出し
     register () {

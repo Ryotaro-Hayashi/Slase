@@ -5,6 +5,7 @@
     <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
       エラーがあります
     </v-snackbar>
+    
     <!-- v-cardコンポーネントでパネルを作成 -->
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->

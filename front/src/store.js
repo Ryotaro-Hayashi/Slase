@@ -118,6 +118,14 @@ Vue.use(Vuex)
           commit("changeSuccessSnackbar", true)
         }
       })
+      .catch(error => {
+        // とりあえずerrorを使う
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
+        setTimeout(function() {
+          commit("changeErrorSnackbar", false)
+        }, 2500)
+      })
     },
     // ログイン処理
     signin ({ commit }, authData) {
@@ -146,7 +154,7 @@ Vue.use(Vuex)
         commit("changeErrorSnackbar", true)
         setTimeout(function() {
           commit("changeErrorSnackbar", false)
-        }, 4000)
+        }, 2500)
       })
     },
     // ログアウト処理
