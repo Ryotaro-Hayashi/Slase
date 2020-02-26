@@ -129,6 +129,13 @@
     <!-- 各ページで表示されるコンテンツは、v-contentタグをv-app-barタグの下に配置してrouter-viewで挿入する -->
     <v-content>
 
+      <v-snackbar v-model="snackbar" left top color="success">
+        {{ text }}
+        <v-btn color="pink" text @click="snackbar = false">Close</v-btn>
+      </v-snackbar>
+
+      <v-btn dark @click="snackbar = true">Open Snackbar</v-btn>
+
       <router-view/>
 
     </v-content>
@@ -156,7 +163,9 @@ export default {
         {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
       ],
-      dialog: false
+      dialog: false,
+      snackbar: false,
+      text: 'Hello, I\'m a snackbar'
     }
   },
   computed: {
