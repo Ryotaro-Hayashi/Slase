@@ -19,7 +19,7 @@ Vue.use(Vuex)
     // ログイン状態
     loggedIn: false,
     // loginSnackbarが、0だと非表示,1だとsuccess,2だとerror
-    loggedInSnackbar: "0",
+    loggedInSnackbar: false,
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     q: {},
@@ -79,11 +79,11 @@ Vue.use(Vuex)
     },
     // スナックバーで認証成功表示
     userSuccessSnackbar (state) {
-      state.loggedInSnackbar = "1"
+      state.loggedInSnackbar = true
     },
     // スナックバーで認証エラー表示
     userErrorSnackbar (state) {
-      state.loggedInSnackbar = "2"
+      state.loggedInSnackbar = false
     }
   },
   actions: {
