@@ -18,8 +18,8 @@ Vue.use(Vuex)
     token: {},
     // ログイン状態
     loggedIn: false,
-    // successLoginがtrueだとログイン成功,falseならログイン失敗
-    successLogin: false,
+    // loginSnackbarが、0だと非表示,1だとsuccess,2だとerror
+    loggedInSnackbar: "0",
     // successLogoutがtrueだとログイン成功,falseならログイン失敗
     successLogout: false,
     q: {},
@@ -40,7 +40,6 @@ Vue.use(Vuex)
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
-      state.successLogin = true
     },
     // ログイン中のユーザー情報を更新
     updateUser (state, user) {
@@ -77,6 +76,14 @@ Vue.use(Vuex)
     },
     updatePassword (state, password) {
       state.user.password = password
+    },
+    // スナックバーで認証成功表示
+    userSuccessSnackbar (state) {
+      state.loggedInSnackbar = "1"
+    },
+    // スナックバーで認証エラー表示
+    userErrorSnackbar (state) {
+      state.loggedInSnackbar = "2"
     }
   },
   actions: {
@@ -122,6 +129,7 @@ Vue.use(Vuex)
             client: response.headers.client,
             uid: response.headers.uid
           });
+          commit("userSuccessSnackbar")
           router.push("/mypage")
         }
       })
@@ -131,6 +139,7 @@ Vue.use(Vuex)
       commit("updateLoggedIn", out);
       commit("updateUser", {})
       commit("updateToken", {})
+      commit("userErrorSnackbar")
       router.push("/")
     },
     // 投稿の処理
