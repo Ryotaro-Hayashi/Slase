@@ -130,7 +130,10 @@
     <v-content>
 
       <v-snackbar v-model="userSuccessSnackbar" left top color="success" timeout=2500 class="top-align">
-        こんにちは {{ loggedInUserInfo.name }}さん
+        <v-icon>mdi-account</v-icon>こんにちは {{ loggedInUserInfo.name }}さん
+        <v-btn text @click="closeSnackbar">
+          Close
+        </v-btn>
       </v-snackbar>
 
       <router-view/>
@@ -179,6 +182,9 @@ export default {
     logout () {
       this.dialog = false
       this.$store.dispatch("signout", false)
+    },
+    closeSnackbar () {
+      this.$store.commit("changeSuccessSnackbar", false)
     }
   }
 }

@@ -3,7 +3,11 @@
   <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
   <v-app>
     <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
+      <v-icon>mdi-alert-circle</v-icon>
       エラーがあります
+      <v-btn text @click="closeSnackbar">
+        Close
+      </v-btn>
     </v-snackbar>
 
     <!-- v-cardコンポーネントでパネルを作成 -->
@@ -69,6 +73,9 @@ export default {
         password: this.password,
         password_confirmation: this.password_confirmation
       })
+    },
+    closeSnackbar () {
+      this.$store.commit("changeErrorSnackbar", false)
     }
   }
 }

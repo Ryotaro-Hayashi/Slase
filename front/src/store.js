@@ -163,7 +163,6 @@ Vue.use(Vuex)
       commit("updateLoggedIn", out);
       commit("updateUser", {user: {name: ""}})
       commit("updateToken", {})
-      commit("userErrorSnackbar")
       router.push("/")
     },
     // 投稿の処理

@@ -3,9 +3,13 @@
   <!-- Vuetifyのコンポーネントを書くためのv-app要素 -->
   <v-app>
     <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
+      <v-icon>mdi-alert-circle</v-icon>
       エラーがあります
+      <v-btn text @click="closeSnackbar">
+        Close
+      </v-btn>
     </v-snackbar>
-    
+
     <!-- v-cardコンポーネントでパネルを作成 -->
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
@@ -66,6 +70,9 @@ export default {
         email: this.email,
         password: this.password
       })
+    },
+    closeSnackbar () {
+      this.$store.commit("changeErrorSnackbar", false)
     }
   }
 }
