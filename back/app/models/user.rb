@@ -12,4 +12,10 @@ class User < ActiveRecord::Base
 
   # uploaderをuserにマウント
   mount_uploader :avatar, AvatarUploader
+
+  # name は空なしで最大50文字
+  validates :name, presence: true, length: { maximum: 50}
+
+  # emailは空なしでvalidatesは /back/config/initializers/devise.rb で定義
+  # passwordも空なしで email と同じところで定義されている
 end
