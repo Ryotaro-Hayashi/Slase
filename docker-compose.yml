@@ -15,7 +15,7 @@ services:
     build: ./back
     command: rails s -p 3000 -b '0.0.0.0'
     volumes:
-      - ./back:/back
+      - ./back:/api
     depends_on:
       - db
     ports:
