@@ -5,7 +5,7 @@ class Question < ApplicationRecord
 
   mount_uploader :image, ImageUploader
 
-  validates :title, presence: true
+  validates :title, presence: true, length: { maximum: 50 }
 
   validates :body, presence: true
 end
