@@ -130,7 +130,7 @@
     <v-content>
 
       <v-snackbar v-model="userSuccessSnackbar" left top color="success" timeout=2500 class="top-align">
-        こんにちは {{  loggedInUserInfo.name }}さん
+        こんにちは {{ loggedInUserInfo.user.name }}さん
       </v-snackbar>
 
       <router-view/>
@@ -168,7 +168,7 @@ export default {
       return this.$store.state.loggedIn
     },
     loggedInUserInfo () {
-      return this.$store.getters.loggedInUserInfo.user
+      return this.$store.getters.loggedInUserInfo
     },
     userSuccessSnackbar () {
       return this.$store.state.userSuccessSnackbar

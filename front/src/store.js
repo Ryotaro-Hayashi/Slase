@@ -78,8 +78,8 @@ Vue.use(Vuex)
       state.user.password = password
     },
     // スナックバーで認証成功表示
-    changeSuccessSnackbar (state) {
-      state.userSuccessSnackbar = true
+    changeSuccessSnackbar (state, boolean) {
+      state.userSuccessSnackbar = boolean
     },
     // スナックバーで認証エラー表示
     userErrorSnackbar (state) {
@@ -129,15 +129,16 @@ Vue.use(Vuex)
             client: response.headers.client,
             uid: response.headers.uid
           });
-          commit("changeSuccessSnackbar")
           router.push("/mypage")
+          commit("changeSuccessSnackbar", true)
         }
       })
     },
     // ログアウト処理
     signout ({ commit }, out) {
+      commit("changeSuccessSnackbar", false)
       commit("updateLoggedIn", out);
-      commit("updateUser", {})
+      commit("updateUser", {user: {name: ""}})
       commit("updateToken", {})
       commit("userErrorSnackbar")
       router.push("/")
