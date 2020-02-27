@@ -4,7 +4,7 @@
   <v-app>
     <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
       <v-icon>mdi-alert-circle</v-icon>
-      エラーがあります
+      入力内容に誤りがあります
       <v-btn text @click="closeSnackbar">
         Close
       </v-btn>
@@ -14,6 +14,7 @@
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
     <v-card width="400px" class="mx-auto mt-10">
+      <validationObserver v-slot="{ handleSubmit }">
 
       <!-- パネルのタイトルエリア -->
       <v-card-title>
@@ -27,23 +28,27 @@
       <v-card-text>
         <!-- フォームを用意 -->
         <v-form>
-          <!-- iライブラリをインストールしているので、mdiを使える -->
-          <!-- マテリアルデザインアイコンを使うときは、アイコン名の先頭に「mdi-」を付ける -->
-          <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" />
+          <ValidationProvider v-slot="{ errors }" name="これ" rules="required|email">
+            <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" :error-messages="errors[0]" />
+          </ValidationProvider>
           <!-- type="password"を入れて、入力内容を隠す -->
           <!-- prepend-icon で前に、append-icon で後ろにアイコンを配置-->
           <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
           <!-- クリックイベントを追加 -->
           <!-- showPasswordプロパティの真偽で、アイコンを変更するようにする -->
-          <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" />
+          <ValidationProvider v-slot="{ errors }" name="パスワード" rules="required|min:6">
+            <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" :error-messages="errors[0]" />
+          </ValidationProvider>
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
             <router-link to="/signup">新しくユーザー登録</router-link>
             <!-- vuetifyクラスinfoでボタンの色を変更 -->
-            <v-btn class="info ml-auto" v-on:click="login">ログイン</v-btn>
+            <v-btn class="info ml-auto" @click="handleSubmit(login)">ログイン</v-btn>
           </v-card-actions>
         </v-form>
       </v-card-text>
+
+    </validationObserver>
     </v-card>
   </v-app>
 </div>
