@@ -41,7 +41,7 @@
           <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" :error-messages="errors[0]"  />
           </ValidationProvider>
 
-          <ValidationProvider v-slot="{ errors }" name="パスワード" rules="required|confirmed:パスワード">
+          <ValidationProvider v-slot="{ errors }" name="再入力したパスワード" rules="required|confirmed:パスワード">
             <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワードを再入力" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password_confirmation" :error-messages="errors[0]" />
           </ValidationProvider>
           <!-- ユーザー登録ボタンの配置エリア -->
