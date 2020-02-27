@@ -36,8 +36,9 @@
           <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
           <!-- クリックイベントを追加 -->
           <!-- showPasswordプロパティの真偽で、アイコンを変更するようにする -->
-          
-          <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" />
+          <ValidationProvider v-slot="{ errors }" name="パスワード" rules="required|min:6">
+            <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" :error-messages="errors[0]" />
+          </ValidationProvider>
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
             <router-link to="/signup">新しくユーザー登録</router-link>
