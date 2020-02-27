@@ -4,7 +4,7 @@
   <v-app>
     <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
       <v-icon>mdi-alert-circle</v-icon>
-      エラーがあります
+      入力内容に誤りがあります
       <v-btn text @click="closeSnackbar">
         Close
       </v-btn>
