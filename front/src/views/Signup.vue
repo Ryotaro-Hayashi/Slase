@@ -4,7 +4,7 @@
   <v-app>
     <v-snackbar v-model="userErrorSnackbar" left top color="error" timeout=2500 class="top-align">
       <v-icon>mdi-alert-circle</v-icon>
-      エラーがあります
+      このメールアドレスは既に登録されています
       <v-btn text @click="closeSnackbar">
         Close
       </v-btn>
@@ -46,7 +46,7 @@
           </ValidationProvider>
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
-            <v-btn class="info ml-auto" v-on:click="register">ユーザー登録</v-btn>
+            <v-btn class="info ml-auto" v-on:click="register" :disabled="invalid">ユーザー登録</v-btn>
           </v-card-actions>
         </v-form>
         </v-card-text>
