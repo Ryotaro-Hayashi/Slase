@@ -14,6 +14,7 @@
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
     <v-card width="400px" class="mx-auto mt-10">
+      <validation-observer v-slot="{ handleSubmit }">
 
       <!-- パネルのタイトルエリア -->
       <v-card-title>
@@ -27,9 +28,11 @@
       <v-card-text>
         <!-- フォームを用意 -->
         <v-form>
+          <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
           <!-- iライブラリをインストールしているので、mdiを使える -->
           <!-- マテリアルデザインアイコンを使うときは、アイコン名の先頭に「mdi-」を付ける -->
-          <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" />
+          <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" :error-messages="errors[0]" />
+        </ValidationProvider>
           <!-- type="password"を入れて、入力内容を隠す -->
           <!-- prepend-icon で前に、append-icon で後ろにアイコンを配置-->
           <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
@@ -40,10 +43,12 @@
           <v-card-actions class="mt-5">
             <router-link to="/signup">新しくユーザー登録</router-link>
             <!-- vuetifyクラスinfoでボタンの色を変更 -->
-            <v-btn class="info ml-auto" v-on:click="login">ログイン</v-btn>
+            <v-btn class="info ml-auto" @click="handleSubmit(login)">ログイン</v-btn>
           </v-card-actions>
         </v-form>
       </v-card-text>
+
+    </validation-observer>
     </v-card>
   </v-app>
 </div>
