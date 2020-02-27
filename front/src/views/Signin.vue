@@ -14,7 +14,7 @@
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
     <v-card width="400px" class="mx-auto mt-10">
-      <validation-observer v-slot="{ handleSubmit }">
+      <validationObserver v-slot="{ handleSubmit }">
 
       <!-- パネルのタイトルエリア -->
       <v-card-title>
@@ -28,16 +28,15 @@
       <v-card-text>
         <!-- フォームを用意 -->
         <v-form>
-          <ValidationProvider v-slot="{ errors }" name="email" rules="required|email">
-          <!-- iライブラリをインストールしているので、mdiを使える -->
-          <!-- マテリアルデザインアイコンを使うときは、アイコン名の先頭に「mdi-」を付ける -->
-          <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" :error-messages="errors[0]" />
-        </ValidationProvider>
+          <ValidationProvider v-slot="{ errors }" name="これ" rules="required|email">
+            <v-text-field prepend-icon="mdi-email" label="メールアドレス" v-model="email" :error-messages="errors[0]" />
+          </ValidationProvider>
           <!-- type="password"を入れて、入力内容を隠す -->
           <!-- prepend-icon で前に、append-icon で後ろにアイコンを配置-->
           <!-- showPasswordプロパティの真偽で、属性typeがtextとpasswordに切り替わるようにする -->
           <!-- クリックイベントを追加 -->
           <!-- showPasswordプロパティの真偽で、アイコンを変更するようにする -->
+          
           <v-text-field v-bind:type="showPassword ? 'text' : 'password'" prepend-icon="mdi-lock" label="パスワード" v-bind:append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'" @click:append="showPassword = !showPassword" v-model="password" />
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
@@ -48,7 +47,7 @@
         </v-form>
       </v-card-text>
 
-    </validation-observer>
+    </validationObserver>
     </v-card>
   </v-app>
 </div>
