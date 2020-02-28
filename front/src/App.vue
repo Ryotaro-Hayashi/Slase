@@ -175,6 +175,9 @@ export default {
     },
     userSuccessSnackbar () {
       return this.$store.state.userSuccessSnackbar
+    },
+    postSuccessSnackbar () {
+      return this.$store.state.postSuccessSnackbar
     }
 
   },
