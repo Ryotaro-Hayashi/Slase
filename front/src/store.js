@@ -186,7 +186,7 @@ Vue.use(Vuex)
         if (response.status === 200) {
           router.push("/")
           commit("postQuestion", post);
-          commit("changePostSnackbar", false)
+          commit("changePostSnackbar", true)
         }
       })
     },
