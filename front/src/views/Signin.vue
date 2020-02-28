@@ -14,7 +14,7 @@
     <!-- mx-auto mt-5 は、vuetifyクラス -->
     <!-- mx-autoで中央寄せ、mtでtopとのマージンを指定 -->
     <v-card width="400px" class="mx-auto mt-10">
-      <validationObserver v-slot="{ handleSubmit }">
+      <ValidationObserver v-slot="{ handleSubmit }">
 
       <!-- パネルのタイトルエリア -->
       <v-card-title>
@@ -48,7 +48,7 @@
         </v-form>
       </v-card-text>
 
-    </validationObserver>
+    </ValidationObserver>
     </v-card>
   </v-app>
 </div>
