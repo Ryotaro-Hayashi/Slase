@@ -10,7 +10,9 @@
           </v-card-text>
 
           <v-card-text>
-            <v-textarea label="本文" outlined height="500" class="posting" v-model="body"></v-textarea>
+            <ValidationProvider v-slot="{ errors }" name="本文" rules="required">
+              <v-textarea label="本文" outlined height="500" class="posting" v-model="body" :error-messages="errors[0]" />
+            </ValidationProvider>
           </v-card-text>
 
           <v-card-text>
