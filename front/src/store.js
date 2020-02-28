@@ -186,7 +186,10 @@ Vue.use(Vuex)
         if (response.status === 200) {
           router.push("/")
           commit("postQuestion", post);
-          commit("changePostSnackbar", true)
+          commit("changePostSnackbar", true);
+          setTimeout(function() {
+            commit("changePostSnackbar", false)
+          }, 2500)
         }
       })
     },
