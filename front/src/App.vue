@@ -136,6 +136,13 @@
         </v-btn>
       </v-snackbar>
 
+      <v-snackbar v-model="postSuccessSnackbar" left top color="success" timeout=2500 class="top-align">
+        <v-icon>mdi-post</v-icon>投稿完了
+        <v-btn text @click="closeSnackbar">
+          Close
+        </v-btn>
+      </v-snackbar>
+
       <router-view/>
 
     </v-content>
@@ -175,6 +182,9 @@ export default {
     },
     userSuccessSnackbar () {
       return this.$store.state.userSuccessSnackbar
+    },
+    postSuccessSnackbar () {
+      return this.$store.state.postSuccessSnackbar
     }
 
   },

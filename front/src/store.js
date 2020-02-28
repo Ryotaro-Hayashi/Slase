@@ -31,7 +31,8 @@ Vue.use(Vuex)
     questions: {},
     // ログイン中のユーザーの全投稿
     myQuestions: {},
-    error: ""
+    error: "",
+    postSuccessSnackbar: false
   },
   // 複数回使うcomputedをまとめて定義する
   getters: {
@@ -90,6 +91,9 @@ Vue.use(Vuex)
     },
     updateError (state, error) {
       state.error = error
+    },
+    changePostSnackbar (state, boolean) {
+      state.postSuccessSnackbar = boolean
     }
   },
   actions: {
@@ -182,6 +186,10 @@ Vue.use(Vuex)
         if (response.status === 200) {
           router.push("/")
           commit("postQuestion", post);
+          commit("changePostSnackbar", true);
+          setTimeout(function() {
+            commit("changePostSnackbar", false)
+          }, 2500)
         }
       })
     },
