@@ -2,7 +2,7 @@
   <div class="post">
     <v-app>
       <v-card class="mx-auto mt-10 mb-10" width="1200px">
-        <ValidationObserver v-slot="{ invalid }">
+        <ValidationObserver v-slot="{ handleSubmit }">
           <v-card-text>
             <ValidationProvider v-slot="{ errors }" name="タイトル" rules="required">
               <v-text-field label="タイトル" outlined class="posting" v-model="title" :error-messages="errors[0]" />
@@ -31,7 +31,7 @@
           <v-card-text>
             <!-- スペースを用意 -->
             <v-card-actions class="mt-5">
-              <v-btn class="info ml-auto" v-on:click="question">投稿</v-btn>
+              <v-btn class="info ml-auto" @click="handleSubmit(question)">投稿</v-btn>
             </v-card-actions>
           </v-card-text>
       </ValidationObserver>
