@@ -64,6 +64,144 @@ export const auth = {
     }
   },
   actions: {
-
+    // ユーザー登録処理
+    signup ({ commit }, authData) {
+      axios.post('http://localhost:3000/api/auth', {
+        name: authData.name,
+        email: authData.email,
+        password: authData.password,
+        password_confirmation: authData.password_confirmation
+      })
+      .then(response => {
+        // リクエストが成功
+        if (response.status === 200) {
+          commit("updateLoggedIn", true);
+          commit("updateUser", {
+            user: response.data.data
+          });
+          commit("addUser", response.data.data)
+          commit("updateToken", {
+            "access-token": response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          });
+          router.push("/mypage")
+          commit("changeSuccessSnackbar", true)
+        }
+      })
+      .catch(error => {
+        // とりあえずerrorを使う
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
+        setTimeout(function() {
+          commit("changeErrorSnackbar", false)
+        }, 2500)
+      })
+    },
+    // ログイン処理
+    signin ({ commit }, authData) {
+      axios.post('http://localhost:3000/api/auth/sign_in', {
+        email: authData.email,
+        password: authData.password
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updateLoggedIn", true);
+          commit("updateUser", {
+            user: response.data.data
+          });
+          commit("updateToken", {
+            "access-token": response.headers["access-token"],
+            client: response.headers.client,
+            uid: response.headers.uid
+          });
+          router.push("/mypage")
+          commit("changeSuccessSnackbar", true)
+        }
+      })
+      .catch(error => {
+        // とりあえずerrorを使う
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
+        setTimeout(function() {
+          commit("changeErrorSnackbar", false)
+        }, 2500)
+      })
+    },
+    // ログアウト処理
+    signout ({ commit }, out) {
+      commit("changeSuccessSnackbar", false)
+      commit("updateLoggedIn", out);
+      commit("updateUser", {user: {name: ""}})
+      commit("updateToken", {})
+      router.push("/")
+    },
+    // 投稿の処理
+    post ({ commit }, post) {
+      // 画像を送信するためのフォームデータ
+      let formData = new FormData()
+      formData.append("title", post.title)
+      formData.append("body", post.body)
+      // urlのことはあまり気にしないで良い
+      formData.append("image", post.image)
+      axios.post('http://localhost:3000/api/post/questions', formData,
+      // リクエストヘッダーにトークンを追加
+      {
+        headers: post.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          router.push("/")
+          commit("postQuestion", post);
+          commit("changePostSnackbar", true);
+          setTimeout(function() {
+            commit("changePostSnackbar", false)
+          }, 2500)
+        }
+      })
+    },
+    setavatar ({ commit }, data) {
+      let formData = new FormData ()
+      formData.append("avatar", data.avatarFile)
+      axios.put('http://localhost:3000/api/auth', formData,
+      // リクエストヘッダーにトークンを追加
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updateAvatar", data.avatarUrl)
+          router.push("/")
+        }
+      })
+    },
+    email ({ commit }, data) {
+      axios.put('http://localhost:3000/api/auth', {
+        email: data.email
+      },
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updateEmail", data.email)
+          router.push("/")
+        }
+      })
+    },
+    password ({ commit }, data) {
+      axios.put('http://localhost:3000/api/auth', {
+        password: data.password
+      },
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updatePassword", data.password)
+          router.push("/")
+        }
+      })
+    }
   }
 }
