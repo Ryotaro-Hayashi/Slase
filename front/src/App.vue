@@ -175,26 +175,26 @@ export default {
   },
   computed: {
     loggedIn () {
-      return this.$store.state.loggedIn
+      return this.$store.state.auth.loggedIn
     },
     loggedInUserInfo () {
-      return this.$store.getters.loggedInUserInfo.user
+      return this.$store.state.auth.loggedInUser.user
     },
     userSuccessSnackbar () {
-      return this.$store.state.userSuccessSnackbar
+      return this.$store.state.auth.userSuccessSnackbar
     },
     postSuccessSnackbar () {
-      return this.$store.state.postSuccessSnackbar
+      return this.$store.state.post.postSuccessSnackbar
     }
 
   },
   methods: {
     logout () {
       this.dialog = false
-      this.$store.dispatch("signout", false)
+      this.$store.dispatch("auth/signout", false)
     },
     closeSnackbar () {
-      this.$store.commit("changeSuccessSnackbar", false)
+      this.$store.commit("auth/changeSuccessSnackbar", false)
     }
   }
 }

@@ -28,15 +28,15 @@ export default {
   },
   computed: {
     loggedInUserInfo () {
-      return this.$store.getters.loggedInUserInfo.user
+      return this.$store.state.auth.loggedInUser.user
     },
     userToken () {
-      return this.$store.state.token
+      return this.$store.state.auth.token
     }
   },
   methods: {
     changePassword () {
-      this.$store.dispatch("password", {
+      this.$store.dispatch("auth/password", {
         password: this.password,
         token: this.userToken
       })

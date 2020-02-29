@@ -41,7 +41,7 @@ export default {
   computed: {
     // 投稿の詳細表示
     Posting () {
-      return this.$store.state.question
+      return this.$store.state.post.question
     }
   }
 

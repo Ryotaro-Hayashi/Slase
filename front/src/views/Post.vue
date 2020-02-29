@@ -54,13 +54,13 @@ export default {
   computed: {
     // トークンを取得
     userToken () {
-      return this.$store.state.token
+      return this.$store.state.auth.token
     }
   },
   methods: {
     // 投稿
     question () {
-      this.$store.dispatch("post", {
+      this.$store.dispatch("post/post", {
         title: this.title,
         body: this.body,
         image: this.imageFile,

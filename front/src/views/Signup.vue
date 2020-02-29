@@ -74,13 +74,13 @@ export default {
   }),
   computed: {
     userErrorSnackbar () {
-      return this.$store.state.userErrorSnackbar
+      return this.$store.state.auth.userErrorSnackbar
     }
   },
   methods: {
     // ユーザー登録ボタンで引数にname,....を与えて、storeのsignupミューテーションを呼び出し
     register () {
-      this.$store.dispatch("signup", {
+      this.$store.dispatch("auth/signup", {
         name: this.name,
         email: this.email,
         password: this.password,
@@ -88,7 +88,7 @@ export default {
       })
     },
     closeSnackbar () {
-      this.$store.commit("changeErrorSnackbar", false)
+      this.$store.commit("auth/changeErrorSnackbar", false)
     }
   }
 }
