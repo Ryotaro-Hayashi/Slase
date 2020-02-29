@@ -11,6 +11,7 @@ Vue.use(Vuex)
   state: {
     // ログイン中のユーザー情報
     user: {},
+    // ログインユーザーの情報
     loggedInUser: {user: {name: ""}},
     // ユーザー登録済みのユーザー情報
     users: [],
