@@ -58,18 +58,6 @@ Vue.use(Vuex)
     updateToken (state, token) {
       state.token = token
     },
-    postQuestion (state, post) {
-      state.q = post
-    },
-    AllQuestions (state, posts) {
-      state.questions = posts
-    },
-    myQuestions (state, posts) {
-      state.myQuestions = posts
-    },
-    detailQuestion (state, post) {
-      state.question = post
-    },
     detailUser (state, user) {
       state.user = user
     },
@@ -92,6 +80,18 @@ Vue.use(Vuex)
     },
     updateError (state, error) {
       state.error = error
+    },
+    postQuestion (state, post) {
+      state.q = post
+    },
+    AllQuestions (state, posts) {
+      state.questions = posts
+    },
+    myQuestions (state, posts) {
+      state.myQuestions = posts
+    },
+    detailQuestion (state, post) {
+      state.question = post
     },
     changePostSnackbar (state, boolean) {
       state.postSuccessSnackbar = boolean

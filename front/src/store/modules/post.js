@@ -13,7 +13,21 @@ export const post = {
 
   },
   mutations: {
-
+    postQuestion (state, post) {
+      state.q = post
+    },
+    AllQuestions (state, posts) {
+      state.questions = posts
+    },
+    myQuestions (state, posts) {
+      state.myQuestions = posts
+    },
+    detailQuestion (state, post) {
+      state.question = post
+    },
+    changePostSnackbar (state, boolean) {
+      state.postSuccessSnackbar = boolean
+    }
   },
   actions: {
 
