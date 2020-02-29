@@ -58,7 +58,7 @@ export const auth = {
   },
   actions: {
     // ユーザー登録処理
-    signup ({ commit }, authData) {
+    signUp ({ commit }, authData) {
       axios.post('http://localhost:3000/api/auth', {
         name: authData.name,
         email: authData.email,
@@ -69,21 +69,22 @@ export const auth = {
         // リクエストが成功
         if (response.status === 200) {
           commit("updateLoggedIn", true);
-          commit("updateUser", {
-            user: response.data.data.user
-          });
+          // -----------------
+          commit("updateLoggedInUser", response.data.data);
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
             uid: response.headers.uid
           });
           router.push("/mypage")
+          // ページ遷移後にスナックバーを表示
           commit("changeSuccessSnackbar", true)
         }
       })
       .catch(error => {
         // とりあえずerrorを使う
         commit("updateError", error)
+        // スナックバーを表示してから一定時間後に非表示にfalseにする
         commit("changeErrorSnackbar", true)
         setTimeout(function() {
           commit("changeErrorSnackbar", false)
@@ -91,7 +92,7 @@ export const auth = {
       })
     },
     // ログイン処理
-    signin ({ commit }, authData) {
+    signIn ({ commit }, authData) {
       axios.post('http://localhost:3000/api/auth/sign_in', {
         email: authData.email,
         password: authData.password
@@ -121,29 +122,29 @@ export const auth = {
       })
     },
     // ログアウト処理
-    signout ({ commit }, out) {
+    signOut ({ commit }) {
       commit("changeSuccessSnackbar", false)
-      commit("updateLoggedIn", out);
-      commit("updateUser", {user: {name: ""}})
+      commit("updateLoggedIn", false);
+      commit("updateLoggedInUser", {name: ""})
       commit("updateToken", {})
       router.push("/")
     },
-    setavatar ({ commit }, data) {
-      let formData = new FormData ()
-      formData.append("avatar", data.avatarFile)
-      axios.put('http://localhost:3000/api/auth', formData,
-      // リクエストヘッダーにトークンを追加
-      {
-        headers: data.token
-      })
-      .then(response => {
-        if (response.status === 200) {
-          commit("updateAvatar", data.avatarUrl)
-          router.push("/")
-        }
-      })
-    },
-    email ({ commit }, data) {
+    // setavatar ({ commit }, data) {
+    //   let formData = new FormData ()
+    //   formData.append("avatar", data.avatarFile)
+    //   axios.put('http://localhost:3000/api/auth', formData,
+    //   // リクエストヘッダーにトークンを追加
+    //   {
+    //     headers: data.token
+    //   })
+    //   .then(response => {
+    //     if (response.status === 200) {
+    //       commit("updateAvatar", data.avatarUrl)
+    //       router.push("/")
+    //     }
+    //   })
+    // },
+    changeEmail ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth', {
         email: data.email
       },
@@ -157,7 +158,7 @@ export const auth = {
         }
       })
     },
-    password ({ commit }, data) {
+    changePassword ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth', {
         password: data.password
       },
