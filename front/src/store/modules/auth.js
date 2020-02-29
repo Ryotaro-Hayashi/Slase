@@ -19,7 +19,8 @@ export const auth = {
     error: ""
   },
   getters: {
-
+    loggedInUserInfo: state => state.loggedInUser,
+    detailUserInfo: state => state.user
   },
   mutations: {
 
