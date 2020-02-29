@@ -1,10 +1,10 @@
 <template>
 <div class="users">
   <h1 class="center">ユーザー一覧</h1>
-  <ul>
+  <!-- <ul>
 <li v-for="user in allUser" :key="user.id">{{ user }}</li>
   </ul>
-</div>
+</div> -->
 </template>
 
 <script>
@@ -15,11 +15,11 @@ export default {
       results: []
     }
   },
-  computed: {
-    allUser () {
-      return this.$store.state.auth.users
-    }
-  }
+  // computed: {
+  //   allUser () {
+  //     return this.$store.state.auth.users
+  //   }
+  // }
 
 }
 </script>
