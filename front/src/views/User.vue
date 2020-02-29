@@ -55,19 +55,19 @@ export default {
   computed: {
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
-      return this.$store.state.myQuestions
+      return this.$store.state.post.myQuestions
     },
     detailUserInfo () {
-      return this.$store.getters.detailUserInfo
+      return this.$store.state.auth.user
     },
     userToken () {
-      return this.$store.state.token
+      return this.$store.state.auth.token
     }
   },
   methods: {
     // 詳細表示する投稿情報を更新
     getId (id) {
-      this.$store.dispatch("posting", id)
+      this.$store.dispatch("post/posting", id)
     },
     onAvatarChange(e) {
       // filesプロパティは複数ファイルを管理できるように配列になっている
@@ -83,7 +83,7 @@ export default {
       })
     },
     setAvatar () {
-      this.$store.dispatch("setavatar", {
+      this.$store.dispatch("auth/setavatar", {
         avatarUrl: this.avatarUrl,
         avatar: this.avatarFile,
         token: this.userToken

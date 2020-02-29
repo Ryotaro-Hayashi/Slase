@@ -66,18 +66,18 @@ export default {
   }),
   computed: {
     userErrorSnackbar () {
-      return this.$store.state.userErrorSnackbar
+      return this.$store.state.auth.userErrorSnackbar
     }
   },
   methods: {
     login () {
-      this.$store.dispatch("signin", {
+      this.$store.dispatch("auth/signin", {
         email: this.email,
         password: this.password
       })
     },
     closeSnackbar () {
-      this.$store.commit("changeErrorSnackbar", false)
+      this.$store.commit("auth/changeErrorSnackbar", false)
     }
   }
 }

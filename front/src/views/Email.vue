@@ -29,15 +29,15 @@ export default {
   },
   computed: {
     loggedInUserInfo () {
-      return this.$store.getters.loggedInUserInfo.user
+      return this.$store.state.auth.loggedInUser.user
     },
     userToken () {
-      return this.$store.state.token
+      return this.$store.state.auth.token
     }
   },
   methods: {
     changeEmail () {
-      this.$store.dispatch("email", {
+      this.$store.dispatch("auth/email", {
         email: this.email,
         token: this.userToken
       })

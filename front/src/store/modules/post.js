@@ -2,6 +2,7 @@ import axios from 'axios'
 import router from '../../router'
 
 export const post = {
+  namespaced: true,
   state: {
     q: {},
     // 詳細表示する投稿情報
@@ -12,9 +13,9 @@ export const post = {
     myQuestions: {},
     postSuccessSnackbar: false
   },
-  getters: {
-
-  },
+  // getters: {
+  //
+  // },
   mutations: {
     postQuestion (state, post) {
       state.q = post
@@ -80,3 +81,5 @@ export const post = {
     }
   }
 }
+
+export default post;

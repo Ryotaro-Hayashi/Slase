@@ -2,6 +2,7 @@ import axios from 'axios'
 import router from '../../router'
 
 export const auth = {
+  namespaced: true,
   state: {
     // ログイン中のユーザー情報
     user: {},
@@ -21,10 +22,10 @@ export const auth = {
     successLogout: false,
     error: ""
   },
-  getters: {
-    loggedInUserInfo: state => state.loggedInUser,
-    detailUserInfo: state => state.user
-  },
+  // getters: {
+  //   loggedInUserInfo: state => state.loggedInUser,
+  //   detailUserInfo: state => state.user
+  // },
   mutations: {
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
@@ -184,3 +185,5 @@ export const auth = {
     }
   }
 }
+
+export default auth;

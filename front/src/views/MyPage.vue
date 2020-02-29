@@ -57,21 +57,21 @@ export default {
   computed: {
     // ログイン中のユーザーの情報を表示
     loggedInUserInfo () {
-      return this.$store.getters.loggedInUserInfo.user
+      return this.$store.state.auth.loggedInUser.user
     },
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
-      return this.$store.state.myQuestions
+      return this.$store.state.post.myQuestions
     }
   },
   methods: {
     // ログイン中のユーザーの投稿一覧を更新
     getMyPosts () {
-      this.$store.dispatch("myposts", this.loggedInUserInfo.id)
+      this.$store.dispatch("post/myposts", this.loggedInUserInfo.id)
     },
     // 詳細表示する投稿情報を更新
     getId (id) {
-      this.$store.dispatch("posting", id)
+      this.$store.dispatch("post/posting", id)
     }
  },
  // マウント時にログイン中のユーザーの投稿一覧を更新

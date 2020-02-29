@@ -51,21 +51,21 @@ export default {
   computed: {
     // 全てのユーザーの全ての投稿を表示
     allQuestions () {
-      return this.$store.state.questions
+      return this.$store.state.post.questions
     }
   },
   methods: {
     // ステートの投稿一覧を更新
     questions () {
-      this.$store.dispatch("posts")
+      this.$store.dispatch("post/posts")
     },
     // 詳細表示する投稿情報を更新
     getId (id) {
-      this.$store.dispatch("posting", id)
+      this.$store.dispatch("post/posting", id)
     },
     getUser (user) {
-      this.$store.dispatch("myposts", user.id)
-      this.$store.commit("detailUser", user)
+      this.$store.dispatch("post/myposts", user.id)
+      this.$store.commit("auth/detailUser", user)
     }
   },
   // マウント時にステートの投稿一覧を更新
