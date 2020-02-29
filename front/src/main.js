@@ -3,7 +3,7 @@ import axios from 'axios'
 import App from './App'
 import router from './router'
 import vuetify from './plugins/vuetify';
-import store from './store'
+import store from './store/index'
 
 import { extend, localize, ValidationProvider, ValidationObserver } from 'vee-validate';
 import ja from "vee-validate/dist/locale/ja.json"
