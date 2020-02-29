@@ -50,10 +50,10 @@ export const post = {
       .then(response => {
         if (response.status === 200) {
           router.push("/")
-          commit("post/postQuestion", post);
-          commit("post/changePostSnackbar", true);
+          commit("postQuestion", post);
+          commit("changePostSnackbar", true);
           setTimeout(function() {
-            commit("post/changePostSnackbar", false)
+            commit("changePostSnackbar", false)
           }, 2500)
         }
       })
@@ -62,21 +62,21 @@ export const post = {
     posts ({ commit }) {
       axios.get('http://localhost:3000/api/post/questions')
       .then(response => {
-        commit("post/AllQuestions", response.data)
+        commit("AllQuestions", response.data)
       })
     },
     // 投稿の詳細を取得
     posting ({ commit }, id) {
       axios.get('http://localhost:3000/api/post/questions/' + id)
       .then(response => {
-        commit("post/detailQuestion", response.data)
+        commit("detailQuestion", response.data)
       })
     },
     // ログインユーザーの投稿一覧を取得
     myposts ({ commit}, id) {
       axios.get('http://localhost:3000/api/post/mypost/' + id)
       .then(response => {
-        commit("post/myQuestions", response.data)
+        commit("myQuestions", response.data)
       })
     }
   }

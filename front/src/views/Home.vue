@@ -50,6 +50,9 @@ export default {
   },
   computed: {
     // 全てのユーザーの全ての投稿を表示
+    post () {
+      return this.$store.state.post
+    },
     allQuestions () {
       return this.$store.state.post.questions
     }

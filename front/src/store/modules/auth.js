@@ -79,26 +79,26 @@ export const auth = {
       .then(response => {
         // リクエストが成功
         if (response.status === 200) {
-          commit("auth/updateLoggedIn", true);
-          commit("auth/updateUser", {
+          commit("updateLoggedIn", true);
+          commit("updateUser", {
             user: response.data.data
           });
-          commit("auth/addUser", response.data.data)
-          commit("auth/updateToken", {
+          commit("addUser", response.data.data)
+          commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
             uid: response.headers.uid
           });
           router.push("/mypage")
-          commit("auth/changeSuccessSnackbar", true)
+          commit("changeSuccessSnackbar", true)
         }
       })
       .catch(error => {
         // とりあえずerrorを使う
-        commit("auth/updateError", error)
-        commit("auth/changeErrorSnackbar", true)
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
         setTimeout(function() {
-          commit("auth/changeErrorSnackbar", false)
+          commit("changeErrorSnackbar", false)
         }, 2500)
       })
     },
@@ -110,34 +110,34 @@ export const auth = {
       })
       .then(response => {
         if (response.status === 200) {
-          commit("auth/updateLoggedIn", true);
-          commit("auth/updateUser", {
+          commit("updateLoggedIn", true);
+          commit("updateUser", {
             user: response.data.data
           });
-          commit("auth/updateToken", {
+          commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
             uid: response.headers.uid
           });
           router.push("/mypage")
-          commit("auth/changeSuccessSnackbar", true)
+          commit("changeSuccessSnackbar", true)
         }
       })
       .catch(error => {
         // とりあえずerrorを使う
-        commit("auth/updateError", error)
-        commit("auth/changeErrorSnackbar", true)
+        commit("updateError", error)
+        commit("changeErrorSnackbar", true)
         setTimeout(function() {
-          commit("auth/changeErrorSnackbar", false)
+          commit("changeErrorSnackbar", false)
         }, 2500)
       })
     },
     // ログアウト処理
     signout ({ commit }, out) {
-      commit("auth/changeSuccessSnackbar", false)
-      commit("auth/updateLoggedIn", out);
-      commit("auth/updateUser", {user: {name: ""}})
-      commit("auth/updateToken", {})
+      commit("changeSuccessSnackbar", false)
+      commit("updateLoggedIn", out);
+      commit("updateUser", {user: {name: ""}})
+      commit("updateToken", {})
       router.push("/")
     },
     setavatar ({ commit }, data) {
@@ -150,7 +150,7 @@ export const auth = {
       })
       .then(response => {
         if (response.status === 200) {
-          commit("auth/updateAvatar", data.avatarUrl)
+          commit("updateAvatar", data.avatarUrl)
           router.push("/")
         }
       })
@@ -164,7 +164,7 @@ export const auth = {
       })
       .then(response => {
         if (response.status === 200) {
-          commit("auth/updateEmail", data.email)
+          commit("updateEmail", data.email)
           router.push("/")
         }
       })
@@ -178,7 +178,7 @@ export const auth = {
       })
       .then(response => {
         if (response.status === 200) {
-          commit("auth/updatePassword", data.password)
+          commit("updatePassword", data.password)
           router.push("/")
         }
       })

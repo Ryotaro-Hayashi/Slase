@@ -191,7 +191,7 @@ export default {
   methods: {
     logout () {
       this.dialog = false
-      this.$store.dispatch("post/signout", false)
+      this.$store.dispatch("auth/signout", false)
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)
