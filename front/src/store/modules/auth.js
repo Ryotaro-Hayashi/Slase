@@ -4,22 +4,19 @@ import router from '../../router'
 export const auth = {
   namespaced: true,
   state: {
-    // ログイン中のユーザー情報
-    user: {},
+    // 詳細表示するユーザー情報
+    detailUser: {},
     // ログインユーザーの情報
-    loggedInUser: {user: {name: ""}},
-    // ユーザー登録済みのユーザー情報
-    users: [],
+    loggedInUser: {name: ""},
     // トークン情報
     token: {},
     // ログイン状態
     loggedIn: false,
-    // 成功時のスナックバー
+    // 認証成功時のスナックバー
     userSuccessSnackbar: false,
-    // エラー時のスナックバー
+    // 認証エラー時のスナックバー
     userErrorSnackbar: false,
-    // successLogoutがtrueだとログイン成功,falseならログイン失敗
-    successLogout: false,
+    // エラーをcatchしたあとに形式的に使うためのstate
     error: ""
   },
   // getters: {
@@ -35,25 +32,20 @@ export const auth = {
     updateUser (state, user) {
       state.loggedInUser = user
     },
-    // 登録済みのユーザーを追加
-    addUser (state, user) {
-      // 他と違いユーザー情報を蓄積していくので、配列に追加していく
-      state.users.push(user)
-    },
     updateToken (state, token) {
       state.token = token
     },
     detailUser (state, user) {
-      state.user = user
+      state.detailUser = user
     },
     updateAvatar (state, avatar) {
       state.loggedInUser.user.avatar.url = avatar
     },
     updateEmail (state, email) {
-      state.user.email = email
+      state.detailUser.email = email
     },
     updatePassword (state, password) {
-      state.user.password = password
+      state.detailUser.password = password
     },
     // スナックバーで認証成功表示
     changeSuccessSnackbar (state, boolean) {
@@ -81,9 +73,8 @@ export const auth = {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
           commit("updateUser", {
-            user: response.data.data
+            user: response.data.data.user
           });
-          commit("addUser", response.data.data)
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -112,7 +103,7 @@ export const auth = {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
           commit("updateUser", {
-            user: response.data.data
+            user: response.data.data.user
           });
           commit("updateToken", {
             "access-token": response.headers["access-token"],
