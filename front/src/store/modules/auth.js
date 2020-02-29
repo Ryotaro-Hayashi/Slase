@@ -1,3 +1,6 @@
+import axios from 'axios'
+import router from '../../router'
+
 export const auth = {
   state: {
     // ログイン中のユーザー情報

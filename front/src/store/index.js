@@ -1,7 +1,5 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import axios from 'axios'
-import router from '../router'
 import createPersistedState from 'vuex-persistedstate';
 
 import auth from './modules/auth';
