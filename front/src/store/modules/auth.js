@@ -100,9 +100,7 @@ export const auth = {
       .then(response => {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
-          commit("updateUser", {
-            user: response.data.data.user
-          });
+          commit("updateLoggedInUser", response.data.data);
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,

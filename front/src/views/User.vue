@@ -8,7 +8,7 @@
             <v-avatar color="blue" tile size="100">
               <v-icon large dark>mdi-account-circle</v-icon>
             </v-avatar>
-            <div class="display-1 font-weight-bold">{{ detailUserInfo.name }}</div>
+            <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
           </v-col>
           <v-col>ここにフォローボタンを表示</v-col>
         </v-row>
@@ -57,10 +57,10 @@ export default {
     myPosts () {
       return this.$store.state.post.myQuestions
     },
-    detailUserInfo () {
-      return this.$store.state.auth.user
+    detailUser () {
+      return this.$store.state.auth.detailUser
     },
-    userToken () {
+    token () {
       return this.$store.state.auth.token
     }
   },
@@ -86,7 +86,7 @@ export default {
       this.$store.dispatch("auth/setavatar", {
         avatarUrl: this.avatarUrl,
         avatar: this.avatarFile,
-        token: this.userToken
+        token: this.token
       })
     }
   }

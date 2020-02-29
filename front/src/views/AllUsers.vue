@@ -3,8 +3,8 @@
   <h1 class="center">ユーザー一覧</h1>
   <!-- <ul>
 <li v-for="user in allUser" :key="user.id">{{ user }}</li>
-  </ul>
-</div> -->
+  </ul> -->
+</div>
 </template>
 
 <script>

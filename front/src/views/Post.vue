@@ -53,7 +53,7 @@ export default {
   }),
   computed: {
     // トークンを取得
-    userToken () {
+    token () {
       return this.$store.state.auth.token
     }
   },
@@ -64,7 +64,7 @@ export default {
         title: this.title,
         body: this.body,
         image: this.imageFile,
-        token: this.userToken
+        token: this.token
       })
     },
     // 選択された画像ファイルの処理

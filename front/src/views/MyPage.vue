@@ -12,7 +12,7 @@
                 <v-avatar color="blue" tile size="100">
                   <v-icon large dark>mdi-account-circle</v-icon>
                 </v-avatar>
-                <div class="display-1 font-weight-bold">{{ loggedInUserInfo.name }}</div>
+                <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
               </v-col>
               <v-col>ここにフォローボタンを表示</v-col>
             </v-row>
@@ -56,8 +56,8 @@ export default {
   name: 'MyPage',
   computed: {
     // ログイン中のユーザーの情報を表示
-    loggedInUserInfo () {
-      return this.$store.state.auth.loggedInUser.user
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     },
     // ログイン中のユーザーの投稿一覧表示
     myPosts () {
@@ -67,7 +67,7 @@ export default {
   methods: {
     // ログイン中のユーザーの投稿一覧を更新
     getMyPosts () {
-      this.$store.dispatch("post/myposts", this.loggedInUserInfo.id)
+      this.$store.dispatch("post/myposts", this.loggedInUser.id)
     },
     // 詳細表示する投稿情報を更新
     getId (id) {

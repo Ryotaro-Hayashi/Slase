@@ -68,7 +68,7 @@ export default {
     },
     getUser (user) {
       this.$store.dispatch("post/myposts", user.id)
-      this.$store.commit("auth/detailUser", user)
+      this.$store.commit("auth/changeDetailUser", user)
     }
   },
   // マウント時にステートの投稿一覧を更新
