@@ -4,60 +4,57 @@ import router from '../../router'
 export const auth = {
   namespaced: true,
   state: {
-    // 詳細表示するユーザー情報
-    detailUser: {},
+    // ログイン状態
+    loggedIn: false,
     // ログインユーザーの情報
     loggedInUser: {name: ""},
     // トークン情報
     token: {},
-    // ログイン状態
-    loggedIn: false,
+    // 詳細表示するユーザー情報
+    detailUser: {},
     // 認証成功時のスナックバー
-    userSuccessSnackbar: false,
-    // 認証エラー時のスナックバー
-    userErrorSnackbar: false,
+    successSnackbar: false,
+    // 認エラー時のスナックバー
+    errorSnackbar: false,
     // エラーをcatchしたあとに形式的に使うためのstate
     error: ""
   },
-  // getters: {
-  //   loggedInUserInfo: state => state.loggedInUser,
-  //   detailUserInfo: state => state.user
-  // },
   mutations: {
     // ログイン状態の更新
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
     },
     // ログイン中のユーザー情報を更新
-    updateUser (state, user) {
+    updateLoggedInUser (state, user) {
       state.loggedInUser = user
     },
     updateToken (state, token) {
       state.token = token
     },
-    detailUser (state, user) {
+    // 詳細表示するユーザーを変更
+    changeDetailUser (state, user) {
       state.detailUser = user
     },
-    updateAvatar (state, avatar) {
-      state.loggedInUser.user.avatar.url = avatar
-    },
     updateEmail (state, email) {
-      state.detailUser.email = email
+      state.loggedInUser.email = email
     },
     updatePassword (state, password) {
-      state.detailUser.password = password
+      state.loggedInUser.password = password
     },
-    // スナックバーで認証成功表示
+    // スナックバーで認証成功表示の切り替え
     changeSuccessSnackbar (state, boolean) {
-      state.userSuccessSnackbar = boolean
+      state.successSnackbar = boolean
     },
-    // スナックバーで認証エラー表示
+    // スナックバーで認証エラー表示の切り替え
     changeErrorSnackbar (state, boolean) {
-      state.userErrorSnackbar = boolean
+      state.errorSnackbar = boolean
     },
     updateError (state, error) {
       state.error = error
     }
+    // updateAvatar (state, avatar) {
+    //   state.loggedInUser.avatar.url = avatar
+    // },
   },
   actions: {
     // ユーザー登録処理
