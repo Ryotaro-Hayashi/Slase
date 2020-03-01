@@ -23,10 +23,10 @@
                 </v-avatar> -->
 
                 <v-list-item-content>
-                  <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link></v-list-item-title>
+                  <v-list-item-title><router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link></v-list-item-title>
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<router-link to="/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
+                      <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
                     </v-row>
                   </v-list-item-subtitle>

@@ -5,7 +5,7 @@
       <v-card-title>
 
         <v-col :cols="1">
-          <router-link to="/user">
+          <router-link to="/detail/user">
             <v-avatar color="blue" tile>
               <v-icon large dark>mdi-account-circle</v-icon>
             </v-avatar>
@@ -13,7 +13,7 @@
         </v-col>
 
         <v-col :cols="6">
-          <router-link to="/user" @click.native="getDetailUserPosts(detailPost.user)">
+          <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
             <span class="title font-weight-light">{{ detailPost.user.name }}</span>
           </router-link>
         </v-col>

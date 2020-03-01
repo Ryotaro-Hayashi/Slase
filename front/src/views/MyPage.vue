@@ -31,7 +31,7 @@
                   </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getDetailPost(loggedInUserPost.id)">{{ loggedInUserPost.title }}</router-link></v-list-item-title>
+                    <v-list-item-title><router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(loggedInUserPost.id)">{{ loggedInUserPost.title }}</router-link></v-list-item-title>
                     <v-list-item-subtitle>
                       <v-row>
                         <v-col>投稿者：{{ loggedInUserPost.user.name }}</v-col>
