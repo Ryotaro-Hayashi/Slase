@@ -14,20 +14,20 @@
 
         <v-col :cols="6">
           <router-link to="/user">
-            <span class="title font-weight-light">{{ Posting.user.name }}</span>
+            <span class="title font-weight-light">{{ detailPost.user.name }}</span>
           </router-link>
         </v-col>
 
         <v-col :cols="5">
-          <v-card-subtitle>{{ Posting.date }}{{ Posting.time }}に投稿</v-card-subtitle>
+          <v-card-subtitle>{{ detailPost.date }}{{ detailPost.time }}に投稿</v-card-subtitle>
         </v-col>
       </v-card-title>
 
-      <v-card-title><span class="headline font-weight-bold">{{ Posting.title }}</span></v-card-title>
+      <v-card-title><span class="headline font-weight-bold">{{ detailPost.title }}</span></v-card-title>
 
 
       <v-card-text class="font-weight-bold">
-      <h3>{{ Posting.body }}</h3>
+      <h3>{{ detailPost.body }}</h3>
       </v-card-text>
 
     </v-card>
@@ -40,8 +40,8 @@ export default {
   name: 'Posting',
   computed: {
     // 投稿の詳細表示
-    Posting () {
-      return this.$store.state.post.question
+    detailPost () {
+      return this.$store.state.post.detailPost
     }
   }
 
