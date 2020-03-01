@@ -52,9 +52,6 @@ export const auth = {
     updateError (state, error) {
       state.error = error
     }
-    // updateAvatar (state, avatar) {
-    //   state.loggedInUser.avatar.url = avatar
-    // },
   },
   actions: {
     // ユーザー登録処理
@@ -124,24 +121,8 @@ export const auth = {
       commit("changeSuccessSnackbar", false)
       commit("updateLoggedIn", false);
       commit("updateLoggedInUser", {name: ""})
-      commit("updateToken", {})
-      router.push("/")
+      commit("updateToken", {})  
     },
-    // setavatar ({ commit }, data) {
-    //   let formData = new FormData ()
-    //   formData.append("avatar", data.avatarFile)
-    //   axios.put('http://localhost:3000/api/auth', formData,
-    //   // リクエストヘッダーにトークンを追加
-    //   {
-    //     headers: data.token
-    //   })
-    //   .then(response => {
-    //     if (response.status === 200) {
-    //       commit("updateAvatar", data.avatarUrl)
-    //       router.push("/")
-    //     }
-    //   })
-    // },
     changeEmail ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth', {
         email: data.email
