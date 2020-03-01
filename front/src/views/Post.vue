@@ -31,7 +31,7 @@
           <v-card-text>
             <!-- スペースを用意 -->
             <v-card-actions class="mt-5">
-              <v-btn class="info ml-auto" @click="handleSubmit(question)">投稿</v-btn>
+              <v-btn class="info ml-auto" @click="handleSubmit(post)">投稿</v-btn>
             </v-card-actions>
           </v-card-text>
       </ValidationObserver>
@@ -53,18 +53,18 @@ export default {
   }),
   computed: {
     // トークンを取得
-    userToken () {
+    token () {
       return this.$store.state.auth.token
     }
   },
   methods: {
     // 投稿
-    question () {
+    post () {
       this.$store.dispatch("post/post", {
         title: this.title,
         body: this.body,
         image: this.imageFile,
-        token: this.userToken
+        token: this.token
       })
     },
     // 選択された画像ファイルの処理

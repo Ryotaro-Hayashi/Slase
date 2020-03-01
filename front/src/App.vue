@@ -7,10 +7,10 @@
         <v-list-item>
           <v-list-item-content>
             <v-avatar>
-              <img :src="loggedInUserInfo.avatar.url">
+              <img :src="loggedInUser.avatar.url">
             </v-avatar>
-            <v-list-item-title>{{ loggedInUserInfo.name }}</v-list-item-title>
-            <v-list-item-subtitle>{{ loggedInUserInfo.email }}</v-list-item-subtitle>
+            <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
+            <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -109,7 +109,7 @@
             <v-card-actions>
               <v-row justify="space-between">
                 <v-col class="center">
-                  <v-btn @click="logout" color="primary">ログアウト</v-btn>
+                  <v-btn @click="signOut" color="primary">ログアウト</v-btn>
                 </v-col>
 
                 <v-col class="center">
@@ -130,7 +130,7 @@
     <v-content>
 
       <v-snackbar v-model="userSuccessSnackbar" left top color="success" timeout=2500 class="top-align">
-        <v-icon>mdi-account</v-icon>こんにちは {{ loggedInUserInfo.name }}さん
+        <v-icon>mdi-account</v-icon>こんにちは {{ loggedInUser.name }}さん
         <v-btn text @click="closeSnackbar">
           Close
         </v-btn>
@@ -177,21 +177,21 @@ export default {
     loggedIn () {
       return this.$store.state.auth.loggedIn
     },
-    loggedInUserInfo () {
-      return this.$store.state.auth.loggedInUser.user
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     },
     userSuccessSnackbar () {
-      return this.$store.state.auth.userSuccessSnackbar
+      return this.$store.state.auth.successSnackbar
     },
     postSuccessSnackbar () {
-      return this.$store.state.post.postSuccessSnackbar
+      return this.$store.state.post.successSnackbar
     }
 
   },
   methods: {
-    logout () {
+    signOut () {
       this.dialog = false
-      this.$store.dispatch("auth/signout", false)
+      this.$store.dispatch("auth/signOut")
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)

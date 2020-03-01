@@ -8,7 +8,7 @@
             <v-avatar color="blue" tile size="100">
               <v-icon large dark>mdi-account-circle</v-icon>
             </v-avatar>
-            <div class="display-1 font-weight-bold">{{ detailUserInfo.name }}</div>
+            <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
           </v-col>
           <v-col>ここにフォローボタンを表示</v-col>
         </v-row>
@@ -20,18 +20,18 @@
         <v-divider></v-divider>
 
         <v-list three-line>
-          <template v-for="myPost in myPosts">
-            <v-list-item :key="myPost.id">
+          <template v-for="detailUserPost in detailUserPosts">
+            <v-list-item :key="detailUserPost.id">
               <v-list-item-avatar color="blue" tile>
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-list-item-avatar>
 
               <v-list-item-content>
-                <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getId(myPost.id)">{{ myPost.title }}</router-link></v-list-item-title>
+                <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getDetailPost(detailUserPost.id)">{{ detailUserPost.title }}</router-link></v-list-item-title>
                 <v-list-item-subtitle>
                   <v-row>
-                    <v-col>投稿者：{{ myPost.user.name }}</v-col>
-                    <v-col>投稿日時：{{ myPost.date }}</v-col>
+                    <v-col>投稿者：{{ detailUserPost.user.name }}</v-col>
+                    <v-col>投稿日時：{{ detailUserPost.date }}</v-col>
                   </v-row>
                 </v-list-item-subtitle>
                 <v-divider></v-divider>
@@ -53,21 +53,20 @@ export default {
     avatarFile: ''
   }),
   computed: {
-    // ログイン中のユーザーの投稿一覧表示
-    myPosts () {
-      return this.$store.state.post.myQuestions
+    detailUserPosts () {
+      return this.$store.state.post.detailUserPosts
     },
-    detailUserInfo () {
-      return this.$store.state.auth.user
+    detailUser () {
+      return this.$store.state.auth.detailUser
     },
-    userToken () {
+    token () {
       return this.$store.state.auth.token
     }
   },
   methods: {
-    // 詳細表示する投稿情報を更新
-    getId (id) {
-      this.$store.dispatch("post/posting", id)
+    // 投稿の詳細を取得
+    getDetailPost (id) {
+      this.$store.dispatch("post/getDetailPost", id)
     },
     onAvatarChange(e) {
       // filesプロパティは複数ファイルを管理できるように配列になっている
@@ -86,7 +85,7 @@ export default {
       this.$store.dispatch("auth/setavatar", {
         avatarUrl: this.avatarUrl,
         avatar: this.avatarFile,
-        token: this.userToken
+        token: this.token
       })
     }
   }

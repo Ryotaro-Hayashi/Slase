@@ -7,7 +7,7 @@
       </v-card-title>
       <v-card-text>
         <v-form>
-          <p>現在のメールアドレス：{{ loggedInUserInfo.email }}</p>
+          <p>現在のメールアドレス：{{ loggedInUser.email }}</p>
           <v-text-field prepend-icon="mdi-email" label="新しいメールアドレス" v-model="email" />
           <v-card-actions class="mt-5">
             <v-btn class="info ml-auto" @click="changeEmail">変更</v-btn>
@@ -28,18 +28,18 @@ export default {
     }
   },
   computed: {
-    loggedInUserInfo () {
-      return this.$store.state.auth.loggedInUser.user
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     },
-    userToken () {
+    token () {
       return this.$store.state.auth.token
     }
   },
   methods: {
     changeEmail () {
-      this.$store.dispatch("auth/email", {
+      this.$store.dispatch("auth/changeEmail", {
         email: this.email,
-        token: this.userToken
+        token: this.token
       })
     }
   }

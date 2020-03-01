@@ -46,7 +46,7 @@
           </ValidationProvider>
           <!-- ユーザー登録ボタンの配置エリア -->
           <v-card-actions class="mt-5">
-            <v-btn class="info ml-auto" v-on:click="register" :disabled="invalid">ユーザー登録</v-btn>
+            <v-btn class="info ml-auto" v-on:click="signUp" :disabled="invalid">ユーザー登録</v-btn>
           </v-card-actions>
         </v-form>
         </v-card-text>
@@ -74,13 +74,13 @@ export default {
   }),
   computed: {
     userErrorSnackbar () {
-      return this.$store.state.auth.userErrorSnackbar
+      return this.$store.state.auth.errorSnackbar
     }
   },
   methods: {
     // ユーザー登録ボタンで引数にname,....を与えて、storeのsignupミューテーションを呼び出し
-    register () {
-      this.$store.dispatch("auth/signup", {
+    signUp () {
+      this.$store.dispatch("auth/signUp", {
         name: this.name,
         email: this.email,
         password: this.password,

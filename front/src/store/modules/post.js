@@ -4,33 +4,22 @@ import router from '../../router'
 export const post = {
   namespaced: true,
   state: {
-    q: {},
-    // 詳細表示する投稿情報
-    question: {},
-    // 全投稿
-    questions: {},
-    // ログイン中のユーザーの全投稿
-    myQuestions: {},
-    postSuccessSnackbar: false
+    // 詳細表示する投稿
+    detailPost: {},
+    // 詳細表示するユーザーの投稿一覧
+    detailUserPosts: {},
+    // 投稿成功時に表示するスナックバー
+    successSnackbar: false
   },
-  // getters: {
-  //
-  // },
   mutations: {
-    postQuestion (state, post) {
-      state.q = post
+    changeDetailPost (state, post) {
+      state.detailPost = post
     },
-    AllQuestions (state, posts) {
-      state.questions = posts
+    updateDetailUserPosts (state, posts) {
+      state.detailUserPosts = posts
     },
-    myQuestions (state, posts) {
-      state.myQuestions = posts
-    },
-    detailQuestion (state, post) {
-      state.question = post
-    },
-    changePostSnackbar (state, boolean) {
-      state.postSuccessSnackbar = boolean
+    changeSuccessSnackbar (state, boolean) {
+      state.successSnackbar = boolean
     }
   },
   actions: {
@@ -50,33 +39,25 @@ export const post = {
       .then(response => {
         if (response.status === 200) {
           router.push("/")
-          commit("postQuestion", post);
-          commit("changePostSnackbar", true);
+          commit("changeSuccessSnackbar", true);
           setTimeout(function() {
-            commit("changePostSnackbar", false)
+            commit("changeSuccessSnackbar", false)
           }, 2500)
         }
       })
     },
-    // 投稿一覧を取得
-    posts ({ commit }) {
-      axios.get('http://localhost:3000/api/post/questions')
-      .then(response => {
-        commit("AllQuestions", response.data)
-      })
-    },
     // 投稿の詳細を取得
-    posting ({ commit }, id) {
+    getDetailPost ({ commit }, id) {
       axios.get('http://localhost:3000/api/post/questions/' + id)
       .then(response => {
-        commit("detailQuestion", response.data)
+        commit("changeDetailPost", response.data)
       })
     },
-    // ログインユーザーの投稿一覧を取得
-    myposts ({ commit}, id) {
+    // 詳細表示するユーザーの投稿一覧を取得
+    getDetailUserPosts ({ commit }, id) {
       axios.get('http://localhost:3000/api/post/mypost/' + id)
       .then(response => {
-        commit("myQuestions", response.data)
+        commit("updateDetailUserPosts", response.data)
       })
     }
   }

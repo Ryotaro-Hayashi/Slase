@@ -11,8 +11,8 @@
 
         <v-card-text>
           <v-list three-line>
-            <template v-for="question in allQuestions">
-              <v-list-item :key="question.id">
+            <template v-for="post in allPosts">
+              <v-list-item :key="post.id">
                 <!-- tileで枠線を視覚にする -->
                 <v-list-item-avatar color="blue" tile>
                   <v-icon large dark>mdi-account-circle</v-icon>
@@ -23,11 +23,11 @@
                 </v-avatar> -->
 
                 <v-list-item-content>
-                  <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getId(question.id)">{{ question.title }}</router-link></v-list-item-title>
+                  <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link></v-list-item-title>
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<router-link to="/user" @click.native="getUser(question.user)">{{ question.user.name }}</router-link></v-col>
-                      <v-col>投稿日時：{{ question.date }}</v-col>
+                      <v-col>投稿者：<router-link to="/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
+                      <v-col>投稿日時：{{ post.date }}</v-col>
                     </v-row>
                   </v-list-item-subtitle>
                   <v-divider></v-divider>
@@ -46,34 +46,36 @@ export default {
   name: 'Home',
   data () {
     return {
+      allPosts: ''
     }
   },
   computed: {
-    // 全てのユーザーの全ての投稿を表示
-    post () {
-      return this.$store.state.post
-    },
-    allQuestions () {
-      return this.$store.state.post.questions
-    }
+
   },
   methods: {
-    // ステートの投稿一覧を更新
-    questions () {
-      this.$store.dispatch("post/posts")
+    // 投稿一覧を取得
+    getAllPosts () {
+      this.$http.get('http://localhost:3000/api/post/questions')
+      .then(response => {
+        if (response.status === 200) {
+          this.allPosts = response.data
+        }
+      })
     },
-    // 詳細表示する投稿情報を更新
-    getId (id) {
-      this.$store.dispatch("post/posting", id)
+    // 投稿の詳細を取得
+    getDetailPost (id) {
+      this.$store.dispatch("post/getDetailPost", id)
     },
-    getUser (user) {
-      this.$store.dispatch("post/myposts", user.id)
-      this.$store.commit("auth/detailUser", user)
+    // 詳細表示するユーザーの投稿一覧を取得
+    getDetailUserPosts (user) {
+      this.$store.dispatch("post/getDetailUserPosts", user.id)
+      // 詳細表示しているユーザーを更新
+      this.$store.commit("auth/changeDetailUser", user)
     }
   },
   // マウント時にステートの投稿一覧を更新
-  mounted: function() {
-    this.questions();
+  mounted () {
+    this.getAllPosts();
   }
 }
 </script>
