@@ -4,6 +4,12 @@ import router from '../../router'
 export const post = {
   namespaced: true,
   state: {
+    // 詳細表示する投稿
+    detailPost: {},
+    // 全てのユーザーの全ての投稿
+    allPosts: {},
+    // ログインユーザーの投稿
+    loggedInUserPosts: {},
     // 投稿成功時に表示するスナックバー
     successSnackbar: false
   },
