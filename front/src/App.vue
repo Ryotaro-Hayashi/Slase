@@ -184,7 +184,7 @@ export default {
       return this.$store.state.auth.successSnackbar
     },
     postSuccessSnackbar () {
-      return this.$store.state.post.postSuccessSnackbar
+      return this.$store.state.post.successSnackbar
     }
 
   },
