@@ -26,7 +26,7 @@
                   <v-list-item-title><router-link class="title font-weight-bold" to="/posting" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link></v-list-item-title>
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<router-link to="/user" @click.native="getDetailUser(post.user)">{{ post.user.name }}</router-link></v-col>
+                      <v-col>投稿者：<router-link to="/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
                     </v-row>
                   </v-list-item-subtitle>
@@ -62,11 +62,14 @@ export default {
         }
       })
     },
+    // 投稿の詳細を取得
     getDetailPost (id) {
-      this.axios.get('http://localhost:3000/api/post/questions/' + id)
+      this.$store.dispatch("post/getDetailPost", id)
     },
-    getDetailUser (user) {
-      this.axios.get('http://localhost:3000/api/post/mypost/' + user.id)
+    // 詳細表示するユーザーの投稿一覧を取得
+    getDetailUserPosts (user) {
+      this.$store.dispatch("post/getDetailUserPosts", user.id)
+      // 詳細表示しているユーザーを更新
       this.$store.commit("auth/changeDetailUser", user)
     }
   },
