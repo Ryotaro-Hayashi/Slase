@@ -14,6 +14,15 @@ export const post = {
     successSnackbar: false
   },
   mutations: {
+    changeDetailPost (state, post) {
+      state.detailPost = post
+    },
+    updateAllPosts (state, posts) {
+      state.allPosts = posts
+    },
+    changeLoggedInUserPosts (state, posts) {
+      state.loggedInUserPosts = posts
+    },
     changeSuccessSnackbar (state, boolean) {
       state.successSnackbar = boolean
     }
