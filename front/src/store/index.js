@@ -15,7 +15,7 @@ export default new Vuex.Store({
   // localstrageにstateを保存
   plugins: [
     createPersistedState({
-      paths: ['auth', 'post']
+      paths: ['auth.loggedIn', 'auth.loggedInUser','auth.token','auth.successSnackbar']
     })
   ]
 });

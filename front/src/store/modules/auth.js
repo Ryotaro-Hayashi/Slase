@@ -14,7 +14,7 @@ export const auth = {
     detailUser: {},
     // 認証成功時のスナックバー
     successSnackbar: false,
-    // 認エラー時のスナックバー
+    // 認証エラー時のスナックバー
     errorSnackbar: false,
     // エラーをcatchしたあとに形式的に使うためのstate
     error: ""

@@ -39,9 +39,9 @@ export const post = {
       .then(response => {
         if (response.status === 200) {
           router.push("/")
-          commit("changePostSnackbar", true);
+          commit("changeSuccessSnackbar", true);
           setTimeout(function() {
-            commit("changePostSnackbar", false)
+            commit("changeSuccessSnackbar", false)
           }, 2500)
         }
       })
