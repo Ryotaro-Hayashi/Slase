@@ -2,38 +2,44 @@
   <div class="post">
     <v-app>
       <v-card class="mx-auto mt-10 mb-10" width="1200px">
+        <!-- 投稿ボタンを押した際にもvalidation -->
         <ValidationObserver v-slot="{ handleSubmit }">
+          <!-- タイトル入力フォーム -->
           <v-card-text>
+            <!-- validationを付与 -->
             <ValidationProvider v-slot="{ errors }" name="タイトル" rules="required">
-              <v-text-field label="タイトル" outlined class="posting" v-model="title" :error-messages="errors[0]" />
+              <v-text-field label="タイトル" outlined class="post-font-size" v-model="title" :error-messages="errors[0]" />
             </ValidationProvider>
           </v-card-text>
 
+          <!-- 本文入力フォーム -->
           <v-card-text>
             <ValidationProvider v-slot="{ errors }" name="本文" rules="required">
-              <v-textarea label="本文" outlined height="500" class="posting" v-model="body" :error-messages="errors[0]" />
+              <v-textarea label="本文" outlined height="500" class="post-font-size" v-model="body" :error-messages="errors[0]" />
             </ValidationProvider>
           </v-card-text>
 
           <v-card-text>
             <v-row>
+              <!-- 画像アップロードフォーム -->
               <v-col>
                 <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
                 <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
               </v-col>
+              <!-- プレビューゾーン -->
               <v-col>
-                <!-- プレビューゾーン -->
                 <v-img :src="imageUrl" />
               </v-col>
             </v-row>
           </v-card-text>
 
           <v-card-text>
-            <!-- スペースを用意 -->
+            <!-- 投稿ボタンのためのスペースを用意 -->
             <v-card-actions class="mt-5">
               <v-btn class="info ml-auto" @click="handleSubmit(post)">投稿</v-btn>
             </v-card-actions>
           </v-card-text>
+
       </ValidationObserver>
       </v-card>
     </v-app>
@@ -91,7 +97,8 @@ export default {
 </script>
 
 <style scoped>
-.posting {
+/* 投稿時のフォントサイズ */
+.post-font-size {
   font-size: 30px;
 }
 </style>

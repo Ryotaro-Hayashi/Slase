@@ -2,15 +2,15 @@ import Vue from "vue"
 import Router from 'vue-router'
 
 import Home from './views/Home'
-import Signup from './views/Signup'
-import Signin from './views/Signin'
+import SignUp from './views/SignUp'
+import SignIn from './views/SignIn'
 import MyPage from './views/MyPage'
-import AllUsers from './views/AllUsers'
+// import AllUsers from './views/AllUsers'
 import Post from './views/Post'
-import Posting from './views/Posting'
-import User from './views/User'
-import Email from './views/Email'
-import Password from './views/Password'
+import DetailPost from './views/DetailPost'
+import DetailUser from './views/DetailUser'
+import MyEmail from './views/MyEmail'
+import MyPassword from './views/MyPassword'
 
 Vue.use(Router)
 
@@ -24,48 +24,48 @@ export default new Router({
     },
     {
       path: '/signup',
-      name: 'Signup',
-      component: Signup
+      name: 'SignUp',
+      component: SignUp
     },
     {
       path: '/signin',
-      name: 'Signin',
-      component: Signin
+      name: 'SignIn',
+      component: SignIn
     },
     {
       path: '/mypage',
       name: 'MyPage',
       component: MyPage
     },
-    {
-      path: '/users',
-      name: 'AllUsers',
-      component: AllUsers
-    },
+    // {
+    //   path: '/users',
+    //   name: 'AllUsers',
+    //   component: AllUsers
+    // },
     {
       path: '/post',
       name: 'Post',
       component: Post
     },
     {
-      path: '/posting',
-      name: 'Posting',
-      component: Posting
+      path: '/detail/post',
+      name: 'DetailPost',
+      component: DetailPost
     },
     {
-      path: '/user',
-      name: 'User',
-      component: User
+      path: '/detail/user',
+      name: 'DetailUser',
+      component: DetailUser
     },
     {
-      path: '/user/email',
-      name: 'Email',
-      component: Email
+      path: '/mypage/email',
+      name: 'MyEmail',
+      component: MyEmail
     },
     {
-      path: '/user/password',
-      name: 'Pasword',
-      component: Password
+      path: '/mypage/password',
+      name: 'MyPasword',
+      component: MyPassword
     }
   ]
 })
