@@ -14,6 +14,8 @@ export default new Vuex.Store({
   },
   // localstrageにstateを保存
   plugins: [
-    createPersistedState()
+    createPersistedState({
+      paths: ['auth', 'post']
+    })
   ]
 });
