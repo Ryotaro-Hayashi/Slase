@@ -6,8 +6,6 @@ export const post = {
   state: {
     // 詳細表示する投稿
     detailPost: {},
-    // 全てのユーザーの全ての投稿
-    allPosts: {},
     // ログインユーザーの投稿
     loggedInUserPosts: {},
     // 投稿成功時に表示するスナックバー
@@ -17,10 +15,7 @@ export const post = {
     changeDetailPost (state, post) {
       state.detailPost = post
     },
-    updateAllPosts (state, posts) {
-      state.allPosts = posts
-    },
-    changeLoggedInUserPosts (state, posts) {
+    updateLoggedInUserPosts (state, posts) {
       state.loggedInUserPosts = posts
     },
     changeSuccessSnackbar (state, boolean) {
@@ -49,6 +44,20 @@ export const post = {
             commit("changePostSnackbar", false)
           }, 2500)
         }
+      })
+    },
+    // 投稿の詳細を取得
+    getDetailPost ({ commit }, id) {
+      axios.get('http://localhost:3000/api/post/questions/' + id)
+      .then(response => {
+        commit("changeDetailPost", response.data)
+      })
+    },
+    // ログインユーザーの投稿を取得
+    getLoggedInUserPosts ({ commit }, id) {
+      axios.get('http://localhost:3000/api/post/mypost/' + id)
+      .then(response => {
+        commit("updateLoggedInUserPosts", response.data)
       })
     }
   }
