@@ -13,7 +13,7 @@
         </v-col>
 
         <v-col :cols="6">
-          <router-link to="/user">
+          <router-link to="/user" @click.native="getDetailUserPosts(detailPost.user)">
             <span class="title font-weight-light">{{ detailPost.user.name }}</span>
           </router-link>
         </v-col>
@@ -42,6 +42,14 @@ export default {
     // 投稿の詳細表示
     detailPost () {
       return this.$store.state.post.detailPost
+    }
+  },
+  methods: {
+    // 詳細表示するユーザーの投稿一覧を取得
+    getDetailUserPosts (user) {
+      this.$store.dispatch("post/getDetailUserPosts", user.id)
+      // 詳細表示しているユーザーを更新
+      this.$store.commit("auth/changeDetailUser", user)
     }
   }
 
