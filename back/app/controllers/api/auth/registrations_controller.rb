@@ -9,12 +9,8 @@ module Api
       end
 
       def account_update_params
-        params.permit(:name, :email, :avatar)
+        params.permit(:name, :email)
       end
-
-      # def configure_account_update_params
-      #   devise_parameter_sanitizer.permit(:account_update, keys: [:name, :email, :avatar, :avatar_cache, :remove_avatar])
-      # end
 
     end
   end
