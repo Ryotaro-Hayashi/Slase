@@ -10,9 +10,6 @@ class User < ActiveRecord::Base
   # questionsを紐付け
   has_many :questions
 
-  # uploaderをuserにマウント
-  mount_uploader :avatar, AvatarUploader
-
   # name は空なしで最大50文字で一意性あり
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
 
