@@ -38,7 +38,6 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.2]
       ## User Info
       t.string :name, null: false, default: ""
       t.string :email, null: false, default: ""
-      t.string :avatar, default: 'https://avatars0.githubusercontent.com/u/9064066?v=4&s=460'
 
       ## Tokens
       t.text :tokens
