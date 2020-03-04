@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
-    t.string "avatar", default: "https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
