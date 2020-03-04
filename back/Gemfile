@@ -1,0 +1,47 @@
+source 'https://rubygems.org'
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+
+ruby '2.6.5'
+gem 'rails', '~> 5.2.4'
+gem 'puma', '~> 3.11'
+
+# キャッシュを利用して起動時間を最適化するGem
+# gem 'bootsnap', '>= 1.1.0', require: false
+
+# レスポンスボディの加工
+gem 'active_model_serializers'
+
+# クロスドメイン対策
+gem 'rack-cors'
+
+# MySQLを追加
+gem 'mysql2'
+
+# トークンベースの認証を行うためのgem
+gem 'devise'
+gem 'devise_token_auth'
+
+# 外部情報を使った認証に必要なGem
+gem 'omniauth'
+
+# 画像のアップロードするためのGem
+gem 'carrierwave'
+# 画像をリサイズするためのGem
+# gem 'mini_magick'
+
+group :development, :test do
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+end
+
+group :development do
+  gem 'listen', '>= 3.0.5', '< 3.2'
+  # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
+  gem 'spring'
+  gem 'spring-watcher-listen', '~> 2.0.0'
+end
+
+group :production do
+end
+
+# Windows does not include zoneinfo files, so bundle the tzinfo-data gem
+gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
