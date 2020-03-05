@@ -44,6 +44,7 @@
         <v-divider />
 
         <!-- コメント表示エリア -->
+        <v-card-text class="font-weight-bold">コメント</v-card-text>
         <v-card-text class="font-weight-bold">{{ comment }}</v-card-text>
 
       </v-card>

@@ -7,4 +7,5 @@ class UserSerializer < ActiveModel::Serializer
              :password
 
   has_many :questions
+  has_many :comments
 end
