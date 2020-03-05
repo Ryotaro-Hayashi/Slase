@@ -43,16 +43,24 @@
 
         <v-divider />
 
-        <v-card-text class="font-weight-bold">コメント</v-card-text>
+
         <v-card-text>
           <!-- コメントをリスト表示 -->
-          <v-list>
+          <v-list three-line>
             <template v-for="eachComment in detailPost.comments">
               <v-list-item :key="eachComment.id">
-                <!-- コメント内容 -->
-                <v-list-item-title>
-                  {{ eachComment.content }}
-                </v-list-item-title>
+                <v-list-item-avatar color="blue" tile>
+                  <v-icon large dark>mdi-account-circle</v-icon>
+                </v-list-item-avatar>
+
+                <v-list-item-content>
+                  <!-- コメント内容 -->
+                  <v-list-item-title>
+                    {{ eachComment.content }}
+                  </v-list-item-title>
+
+                  <v-divider></v-divider>
+                </v-list-item-content>
               </v-list-item>
             </template>
           {{ detailPost.comments }}
