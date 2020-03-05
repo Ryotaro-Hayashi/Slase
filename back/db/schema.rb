@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_01_27_094824) do
 
-  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.string "date"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -39,7 +39,6 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
-    t.string "avatar", default: "https://avatars0.githubusercontent.com/u/9064066?v=4&s=460"
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
