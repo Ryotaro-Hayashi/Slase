@@ -46,7 +46,7 @@
 
               <v-card-actions>
                 <!-- ゲストログインボタン-->
-                <v-btn class="info ml-auto" @click="handleSubmit(signIn)">ゲストログイン</v-btn>
+                <v-btn class="info ml-auto" @click="guestSignIn">ゲストログイン</v-btn>
               </v-card-actions>
 
             </v-form>
@@ -79,6 +79,12 @@ export default {
       this.$store.dispatch("auth/signIn", {
         email: this.email,
         password: this.password
+      })
+    },
+    guestSignIn () {
+      this.$store.dispatch("auth/signIn", {
+        email: 'guest@guest.com',
+        password: 'guestpass'
       })
     },
     closeSnackbar () {
