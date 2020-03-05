@@ -36,11 +36,21 @@
         <!-- 本文 -->
         <v-card-text class="font-weight-bold">{{ detailPost.body }}</v-card-text>
 
+        <v-divider />
+
+        <!-- コメント表示エリア -->
+        <v-card-text class="font-weight-bold">コメント数、いいね数など</v-card-text>
+
+        <v-divider />
+
+        <!-- コメント表示エリア -->
+        <v-card-text class="font-weight-bold">{{ comment }}</v-card-text>
+
       </v-card>
 
       <!-- コメント追加エリア -->
       <v-card width="800px" class="mx-auto mt-10">
-        <v-card-title>コメント</v-card-title>
+        <v-card-title>コメントを追加</v-card-title>
 
         <!-- コメント追加フォーム -->
         <v-card-text>
