@@ -38,14 +38,14 @@
 
         <v-divider />
 
-        <!-- コメント表示エリア -->
+        <!-- good, bad, コメント数 -->
         <v-card-text class="font-weight-bold">コメント数、いいね数など</v-card-text>
 
         <v-divider />
 
         <!-- コメント表示エリア -->
         <v-card-text class="font-weight-bold">コメント</v-card-text>
-        <v-card-text class="font-weight-bold">{{ comment }}</v-card-text>
+        <v-card-text class="font-weight-bold">{{ detailPost.comments }}</v-card-text>
 
       </v-card>
 
