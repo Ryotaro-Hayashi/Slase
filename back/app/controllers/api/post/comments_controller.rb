@@ -15,4 +15,10 @@ class Api::Post::CommentsController < ApplicationController
     end
   end
 
+  def index
+    # comments = Comment.find_by(question_id: params[:question_id])
+    comments = Comment.all
+    render json: comments
+  end
+
 end

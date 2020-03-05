@@ -1,4 +1,4 @@
 class Comment < ApplicationRecord
-  belogns_to :user
-  belogns_to :question
+  belongs_to :user
+  belongs_to :question
 end
