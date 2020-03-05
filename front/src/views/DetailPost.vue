@@ -37,6 +37,19 @@
         <v-card-text class="font-weight-bold">{{ detailPost.body }}</v-card-text>
 
       </v-card>
+
+      <!-- コメント追加フォーム -->
+      <v-card width="800px" class="mx-auto mt-10">
+        <v-card-title>コメント</v-card-title>
+
+        <v-card-text>
+          <v-textarea label="コメントを入力" outlined height="100px" />
+        </v-card-text>
+
+        <v-card-actions>
+          <v-btn class="info ml-auto">コメント</v-btn>
+        </v-card-actions>
+      </v-card>
     </v-app>
   </div>
 </template>
