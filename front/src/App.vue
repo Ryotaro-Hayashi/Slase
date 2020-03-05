@@ -8,7 +8,7 @@
           <v-list-item-content>
             <!-- アバター -->
             <v-avatar>
-              <img :src="loggedInUser.avatar.url">
+              <img src="https://cdn.vuetifyjs.com/images/john.jpg">
             </v-avatar>
             <!-- 名前とメアド -->
             <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
