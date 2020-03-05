@@ -10,6 +10,8 @@ class User < ActiveRecord::Base
   # questionsを紐付け
   has_many :questions
 
+  has_many :comments
+
   # name は空なしで最大50文字で一意性あり
   validates :name, presence: true, length: { maximum: 50 }, uniqueness: true
 

@@ -2,6 +2,7 @@ class Question < ApplicationRecord
 
   # ユーザーモデルと一対一でリレーション
   belongs_to :user
+  has_many :comments
 
   mount_uploader :image, ImageUploader
 
