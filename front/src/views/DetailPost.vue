@@ -36,6 +36,45 @@
         <!-- 本文 -->
         <v-card-text class="font-weight-bold">{{ detailPost.body }}</v-card-text>
 
+        <v-divider />
+
+        <!-- good, bad, コメント数 -->
+        <v-card-text class="font-weight-bold">コメント数、いいね数など</v-card-text>
+
+        <v-divider />
+
+        <v-card-text class="font-weight-bold">コメント</v-card-text>
+        <v-card-text>
+          <!-- コメントをリスト表示 -->
+          <v-list>
+            <template v-for="eachComment in detailPost.comments">
+              <v-list-item :key="eachComment.id">
+                <!-- コメント内容 -->
+                <v-list-item-title>
+                  {{ eachComment.content }}
+                </v-list-item-title>
+              </v-list-item>
+            </template>
+          {{ detailPost.comments }}
+        </v-list>
+        </v-card-text>
+
+
+      </v-card>
+
+      <!-- コメント追加エリア -->
+      <v-card width="800px" class="mx-auto mt-10">
+        <v-card-title>コメントを追加</v-card-title>
+
+        <!-- コメント追加フォーム -->
+        <v-card-text>
+          <v-textarea label="コメントを入力" outlined height="100px" v-model="comment" />
+        </v-card-text>
+
+        <!-- コメント追加ボタン -->
+        <v-card-actions>
+          <v-btn class="info ml-auto" @click="uploadComment">コメント</v-btn>
+        </v-card-actions>
       </v-card>
     </v-app>
   </div>
@@ -44,10 +83,18 @@
 <script>
 export default {
   name: 'DetailPost',
+  data () {
+    return {
+      comment: ''
+    }
+  },
   computed: {
     // 投稿の詳細表示
     detailPost () {
       return this.$store.state.post.detailPost
+    },
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     }
   },
   methods: {
@@ -56,6 +103,20 @@ export default {
       this.$store.dispatch("post/getDetailUserPosts", user.id)
       // 詳細表示しているユーザーを更新
       this.$store.commit("auth/changeDetailUser", user)
+    },
+    // コメントをアップロード
+    uploadComment () {
+      this.$http.post('http://localhost:3000/api/post/comments',
+      {
+        user_id: this.loggedInUser.id,
+        content: this.comment,
+        question_id: this.detailPost.id
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.$router.push("/detail/post")
+        }
+      })
     }
   }
 }

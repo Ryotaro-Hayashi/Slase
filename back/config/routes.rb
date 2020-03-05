@@ -9,8 +9,11 @@ Rails.application.routes.draw do
     namespace 'post' do
       # question作成のためのエンドポイント
       resources :questions
-      # ユーザーのidによって、そのidのユーザーのquestionを返すエンドポイント 
+      # ユーザーのidによって、そのidのユーザーのquestionを返すエンドポイント
       get '/mypost/:id', to: 'questions#mypost'
+
+      # コメントのエンドポイント 
+      resources :comments
     end
 
   end

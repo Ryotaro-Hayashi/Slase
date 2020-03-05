@@ -8,7 +8,9 @@ class QuestionSerializer < ActiveModel::Serializer
              :date,
              :time,
              :created_at,
-             :user
+             :user,
+             :comments
 
   has_one :user
+  has_many :comments
 end
