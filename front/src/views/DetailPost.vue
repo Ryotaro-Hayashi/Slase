@@ -79,6 +79,9 @@ export default {
     // 投稿の詳細表示
     detailPost () {
       return this.$store.state.post.detailPost
+    },
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     }
   },
   methods: {
@@ -92,8 +95,9 @@ export default {
     uploadComment () {
       this.$http.post('http://localhost:3000/api/post/comments',
       {
-        // user_id: this.
-        content: this.comment
+        user_id: this.loggedInUser.id,
+        content: this.comment,
+        question_id: this.detailPost.id
       })
       .then(response => {
         if (response.status === 200) {
