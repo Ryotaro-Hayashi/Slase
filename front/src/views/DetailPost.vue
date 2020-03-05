@@ -45,7 +45,19 @@
 
         <!-- コメント表示エリア -->
         <v-card-text class="font-weight-bold">コメント</v-card-text>
-        <v-card-text class="font-weight-bold">{{ detailPost.comments }}</v-card-text>
+        <v-card-text>
+          <v-list>
+            <template v-for="eachComment in detailPost.comments">
+              <v-list-item :key="eachComment.id">
+                <v-list-item-title>
+                  {{ eachComment.content }}
+                </v-list-item-title>
+              </v-list-item>
+            </template>
+          {{ detailPost.comments }}
+        </v-list>
+        </v-card-text>
+
 
       </v-card>
 
@@ -101,7 +113,7 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          this.$router.push("/")
+          this.$router.push("/detail/post")
         }
       })
     }
