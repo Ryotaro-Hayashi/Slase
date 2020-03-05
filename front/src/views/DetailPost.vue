@@ -97,7 +97,7 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          this.content = response.data
+          this.$router.push("/")
         }
       })
     }
