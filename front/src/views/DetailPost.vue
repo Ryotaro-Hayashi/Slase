@@ -38,16 +38,18 @@
 
       </v-card>
 
-      <!-- コメント追加フォーム -->
+      <!-- コメント追加エリア -->
       <v-card width="800px" class="mx-auto mt-10">
         <v-card-title>コメント</v-card-title>
 
+        <!-- コメント追加フォーム -->
         <v-card-text>
-          <v-textarea label="コメントを入力" outlined height="100px" />
+          <v-textarea label="コメントを入力" outlined height="100px" v-model="comment" />
         </v-card-text>
 
+        <!-- コメント追加ボタン -->
         <v-card-actions>
-          <v-btn class="info ml-auto">コメント</v-btn>
+          <v-btn class="info ml-auto" @click="uploadComment">コメント</v-btn>
         </v-card-actions>
       </v-card>
     </v-app>
@@ -57,6 +59,11 @@
 <script>
 export default {
   name: 'DetailPost',
+  data () {
+    return {
+      comment: ''
+    }
+  },
   computed: {
     // 投稿の詳細表示
     detailPost () {
@@ -69,6 +76,19 @@ export default {
       this.$store.dispatch("post/getDetailUserPosts", user.id)
       // 詳細表示しているユーザーを更新
       this.$store.commit("auth/changeDetailUser", user)
+    },
+    // コメントをアップロード
+    uploadComment () {
+      this.$http.post('http://localhost:3000/api/post/comments',
+      {
+        // user_id: this.
+        content: this.comment
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.content = response.data
+        }
+      })
     }
   }
 }
