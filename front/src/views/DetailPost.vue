@@ -43,12 +43,13 @@
 
         <v-divider />
 
-        <!-- コメント表示エリア -->
         <v-card-text class="font-weight-bold">コメント</v-card-text>
         <v-card-text>
+          <!-- コメントをリスト表示 -->
           <v-list>
             <template v-for="eachComment in detailPost.comments">
               <v-list-item :key="eachComment.id">
+                <!-- コメント内容 -->
                 <v-list-item-title>
                   {{ eachComment.content }}
                 </v-list-item-title>
