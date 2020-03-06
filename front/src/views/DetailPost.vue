@@ -59,6 +59,16 @@
                     {{ eachComment.content }}
                   </v-list-item-title>
 
+                  <!-- コメント投稿者 -->
+                  <v-list-item-title>
+                    コメント投稿者
+                  </v-list-item-title>
+
+                  <!-- コメント投稿日時 -->
+                  <v-list-item-title>
+                    コメント投稿日時
+                  </v-list-item-title>
+
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
