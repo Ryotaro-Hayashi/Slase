@@ -4,4 +4,7 @@ class CommentSerializer < ActiveModel::Serializer
              :created_at
 
   has_one :user
+  # , serializer: UserSerializer
+  # has_one :question
+  # , serializer: QuestionSerializer
 end

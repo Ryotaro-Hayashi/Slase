@@ -3,9 +3,10 @@ class UserSerializer < ActiveModel::Serializer
   attributes :id,
              :name,
              :email,
-             :created_at,
-             :password
+             :created_at
 
   has_many :questions
+  # , serializer: QuestionSerializer
   has_many :comments
+  # , serializer: CommentSerializer
 end
