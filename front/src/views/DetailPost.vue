@@ -7,7 +7,7 @@
         <v-card-title>
           <!-- アバター -->
           <v-col :cols="1">
-            <router-link to="/detail/user">
+            <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
               <v-avatar color="blue" tile>
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
@@ -49,17 +49,22 @@
           <v-list three-line>
             <template v-for="eachComment in detailPost.comments">
               <v-list-item :key="eachComment.id">
-                <v-list-item-avatar color="blue" tile>
-                  <v-icon large dark>mdi-account-circle</v-icon>
-                </v-list-item-avatar>
+                <!-- アバター -->
+                <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
+                  <v-list-item-avatar color="blue" tile>
+                    <v-icon large dark>mdi-account-circle</v-icon>
+                  </v-list-item-avatar>
+                </router-link>
 
                 <v-list-item-content>
                   <v-row>
                     <v-col>
                       <!-- コメント投稿者 -->
-                      <v-list-item-title>
-                        {{ eachComment.user.name }}
-                      </v-list-item-title>
+                      <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
+                        <v-list-item-title>
+                          {{ eachComment.user.name }}
+                        </v-list-item-title>
+                      </router-link>
                     </v-col>
 
                     <v-col>
