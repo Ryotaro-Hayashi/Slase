@@ -5,8 +5,8 @@ class UserSerializer < ActiveModel::Serializer
              :email,
              :created_at
 
-  has_many :questions
+  # has_many :questions
   # , serializer: QuestionSerializer
-  has_many :comments
+  # has_many :comments
   # , serializer: CommentSerializer
 end
