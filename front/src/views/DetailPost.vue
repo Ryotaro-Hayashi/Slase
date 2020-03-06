@@ -122,7 +122,10 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          this.$router.push("/detail/post")
+          // コメントを反映した投稿一覧を更新
+          this.$store.dispatch("post/getDetailPost", this.detailPost.id)
+          // コメントフォームの文字を削除
+          this.comment = ''
         }
       })
     }
