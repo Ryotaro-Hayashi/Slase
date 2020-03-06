@@ -7,7 +7,7 @@
         <v-card-title>
           <!-- アバター -->
           <v-col :cols="1">
-            <router-link to="/detail/user">
+            <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
               <v-avatar color="blue" tile>
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
@@ -43,19 +43,47 @@
 
         <v-divider />
 
-        <v-card-text class="font-weight-bold">コメント</v-card-text>
+
         <v-card-text>
           <!-- コメントをリスト表示 -->
-          <v-list>
+          <v-list three-line>
             <template v-for="eachComment in detailPost.comments">
               <v-list-item :key="eachComment.id">
-                <!-- コメント内容 -->
-                <v-list-item-title>
-                  {{ eachComment.content }}
-                </v-list-item-title>
+                <!-- アバター -->
+                <router-link to="/detail/user" @click.native="getDetailUserPosts(eachComment.user)">
+                  <v-list-item-avatar color="blue" tile>
+                    <v-icon large dark>mdi-account-circle</v-icon>
+                  </v-list-item-avatar>
+                </router-link>
+
+                <v-list-item-content>
+                  <v-row>
+                    <v-col>
+                      <!-- コメント投稿者 -->
+                      <router-link to="/detail/user" @click.native="getDetailUserPosts(eachComment.user)">
+                        <v-list-item-title>
+                          {{ eachComment.user.name }}
+                        </v-list-item-title>
+                      </router-link>
+                    </v-col>
+
+                    <v-col>
+                      <!-- コメント投稿日時 -->
+                      <v-list-item-subtitle>
+                        {{ eachComment.date }}{{ eachComment.time}}
+                      </v-list-item-subtitle>
+                    </v-col>
+                  </v-row>
+
+                  <!-- コメント内容 -->
+                  <v-list-item-text>
+                    {{ eachComment.content }}
+                  </v-list-item-text>
+
+                  <v-divider></v-divider>
+                </v-list-item-content>
               </v-list-item>
             </template>
-          {{ detailPost.comments }}
         </v-list>
         </v-card-text>
 
@@ -114,7 +142,10 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          this.$router.push("/detail/post")
+          // コメントを反映した投稿一覧を更新
+          this.$store.dispatch("post/getDetailPost", this.detailPost.id)
+          // コメントフォームの文字を削除
+          this.comment = ''
         }
       })
     }
