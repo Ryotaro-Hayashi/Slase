@@ -17,4 +17,11 @@ class User < ActiveRecord::Base
 
   # emailは空なしで一意性あり, validatesは /back/config/initializers/devise.rb で定義
   # passwordも空なしで一意性なし, email と同じところで定義されている
+
+  has_many :relationships
+  # 架空のfollowingクラスを作成、中間テーブルとしてrelationshipsを設定、follow_idを参考にしてfollowingsモデルにアクセス
+  has_many :followings, through: :relationships, source: :follow
+  # 架空のクラス、relationshipモデルを設定を補足、relationshipsテーブルのアクセスをfollow_idを通して行うよう設定
+  has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
+  has_many :followers, through: :reverse_of_relationships, source: :user
 end
