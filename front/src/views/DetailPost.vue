@@ -54,26 +54,31 @@
                 </v-list-item-avatar>
 
                 <v-list-item-content>
-                  <!-- コメント投稿者 -->
-                  <v-list-item-title>
-                    {{ eachComment.user.name }}
-                  </v-list-item-title>
+                  <v-row>
+                    <v-col>
+                      <!-- コメント投稿者 -->
+                      <v-list-item-title>
+                        {{ eachComment.user.name }}
+                      </v-list-item-title>
+                    </v-col>
+
+                    <v-col>
+                      <!-- コメント投稿日時 -->
+                      <v-list-item-subtitle>
+                        {{ eachComment.date }}{{ eachComment.time}}
+                      </v-list-item-subtitle>
+                    </v-col>
+                  </v-row>
 
                   <!-- コメント内容 -->
-                  <v-list-item-title>
+                  <v-list-item-text>
                     {{ eachComment.content }}
-                  </v-list-item-title>
-
-                  <!-- コメント投稿日時 -->
-                  <v-list-item-title>
-                    {{ eachComment.date }}{{ eachComment.time}}
-                  </v-list-item-title>
+                  </v-list-item-text>
 
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>
             </template>
-          {{ detailPost.comments }}
         </v-list>
         </v-card-text>
 
