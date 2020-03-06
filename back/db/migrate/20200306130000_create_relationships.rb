@@ -1,6 +1,7 @@
 class CreateRelationships < ActiveRecord::Migration[5.2]
   def change
     create_table :relationships do |t|
+      # 外部キーでuserモデルを参照する
       t.references :user, foreign_key: true
       t.references :follow, foreign_key: { to_table: :users }
 
