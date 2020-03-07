@@ -15,8 +15,9 @@ Rails.application.routes.draw do
       # コメントのエンドポイント
       resources :comments
 
-      resources :relationships
     end
+
+    resources :relationships
 
   end
 end
