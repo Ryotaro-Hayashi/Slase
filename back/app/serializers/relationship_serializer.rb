@@ -1,3 +1,4 @@
 class RelationshipSerializer < ActiveModel::Serializer
-  attributes :id
+  # フォローしているユーザーを表示
+  attributes :follow
 end
