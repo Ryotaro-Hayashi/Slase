@@ -19,6 +19,7 @@ Rails.application.routes.draw do
 
     resources :relationships
 
+    # idによって、そのidのユーザーのフォローしているユーザーを返すエンドポイント 
     get '/relevance/:user_id', to: 'relationships#relevance'
 
   end

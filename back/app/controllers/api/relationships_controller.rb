@@ -22,6 +22,7 @@ class Api::RelationshipsController < ApplicationController
     render json: relationship
   end
 
+  # エンドポイントのidを使ってそのユーザーのフォローしているユーザーを返す
   def relevance
     user = User.find(params[:user_id])
     render json: user.relationships

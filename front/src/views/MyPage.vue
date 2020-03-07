@@ -83,15 +83,7 @@ export default {
     // 投稿の詳細を取得
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
-    },
-    // ログイン中のユーザーの投稿一覧を更新
-    getLogggedInUserPosts () {
-      this.$store.dispatch("post/getDetailUserPosts", this.loggedInUser.id)
     }
- },
- // マウント時にログイン中のユーザーの投稿一覧を更新
- mounted: function () {
-   this.getLogggedInUserPosts()
  }
 
 }

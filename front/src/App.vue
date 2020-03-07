@@ -100,7 +100,7 @@
         </v-btn>
 
         <!-- マイページ -->
-        <v-btn text to="/mypage" v-show="loggedIn">
+        <v-btn text to="/mypage" v-show="loggedIn" @click="getDetailUserPosts(loggedInUser)">
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
@@ -223,6 +223,12 @@ export default {
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)
+    },
+    // 詳細表示するユーザーの投稿一覧を取得
+    getDetailUserPosts (user) {
+      this.$store.dispatch("post/getDetailUserPosts", user.id)
+      // 詳細表示しているユーザーを更新
+      this.$store.commit("auth/changeDetailUser", user)
     }
   }
 }
