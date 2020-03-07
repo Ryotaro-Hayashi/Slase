@@ -16,7 +16,10 @@
                   </v-avatar>
                   <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
-                <v-col>ここにフォローボタンを表示</v-col>
+                <v-col>
+                  <v-btn to="/follow">フォロー</v-btn>
+                  <v-btn to="/follower">フォロワー</v-btn>
+                </v-col>
               </v-row>
 
               <!-- プロフィール説明文 -->
