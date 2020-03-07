@@ -13,17 +13,17 @@
 
         <v-card-text>
           <v-list three-line>
-            <template v-for="post in allPosts">
-              <v-list-item :key="post.id">
+            <template v-for="follow in follows">
+              <v-list-item :key="follow.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
                   <v-icon large dark>mdi-account-circle</v-icon>
                 </v-list-item-avatar>
 
                 <v-list-item-content>
-                  <!-- タイトル -->
+                  <!-- 名前-->
                   <v-list-item-title>
-                    <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link>
+                    <router-link class="title font-weight-bold" to="/detail/user" @click.native="getDetailUserPosts(follow.follow)">{{ follow.follow.name }}</router-link>
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
@@ -49,16 +49,21 @@ export default {
   name: 'Follow',
   data () {
     return {
-      allPosts: ''
+      follows: {}
+    }
+  },
+  computed: {
+    detailUser () {
+      return this.$store.state.auth.detailUser
     }
   },
   methods: {
     // 投稿一覧を取得
-    getAllPosts () {
-      this.$http.get('http://localhost:3000/api/post/questions')
+    getFollows () {
+      this.$http.get('http://localhost:3000/api/relevance/' + this.detailUser.id)
       .then(response => {
         if (response.status === 200) {
-          this.allPosts = response.data
+          this.follows = response.data
         }
       })
     },
@@ -75,7 +80,7 @@ export default {
   },
   // マウント時にステートの投稿一覧を更新
   mounted () {
-    this.getAllPosts();
+    this.getFollows();
   }
 }
 </script>
