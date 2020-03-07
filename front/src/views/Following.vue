@@ -1,5 +1,5 @@
 <template>
-  <div class="follow">
+  <div class="following">
     <v-app>
 
       <v-card width="600px" class="mx-auto mt-10 mb-10">
@@ -13,8 +13,8 @@
 
         <v-card-text>
           <v-list three-line>
-            <template v-for="follow in follows">
-              <v-list-item :key="follow.id">
+            <template v-for="following in followings">
+              <v-list-item :key="following.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
                   <v-icon large dark>mdi-account-circle</v-icon>
@@ -23,7 +23,7 @@
                 <v-list-item-content>
                   <!-- 名前-->
                   <v-list-item-title>
-                    <router-link class="title font-weight-bold" to="/detail/user" @click.native="getDetailUserPosts(follow.follow)">{{ follow.follow.name }}</router-link>
+                    <router-link class="title font-weight-bold" to="/detail/user" @click.native="getDetailUserPosts(following)">{{ following.name }}</router-link>
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
@@ -46,10 +46,10 @@
 
 <script>
 export default {
-  name: 'Follow',
+  name: 'Following',
   data () {
     return {
-      follows: {}
+      followings: {}
     }
   },
   computed: {
@@ -60,10 +60,10 @@ export default {
   methods: {
     // 投稿一覧を取得
     getFollows () {
-      this.$http.get('http://localhost:3000/api/relevance/' + this.detailUser.id)
+      this.$http.get('http://localhost:3000/api/followings/' + this.detailUser.id)
       .then(response => {
         if (response.status === 200) {
-          this.follows = response.data
+          this.followings = response.data
         }
       })
     },
