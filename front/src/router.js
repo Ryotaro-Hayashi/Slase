@@ -11,6 +11,8 @@ import DetailPost from './views/DetailPost'
 import DetailUser from './views/DetailUser'
 import MyEmail from './views/MyEmail'
 import MyPassword from './views/MyPassword'
+import Follow from './views/Follow'
+import Follower from './views/Follower'
 
 Vue.use(Router)
 
@@ -66,6 +68,16 @@ export default new Router({
       path: '/mypage/password',
       name: 'MyPasword',
       component: MyPassword
+    },
+    {
+      path: '/follow',
+      name: 'Follow',
+      component: Follow
+    },
+    {
+      path: '/follower',
+      name: 'Follower',
+      component: Follower
     }
   ]
 })
