@@ -25,7 +25,9 @@ class User < ActiveRecord::Base
   has_many :reverse_of_relationships, class_name: 'Relationship', foreign_key: 'follow_id'
   has_many :followers, through: :reverse_of_relationships, source: :user
 
+  # フォローするメソッド
   def follow(other_user)
+    # ○.followというようにしてこのfollowメソッドを使うときの○がself
     unless self == other_user
       self.relationships.find_or_create_by(follow_id: other_user.id)
     end
@@ -36,8 +38,9 @@ class User < ActiveRecord::Base
     relationship.destroy if relationship
   end
 
+  # フォローしていたらtrueを返すメソッド
   def following?(other_user)
     self.followings.include?(other_user)
   end
-  
+
 end

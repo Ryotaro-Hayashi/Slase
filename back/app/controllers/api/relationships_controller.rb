@@ -1,7 +1,8 @@
 class Api::RelationshipsController < ApplicationController
   def create
     user = User.find(params[:relationship][:follow_id])
-    
+    # モデルで定義したインスタンスメソッドでフォロー
+    # followメソッドはrelationshipモデルを返す
     following = current_api_user.follow(user)
     if following.save
       render json: following
@@ -15,4 +16,10 @@ class Api::RelationshipsController < ApplicationController
       render json: following
     end
   end
+
+  def index
+    relationship = Relationship.all
+    render json: relationship
+  end
+
 end

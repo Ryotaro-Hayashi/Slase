@@ -80,9 +80,11 @@ export default {
     follow () {
       this.$http.post('http://localhost:3000/api/relationships',
       {
+        // フォローするユーザーのid
         follow_id: this.detailUser.id
       },
       {
+        // トークンをrailsに送ることでcurrent_api_userを使える
         headers: this.token
       })
     }
