@@ -66,8 +66,8 @@ export const auth = {
         // リクエストが成功
         if (response.status === 200) {
           commit("updateLoggedIn", true);
-          // -----------------
           commit("updateLoggedInUser", response.data.data);
+          commit("changeDetailUser", response.data.data);
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -98,6 +98,7 @@ export const auth = {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
           commit("updateLoggedInUser", response.data.data);
+          commit("changeDetailUser", response.data.data);
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -121,7 +122,7 @@ export const auth = {
       commit("changeSuccessSnackbar", false)
       commit("updateLoggedIn", false);
       commit("updateLoggedInUser", {name: ""})
-      commit("updateToken", {})  
+      commit("updateToken", {})
     },
     changeEmail ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth', {
