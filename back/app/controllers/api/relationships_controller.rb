@@ -23,9 +23,15 @@ class Api::RelationshipsController < ApplicationController
   end
 
   # エンドポイントのidを使ってそのユーザーのフォローしているユーザーを返す
-  def relevance
+  def followings
     user = User.find(params[:user_id])
-    render json: user.relationships
+    render json: user.followings
+  end
+
+  # そのユーザーのフォロワーを返す
+  def followers
+    user = User.find(params[:user_id])
+    render json: user.followers
   end
 
 end
