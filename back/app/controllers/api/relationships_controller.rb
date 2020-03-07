@@ -22,4 +22,9 @@ class Api::RelationshipsController < ApplicationController
     render json: relationship
   end
 
+  def relevance
+    user = User.find(params[:user_id])
+    render json: user.relationships
+  end
+
 end

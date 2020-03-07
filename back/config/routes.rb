@@ -19,5 +19,7 @@ Rails.application.routes.draw do
 
     resources :relationships
 
+    get '/relevance/:user_id', to: 'relationships#relevance'
+
   end
 end

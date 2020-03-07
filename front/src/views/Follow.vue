@@ -6,7 +6,7 @@
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">latest</span>
+          <span class="title font-weight-bold">Follow</span>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -25,12 +25,9 @@
                   <v-list-item-title>
                     <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link>
                   </v-list-item-title>
-                  <!-- 投稿者と投稿日時 -->
+                  <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
-                    <v-row>
-                      <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
-                      <v-col>投稿日時：{{ post.date }}</v-col>
-                    </v-row>
+                    プロフィール説明文
                   </v-list-item-subtitle>
 
                   <v-divider></v-divider>
