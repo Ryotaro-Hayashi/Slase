@@ -12,7 +12,9 @@
               </v-avatar>
               <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
-            <v-col>ここにフォローボタンを表示</v-col>
+            <v-col>
+              <v-btn @click="follow">フォロー</v-btn>
+            </v-col>
           </v-row>
 
           <!-- プロフィール説明文 -->
@@ -75,6 +77,17 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
+    follow () {
+      this.$http.post('http://localhost:3000/api/relationships',
+      {
+        // フォローするユーザーのid
+        follow_id: this.detailUser.id
+      },
+      {
+        // トークンをrailsに送ることでcurrent_api_userを使える
+        headers: this.token
+      })
+    }
   }
 }
 </script>

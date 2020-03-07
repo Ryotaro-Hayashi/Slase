@@ -12,9 +12,12 @@ Rails.application.routes.draw do
       # ユーザーのidによって、そのidのユーザーのquestionを返すエンドポイント
       get '/mypost/:id', to: 'questions#mypost'
 
-      # コメントのエンドポイント 
+      # コメントのエンドポイント
       resources :comments
+
     end
+
+    resources :relationships
 
   end
 end
