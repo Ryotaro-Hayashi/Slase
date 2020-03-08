@@ -6,7 +6,7 @@
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">Follow</span>
+          <span class="title font-weight-bold">Follow{{ detailUser }}</span>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -49,7 +49,7 @@ export default {
   name: 'Following',
   data () {
     return {
-      followings: {}
+      followings: ''
     }
   },
   computed: {

@@ -95,6 +95,7 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
+    // ログインユーザーのフォロー数・フォロワー数を取得
     getLoggedInUserFollowNum (id) {
       this.$store.dispatch("option/getLoggedInUserFollowNum", id)
     }

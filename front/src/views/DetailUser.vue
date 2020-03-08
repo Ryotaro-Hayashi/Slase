@@ -19,6 +19,14 @@
 
           <!-- プロフィール説明文 -->
           <v-row>
+            <!-- フォロー -->
+            <v-col>
+              <router-link to="/following">フォロー{{ detailUserFollowingsNum }}</router-link>
+            </v-col>
+            <!-- フォロワー -->
+            <v-col>
+              <router-link to="/follower">フォロワー{{ detailUserFollowersNum }}</router-link>
+            </v-col>
             <v-col><span class="yet">ここにプロフィール説明文を表示</span></v-col>
           </v-row>
 
@@ -75,6 +83,12 @@ export default {
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
     },
+    detailUserFollowingsNum () {
+      return this.$store.state.option.detailUserFollowingsNum
+    },
+    detailUserFollowersNum () {
+      return this.$store.state.option.detailUserFollowersNum
+    }
   },
   methods: {
     // 投稿の詳細を取得
@@ -96,7 +110,14 @@ export default {
           this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
         }
       });
+    },
+    // 詳細表示するユーザーのフォロー数・フォロワー数を取得
+    getDetailUserFolloNum (id) {
+      this.$store.dispatch("option/getDetailUserFolloNum", id)
     }
+  },
+  mounted () {
+    this.getDetailUserFolloNum(this.detailUser.id)
   }
 }
 </script>
