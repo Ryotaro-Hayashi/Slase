@@ -93,7 +93,7 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
-    getNum () {
+    getRelationNum () {
       this.$http.get('http://localhost:3000/api/followings/num/' + this.detailUser.id)
       .then(response => {
         if (response.status === 200) {
@@ -108,8 +108,8 @@ export default {
       })
     }
  },
- beforeUpdate () {
-   this.getNum();
+ mounted () {
+   this.getRelationNum();
  }
 
 }

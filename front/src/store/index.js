@@ -10,7 +10,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
   modules: {
     auth,
-    post
+    post,
+    option
   },
   // localstrageにstateを保存
   plugins: [
