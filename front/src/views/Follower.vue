@@ -58,18 +58,14 @@ export default {
     }
   },
   methods: {
-    // 投稿一覧を取得
-    getFollows () {
+    // フォロワーを取得
+    getFollowers () {
       this.$http.get('http://localhost:3000/api/followers/' + this.detailUser.id)
       .then(response => {
         if (response.status === 200) {
           this.followers = response.data
         }
       })
-    },
-    // 投稿の詳細を取得
-    getDetailPost (id) {
-      this.$store.dispatch("post/getDetailPost", id)
     },
     // 詳細表示するユーザーの投稿一覧を取得
     getDetailUserPosts (user) {
@@ -78,9 +74,9 @@ export default {
       this.$store.commit("auth/changeDetailUser", user)
     }
   },
-  // マウント時にステートの投稿一覧を更新
+  // マウント時にフォロワーを取得
   mounted () {
-    this.getFollows();
+    this.getFollowers();
   }
 }
 </script>

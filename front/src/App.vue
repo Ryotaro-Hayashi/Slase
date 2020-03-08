@@ -16,11 +16,11 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <router-link to="/followings">フォロー</router-link>
+                <router-link to="/following" @click.native="changeDetailUser(loggedInUser)">フォロー</router-link>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <router-link to="/followers">フォロワー</router-link>
+                <router-link to="/follower" @click.native="changeDetailUser(loggedInUser)">フォロワー</router-link>
               </v-col>
             </v-row>
 
@@ -239,6 +239,9 @@ export default {
     getDetailUserPosts (user) {
       this.$store.dispatch("post/getDetailUserPosts", user.id)
       // 詳細表示しているユーザーを更新
+      this.$store.commit("auth/changeDetailUser", user)
+    },
+    changeDetailUser (user) {
       this.$store.commit("auth/changeDetailUser", user)
     }
   }
