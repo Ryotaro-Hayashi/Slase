@@ -234,6 +234,7 @@ export default {
   methods: {
     signOut () {
       this.dialog = false
+      this.drawer = false
       this.$store.dispatch("auth/signOut")
       this.$router.push("/")
     },
