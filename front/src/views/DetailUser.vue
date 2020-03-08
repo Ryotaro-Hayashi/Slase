@@ -70,7 +70,11 @@ export default {
     },
     token () {
       return this.$store.state.auth.token
-    }
+    },
+    // ログイン中のユーザーの情報を表示
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
+    },
   },
   methods: {
     // 投稿の詳細を取得
@@ -87,6 +91,11 @@ export default {
         // トークンをrailsに送ることでcurrent_api_userを使える
         headers: this.token
       })
+      .then(response => {
+        if (response.status === 200) {
+          this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
+        }
+      });
     }
   }
 }
