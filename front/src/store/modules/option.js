@@ -4,15 +4,15 @@ import axios from 'axios'
 export const option = {
   namespaced: true,
   state: {
-    loggedInUserFollowingNum: {},
-    loggedInUserFollowerNum: {}
+    loggedInUserFollowingsNum: {},
+    loggedInUserFollowersNum: {}
   },
   mutations: {
-    updateLoggedInUserFollowingNum (state, num) {
-      state.loggedInUserFollowingNum = num
+    updateLoggedInUserFollowingsNum (state, num) {
+      state.loggedInUserFollowingsNum = num
     },
-    updateLoggedInUserFollowerNum (state, num) {
-      state.loggedInUserFollowerNum = num
+    updateLoggedInUserFollowersNum (state, num) {
+      state.loggedInUserFollowersNum = num
     }
   },
   actions: {
@@ -20,13 +20,13 @@ export const option = {
       axios.get('http://localhost:3000/api/followings/num/' + id)
       .then(response => {
         if (response.status === 200) {
-          commit("updateLoggedInUserFollowingNum", response.data)
+          commit("updateLoggedInUserFollowingsNum", response.data)
         }
       });
       axios.get('http://localhost:3000/api/followers/num/' + id)
       .then(response => {
         if (response.status === 200) {
-          commit("updateLoggedInUserFollowerNum", response.data)
+          commit("updateLoggedInUserFollowersNum", response.data)
         }
       })
     }

@@ -16,11 +16,11 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <router-link to="/following" @click.native="changeDetailUser(loggedInUser)">フォロー</router-link>
+                <router-link to="/following" @click.native="changeDetailUser(loggedInUser)">フォロー{{ loggedInUserFollowingsNum }}</router-link>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <router-link to="/follower" @click.native="changeDetailUser(loggedInUser)">フォロワー</router-link>
+                <router-link to="/follower" @click.native="changeDetailUser(loggedInUser)">フォロワー{{ loggedInUserFollowersNum }}</router-link>
               </v-col>
             </v-row>
 
@@ -223,8 +223,13 @@ export default {
     },
     postSuccessSnackbar () {
       return this.$store.state.post.successSnackbar
+    },
+    loggedInUserFollowingsNum () {
+      return this.$store.state.option.loggedInUserFollowingsNum
+    },
+    loggedInUserFollowersNum () {
+      return this.$store.state.option.loggedInUserFollowersNum
     }
-
   },
   methods: {
     signOut () {

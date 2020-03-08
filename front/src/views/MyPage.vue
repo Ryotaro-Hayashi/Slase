@@ -17,8 +17,8 @@
                   <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
                 <v-col>
-                  <v-btn to="/following">フォロー{{ loggedInUserFollowingNum }}</v-btn>
-                  <v-btn to="/follower">フォロワー{{ loggedInUserFollowerNum }}</v-btn>
+                  <v-btn to="/following">フォロー{{ loggedInUserFollowingsNum }}</v-btn>
+                  <v-btn to="/follower">フォロワー{{ loggedInUserFollowersNum }}</v-btn>
                 </v-col>
               </v-row>
 
@@ -83,11 +83,11 @@ export default {
     loggedInUserPosts () {
       return this.$store.state.post.detailUserPosts
     },
-    loggedInUserFollowingNum () {
-      return this.$store.state.option.loggedInUserFollowingNum
+    loggedInUserFollowingsNum () {
+      return this.$store.state.option.loggedInUserFollowingsNum
     },
-    loggedInUserFollowerNum () {
-      return this.$store.state.option.loggedInUserFollowerNum
+    loggedInUserFollowersNum () {
+      return this.$store.state.option.loggedInUserFollowersNum
     }
   },
   methods: {
