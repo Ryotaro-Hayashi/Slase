@@ -14,6 +14,7 @@
             </v-col>
             <v-col>
               <v-btn @click="follow">フォロー</v-btn>
+              <v-btn @click="unfollow">フォローを外す</v-btn>
               <v-btn @click="getDetailUserFolloNum(detailUser.id)">同期</v-btn>
             </v-col>
           </v-row>
@@ -105,6 +106,19 @@ export default {
       },
       {
         // トークンをrailsに送ることでcurrent_api_userを使える
+        headers: this.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          // フォローが成功したらフォロー数を更新
+          this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
+        }
+      });
+    },
+    // フォローを外す
+    unfollow () {
+      this.$http.delete('http://localhost:3000/api/relationships/' + this.detailUser.id,
+      {
         headers: this.token
       })
       .then(response => {
