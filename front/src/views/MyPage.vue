@@ -17,8 +17,8 @@
                   <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
                 <v-col>
-                  <v-btn to="/following">フォロー</v-btn>
-                  <v-btn to="/follower">フォロワー</v-btn>
+                  <v-btn to="/following">フォロー{{ followings }}</v-btn>
+                  <v-btn to="/follower">フォロワー{{ followers }}</v-btn>
                 </v-col>
               </v-row>
 
@@ -69,6 +69,12 @@
 <script>
 export default {
   name: 'MyPage',
+  data () {
+    return {
+      followings: {},
+      followers: {}
+    }
+  },
   computed: {
     // ログイン中のユーザーの情報を表示
     loggedInUser () {
@@ -77,13 +83,33 @@ export default {
     // ログイン中のユーザーの投稿一覧表示
     loggedInUserPosts () {
       return this.$store.state.post.detailUserPosts
+    },
+    detailUser () {
+      return this.$store.state.auth.detailUser
     }
   },
   methods: {
     // 投稿の詳細を取得
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
+    },
+    getNum () {
+      this.$http.get('http://localhost:3000/api/followings/num/' + this.detailUser.id)
+      .then(response => {
+        if (response.status === 200) {
+          this.followings = response.data
+        }
+      })
+      this.$http.get('http://localhost:3000/api/followers/num/' + this.detailUser.id)
+      .then(response => {
+        if (response.status === 200) {
+          this.followers = response.data
+        }
+      })
     }
+ },
+ mounted () {
+   this.getNum();
  }
 
 }
