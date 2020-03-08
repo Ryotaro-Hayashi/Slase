@@ -9,7 +9,11 @@ export const option = {
     loggedInUserFollowersNum: {},
     // 詳細表示するユーザーがフォローしているユーザー数
     detailUserFollowingsNum: {},
-    detailUserFollowersNum: {}
+    detailUserFollowersNum: {},
+    // フォローしているユーザー
+    followings: {},
+    // フォロワー
+    followers: {}
   },
   mutations: {
     updateLoggedInUserFollowingsNum (state, num) {
@@ -23,10 +27,16 @@ export const option = {
     },
     updateDetailUserFollowersNum (state, num) {
       state.detailUserFollowersNum = num
+    },
+    changeFollowings (state, user) {
+      state.followings = user
+    },
+    changeFollowers (state, user) {
+      state.followers = user
     }
   },
   actions: {
-    // ユーザーのフォロー数・フォロワー数を取得
+    // ログインユーザーのフォロー数・フォロワー数を取得
     getLoggedInUserFollowNum ({ commit }, id) {
       // フォロー数を取得
       axios.get('http://localhost:3000/api/followings/num/' + id)
@@ -43,6 +53,7 @@ export const option = {
         }
       })
     },
+    // 詳細表示するユーザーのフォロー数・フォロワー数を取得
     getDetailUserFolloNum ({ commit }, id) {
       // フォロー数を取得
       axios.get('http://localhost:3000/api/followings/num/' + id)
@@ -59,11 +70,21 @@ export const option = {
         }
       })
     },
-    getFollowings () {
-      axios.get('http://localhost:3000/api/followings/' + this.detailUser.id)
+    // フォローしているユーザーを取得
+    getFollowings ({ commit }, id) {
+      axios.get('http://localhost:3000/api/followings/' + id)
       .then(response => {
         if (response.status === 200) {
-          this.followings = response.data
+          commit("changeFollowings", response.data)
+        }
+      })
+    },
+    // フォロワーを取得
+    getFollowers ({ commit }, id) {
+      axios.get('http://localhost:3000/api/followers/' + id)
+      .then(response => {
+        if (response.status === 200) {
+          commit("changeFollowers", response.data)
         }
       })
     }

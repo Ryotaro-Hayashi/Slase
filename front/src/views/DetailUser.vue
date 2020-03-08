@@ -14,6 +14,7 @@
             </v-col>
             <v-col>
               <v-btn @click="follow">フォロー</v-btn>
+              <v-btn @click="getDetailUserFolloNum(detailUser.id)">同期</v-btn>
             </v-col>
           </v-row>
 
@@ -95,6 +96,7 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
+    // ユーザーをフォローするメソッド
     follow () {
       this.$http.post('http://localhost:3000/api/relationships',
       {
@@ -107,6 +109,7 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
+          // フォローが成功したらフォロー数を更新
           this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
         }
       });

@@ -71,9 +71,9 @@ export default {
     },
     // 詳細表示するユーザーの投稿一覧を取得
     getDetailUserPosts (user) {
+      this.$store.commit("auth/changeDetailUser", user)
       this.$store.dispatch("post/getDetailUserPosts", user.id)
       // 詳細表示しているユーザーを更新
-      this.$store.commit("auth/changeDetailUser", user)
     }
   },
   // マウント時にステートの投稿一覧を更新

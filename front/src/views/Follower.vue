@@ -7,6 +7,8 @@
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
           <span class="title font-weight-bold">Follower</span>
+          <!-- !!!!!!!!!!!!!!!!!! -->
+          <v-btn @click="getFollowers(detailUser.id)">同期</v-btn>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -49,23 +51,21 @@ export default {
   name: 'Follower',
   data () {
     return {
-      followers: {}
+
     }
   },
   computed: {
     detailUser () {
       return this.$store.state.auth.detailUser
+    },
+    followers () {
+      return this.$store.state.option.followers
     }
   },
   methods: {
     // フォロワーを取得
-    getFollowers () {
-      this.$http.get('http://localhost:3000/api/followers/' + this.detailUser.id)
-      .then(response => {
-        if (response.status === 200) {
-          this.followers = response.data
-        }
-      })
+    getFollowers (id) {
+      this.$store.dispatch("option/getFollowers", id)
     },
     // 詳細表示するユーザーの投稿一覧を取得
     getDetailUserPosts (user) {
