@@ -13,6 +13,17 @@
             <!-- 名前とメアド -->
             <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            <v-row>
+              <!-- フォロー -->
+              <v-col>
+                <router-link to="/followings">フォロー</router-link>
+              </v-col>
+              <!-- フォロワー -->
+              <v-col>
+                <router-link to="/followers">フォロワー</router-link>
+              </v-col>
+            </v-row>
+
           </v-list-item-content>
         </v-list-item>
       </v-list>

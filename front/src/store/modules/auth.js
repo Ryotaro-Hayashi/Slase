@@ -17,7 +17,9 @@ export const auth = {
     // 認証エラー時のスナックバー
     errorSnackbar: false,
     // エラーをcatchしたあとに形式的に使うためのstate
-    error: ""
+    error: "",
+    loggedInUserFollowingsNum: {},
+    loggedInUserFollowersNum: {}
   },
   mutations: {
     // ログイン状態の更新
