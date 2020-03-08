@@ -16,7 +16,10 @@
                   </v-avatar>
                   <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
-                <v-col>ここにフォローボタンを表示</v-col>
+                <v-col>
+                  <v-btn to="/following">フォロー{{ loggedInUserFollowingsNum }}</v-btn>
+                  <v-btn to="/follower">フォロワー{{ loggedInUserFollowersNum }}</v-btn>
+                </v-col>
               </v-row>
 
               <!-- プロフィール説明文 -->
@@ -66,6 +69,11 @@
 <script>
 export default {
   name: 'MyPage',
+  data () {
+    return {
+
+    }
+  },
   computed: {
     // ログイン中のユーザーの情報を表示
     loggedInUser () {
@@ -74,6 +82,12 @@ export default {
     // ログイン中のユーザーの投稿一覧表示
     loggedInUserPosts () {
       return this.$store.state.post.detailUserPosts
+    },
+    loggedInUserFollowingsNum () {
+      return this.$store.state.option.loggedInUserFollowingsNum
+    },
+    loggedInUserFollowersNum () {
+      return this.$store.state.option.loggedInUserFollowersNum
     }
   },
   methods: {
@@ -81,14 +95,14 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
-    // ログイン中のユーザーの投稿一覧を更新
-    getLogggedInUserPosts () {
-      this.$store.dispatch("post/getDetailUserPosts", this.loggedInUser.id)
+    // ログインユーザーのフォロー数・フォロワー数を取得
+    getLoggedInUserFollowNum (id) {
+      this.$store.dispatch("option/getLoggedInUserFollowNum", id)
     }
  },
- // マウント時にログイン中のユーザーの投稿一覧を更新
- mounted: function () {
-   this.getLogggedInUserPosts()
+ // なくても開発環境では問題がないが、ないと実際に使うときに更新する機会がなくなってしまう
+ mounted () {
+   this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
 
 }

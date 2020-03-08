@@ -13,6 +13,17 @@
             <!-- 名前とメアド -->
             <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            <v-row>
+              <!-- フォロー -->
+              <v-col>
+                <router-link to="/following" @click.native="changeDetailUser(loggedInUser)">フォロー{{ loggedInUserFollowingsNum }}</router-link>
+              </v-col>
+              <!-- フォロワー -->
+              <v-col>
+                <router-link to="/follower" @click.native="changeDetailUser(loggedInUser)">フォロワー{{ loggedInUserFollowersNum }}</router-link>
+              </v-col>
+            </v-row>
+
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -100,7 +111,7 @@
         </v-btn>
 
         <!-- マイページ -->
-        <v-btn text to="/mypage" v-show="loggedIn">
+        <v-btn text to="/mypage" v-show="loggedIn" @click="getDetailUserPosts(loggedInUser)">
           <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
         </v-btn>
 
@@ -212,17 +223,32 @@ export default {
     },
     postSuccessSnackbar () {
       return this.$store.state.post.successSnackbar
+    },
+    loggedInUserFollowingsNum () {
+      return this.$store.state.option.loggedInUserFollowingsNum
+    },
+    loggedInUserFollowersNum () {
+      return this.$store.state.option.loggedInUserFollowersNum
     }
-
   },
   methods: {
     signOut () {
       this.dialog = false
+      this.drawer = false
       this.$store.dispatch("auth/signOut")
       this.$router.push("/")
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)
+    },
+    // 詳細表示するユーザーの投稿一覧を取得
+    getDetailUserPosts (user) {
+      this.$store.dispatch("post/getDetailUserPosts", user.id)
+      // 詳細表示しているユーザーを更新
+      this.$store.commit("auth/changeDetailUser", user)
+    },
+    changeDetailUser (user) {
+      this.$store.commit("auth/changeDetailUser", user)
     }
   }
 }
