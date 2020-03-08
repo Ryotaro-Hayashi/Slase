@@ -4,6 +4,7 @@ import createPersistedState from 'vuex-persistedstate';
 
 import auth from './modules/auth';
 import post from './modules/post';
+import option from './modules/option';
 
 Vue.use(Vuex);
 
@@ -16,7 +17,7 @@ export default new Vuex.Store({
   // localstrageにstateを保存
   plugins: [
     createPersistedState({
-      paths: ['auth.loggedIn', 'auth.loggedInUser', 'auth.token','auth.detailUser', 'auth.successSnackbar']
+      paths: ['auth.loggedIn', 'auth.loggedInUser', 'auth.token','auth.detailUser', 'auth.successSnackbar', 'option']
     })
   ]
 });

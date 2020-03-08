@@ -17,8 +17,8 @@
                   <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
                 <v-col>
-                  <v-btn to="/following">フォロー{{ followingsNum }}</v-btn>
-                  <v-btn to="/follower">フォロワー{{ followersNum }}</v-btn>
+                  <v-btn to="/following">フォロー{{ loggedInUserFollowingNum }}</v-btn>
+                  <v-btn to="/follower">フォロワー{{ loggedInUserFollowerNum }}</v-btn>
                 </v-col>
               </v-row>
 
@@ -71,8 +71,7 @@ export default {
   name: 'MyPage',
   data () {
     return {
-      followingsNum: {},
-      followersNum: {}
+
     }
   },
   computed: {
@@ -84,8 +83,11 @@ export default {
     loggedInUserPosts () {
       return this.$store.state.post.detailUserPosts
     },
-    detailUser () {
-      return this.$store.state.auth.detailUser
+    loggedInUserFollowingNum () {
+      return this.$store.state.option.loggedInUserFollowingNum
+    },
+    loggedInUserFollowerNum () {
+      return this.$store.state.option.loggedInUserFollowerNum
     }
   },
   methods: {
@@ -93,23 +95,12 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
-    getRelationNum () {
-      this.$http.get('http://localhost:3000/api/followings/num/' + this.detailUser.id)
-      .then(response => {
-        if (response.status === 200) {
-          this.followingsNum = response.data
-        }
-      })
-      this.$http.get('http://localhost:3000/api/followers/num/' + this.detailUser.id)
-      .then(response => {
-        if (response.status === 200) {
-          this.followersNum = response.data
-        }
-      })
+    getLoggedInUserFollowNum (id) {
+      this.$store.dispatch("option/getLoggedInUserFollowNum", id)
     }
  },
  mounted () {
-   this.getRelationNum();
+   this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
 
 }
