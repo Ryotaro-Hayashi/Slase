@@ -6,31 +6,28 @@
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">latest</span>
+          <span class="title font-weight-bold">Follower</span>
         </v-card-title>
 
         <v-divider></v-divider>
 
         <v-card-text>
           <v-list three-line>
-            <template v-for="post in allPosts">
-              <v-list-item :key="post.id">
+            <template v-for="follower in followers">
+              <v-list-item :key="follower.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
                   <v-icon large dark>mdi-account-circle</v-icon>
                 </v-list-item-avatar>
 
                 <v-list-item-content>
-                  <!-- タイトル -->
+                  <!-- 名前-->
                   <v-list-item-title>
-                    <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link>
+                    <router-link class="title font-weight-bold" to="/detail/user" @click.native="getDetailUserPosts(follower)">{{ follower.name }}</router-link>
                   </v-list-item-title>
-                  <!-- 投稿者と投稿日時 -->
+                  <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
-                    <v-row>
-                      <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
-                      <v-col>投稿日時：{{ post.date }}</v-col>
-                    </v-row>
+                    プロフィール説明文
                   </v-list-item-subtitle>
 
                   <v-divider></v-divider>
@@ -52,16 +49,21 @@ export default {
   name: 'Follower',
   data () {
     return {
-      allPosts: ''
+      followers: {}
+    }
+  },
+  computed: {
+    detailUser () {
+      return this.$store.state.auth.detailUser
     }
   },
   methods: {
     // 投稿一覧を取得
-    getAllPosts () {
-      this.$http.get('http://localhost:3000/api/post/questions')
+    getFollows () {
+      this.$http.get('http://localhost:3000/api/followers/' + this.detailUser.id)
       .then(response => {
         if (response.status === 200) {
-          this.allPosts = response.data
+          this.followers = response.data
         }
       })
     },
@@ -78,7 +80,7 @@ export default {
   },
   // マウント時にステートの投稿一覧を更新
   mounted () {
-    this.getAllPosts();
+    this.getFollows();
   }
 }
 </script>
