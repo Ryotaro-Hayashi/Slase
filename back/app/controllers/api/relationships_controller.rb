@@ -34,4 +34,15 @@ class Api::RelationshipsController < ApplicationController
     render json: user.followers
   end
 
+  # フォローしている人数を返す
+  def num_followings
+    user = User.find(params[:user_id])
+    render json: user.followings.count
+  end
+
+  def num_followers
+    user = User.find(params[:user_id])
+    render json: user.followers.count
+  end
+
 end
