@@ -16,11 +16,17 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <a @click="routerPushFollowing()">フォロー{{ loggedInUserFollowingsNum }}</a>
+                <a @click="routerPushFollowing()">
+                  {{ loggedInUserFollowingsNum }}
+                  <span class="font-wight-light caption">フォロー</span>
+                </a>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <a @click="routerPushFollower()">フォロワー{{ loggedInUserFollowersNum }}</a>
+                <a @click="routerPushFollower()">
+                  {{ loggedInUserFollowersNum }}
+                  <span class="font-wight-light caption">フォロワー</span>
+                </a>
               </v-col>
             </v-row>
 
@@ -289,4 +295,5 @@ a {
 .yet {
   background-color: silver;
 }
+
 </style>
