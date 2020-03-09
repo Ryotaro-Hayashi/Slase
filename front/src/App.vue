@@ -249,11 +249,11 @@ export default {
     },
     routerPushFollowing (user) {
       this.$store.commit("auth/changeDetailUser", user)
-      this.$router.push("/following")
+      this.$router.push("/signin/following")
     },
     routerPushFollower (user) {
       this.$store.commit("auth/changeDetailUser", user)
-      this.$router.push("/follower")
+      this.$router.push("/signin/follower")
     }
   }
 }

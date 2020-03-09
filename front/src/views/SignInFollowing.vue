@@ -8,7 +8,7 @@
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
           <span class="title font-weight-bold">Follow</span>
           <!-- !!!!!!!!!!!!!!!!!!!!!!!!!!! -->
-          <v-btn @click="getFollowings(detailUser.id)">同期</v-btn>
+          <v-btn @click="getFollowings(loggedInUser.id)">同期</v-btn>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -60,6 +60,10 @@ export default {
     },
     followings () {
       return this.$store.state.option.followings
+    },
+    // ログイン中のユーザーの情報を表示
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     }
   },
   methods: {
@@ -76,7 +80,7 @@ export default {
   },
   // マウント時にフォローしているユーザーを取得
   mounted () {
-    this.getFollowings(this.detailUser.id);
+    this.getFollowings(this.loggedInUser.id);
   }
 }
 </script>
