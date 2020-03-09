@@ -76,7 +76,7 @@ export default {
   },
   // マウント時にフォロワーを取得
   mounted () {
-    this.getFollowers();
+    this.getFollowers(this.detailUser.id);
   }
 }
 </script>

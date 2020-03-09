@@ -64,7 +64,7 @@ export default {
     // ログイン中のユーザーの情報を表示
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
-    },
+    }
   },
   methods: {
     // フォロワーを取得

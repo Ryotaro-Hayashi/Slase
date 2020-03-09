@@ -16,11 +16,11 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <v-btn @click="routerPushFollowing(loggedInUser)">フォロー{{ loggedInUserFollowingsNum }}</v-btn>
+                <v-btn @click="routerPushFollowing()">フォロー{{ loggedInUserFollowingsNum }}</v-btn>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <v-btn @click="routerPushFollower(loggedInUser)">フォロワー{{ loggedInUserFollowersNum }}</v-btn>
+                <v-btn @click="routerPushFollower()">フォロワー{{ loggedInUserFollowersNum }}</v-btn>
               </v-col>
             </v-row>
 
@@ -247,12 +247,12 @@ export default {
       // 詳細表示しているユーザーを更新
       this.$store.commit("auth/changeDetailUser", user)
     },
-    routerPushFollowing (user) {
-      this.$store.commit("auth/changeDetailUser", user)
+    routerPushFollowing () {
+      // this.$store.commit("auth/changeDetailUser", user)
       this.$router.push("/signin/following")
     },
-    routerPushFollower (user) {
-      this.$store.commit("auth/changeDetailUser", user)
+    routerPushFollower () {
+      // this.$store.commit("auth/changeDetailUser", user)
       this.$router.push("/signin/follower")
     }
   }
