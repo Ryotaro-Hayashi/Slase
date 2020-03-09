@@ -13,8 +13,12 @@
               <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
             <v-col>
-              <v-btn @click="follow">フォロー</v-btn>
-              <v-btn @click="unfollow">フォローを外す</v-btn>
+              <v-btn @click="follow">
+                <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
+              </v-btn>
+              <v-btn @click="unfollow">
+                <v-icon class="icon-space">mdi-account-minus</v-icon>フォローを外す
+              </v-btn>
             </v-col>
           </v-row>
 
