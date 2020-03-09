@@ -17,14 +17,14 @@
               <!-- フォロー -->
               <v-col>
                 <a @click="routerPushFollowing()">
-                  {{ loggedInUserFollowingsNum }}
+                  <span class="follow-num-space">{{ loggedInUserFollowingsNum }}</span>
                   <span class="font-wight-light caption">フォロー</span>
                 </a>
               </v-col>
               <!-- フォロワー -->
               <v-col>
                 <a @click="routerPushFollower()">
-                  {{ loggedInUserFollowersNum }}
+                  <span class="follow-num-space">{{ loggedInUserFollowersNum }}</span>
                   <span class="font-wight-light caption">フォロワー</span>
                 </a>
               </v-col>
@@ -294,6 +294,11 @@ a {
 /* 未導入の機能エリアを塗るためのCSS */
 .yet {
   background-color: silver;
+}
+
+/* フォロー数とその次の文字との間に入れる空間のためのCSS */
+.follow-num-space {
+  margin-right: 5px;
 }
 
 </style>

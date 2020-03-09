@@ -21,14 +21,25 @@
           <!-- プロフィール説明文 -->
           <v-row>
             <!-- フォロー -->
-            <v-col>
-              <router-link to="/following">フォロー{{ detailUserFollowingsNum }}</router-link>
+            <v-col :cols="2">
+              <router-link to="/following">
+                <span class="follow-num-space title">{{ detailUserFollowingsNum }}</span>
+                <span class="font-wight-light caption">フォロー</span>
+              </router-link>
             </v-col>
             <!-- フォロワー -->
-            <v-col>
-              <router-link to="/follower">フォロワー{{ detailUserFollowersNum }}</router-link>
+            <v-col :cols="2">
+              <router-link to="/follower">
+                <span class="follow-num-space title">{{ detailUserFollowersNum }}</span>
+                <span class="font-wight-light caption">フォロワー</span>
+              </router-link>
             </v-col>
-            <v-col><span class="yet">ここにプロフィール説明文を表示</span></v-col>
+          </v-row>
+          <v-row>
+            <!-- プロフィール説明文 -->
+            <v-col>
+              <span class="yet">ここにプロフィール説明文を表示</span>
+            </v-col>
           </v-row>
 
           <v-divider></v-divider>
