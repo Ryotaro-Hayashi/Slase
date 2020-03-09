@@ -14,11 +14,25 @@
                   <v-avatar color="blue" tile size="100">
                     <v-icon large dark>mdi-account-circle</v-icon>
                   </v-avatar>
+                  <!-- ユーザー名 -->
                   <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
-                <v-col>
-                  <v-btn to="/following">フォロー{{ loggedInUserFollowingsNum }}</v-btn>
-                  <v-btn to="/follower">フォロワー{{ loggedInUserFollowersNum }}</v-btn>
+              </v-row>
+
+              <v-row>
+                <!-- フォロー -->
+                <v-col :cols="3">
+                  <router-link to="/following">
+                    <span class="follow-num-space title">{{ loggedInUserFollowingsNum }}</span>
+                    <span class="font-wight-light caption">フォロー</span>
+                  </router-link>
+                </v-col>
+                <!-- フォロワー -->
+                <v-col :cols="3">
+                  <router-link to="/follower">
+                    <span class="follow-num-space title">{{ loggedInUserFollowersNum }}</span>
+                    <span class="font-wight-light caption">フォロワー</span>
+                  </router-link>
                 </v-col>
               </v-row>
 
