@@ -15,7 +15,6 @@
             <v-col>
               <v-btn @click="follow">フォロー</v-btn>
               <v-btn @click="unfollow">フォローを外す</v-btn>
-              <v-btn @click="getDetailUserFolloNum(detailUser.id)">同期</v-btn>
             </v-col>
           </v-row>
 
@@ -110,8 +109,10 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          // フォローが成功したらフォロー数を更新
+          // フォローが成功したらナビゲーションメニューのフォロー数を更新
           this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
+          // 詳細表示しているユーザーのフォロー数を更新
+          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
         }
       });
     },
@@ -125,6 +126,8 @@ export default {
         if (response.status === 200) {
           // フォローが成功したらフォロー数を更新
           this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
+          // 詳細表示しているユーザーのフォロー数を更新
+          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
         }
       });
     },

@@ -1,5 +1,5 @@
 <template>
-  <div class="following">
+  <div class="sign-in-following">
     <v-app>
 
       <v-card width="600px" class="mx-auto mt-10 mb-10">
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Following',
+  name: 'SignInFollowing',
   data () {
     return {
 
@@ -58,6 +58,10 @@ export default {
     },
     followings () {
       return this.$store.state.option.followings
+    },
+    // ログイン中のユーザーの情報を表示
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     }
   },
   methods: {
@@ -75,7 +79,7 @@ export default {
   },
   // マウント時にフォローしているユーザーを取得
   mounted () {
-    this.getFollowings(this.detailUser.id);
+    this.getFollowings(this.loggedInUser.id);
   }
 }
 </script>

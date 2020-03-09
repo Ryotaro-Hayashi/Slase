@@ -16,11 +16,11 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <router-link to="/following" @click.native="changeDetailUser(loggedInUser)">フォロー{{ loggedInUserFollowingsNum }}</router-link>
+                <a @click="routerPushFollowing()">フォロー{{ loggedInUserFollowingsNum }}</a>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <router-link to="/follower" @click.native="changeDetailUser(loggedInUser)">フォロワー{{ loggedInUserFollowersNum }}</router-link>
+                <a @click="routerPushFollower()">フォロワー{{ loggedInUserFollowersNum }}</a>
               </v-col>
             </v-row>
 
@@ -247,8 +247,13 @@ export default {
       // 詳細表示しているユーザーを更新
       this.$store.commit("auth/changeDetailUser", user)
     },
-    changeDetailUser (user) {
-      this.$store.commit("auth/changeDetailUser", user)
+    routerPushFollowing () {
+      // this.$store.commit("auth/changeDetailUser", user)
+      this.$router.push("/signin/following")
+    },
+    routerPushFollower () {
+      // this.$store.commit("auth/changeDetailUser", user)
+      this.$router.push("/signin/follower")
     }
   }
 }

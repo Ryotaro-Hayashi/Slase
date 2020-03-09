@@ -1,20 +1,20 @@
 <template>
-  <div class="following">
+  <div class="sign-in-follower">
     <v-app>
 
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">Follow</span>
+          <span class="title font-weight-bold">Follower</span>
         </v-card-title>
 
         <v-divider></v-divider>
 
         <v-card-text>
           <v-list three-line>
-            <template v-for="following in followings">
-              <v-list-item :key="following.id">
+            <template v-for="follower in followers">
+              <v-list-item :key="follower.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
                   <v-icon large dark>mdi-account-circle</v-icon>
@@ -23,7 +23,7 @@
                 <v-list-item-content>
                   <!-- 名前-->
                   <v-list-item-title>
-                    <a class="title font-weight-bold" @click="getDetailUserPosts(following)">{{ following.name }}</a>
+                    <a class="title font-weight-bold" @click="getDetailUserPosts(follower)">{{ follower.name }}</a>
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
@@ -46,7 +46,7 @@
 
 <script>
 export default {
-  name: 'Following',
+  name: 'SignInFollower',
   data () {
     return {
 
@@ -56,14 +56,18 @@ export default {
     detailUser () {
       return this.$store.state.auth.detailUser
     },
-    followings () {
-      return this.$store.state.option.followings
+    followers () {
+      return this.$store.state.option.followers
+    },
+    // ログイン中のユーザーの情報を表示
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     }
   },
   methods: {
-    // フォローしているユーザーを取得
-    getFollowings (id) {
-      this.$store.dispatch("option/getFollowings", id)
+    // フォロワーを取得
+    getFollowers (id) {
+      this.$store.dispatch("option/getFollowers", id)
     },
     // 詳細表示するユーザーの投稿一覧を取得
     getDetailUserPosts (user) {
@@ -71,11 +75,12 @@ export default {
       this.$store.commit("auth/changeDetailUser", user)
       this.$store.dispatch("post/getDetailUserPosts", user.id)
       this.$router.push("/detail/user")
+
     }
   },
-  // マウント時にフォローしているユーザーを取得
+  // マウント時にフォロワーを取得
   mounted () {
-    this.getFollowings(this.detailUser.id);
+    this.getFollowers(this.loggedInUser.id);
   }
 }
 </script>

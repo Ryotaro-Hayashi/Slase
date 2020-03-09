@@ -13,6 +13,8 @@ import MyEmail from './views/MyEmail'
 import MyPassword from './views/MyPassword'
 import Following from './views/Following'
 import Follower from './views/Follower'
+import SignInFollowing from './views/SignInFollowing'
+import SignInFollower from './views/SignInFollower'
 
 Vue.use(Router)
 
@@ -78,6 +80,16 @@ export default new Router({
       path: '/follower',
       name: 'Follower',
       component: Follower
+    },
+    {
+      path: '/signin/following',
+      name: 'SignInFollowing',
+      component: SignInFollowing
+    },
+    {
+      path: '/signin/follower',
+      name: 'SignInFollower',
+      component: SignInFollower
     }
   ]
 })
