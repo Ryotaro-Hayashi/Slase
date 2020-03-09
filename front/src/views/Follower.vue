@@ -7,8 +7,6 @@
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
           <span class="title font-weight-bold">Follower</span>
-          <!-- !!!!!!!!!!!!!!!!!! -->
-          <v-btn @click="getFollowers(detailUser.id)">同期</v-btn>
         </v-card-title>
 
         <v-divider></v-divider>
