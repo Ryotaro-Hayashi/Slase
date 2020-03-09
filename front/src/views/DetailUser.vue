@@ -110,8 +110,10 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          // フォローが成功したらフォロー数を更新
+          // フォローが成功したらナビゲーションメニューのフォロー数を更新
           this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
+          // 詳細表示しているユーザーのフォロー数を更新
+          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
         }
       });
     },
