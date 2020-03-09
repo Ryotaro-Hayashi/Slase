@@ -15,7 +15,6 @@
             <v-col>
               <v-btn @click="follow">フォロー</v-btn>
               <v-btn @click="unfollow">フォローを外す</v-btn>
-              <v-btn @click="getDetailUserFolloNum(detailUser.id)">同期</v-btn>
             </v-col>
           </v-row>
 
