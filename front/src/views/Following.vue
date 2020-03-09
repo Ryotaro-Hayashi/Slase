@@ -23,7 +23,7 @@
                 <v-list-item-content>
                   <!-- 名前-->
                   <v-list-item-title>
-                    <router-link class="title font-weight-bold" to="/detail/user" @click.native="getDetailUserPosts(following)">{{ following.name }}</router-link>
+                    <a class="title font-weight-bold" @click="getDetailUserPosts(following)">{{ following.name }}</a>
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
@@ -67,9 +67,10 @@ export default {
     },
     // 詳細表示するユーザーの投稿一覧を取得
     getDetailUserPosts (user) {
-      this.$store.dispatch("post/getDetailUserPosts", user.id)
       // 詳細表示しているユーザーを更新
       this.$store.commit("auth/changeDetailUser", user)
+      this.$store.dispatch("post/getDetailUserPosts", user.id)
+      this.$router.push("/detail/user")
     }
   },
   // マウント時にフォローしているユーザーを取得
