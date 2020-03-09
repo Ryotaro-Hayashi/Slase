@@ -28,7 +28,7 @@
                   <!-- 投稿者と投稿日時 -->
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<v-btn @click="getDetailUserPosts(post.user)">{{ post.user.name }}</v-btn></v-col>
+                      <v-col>投稿者：<a @click="getDetailUserPosts(post.user)">{{ post.user.name }}</a></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
                     </v-row>
                   </v-list-item-subtitle>

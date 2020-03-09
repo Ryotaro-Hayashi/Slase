@@ -16,11 +16,11 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <v-btn @click="routerPushFollowing()">フォロー{{ loggedInUserFollowingsNum }}</v-btn>
+                <a @click="routerPushFollowing()">フォロー{{ loggedInUserFollowingsNum }}</a>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <v-btn @click="routerPushFollower()">フォロワー{{ loggedInUserFollowersNum }}</v-btn>
+                <a @click="routerPushFollower()">フォロワー{{ loggedInUserFollowersNum }}</a>
               </v-col>
             </v-row>
 
