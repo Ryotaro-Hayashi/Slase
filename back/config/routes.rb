@@ -2,9 +2,11 @@ Rails.application.routes.draw do
   # devise_for :users
 
   namespace 'api' do
-
     # ユーザー認証のためのエンドポイント
     mount_devise_token_auth_for 'User', at: 'auth'
+
+    # ユーザーを取得するためのエンドポイント
+    resources :users, :only => [:index, :show]
 
     namespace 'post' do
       # question作成のためのエンドポイント
@@ -26,9 +28,6 @@ Rails.application.routes.draw do
     # そのidのユーザーのフォローしているユーザーの数を返すエンドポイント
     get '/followings/num/:user_id', to: 'relationships#num_followings'
     get '/followers/num/:user_id', to: 'relationships#num_followers'
-
-    # ユーザーを取得するためのエンドポイント 
-    resources :users, :only => [:index, :show]
 
   end
 end
