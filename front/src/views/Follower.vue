@@ -23,7 +23,7 @@
                 <v-list-item-content>
                   <!-- 名前-->
                   <v-list-item-title>
-                    <a class="title font-weight-bold" @click="getDetailUserPosts(follower)">{{ follower.name }}</a>
+                    <router-link to="/detail/user" class="title font-weight-bold" @click.native="getDetailUser(follower.id)">{{ follower.name }}</router-link>
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
@@ -53,29 +53,14 @@ export default {
     }
   },
   computed: {
-    detailUser () {
-      return this.$store.state.auth.detailUser
-    },
     followers () {
-      return this.$store.state.option.followers
+      return this.$store.state.user.followers
     }
   },
   methods: {
-    // フォロワーを取得
-    getFollowers (id) {
-      this.$store.dispatch("option/getFollowers", id)
-    },
-    // 詳細表示するユーザーの投稿一覧を取得
-    getDetailUserPosts (user) {
-      // 詳細表示しているユーザーを更新
-      this.$store.commit("auth/changeDetailUser", user)
-      this.$store.dispatch("post/getDetailUserPosts", user.id)
-      this.$router.push("/detail/user")
+    getDetailUser (id) {
+      this.$store.dispatch("user/getDetailUser", id)
     }
-  },
-  // マウント時にフォロワーを取得
-  mounted () {
-    this.getFollowers(this.detailUser.id);
   }
 }
 </script>

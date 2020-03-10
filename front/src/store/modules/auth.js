@@ -6,10 +6,8 @@ export const auth = {
   state: {
     // ログイン状態
     loggedIn: false,
-    // ログインユーザー（ローカルストレージに保存する用）
-    loggedInUser: {name: ""},
     // ログインユーザーの情報
-    loggedInUserInfo: {name: ""},
+    loggedInUser: {name: ""},
     // トークン情報
     token: {},
     // 認証成功時のスナックバー
@@ -24,21 +22,13 @@ export const auth = {
     updateLoggedIn (state, boolean) {
       state.loggedIn = boolean
     },
-    // ログインユーザーを更新
-    updateLoggedInUser (state, user) {
-      state.loggedInUser = user
-    },
     // ログインユーザー情報を更新
-    updateLoggedInUserInfo (state, info) {
-      state.loggedInUserInfo = info
+    updateLoggedInUser (state, info) {
+      state.loggedInUser = info
     },
     updateToken (state, token) {
       state.token = token
     },
-    // 詳細表示するユーザーを変更
-    // changeDetailUser (state, user) {
-    //   state.detailUser = user
-    // },
     updateEmail (state, email) {
       state.loggedInUser.email = email
     },
@@ -59,11 +49,11 @@ export const auth = {
   },
   actions: {
     // ログインユーザーの情報を取得
-    getLoggedInUserInfo ({ commit }, id) {
+    getLoggedInUser ({ commit }, id) {
       axios.get('http://localhost:3000/api/users/' + id)
       .then(response => {
         if (response.status === 200) {
-          commit("updateLoggedInUserInfo", response.data);
+          commit("updateLoggedInUser", response.data);
         }
       })
     },
@@ -79,10 +69,10 @@ export const auth = {
         // リクエストが成功
         if (response.status === 200) {
           commit("updateLoggedIn", true);
-          // ローカルストレージに保存する情報を更新
-          commit("updateLoggedInUser", response.data.data)
           // レスポンスデータのidを使ってログインユーザー情報を取得
-          dispatch("getLoggedInUserInfo", response.data.data.id);
+          dispatch("getLoggedInUser", response.data.data.id);
+          // フォロー・フォロワーを取得を取得
+          dispatch("user/getFollows", response.data.data.id, {root: true});
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -112,8 +102,8 @@ export const auth = {
       .then(response => {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
-          commit("updateLoggedInUser", response.data.data)
-          dispatch("getLoggedInUserInfo", response.data.data.id)
+          dispatch("getLoggedInUser", response.data.data.id);
+          dispatch("user/getFollows", response.data.data.id, {root: true});
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -138,6 +128,8 @@ export const auth = {
       commit("updateLoggedIn", false);
       commit("updateLoggedInUser", {name: ""})
       commit("updateToken", {})
+      commit("user/changeFollowings", {}, {root: true})
+      commit("user/changeFollowers", {}, {root: true})
     },
     changeEmail ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth', {

@@ -6,39 +6,24 @@
         <v-card-text>
           <!-- ユーザー情報 -->
           <v-row>
-            <v-col>
+            <v-col :cols=9>
               <v-avatar color="blue" tile size="100">
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
-              <div class="display-1 font-weight-bold">{{ detailUserInfo.name }}</div>
+              <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
-            <v-col>
-              <v-btn @click="follow">
+            <v-col :cols=3>
+              <!-- フォローしていなければフォローボタンを表示 -->
+              <v-btn @click="follow" v-if="!isFollowing ()">
                 <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
               </v-btn>
-              <v-btn @click="unfollow">
+              <!-- フォローしていればアンフォローボタンを表示 -->
+              <v-btn @click="unfollow" v-else>
                 <v-icon class="icon-space">mdi-account-minus</v-icon>フォローを外す
               </v-btn>
             </v-col>
           </v-row>
 
-          <!-- プロフィール説明文 -->
-          <v-row>
-            <!-- フォロー -->
-            <v-col :cols="2">
-              <router-link to="/following">
-                <span class="follow-num-space title">{{ detailUserFollowingsNum }}</span>
-                <span class="font-wight-light caption">フォロー</span>
-              </router-link>
-            </v-col>
-            <!-- フォロワー -->
-            <v-col :cols="2">
-              <router-link to="/follower">
-                <span class="follow-num-space title">{{ detailUserFollowersNum }}</span>
-                <span class="font-wight-light caption">フォロワー</span>
-              </router-link>
-            </v-col>
-          </v-row>
           <v-row>
             <!-- プロフィール説明文 -->
             <v-col>
@@ -49,7 +34,7 @@
           <v-divider></v-divider>
 
           <v-list three-line>
-            <template v-for="detailUserPost in detailUserInfo.questions">
+            <template v-for="detailUserPost in detailUser.questions">
               <v-list-item :key="detailUserPost.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
@@ -82,29 +67,21 @@
 export default {
   name: 'DetailUser',
   data: () => ({
-    avatarUrl: '',
-    avatarFile: ''
+
   }),
   computed: {
-    detailUserPosts () {
-      return this.$store.state.post.detailUserPosts
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     },
-    detailUserInfo () {
-      return this.$store.state.user.detailUserInfo
+    detailUser () {
+      return this.$store.state.user.detailUser
     },
     token () {
       return this.$store.state.auth.token
     },
-    // ログイン中のユーザーの情報を表示
-    loggedInUser () {
-      return this.$store.state.auth.loggedInUser
+    followings () {
+      return this.$store.state.user.followings
     },
-    detailUserFollowingsNum () {
-      return this.$store.state.option.detailUserFollowingsNum
-    },
-    detailUserFollowersNum () {
-      return this.$store.state.option.detailUserFollowersNum
-    }
   },
   methods: {
     // 投稿の詳細を取得
@@ -124,10 +101,9 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          // フォローが成功したらナビゲーションメニューのフォロー数を更新
-          this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
-          // 詳細表示しているユーザーのフォロー数を更新
-          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
+          // 成功したらフォロー・フォロワーを更新
+          this.$store.dispatch("auth/getLoggedInUser", this.loggedInUser.id)
+          this.$store.dispatch("user/getFollows", this.loggedInUser.id)
         }
       });
     },
@@ -139,20 +115,27 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          // フォローが成功したらフォロー数を更新
-          this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
-          // 詳細表示しているユーザーのフォロー数を更新
-          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
+          // 成功したらフォロー・フォロワーを更新
+          this.$store.dispatch("auth/getLoggedInUser", this.loggedInUser.id)
+          this.$store.dispatch("user/getFollows", this.loggedInUser.id)
         }
       });
     },
-    // 詳細表示するユーザーのフォロー数・フォロワー数を取得
-    getDetailUserFolloNum (id) {
-      this.$store.dispatch("option/getDetailUserFolloNum", id)
-    }
-  },
-  mounted () {
-    // this.getDetailUserFolloNum(this.detailUserInfo.id)
+    // フォローしているユーザーの中に詳細表示しているユーザーのidが含まれているかを確認
+    isFollowing () {
+      // フォローしているユーザーの1つ1つについて
+      const followings = this.followings.find(follow => {
+        // 詳細表示しているユーザーのidが一致するかを確認
+        return follow.id === this.detailUser.id
+      });
+      if (followings) {
+        return true
+      }
+      else {
+        return false
+      }
+    },
+
   }
 }
 </script>

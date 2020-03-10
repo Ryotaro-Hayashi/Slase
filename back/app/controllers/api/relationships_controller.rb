@@ -17,11 +17,6 @@ class Api::RelationshipsController < ApplicationController
     end
   end
 
-  def index
-    relationship = Relationship.all
-    render json: relationship
-  end
-
   # エンドポイントのidを使ってそのユーザーのフォローしているユーザーを返す
   def followings
     user = User.find(params[:user_id])
@@ -32,17 +27,6 @@ class Api::RelationshipsController < ApplicationController
   def followers
     user = User.find(params[:user_id])
     render json: user.followers
-  end
-
-  # フォローしている人数を返す
-  def num_followings
-    user = User.find(params[:user_id])
-    render json: user.followings.count
-  end
-
-  def num_followers
-    user = User.find(params[:user_id])
-    render json: user.followers.count
   end
 
 end
