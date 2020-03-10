@@ -69,6 +69,7 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
+    // ユーザーの詳細を取得
     getDetailUser (id) {
       this.$store.dispatch("user/getDetailUser", id)
     }
