@@ -19,15 +19,11 @@ Rails.application.routes.draw do
 
     end
 
-    resources :relationships
+    resources :relationships, :only => [:create, :destroy]
 
     # そのidのユーザーのフォローしているユーザーを返すエンドポイント
     get '/followings/:user_id', to: 'relationships#followings'
     get '/followers/:user_id', to: 'relationships#followers'
-
-    # そのidのユーザーのフォローしているユーザーの数を返すエンドポイント
-    get '/followings/num/:user_id', to: 'relationships#num_followings'
-    get '/followers/num/:user_id', to: 'relationships#num_followers'
 
   end
 end

@@ -16,7 +16,7 @@
               <v-btn @click="follow">
                 <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
               </v-btn>
-              <v-btn @click="unfollow">
+              <v-btn @click="unfollow" v-if="isFollowing ()">
                 <v-icon class="icon-space">mdi-account-minus</v-icon>フォローを外す
               </v-btn>
             </v-col>
@@ -76,7 +76,10 @@ export default {
     },
     token () {
       return this.$store.state.auth.token
-    }
+    },
+    followings () {
+      return this.$store.state.user.followings
+    },
   },
   methods: {
     // 投稿の詳細を取得
@@ -97,6 +100,7 @@ export default {
       .then(response => {
         if (response.status === 200) {
           // 成功したらフォロー・フォロワーを更新
+          this.$store.dispatch("auth/getLoggedInUser", this.loggedInUser.id)
           this.$store.dispatch("user/getFollows", this.loggedInUser.id)
         }
       });
@@ -110,10 +114,26 @@ export default {
       .then(response => {
         if (response.status === 200) {
           // 成功したらフォロー・フォロワーを更新
+          this.$store.dispatch("auth/getLoggedInUser", this.loggedInUser.id)
           this.$store.dispatch("user/getFollows", this.loggedInUser.id)
         }
       });
     },
+    // フォローしているユーザーの中に詳細表示しているユーザーのidが含まれているかを確認
+    isFollowing () {
+      // フォローしているユーザーの1つ1つについて
+      const followings = this.followings.find(follow => {
+        // 詳細表示しているユーザーのidが一致するかを確認
+        return follow.id === this.detailUser.id
+      });
+      if (followings) {
+        return true
+      }
+      else {
+        return false
+      }
+    },
+
   }
 }
 </script>
