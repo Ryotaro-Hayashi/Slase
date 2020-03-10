@@ -53,29 +53,12 @@ export default {
     }
   },
   computed: {
-    detailUser () {
-      return this.$store.state.auth.detailUser
-    },
     followers () {
-      return this.$store.state.option.followers
+      return this.$store.state.user.followers
     }
   },
   methods: {
-    // フォロワーを取得
-    getFollowers (id) {
-      this.$store.dispatch("option/getFollowers", id)
-    },
-    // 詳細表示するユーザーの投稿一覧を取得
-    getDetailUserPosts (user) {
-      // 詳細表示しているユーザーを更新
-      this.$store.commit("auth/changeDetailUser", user)
-      this.$store.dispatch("post/getDetailUserPosts", user.id)
-      this.$router.push("/detail/user")
-    }
-  },
-  // マウント時にフォロワーを取得
-  mounted () {
-    this.getFollowers(this.detailUser.id);
+
   }
 }
 </script>

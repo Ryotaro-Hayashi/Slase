@@ -94,10 +94,10 @@ export default {
       return this.$store.state.auth.loggedInUser
     },
     followingsNum () {
-      return 0
+      return this.$store.state.user.followings.length
     },
     followersNum () {
-      return 0
+      return this.$store.state.user.followers.length
     }
   },
   methods: {

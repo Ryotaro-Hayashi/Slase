@@ -17,14 +17,14 @@
               <!-- フォロー -->
               <v-col>
                 <router-link to="/following">
-                  <span class="follow-num-space">{{ followings.length }}</span>
+                  <span class="follow-num-space">{{ followingsNum }}</span>
                   <span class="font-wight-light caption">フォロー</span>
                 </router-link>
               </v-col>
               <!-- フォロワー -->
               <v-col>
                 <router-link to="/follower">
-                  <span class="follow-num-space">{{ followers.length }}</span>
+                  <span class="follow-num-space">{{ followersNum }}</span>
                   <span class="font-wight-light caption">フォロワー</span>
                 </router-link>
               </v-col>
@@ -230,11 +230,11 @@ export default {
     postSuccessSnackbar () {
       return this.$store.state.post.successSnackbar
     },
-    followings () {
-      return this.$store.state.user.followings
+    followingsNum () {
+      return this.$store.state.user.followings.length
     },
-    followers () {
-      return this.$store.state.user.followers
+    followersNum () {
+      return this.$store.state.user.followers.length
     }
   },
   methods: {
