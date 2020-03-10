@@ -13,13 +13,12 @@ export default new Vuex.Store({
   modules: {
     auth,
     post,
-    option,
     user
   },
   // localstrageにstateを保存
   plugins: [
     createPersistedState({
-      paths: ['auth.loggedIn', 'auth.loggedInUser', 'auth.token','auth.loggedInUserInfo', 'auth.successSnackbar', 'option', 'user']
+      paths: ['auth.loggedIn', 'auth.loggedInUser', 'auth.token','auth.loggedInUserInfo', 'auth.successSnackbar', 'user']
     })
   ]
 });
