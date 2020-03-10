@@ -44,7 +44,7 @@
               <v-divider></v-divider>
 
               <v-list three-line>
-                <template v-for="loggedInUserPost in loggedInUserPosts">
+                <template v-for="loggedInUserPost in loggedInUser.questions">
                   <v-list-item :key="loggedInUserPost.id">
                     <!-- アバター -->
                     <v-list-item-avatar color="blue" tile>
@@ -92,10 +92,6 @@ export default {
     // ログイン中のユーザーの情報を表示
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
-    },
-    // ログイン中のユーザーの投稿一覧表示
-    loggedInUserPosts () {
-      return this.$store.state.post.detailUserPosts
     },
     loggedInUserFollowingsNum () {
       return this.$store.state.option.loggedInUserFollowingsNum
