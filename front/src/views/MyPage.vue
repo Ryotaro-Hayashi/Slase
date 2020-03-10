@@ -15,7 +15,7 @@
                     <v-icon large dark>mdi-account-circle</v-icon>
                   </v-avatar>
                   <!-- ユーザー名 -->
-                  <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
+                  <div class="display-1 font-weight-bold">{{ loggedInUserInfo.name }}</div>
                 </v-col>
               </v-row>
 
@@ -44,7 +44,7 @@
               <v-divider></v-divider>
 
               <v-list three-line>
-                <template v-for="loggedInUserPost in loggedInUserPosts">
+                <template v-for="loggedInUserPost in loggedInUserInfo.questions">
                   <v-list-item :key="loggedInUserPost.id">
                     <!-- アバター -->
                     <v-list-item-avatar color="blue" tile>
@@ -90,12 +90,8 @@ export default {
   },
   computed: {
     // ログイン中のユーザーの情報を表示
-    loggedInUser () {
-      return this.$store.state.auth.loggedInUser
-    },
-    // ログイン中のユーザーの投稿一覧表示
-    loggedInUserPosts () {
-      return this.$store.state.post.detailUserPosts
+    loggedInUserInfo () {
+      return this.$store.state.auth.loggedInUserInfo
     },
     loggedInUserFollowingsNum () {
       return this.$store.state.option.loggedInUserFollowingsNum
@@ -105,6 +101,9 @@ export default {
     }
   },
   methods: {
+    getLoggedInUserInfo (id) {
+      this.$store.dispatch("auth/getLoggedInUserInfo", id)
+    },
     // 投稿の詳細を取得
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
@@ -114,9 +113,9 @@ export default {
       this.$store.dispatch("option/getLoggedInUserFollowNum", id)
     }
  },
- // なくても開発環境では問題がないが、ないと実際に使うときに更新する機会がなくなってしまう
  mounted () {
-   this.getLoggedInUserFollowNum(this.loggedInUser.id);
+   this.getLoggedInUserInfo(this.loggedInUser.id);
+   // this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
 
 }

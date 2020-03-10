@@ -10,7 +10,7 @@
               <v-avatar color="blue" tile size="100">
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
-              <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
+              <div class="display-1 font-weight-bold">{{ detailUserInfo.name }}</div>
             </v-col>
             <v-col>
               <v-btn @click="follow">
@@ -49,7 +49,7 @@
           <v-divider></v-divider>
 
           <v-list three-line>
-            <template v-for="detailUserPost in detailUserPosts">
+            <template v-for="detailUserPost in detailUserInfo.questions">
               <v-list-item :key="detailUserPost.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
@@ -89,8 +89,8 @@ export default {
     detailUserPosts () {
       return this.$store.state.post.detailUserPosts
     },
-    detailUser () {
-      return this.$store.state.auth.detailUser
+    detailUserInfo () {
+      return this.$store.state.user.detailUserInfo
     },
     token () {
       return this.$store.state.auth.token
@@ -152,7 +152,7 @@ export default {
     }
   },
   mounted () {
-    this.getDetailUserFolloNum(this.detailUser.id)
+    // this.getDetailUserFolloNum(this.detailUserInfo.id)
   }
 }
 </script>

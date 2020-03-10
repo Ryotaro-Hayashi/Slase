@@ -28,7 +28,7 @@
                   <!-- 投稿者と投稿日時 -->
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<a @click="getDetailUserPosts(post.user)">{{ post.user.name }}</a></v-col>
+                      <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUserInfo(post.user.id)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
                     </v-row>
                   </v-list-item-subtitle>
@@ -75,6 +75,9 @@ export default {
       this.$store.dispatch("post/getDetailUserPosts", user.id)
       this.$router.push("/detail/user")
       // 詳細表示しているユーザーを更新
+    },
+    getDetailUserInfo (id) {
+      this.$store.dispatch("user/getDetailUserInfo", id)
     }
   },
   // マウント時にステートの投稿一覧を更新
