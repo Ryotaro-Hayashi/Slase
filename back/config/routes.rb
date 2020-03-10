@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  namespace :api do
-    get 'users/index'
-    get 'users/show'
-  end
   # devise_for :users
 
   namespace 'api' do
@@ -27,9 +23,12 @@ Rails.application.routes.draw do
     get '/followings/:user_id', to: 'relationships#followings'
     get '/followers/:user_id', to: 'relationships#followers'
 
-    # そのidのユーザーのフォローしているユーザーの数を返すエンドポイント 
+    # そのidのユーザーのフォローしているユーザーの数を返すエンドポイント
     get '/followings/num/:user_id', to: 'relationships#num_followings'
     get '/followers/num/:user_id', to: 'relationships#num_followers'
+
+    # ユーザーを取得するためのエンドポイント 
+    resources :users, :only => [:index, :show]
 
   end
 end
