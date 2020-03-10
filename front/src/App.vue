@@ -16,17 +16,17 @@
             <v-row>
               <!-- フォロー -->
               <v-col>
-                <a @click="routerPushFollowing()">
-                  <span class="follow-num-space">{{ loggedInUserFollowingsNum }}</span>
+                <router-link to="/following">
+                  <span class="follow-num-space">{{ followingsNum }}</span>
                   <span class="font-wight-light caption">フォロー</span>
-                </a>
+                </router-link>
               </v-col>
               <!-- フォロワー -->
               <v-col>
-                <a @click="routerPushFollower()">
-                  <span class="follow-num-space">{{ loggedInUserFollowersNum }}</span>
+                <router-link to="/follower">
+                  <span class="follow-num-space">{{ followersNum }}</span>
                   <span class="font-wight-light caption">フォロワー</span>
-                </a>
+                </router-link>
               </v-col>
             </v-row>
 
@@ -230,11 +230,11 @@ export default {
     postSuccessSnackbar () {
       return this.$store.state.post.successSnackbar
     },
-    loggedInUserFollowingsNum () {
-      return this.$store.state.option.loggedInUserFollowingsNum
+    followingsNum () {
+      return this.$store.state.option.followingsNum
     },
-    loggedInUserFollowersNum () {
-      return this.$store.state.option.loggedInUserFollowersNum
+    followersNum () {
+      return this.$store.state.option.followersNum
     }
   },
   methods: {
@@ -246,14 +246,6 @@ export default {
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)
-    },
-    routerPushFollowing () {
-      // this.$store.commit("auth/changeDetailUser", user)
-      this.$router.push("/signin/following")
-    },
-    routerPushFollower () {
-      // this.$store.commit("auth/changeDetailUser", user)
-      this.$router.push("/signin/follower")
     }
   }
 }

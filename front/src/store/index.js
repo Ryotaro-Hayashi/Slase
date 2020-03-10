@@ -4,7 +4,6 @@ import createPersistedState from 'vuex-persistedstate';
 
 import auth from './modules/auth';
 import post from './modules/post';
-import option from './modules/option';
 import user from './modules/user';
 
 Vue.use(Vuex);

@@ -15,7 +15,7 @@
                     <v-icon large dark>mdi-account-circle</v-icon>
                   </v-avatar>
                   <!-- ユーザー名 -->
-                  <div class="display-1 font-weight-bold">{{ loggedInUserInfo.name }}</div>
+                  <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                 </v-col>
               </v-row>
 
@@ -23,14 +23,14 @@
                 <!-- フォロー -->
                 <v-col :cols="3">
                   <router-link to="/following">
-                    <span class="follow-num-space title">{{ loggedInUserFollowingsNum }}</span>
+                    <span class="follow-num-space title">{{ followingsNum }}</span>
                     <span class="font-wight-light caption">フォロー</span>
                   </router-link>
                 </v-col>
                 <!-- フォロワー -->
                 <v-col :cols="3">
                   <router-link to="/follower">
-                    <span class="follow-num-space title">{{ loggedInUserFollowersNum }}</span>
+                    <span class="follow-num-space title">{{ followersNum }}</span>
                     <span class="font-wight-light caption">フォロワー</span>
                   </router-link>
                 </v-col>
@@ -44,7 +44,7 @@
               <v-divider></v-divider>
 
               <v-list three-line>
-                <template v-for="loggedInUserPost in loggedInUserInfo.questions">
+                <template v-for="loggedInUserPost in loggedInUser.questions">
                   <v-list-item :key="loggedInUserPost.id">
                     <!-- アバター -->
                     <v-list-item-avatar color="blue" tile>
@@ -90,28 +90,24 @@ export default {
   },
   computed: {
     // ログイン中のユーザーの情報を表示
-    loggedInUserInfo () {
-      return this.$store.state.auth.loggedInUserInfo
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     },
-    loggedInUserFollowingsNum () {
-      return this.$store.state.option.loggedInUserFollowingsNum
+    followingsNum () {
+      return 0
     },
-    loggedInUserFollowersNum () {
-      return this.$store.state.option.loggedInUserFollowersNum
+    followersNum () {
+      return 0
     }
   },
   methods: {
-    getLoggedInUserInfo (id) {
-      this.$store.dispatch("auth/getLoggedInUserInfo", id)
+    getLoggedInUser (id) {
+      this.$store.dispatch("auth/getLoggedInUser", id)
     },
     // 投稿の詳細を取得
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
-    // ログインユーザーのフォロー数・フォロワー数を取得
-    getLoggedInUserFollowNum (id) {
-      this.$store.dispatch("option/getLoggedInUserFollowNum", id)
-    }
  },
  mounted () {
    this.getLoggedInUserInfo(this.loggedInUser.id);

@@ -71,6 +71,8 @@ export const auth = {
           commit("updateLoggedIn", true);
           // レスポンスデータのidを使ってログインユーザー情報を取得
           dispatch("getLoggedInUser", response.data.data.id);
+          // フォロー・フォロワーを取得を取得
+          dispatch("user/getFollows", response.data.data.id, {root: true});
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -100,7 +102,8 @@ export const auth = {
       .then(response => {
         if (response.status === 200) {
           commit("updateLoggedIn", true);
-          dispatch("getLoggedInUser", response.data.data.id)
+          dispatch("getLoggedInUser", response.data.data.id);
+          dispatch("user/getFollows", response.data.data.id, {root: true});
           commit("updateToken", {
             "access-token": response.headers["access-token"],
             client: response.headers.client,
@@ -125,6 +128,8 @@ export const auth = {
       commit("updateLoggedIn", false);
       commit("updateLoggedInUser", {name: ""})
       commit("updateToken", {})
+      commit("user/changeFollowings", {}, {root: true})
+      commit("user/changeFollowers", {}, {root: true})
     },
     changeEmail ({ commit }, data) {
       axios.put('http://localhost:3000/api/auth', {
