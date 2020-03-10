@@ -22,23 +22,6 @@
             </v-col>
           </v-row>
 
-          <!-- プロフィール説明文 -->
-          <!-- <v-row> -->
-            <!-- フォロー -->
-            <!-- <v-col :cols="2">
-              <router-link to="/following">
-                <span class="follow-num-space title">{{ detailUserFollowingsNum }}</span>
-                <span class="font-wight-light caption">フォロー</span>
-              </router-link>
-            </v-col> -->
-            <!-- フォロワー -->
-            <!-- <v-col :cols="2">
-              <router-link to="/follower">
-                <span class="follow-num-space title">{{ detailUserFollowersNum }}</span>
-                <span class="font-wight-light caption">フォロワー</span>
-              </router-link>
-            </v-col> -->
-          <!-- </v-row> -->
           <v-row>
             <!-- プロフィール説明文 -->
             <v-col>
@@ -82,9 +65,12 @@
 export default {
   name: 'DetailUser',
   data: () => ({
-    
+
   }),
   computed: {
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
+    },
     detailUser () {
       return this.$store.state.user.detailUser
     },
@@ -110,10 +96,8 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          // フォローが成功したらナビゲーションメニューのフォロー数を更新
-          this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
-          // 詳細表示しているユーザーのフォロー数を更新
-          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
+          // 成功したらフォロー・フォロワーを更新
+          this.$store.dispatch("user/getFollows", this.loggedInUser.id)
         }
       });
     },
@@ -125,10 +109,8 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          // フォローが成功したらフォロー数を更新
-          this.$store.dispatch("option/getLoggedInUserFollowNum", this.loggedInUser.id)
-          // 詳細表示しているユーザーのフォロー数を更新
-          this.$store.dispatch("option/getDetailUserFolloNum", this.detailUser.id)
+          // 成功したらフォロー・フォロワーを更新
+          this.$store.dispatch("user/getFollows", this.loggedInUser.id)
         }
       });
     },

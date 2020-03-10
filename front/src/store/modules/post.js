@@ -6,17 +6,12 @@ export const post = {
   state: {
     // 詳細表示する投稿
     detailPost: {},
-    // 詳細表示するユーザーの投稿一覧
-    detailUserPosts: {},
     // 投稿成功時に表示するスナックバー
     successSnackbar: false
   },
   mutations: {
     changeDetailPost (state, post) {
       state.detailPost = post
-    },
-    updateDetailUserPosts (state, posts) {
-      state.detailUserPosts = posts
     },
     changeSuccessSnackbar (state, boolean) {
       state.successSnackbar = boolean
@@ -53,13 +48,6 @@ export const post = {
         commit("changeDetailPost", response.data)
       })
     },
-    // 詳細表示するユーザーの投稿一覧を取得
-    getDetailUserPosts ({ commit }, id) {
-      axios.get('http://localhost:3000/api/post/mypost/' + id)
-      .then(response => {
-        commit("updateDetailUserPosts", response.data)
-      })
-    }
   }
 }
 
