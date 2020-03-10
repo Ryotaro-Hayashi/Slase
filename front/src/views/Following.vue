@@ -23,7 +23,7 @@
                 <v-list-item-content>
                   <!-- 名前-->
                   <v-list-item-title>
-                    <a class="title font-weight-bold" @click="getDetailUserPosts(following)">{{ following.name }}</a>
+                    <router-link to="/detail/user" class="title font-weight-bold" @click.native="getDetailUser(following.id)">{{ following.name }}</router-link>
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
@@ -58,7 +58,10 @@ export default {
     }
   },
   methods: {
-  },
+    getDetailUser (id) {
+      this.$store.dispatch("user/getDetailUser", id)
+    }
+  }
 }
 </script>
 

@@ -10,7 +10,7 @@
               <v-avatar color="blue" tile size="100">
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
-              <div class="display-1 font-weight-bold">{{ detailUserInfo.name }}</div>
+              <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
             <v-col>
               <v-btn @click="follow">
@@ -23,22 +23,22 @@
           </v-row>
 
           <!-- プロフィール説明文 -->
-          <v-row>
+          <!-- <v-row> -->
             <!-- フォロー -->
-            <v-col :cols="2">
+            <!-- <v-col :cols="2">
               <router-link to="/following">
                 <span class="follow-num-space title">{{ detailUserFollowingsNum }}</span>
                 <span class="font-wight-light caption">フォロー</span>
               </router-link>
-            </v-col>
+            </v-col> -->
             <!-- フォロワー -->
-            <v-col :cols="2">
+            <!-- <v-col :cols="2">
               <router-link to="/follower">
                 <span class="follow-num-space title">{{ detailUserFollowersNum }}</span>
                 <span class="font-wight-light caption">フォロワー</span>
               </router-link>
-            </v-col>
-          </v-row>
+            </v-col> -->
+          <!-- </v-row> -->
           <v-row>
             <!-- プロフィール説明文 -->
             <v-col>
@@ -49,7 +49,7 @@
           <v-divider></v-divider>
 
           <v-list three-line>
-            <template v-for="detailUserPost in detailUserInfo.questions">
+            <template v-for="detailUserPost in detailUser.questions">
               <v-list-item :key="detailUserPost.id">
                 <!-- アバター -->
                 <v-list-item-avatar color="blue" tile>
@@ -82,28 +82,14 @@
 export default {
   name: 'DetailUser',
   data: () => ({
-    avatarUrl: '',
-    avatarFile: ''
+    
   }),
   computed: {
-    detailUserPosts () {
-      return this.$store.state.post.detailUserPosts
-    },
-    detailUserInfo () {
-      return this.$store.state.user.detailUserInfo
+    detailUser () {
+      return this.$store.state.user.detailUser
     },
     token () {
       return this.$store.state.auth.token
-    },
-    // ログイン中のユーザーの情報を表示
-    loggedInUser () {
-      return this.$store.state.auth.loggedInUser
-    },
-    detailUserFollowingsNum () {
-      return this.$store.state.option.detailUserFollowingsNum
-    },
-    detailUserFollowersNum () {
-      return this.$store.state.option.detailUserFollowersNum
     }
   },
   methods: {
@@ -146,13 +132,6 @@ export default {
         }
       });
     },
-    // 詳細表示するユーザーのフォロー数・フォロワー数を取得
-    getDetailUserFolloNum (id) {
-      this.$store.dispatch("option/getDetailUserFolloNum", id)
-    }
-  },
-  mounted () {
-    // this.getDetailUserFolloNum(this.detailUserInfo.id)
   }
 }
 </script>
