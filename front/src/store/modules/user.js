@@ -11,6 +11,10 @@ export const user = {
   },
   mutations: {
     // 詳細表示するユーザー情報を更新
+    updateDetailUser (state, user) {
+      state.detailUserInfo = user
+    },
+    // 詳細表示するユーザー情報を更新
     updateDetailUserInfo (state, info) {
       state.detailUserInfo = info
     }
@@ -18,7 +22,7 @@ export const user = {
   actions: {
     // 詳細表示するユーザー情報を取得
     getDetailUserInfo ({ commit }, id) {
-      axios.get(axios.get('http://localhost:3000/api/users/' + id))
+      axios.get('http://localhost:3000/api/users/' + id)
       .then(response => {
         if (response.status === 200) {
           commit("updateDetailUserInfo", response.data);

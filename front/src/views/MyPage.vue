@@ -101,6 +101,9 @@ export default {
     }
   },
   methods: {
+    getLoggedInUserInfo (id) {
+      this.$store.dispatch("auth/getLoggedInUserInfo", id)
+    },
     // 投稿の詳細を取得
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
@@ -111,7 +114,8 @@ export default {
     }
  },
  mounted () {
-   this.getLoggedInUserFollowNum(this.loggedInUserInfo.id);
+   this.getLoggedInUserInfo(this.loggedInUser.id);
+   // this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
 
 }
