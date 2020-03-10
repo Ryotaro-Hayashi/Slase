@@ -6,17 +6,19 @@
         <v-card-text>
           <!-- ユーザー情報 -->
           <v-row>
-            <v-col>
+            <v-col :cols=9>
               <v-avatar color="blue" tile size="100">
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
               <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
-            <v-col>
-              <v-btn @click="follow">
+            <v-col :cols=3>
+              <!-- フォローしていなければフォローボタンを表示 -->
+              <v-btn @click="follow" v-if="!isFollowing ()">
                 <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
               </v-btn>
-              <v-btn @click="unfollow" v-if="isFollowing ()">
+              <!-- フォローしていればアンフォローボタンを表示 -->
+              <v-btn @click="unfollow" v-else>
                 <v-icon class="icon-space">mdi-account-minus</v-icon>フォローを外す
               </v-btn>
             </v-col>
