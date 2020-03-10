@@ -15,7 +15,7 @@
                     <v-icon large dark>mdi-account-circle</v-icon>
                   </v-avatar>
                   <!-- ユーザー名 -->
-                  <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
+                  <div class="display-1 font-weight-bold">{{ loggedInUserInfo.name }}</div>
                 </v-col>
               </v-row>
 
@@ -44,7 +44,7 @@
               <v-divider></v-divider>
 
               <v-list three-line>
-                <template v-for="loggedInUserPost in loggedInUser.questions">
+                <template v-for="loggedInUserPost in loggedInUserInfo.questions">
                   <v-list-item :key="loggedInUserPost.id">
                     <!-- アバター -->
                     <v-list-item-avatar color="blue" tile>
@@ -90,8 +90,8 @@ export default {
   },
   computed: {
     // ログイン中のユーザーの情報を表示
-    loggedInUser () {
-      return this.$store.state.auth.loggedInUser
+    loggedInUserInfo () {
+      return this.$store.state.auth.loggedInUserInfo
     },
     loggedInUserFollowingsNum () {
       return this.$store.state.option.loggedInUserFollowingsNum
@@ -111,7 +111,7 @@ export default {
     }
  },
  mounted () {
-   this.getLoggedInUserFollowNum(this.loggedInUser.id);
+   this.getLoggedInUserFollowNum(this.loggedInUserInfo.id);
  }
 
 }
