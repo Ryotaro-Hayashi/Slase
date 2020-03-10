@@ -28,7 +28,8 @@
                   <!-- 投稿者と投稿日時 -->
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<a @click="getDetailUserPosts(post.user)">{{ post.user.name }}</a></v-col>
+                      <v-col>投稿者：<router-link to="/detail/user">{{ post.user.name }}</router-link></v-col>
+                        <!-- <a @click="getDetailUserPosts(post.user)">{{ post.user.name }}</a></v-col> -->
                       <v-col>投稿日時：{{ post.date }}</v-col>
                     </v-row>
                   </v-list-item-subtitle>
