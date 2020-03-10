@@ -17,14 +17,14 @@
               <!-- フォロー -->
               <v-col>
                 <router-link to="/following">
-                  <span class="follow-num-space">{{ followingsNum }}</span>
+                  <span class="follow-num-space">{{ followings.length }}</span>
                   <span class="font-wight-light caption">フォロー</span>
                 </router-link>
               </v-col>
               <!-- フォロワー -->
               <v-col>
                 <router-link to="/follower">
-                  <span class="follow-num-space">{{ followersNum }}</span>
+                  <span class="follow-num-space">{{ followers.length }}</span>
                   <span class="font-wight-light caption">フォロワー</span>
                 </router-link>
               </v-col>
@@ -118,7 +118,7 @@
 
         <!-- マイページ -->
         <v-btn text to="/mypage" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
+          <v-icon class="icon-space">mdi-account-box</v-icon>マイページ
         </v-btn>
 
         <!-- ログイン -->
@@ -230,11 +230,11 @@ export default {
     postSuccessSnackbar () {
       return this.$store.state.post.successSnackbar
     },
-    followingsNum () {
-      return this.$store.state.option.followingsNum
+    followings () {
+      return this.$store.state.user.followings
     },
-    followersNum () {
-      return this.$store.state.option.followersNum
+    followers () {
+      return this.$store.state.user.followers
     }
   },
   methods: {
