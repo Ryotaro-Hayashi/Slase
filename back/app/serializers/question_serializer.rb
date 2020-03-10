@@ -11,7 +11,6 @@ class QuestionSerializer < ActiveModel::Serializer
              :user,
              :comments
 
-  has_one :user
   has_many :comments
 
 end
