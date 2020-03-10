@@ -114,7 +114,6 @@ export default {
       this.$store.dispatch("option/getLoggedInUserFollowNum", id)
     }
  },
- // なくても開発環境では問題がないが、ないと実際に使うときに更新する機会がなくなってしまう
  mounted () {
    this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
