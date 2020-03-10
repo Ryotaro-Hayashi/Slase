@@ -7,7 +7,7 @@
         <v-card-title>
           <!-- アバター -->
           <v-col :cols="1">
-            <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
+            <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
               <v-avatar color="blue" tile>
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
@@ -16,7 +16,7 @@
 
           <!-- ユーザー名  -->
           <v-col :cols="6">
-            <router-link to="/detail/user" @click.native="getDetailUserPosts(detailPost.user)">
+            <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
               <span class="title font-weight-light">{{ detailPost.user.name }}</span>
             </router-link>
           </v-col>
@@ -50,7 +50,7 @@
             <template v-for="eachComment in detailPost.comments">
               <v-list-item :key="eachComment.id">
                 <!-- アバター -->
-                <router-link to="/detail/user" @click.native="getDetailUserPosts(eachComment.user)">
+                <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
                   <v-list-item-avatar color="blue" tile>
                     <v-icon large dark>mdi-account-circle</v-icon>
                   </v-list-item-avatar>
@@ -60,7 +60,7 @@
                   <v-row>
                     <v-col>
                       <!-- コメント投稿者 -->
-                      <router-link to="/detail/user" @click.native="getDetailUserPosts(eachComment.user)">
+                      <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
                         <v-list-item-title>
                           {{ eachComment.user.name }}
                         </v-list-item-title>
@@ -126,11 +126,8 @@ export default {
     }
   },
   methods: {
-    // 詳細表示するユーザーの投稿一覧を取得
-    getDetailUserPosts (user) {
-      this.$store.dispatch("post/getDetailUserPosts", user.id)
-      // 詳細表示しているユーザーを更新
-      this.$store.commit("auth/changeDetailUser", user)
+    getDetailUser (id) {
+      this.$store.dispatch("user/getDetailUser", id)
     },
     // コメントをアップロード
     uploadComment () {
