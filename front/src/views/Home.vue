@@ -5,8 +5,10 @@
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
-          <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">latest</span>
+          <v-col cols="6">
+            <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line></v-select>
+          </v-col>
+          <!-- <span class="title font-weight-bold">latest</span> -->
         </v-card-title>
 
         <v-divider></v-divider>
@@ -52,7 +54,13 @@ export default {
   name: 'Home',
   data () {
     return {
-      allPosts: ''
+      allPosts: '',
+      // 投稿表示の切り替え
+      type: '全ての投稿',
+      // 投稿表示の選択肢
+      states: [
+          '全ての投稿', 'フォローユーザーの投稿', 'goodした投稿'
+      ],
     }
   },
   computed: {
@@ -93,6 +101,15 @@ export default {
   // ログイン中はフォローしているユーザーの投稿を取得
   // ログアウト中は投稿一覧を取得
   mounted () {
+    if (this.loggedIn) {
+      this.getFollowingsPosts()
+    }
+    else {
+      this.getAllPosts()
+    }
+  },
+  // 更新時に再取得
+  updated () {
     if (this.loggedIn) {
       this.getFollowingsPosts()
     }
