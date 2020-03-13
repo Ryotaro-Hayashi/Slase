@@ -12,7 +12,7 @@
               </v-avatar>
               <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
-            <v-col :cols=3>
+            <v-col :cols=3 v-if="loggedIn">
               <!-- フォローしていなければフォローボタンを表示 -->
               <v-btn @click="follow" v-if="!isFollowing ()">
                 <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
@@ -70,6 +70,9 @@ export default {
 
   }),
   computed: {
+    loggedIn () {
+      return this.$store.state.auth.loggedIn
+    },
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
     },

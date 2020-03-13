@@ -243,9 +243,14 @@ export default {
       this.drawer = false
       this.$store.dispatch("auth/signOut")
       this.$router.push("/")
+      this.reload()
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)
+    },
+    // リロードする関数
+    reload () {
+      this.$router.go({path: this.$router.currentRoute.path, force: true})
     }
   }
 }

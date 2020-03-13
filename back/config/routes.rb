@@ -11,12 +11,12 @@ Rails.application.routes.draw do
     namespace 'post' do
       # question作成のためのエンドポイント
       resources :questions
-      # ユーザーのidによって、そのidのユーザーのquestionを返すエンドポイント
-      get '/mypost/:id', to: 'questions#mypost'
+
+      # そのidのユーザーがフォローしているユーザーのquestionを返すエンドポイント
+      get '/followings/:user_id', to: 'questions#followings_post'
 
       # コメントのエンドポイント
       resources :comments
-
     end
 
     resources :relationships, :only => [:create, :destroy]

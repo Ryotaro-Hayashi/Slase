@@ -5,8 +5,15 @@
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
-          <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">latest</span>
+          <v-col cols="6">
+            <!-- ログイン時のタイトル -->
+            <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line @change="getPosts" v-if="loggedIn"></v-select>
+            <!-- ログアウト時のタイトル -->
+            <span class="title font-weight-bold" v-if="!loggedIn">
+              <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>latest
+            </span>
+
+          </v-col>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -52,13 +59,35 @@ export default {
   name: 'Home',
   data () {
     return {
-      allPosts: ''
+      allPosts: '',
+      // 投稿表示の切り替え
+      type: 'フォローユーザーの投稿',
+      // 投稿表示の選択肢
+      states: [
+        'フォローユーザーの投稿', '全ての投稿', 'goodした投稿'
+      ],
+    }
+  },
+  computed: {
+    loggedIn () {
+      return this.$store.state.auth.loggedIn
+    },
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
     }
   },
   methods: {
     // 投稿一覧を取得
     getAllPosts () {
       this.$http.get('http://localhost:3000/api/post/questions')
+      .then(response => {
+        if (response.status === 200) {
+          this.allPosts = response.data
+        }
+      })
+    },
+    getFollowingsPosts () {
+      this.$http.get('http://localhost:3000/api/post/followings/' + this.loggedInUser.id)
       .then(response => {
         if (response.status === 200) {
           this.allPosts = response.data
@@ -72,12 +101,34 @@ export default {
     // ユーザーの詳細を取得
     getDetailUser (id) {
       this.$store.dispatch("user/getDetailUser", id)
+    },
+    getPosts () {
+      if (this.type === '全ての投稿') {
+        this.getAllPosts ()
+      } else {
+        this.getFollowingsPosts ()
+      }
     }
   },
-  // マウント時にステートの投稿一覧を更新
+  // ログイン中はフォローしているユーザーの投稿を取得
+  // ログアウト中は投稿一覧を取得
   mounted () {
-    this.getAllPosts();
-  }
+    if (this.loggedIn) {
+      this.getFollowingsPosts()
+    }
+    else {
+      this.getAllPosts()
+    }
+  },
+  // 更新時に再取得
+  // beforeUpdate () {
+  //   if (this.loggedIn) {
+  //     this.getFollowingsPosts()
+  //   }
+  //   else {
+  //     this.getAllPosts()
+  //   }
+  // }
 }
 </script>
 
