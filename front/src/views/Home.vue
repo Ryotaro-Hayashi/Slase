@@ -6,9 +6,14 @@
         <!-- 表示切り替え -->
         <v-card-title>
           <v-col cols="6">
-            <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line></v-select>
+            <!-- ログイン時のタイトル -->
+            <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line @change="getPosts" v-if="loggedIn"></v-select>
+            <!-- ログアウト時のタイトル -->
+            <span class="title font-weight-bold" v-if="!loggedIn">
+              <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>latest
+            </span>
+
           </v-col>
-          <!-- <span class="title font-weight-bold">latest</span> -->
         </v-card-title>
 
         <v-divider></v-divider>
@@ -56,7 +61,7 @@ export default {
     return {
       allPosts: '',
       // 投稿表示の切り替え
-      type: '全ての投稿',
+      type: 'フォローユーザーの投稿',
       // 投稿表示の選択肢
       states: [
           '全ての投稿', 'フォローユーザーの投稿', 'goodした投稿'
@@ -96,6 +101,13 @@ export default {
     // ユーザーの詳細を取得
     getDetailUser (id) {
       this.$store.dispatch("user/getDetailUser", id)
+    },
+    getPosts () {
+      if (this.type === '全ての投稿') {
+        this.getAllPosts ()
+      } else {
+        this.getFollowingsPosts ()
+      }
     }
   },
   // ログイン中はフォローしているユーザーの投稿を取得
@@ -109,14 +121,14 @@ export default {
     }
   },
   // 更新時に再取得
-  updated () {
-    if (this.loggedIn) {
-      this.getFollowingsPosts()
-    }
-    else {
-      this.getAllPosts()
-    }
-  }
+  // beforeUpdate () {
+  //   if (this.loggedIn) {
+  //     this.getFollowingsPosts()
+  //   }
+  //   else {
+  //     this.getAllPosts()
+  //   }
+  // }
 }
 </script>
 
