@@ -55,10 +55,26 @@ export default {
       allPosts: ''
     }
   },
+  computed: {
+    loggedIn () {
+      return this.$store.state.auth.loggedIn
+    },
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
+    }
+  },
   methods: {
     // 投稿一覧を取得
     getAllPosts () {
       this.$http.get('http://localhost:3000/api/post/questions')
+      .then(response => {
+        if (response.status === 200) {
+          this.allPosts = response.data
+        }
+      })
+    },
+    getFollowingsPosts () {
+      this.$http.get('http://localhost:3000/api/post/followings/' + this.loggedInUser.id)
       .then(response => {
         if (response.status === 200) {
           this.allPosts = response.data
@@ -74,9 +90,15 @@ export default {
       this.$store.dispatch("user/getDetailUser", id)
     }
   },
-  // マウント時にステートの投稿一覧を更新
+  // ログイン中はフォローしているユーザーの投稿を取得
+  // ログアウト中は投稿一覧を取得
   mounted () {
-    this.getAllPosts();
+    if (this.loggedIn) {
+      this.getFollowingsPosts()
+    }
+    else {
+      this.getAllPosts()
+    }
   }
 }
 </script>
