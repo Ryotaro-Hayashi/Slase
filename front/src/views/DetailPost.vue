@@ -39,7 +39,14 @@
         <v-divider />
 
         <!-- good, bad, コメント数 -->
-        <v-card-text class="font-weight-bold">コメント数、いいね数など</v-card-text>
+        <v-card-text class="font-weight-bold">
+          <v-btn icon>
+            <v-icon>mdi-heart</v-icon>
+          </v-btn>
+          <v-btn icon color="pink">
+            <v-icon>mdi-thumb-up</v-icon>
+          </v-btn>
+        </v-card-text>
 
         <v-divider />
 
