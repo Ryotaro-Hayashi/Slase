@@ -40,7 +40,7 @@
 
         <!-- good, bad, コメント数 -->
         <v-card-text class="font-weight-bold">
-          <v-btn icon>
+          <v-btn icon @click="like">
             <v-icon>mdi-heart</v-icon>
           </v-btn>
           <v-btn icon color="pink">
@@ -130,6 +130,9 @@ export default {
     },
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
+    },
+    token () {
+      return this.$store.state.auth.token
     }
   },
   methods: {
@@ -151,6 +154,15 @@ export default {
           // コメントフォームの文字を削除
           this.comment = ''
         }
+      })
+    },
+    like () {
+      this.$http.post('http://localhost:3000/api/post/likes',
+      {
+        question_id: this.detailPost.id
+      },
+      {
+        headers: this.token
       })
     }
   }
