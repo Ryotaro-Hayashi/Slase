@@ -40,10 +40,7 @@
 
         <!-- good, bad, コメント数 -->
         <v-card-text class="font-weight-bold">
-          <v-btn icon @click="like">
-            <v-icon>mdi-heart</v-icon>
-          </v-btn>
-          <v-btn icon color="pink">
+          <v-btn icon @click="like" :color="liked ? 'pink' : ''">
             <v-icon>mdi-thumb-up</v-icon>
           </v-btn>
         </v-card-text>
@@ -120,7 +117,8 @@ export default {
   name: 'DetailPost',
   data () {
     return {
-      comment: ''
+      comment: '',
+      liked: false
     }
   },
   computed: {
@@ -163,6 +161,11 @@ export default {
       },
       {
         headers: this.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.liked = true
+        }
       })
     }
   }
