@@ -37,6 +37,11 @@
                     <v-row>
                       <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUser(post.user.id)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
+                      <!-- いいねの数を表示 -->
+                      <v-col>
+                        <v-icon small>mdi-thumb-up</v-icon>
+                        {{ Object.keys(post.likes).length }}
+                      </v-col>
                     </v-row>
                   </v-list-item-subtitle>
 
