@@ -37,6 +37,11 @@
                     <v-row>
                       <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUser(post.user.id)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
+                      <!-- いいねの数を表示 -->
+                      <v-col>
+                        <v-icon small color="pink">mdi-thumb-up</v-icon>
+                        {{ Object.keys(post.likes).length }}
+                      </v-col>
                     </v-row>
                   </v-list-item-subtitle>
 
@@ -86,8 +91,18 @@ export default {
         }
       })
     },
+    // フォローしているユーザーの投稿一覧を取得
     getFollowingsPosts () {
       this.$http.get('http://localhost:3000/api/post/followings/' + this.loggedInUser.id)
+      .then(response => {
+        if (response.status === 200) {
+          this.allPosts = response.data
+        }
+      })
+    },
+    // いいねしている投稿一覧を取得
+    getLikedPosts () {
+      this.$http.get('http://localhost:3000/api/post/liked/' + this.loggedInUser.id)
       .then(response => {
         if (response.status === 200) {
           this.allPosts = response.data
@@ -102,13 +117,16 @@ export default {
     getDetailUser (id) {
       this.$store.dispatch("user/getDetailUser", id)
     },
+    // 投稿一覧のソート
     getPosts () {
       if (this.type === '全ての投稿') {
         this.getAllPosts ()
-      } else {
+      } else if (this.type === 'フォローユーザーの投稿') {
         this.getFollowingsPosts ()
+      } else {
+        this.getLikedPosts ()
       }
-    }
+    },
   },
   // ログイン中はフォローしているユーザーの投稿を取得
   // ログアウト中は投稿一覧を取得
@@ -119,16 +137,7 @@ export default {
     else {
       this.getAllPosts()
     }
-  },
-  // 更新時に再取得
-  // beforeUpdate () {
-  //   if (this.loggedIn) {
-  //     this.getFollowingsPosts()
-  //   }
-  //   else {
-  //     this.getAllPosts()
-  //   }
-  // }
+  }
 }
 </script>
 

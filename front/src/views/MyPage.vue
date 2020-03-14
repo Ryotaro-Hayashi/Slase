@@ -110,7 +110,7 @@ export default {
     },
  },
  mounted () {
-   this.getLoggedInUserInfo(this.loggedInUser.id);
+   this.getLoggedInUser(this.loggedInUser.id);
    // this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
 

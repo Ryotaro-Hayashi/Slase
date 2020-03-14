@@ -43,4 +43,8 @@ class User < ActiveRecord::Base
     self.followings.include?(other_user)
   end
 
+  has_many :likes, dependent: :destroy
+  # ユーザーがいいねしている投稿
+  has_many :liked_questions, through: :likes, source: :question
+
 end

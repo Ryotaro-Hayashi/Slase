@@ -39,7 +39,11 @@
         <v-divider />
 
         <!-- good, bad, コメント数 -->
-        <v-card-text class="font-weight-bold">コメント数、いいね数など</v-card-text>
+        <v-card-text class="font-weight-bold">
+          <v-btn icon @click="like" :color="liked ? 'pink' : ''">
+            <v-icon>mdi-thumb-up</v-icon>
+          </v-btn>
+        </v-card-text>
 
         <v-divider />
 
@@ -113,7 +117,8 @@ export default {
   name: 'DetailPost',
   data () {
     return {
-      comment: ''
+      comment: '',
+      liked: true
     }
   },
   computed: {
@@ -123,6 +128,9 @@ export default {
     },
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
+    },
+    token () {
+      return this.$store.state.auth.token
     }
   },
   methods: {
@@ -145,7 +153,33 @@ export default {
           this.comment = ''
         }
       })
+    },
+    like () {
+      this.$http.post('http://localhost:3000/api/post/likes',
+      {
+        question_id: this.detailPost.id
+      },
+      {
+        headers: this.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.liked = true
+        }
+      })
+    },
+    isLiked () {
+      for (var detailPostLikeUserId of this.detailPost.likes) {
+        if (detailPostLikeUserId.user_id === this.loggedInUser.id) {
+           this.liked = false
+           break;
+        }
+        return this.liked
+      }
     }
+  },
+  mounted () {
+    this.isLiked ()
   }
 }
 </script>
