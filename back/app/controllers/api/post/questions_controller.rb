@@ -60,6 +60,14 @@ module Api
         render json: question
       end
 
+      # いいねした投稿を返す
+      def liked_post
+        user = User.find(params[:user_id])
+        liked_questions = user.liked_questions
+
+        render json: liked_questions
+      end
+
     end
   end
 end

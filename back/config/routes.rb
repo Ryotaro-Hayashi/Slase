@@ -19,6 +19,9 @@ Rails.application.routes.draw do
       resources :comments
 
       resources :likes, only: [:create, :destroy, :index]
+
+      # そのidのユーザーがいいねしているquestionを返すエンドポイント 
+      get '/liked/:user_id', to: 'questions#liked_post'
     end
 
     resources :relationships, :only => [:create, :destroy]
