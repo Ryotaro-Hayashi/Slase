@@ -8,8 +8,10 @@ class QuestionSerializer < ActiveModel::Serializer
              :date,
              :time,
              :user,
-             :comments
+             :comments,
+             :likes
 
   has_many :comments
+  has_many :likes
 
 end
