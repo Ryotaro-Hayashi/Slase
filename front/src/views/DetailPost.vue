@@ -118,7 +118,7 @@ export default {
   data () {
     return {
       comment: '',
-      liked: false
+      liked: true
     }
   },
   computed: {
@@ -167,7 +167,19 @@ export default {
           this.liked = true
         }
       })
+    },
+    isLiked () {
+      for (var detailPostLikeUserId of this.detailPost.likes) {
+        if (detailPostLikeUserId.user_id === this.loggedInUser.id) {
+           this.liked = false
+           break;
+        }
+        return this.liked
+      }
     }
+  },
+  mounted () {
+    this.isLiked ()
   }
 }
 </script>
