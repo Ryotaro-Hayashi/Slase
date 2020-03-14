@@ -17,6 +17,8 @@ Rails.application.routes.draw do
 
       # コメントのエンドポイント
       resources :comments
+
+      resources :likes, only: [:create, :destroy]
     end
 
     resources :relationships, :only => [:create, :destroy]
