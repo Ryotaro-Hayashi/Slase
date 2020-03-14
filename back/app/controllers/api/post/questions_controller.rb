@@ -52,8 +52,10 @@ module Api
           followings_id.push(following.id)
         end
 
+        followings_id.push(user.id)
+
         # フォローしているユーザーのidをuser_idに持つquestionを取り出す
-        question = Question.all.where(user_id: followings_id)
+        question = Question.all.where(user_id: followings_id).order(created_at: :desc)
 
         render json: question
       end
