@@ -15,15 +15,27 @@
           </v-col>
 
           <!-- ユーザー名  -->
-          <v-col :cols="6">
+          <v-col :cols="5">
             <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
               <span class="title font-weight-light">{{ detailPost.user.name }}</span>
             </router-link>
           </v-col>
 
           <!-- 投稿日時 -->
-          <v-col :cols="5">
+          <v-col :cols="4">
             <v-card-subtitle>{{ detailPost.date }}{{ detailPost.time }}に投稿</v-card-subtitle>
+          </v-col>
+
+          <!-- いいねボタン -->
+          <v-col :cols="2">
+            <!-- いいねしていないとき -->
+            <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
+              <v-icon>mdi-thumb-up</v-icon>
+            </v-btn>
+            <!-- いいねしているとき -->
+            <v-btn icon @click="like" v-else>
+              <v-icon>mdi-thumb-up</v-icon>
+            </v-btn>
           </v-col>
 
         </v-card-title>
@@ -35,22 +47,6 @@
 
         <!-- 本文 -->
         <v-card-text class="font-weight-bold">{{ detailPost.body }}</v-card-text>
-
-        <v-divider />
-
-        <v-card-text class="font-weight-bold">
-          <!-- いいねしていない投稿のいいねボタン -->
-          <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
-            <v-icon>mdi-thumb-up</v-icon>
-          </v-btn>
-          <!-- いいねしている投稿のいいねボタン -->
-          <v-btn icon @click="like" v-else>
-            <v-icon>mdi-thumb-up</v-icon>
-          </v-btn>
-        </v-card-text>
-
-        <v-divider />
-
 
         <v-card-text>
           <!-- コメントをリスト表示 -->
