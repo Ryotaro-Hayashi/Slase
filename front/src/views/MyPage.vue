@@ -22,13 +22,20 @@
               <v-btn v-on="on">編集</v-btn>
 
             </template>
+
+            <!-- 表示するダイアログ -->
             <v-card width="800px" class="mx-auto">
               <v-card-title>
-
+                プロフィールを編集
               </v-card-title>
 
               <v-card-text>
                 <v-container>
+                  <v-text-field label="ユーザー名"></v-text-field>
+                  <v-textarea label="自己紹介"></v-textarea>
+                  <v-text-field label="年齢"></v-text-field>
+                  <v-text-field label="性別"></v-text-field>
+                  <v-text-field label="場所"></v-text-field>
                 </v-container>
               </v-card-text>
 
