@@ -45,50 +45,62 @@
           <span class="headline font-weight-bold">{{ detailPost.title }}</span>
         </v-card-title>
 
-        <!-- 本文 -->
-        <v-card-text class="font-weight-bold">{{ detailPost.body }}</v-card-text>
+        <v-card-text class="font-weight-bold">
+          <!-- 本文 -->
+          {{ detailPost.body }}
+          <v-card-actions />
 
-        <v-card-text>
-          <!-- コメントをリスト表示 -->
-          <v-list three-line>
-            <template v-for="eachComment in detailPost.comments">
-              <v-list-item :key="eachComment.id">
-                <!-- アバター -->
-                <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
-                  <v-list-item-avatar color="blue" tile>
-                    <v-icon large dark>mdi-account-circle</v-icon>
-                  </v-list-item-avatar>
-                </router-link>
+          <!-- コメントがあれば表示 -->
+          <span v-if="commentExist(detailPost.comments)">
+            <v-divider />
 
-                <v-list-item-content>
-                  <v-row>
-                    <v-col>
-                      <!-- コメント投稿者 -->
-                      <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
-                        <v-list-item-title>
-                          {{ eachComment.user.name }}
-                        </v-list-item-title>
-                      </router-link>
-                    </v-col>
+            <v-card-actions class="mt-5">
+              <v-icon class="icon-space">mdi-comment-multiple</v-icon>
+              コメント
+            </v-card-actions>
 
-                    <v-col>
-                      <!-- コメント投稿日時 -->
-                      <v-list-item-subtitle>
-                        {{ eachComment.date }}{{ eachComment.time}}
-                      </v-list-item-subtitle>
-                    </v-col>
-                  </v-row>
+            <!-- コメントをリスト表示 -->
+            <v-list three-line>
+              <template v-for="eachComment in detailPost.comments">
+                <v-list-item :key="eachComment.id">
+                  <!-- アバター -->
+                  <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
+                    <v-list-item-avatar color="blue" tile>
+                      <v-icon dark>mdi-account-circle</v-icon>
+                    </v-list-item-avatar>
+                  </router-link>
 
-                  <!-- コメント内容 -->
-                  <v-list-item-text>
-                    {{ eachComment.content }}
-                  </v-list-item-text>
+                  <v-list-item-content>
+                    <v-row>
+                      <v-col>
+                        <!-- コメント投稿者 -->
+                        <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
+                          <v-list-item-title>
+                            {{ eachComment.user.name }}
+                          </v-list-item-title>
+                        </router-link>
+                      </v-col>
 
-                  <v-divider></v-divider>
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-        </v-list>
+                      <v-col>
+                        <!-- コメント投稿日時 -->
+                        <v-list-item-subtitle>
+                          {{ eachComment.date }}{{ eachComment.time}}
+                        </v-list-item-subtitle>
+                      </v-col>
+                    </v-row>
+
+                    <!-- コメント内容 -->
+                    <v-list-item-text>
+                      {{ eachComment.content }}
+                    </v-list-item-text>
+
+                    <v-divider></v-divider>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list>
+
+          </span>
         </v-card-text>
 
 
@@ -130,6 +142,16 @@ export default {
     },
     token () {
       return this.$store.state.auth.token
+    },
+    // コメントが存在すればtrueを返す
+    commentExist: function () {
+      return function (comments) {
+        if (Object.keys(comments).length === 0) {
+          return false
+        } else {
+          return true
+        }
+      }
     }
   },
   methods: {
