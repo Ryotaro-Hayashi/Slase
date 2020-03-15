@@ -15,15 +15,27 @@
           </v-col>
 
           <!-- ユーザー名  -->
-          <v-col :cols="6">
+          <v-col :cols="5">
             <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
               <span class="title font-weight-light">{{ detailPost.user.name }}</span>
             </router-link>
           </v-col>
 
           <!-- 投稿日時 -->
-          <v-col :cols="5">
+          <v-col :cols="4">
             <v-card-subtitle>{{ detailPost.date }}{{ detailPost.time }}に投稿</v-card-subtitle>
+          </v-col>
+
+          <!-- いいねボタン -->
+          <v-col :cols="2">
+            <!-- いいねしていないとき -->
+            <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
+              <v-icon>mdi-thumb-up</v-icon>
+            </v-btn>
+            <!-- いいねしているとき -->
+            <v-btn icon @click="like" v-else>
+              <v-icon>mdi-thumb-up</v-icon>
+            </v-btn>
           </v-col>
 
         </v-card-title>
@@ -33,66 +45,62 @@
           <span class="headline font-weight-bold">{{ detailPost.title }}</span>
         </v-card-title>
 
-        <!-- 本文 -->
-        <v-card-text class="font-weight-bold">{{ detailPost.body }}</v-card-text>
-
-        <v-divider />
-
         <v-card-text class="font-weight-bold">
-          <!-- いいねしていない投稿のいいねボタン -->
-          <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
-            <v-icon>mdi-thumb-up</v-icon>
-          </v-btn>
-          <!-- いいねしている投稿のいいねボタン -->
-          <v-btn icon @click="like" v-else>
-            <v-icon>mdi-thumb-up</v-icon>
-          </v-btn>
-        </v-card-text>
+          <!-- 本文 -->
+          {{ detailPost.body }}
+          <v-card-actions />
 
-        <v-divider />
+          <!-- コメントがあれば表示 -->
+          <span v-if="commentExist(detailPost.comments)">
+            <v-divider />
 
+            <v-card-actions class="mt-5">
+              <v-icon class="icon-space">mdi-comment-multiple</v-icon>
+              コメント
+            </v-card-actions>
 
-        <v-card-text>
-          <!-- コメントをリスト表示 -->
-          <v-list three-line>
-            <template v-for="eachComment in detailPost.comments">
-              <v-list-item :key="eachComment.id">
-                <!-- アバター -->
-                <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
-                  <v-list-item-avatar color="blue" tile>
-                    <v-icon large dark>mdi-account-circle</v-icon>
-                  </v-list-item-avatar>
-                </router-link>
+            <!-- コメントをリスト表示 -->
+            <v-list three-line>
+              <template v-for="eachComment in detailPost.comments">
+                <v-list-item :key="eachComment.id">
+                  <!-- アバター -->
+                  <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
+                    <v-list-item-avatar color="blue" tile>
+                      <v-icon dark>mdi-account-circle</v-icon>
+                    </v-list-item-avatar>
+                  </router-link>
 
-                <v-list-item-content>
-                  <v-row>
-                    <v-col>
-                      <!-- コメント投稿者 -->
-                      <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
-                        <v-list-item-title>
-                          {{ eachComment.user.name }}
-                        </v-list-item-title>
-                      </router-link>
-                    </v-col>
+                  <v-list-item-content>
+                    <v-row>
+                      <v-col>
+                        <!-- コメント投稿者 -->
+                        <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
+                          <v-list-item-title>
+                            {{ eachComment.user.name }}
+                          </v-list-item-title>
+                        </router-link>
+                      </v-col>
 
-                    <v-col>
-                      <!-- コメント投稿日時 -->
-                      <v-list-item-subtitle>
-                        {{ eachComment.date }}{{ eachComment.time}}
-                      </v-list-item-subtitle>
-                    </v-col>
-                  </v-row>
+                      <v-col>
+                        <!-- コメント投稿日時 -->
+                        <v-list-item-subtitle>
+                          {{ eachComment.date }}{{ eachComment.time}}
+                        </v-list-item-subtitle>
+                      </v-col>
+                    </v-row>
 
-                  <!-- コメント内容 -->
-                  <v-list-item-text>
-                    {{ eachComment.content }}
-                  </v-list-item-text>
+                    <!-- コメント内容 -->
+                    <v-list-item-text>
+                      {{ eachComment.content }}
+                    </v-list-item-text>
 
-                  <v-divider></v-divider>
-                </v-list-item-content>
-              </v-list-item>
-            </template>
-        </v-list>
+                    <v-divider></v-divider>
+                  </v-list-item-content>
+                </v-list-item>
+              </template>
+            </v-list>
+
+          </span>
         </v-card-text>
 
 
@@ -134,6 +142,16 @@ export default {
     },
     token () {
       return this.$store.state.auth.token
+    },
+    // コメントが存在すればtrueを返す
+    commentExist: function () {
+      return function (comments) {
+        if (Object.keys(comments).length === 0) {
+          return false
+        } else {
+          return true
+        }
+      }
     }
   },
   methods: {

@@ -62,6 +62,18 @@
                           <v-col>投稿者：{{ loggedInUserPost.user.name }}</v-col>
                           <v-col>投稿日時：{{ loggedInUserPost.date }}</v-col>
                         </v-row>
+                        <v-row>
+                          <!-- いいねの数を表示 -->
+                          <v-col>
+                            <v-icon small :color="isLiked(loggedInUserPost.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
+                            {{ Object.keys(loggedInUserPost.likes).length }}
+                          </v-col>
+                          <!-- コメント数を表示 -->
+                          <v-col>
+                            <v-icon small :color="isCommented(loggedInUserPost.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
+                            {{ Object.keys(loggedInUserPost.comments).length }}
+                          </v-col>
+                        </v-row>
                       </v-list-item-subtitle>
 
                       <v-divider></v-divider>
@@ -98,6 +110,26 @@ export default {
     },
     followersNum () {
       return this.$store.state.user.followers.length
+    },
+    // いいねしてれば、trueを返す
+    isLiked: function () {
+      return function (likes) {
+        for (var like of likes) {
+          if (like.user_id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
+    },
+    // コメントしてれば、trueを返す
+    isCommented: function () {
+      return function (comments) {
+        for (var comment of comments) {
+          if (comment.user.id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
     }
   },
   methods: {

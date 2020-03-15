@@ -37,10 +37,17 @@
                     <v-row>
                       <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUser(post.user.id)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
+                    </v-row>
+                    <v-row>
                       <!-- いいねの数を表示 -->
                       <v-col>
                         <v-icon small :color="isLiked(post.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
                         {{ Object.keys(post.likes).length }}
+                      </v-col>
+                      <!-- コメント数を表示 -->
+                      <v-col>
+                        <v-icon small :color="isCommented(post.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
+                        {{ Object.keys(post.comments).length }}
                       </v-col>
                     </v-row>
                   </v-list-item-subtitle>
@@ -85,6 +92,16 @@ export default {
       return function (likes) {
         for (var like of likes) {
           if (like.user_id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
+    },
+    // コメントしてれば、trueを返す
+    isCommented: function () {
+      return function (comments) {
+        for (var comment of comments) {
+          if (comment.user.id === this.loggedInUser.id) {
             return true
           }
         }
