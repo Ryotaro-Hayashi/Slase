@@ -38,9 +38,9 @@
 
         <v-divider />
 
-        <!-- good, bad, コメント数 -->
         <v-card-text class="font-weight-bold">
-          <v-btn icon @click="like" :color="liked ? 'pink' : ''">
+          <!-- いいねボタン -->
+          <v-btn icon @click="like" :color="isLiked(detailPost.likes) ? 'pink' : likeBtnColor">
             <v-icon>mdi-thumb-up</v-icon>
           </v-btn>
         </v-card-text>
@@ -118,7 +118,7 @@ export default {
   data () {
     return {
       comment: '',
-      liked: true
+      likeBtnColor: ''
     }
   },
   computed: {
@@ -131,6 +131,16 @@ export default {
     },
     token () {
       return this.$store.state.auth.token
+    },
+    // いいねしてれば、trueを返す
+    isLiked: function () {
+      return function (likes) {
+        for (var like of likes) {
+          if (like.user_id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
     }
   },
   methods: {
@@ -164,22 +174,10 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          this.liked = true
+          this.likeBtnColor = 'pink'
         }
       })
     },
-    isLiked () {
-      for (var detailPostLikeUserId of this.detailPost.likes) {
-        if (detailPostLikeUserId.user_id === this.loggedInUser.id) {
-           this.liked = false
-           break;
-        }
-        return this.liked
-      }
-    }
-  },
-  mounted () {
-    this.isLiked ()
   }
 }
 </script>

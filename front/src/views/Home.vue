@@ -39,7 +39,7 @@
                       <v-col>投稿日時：{{ post.date }}</v-col>
                       <!-- いいねの数を表示 -->
                       <v-col>
-                        <v-icon small :color="isLiked(post)">mdi-thumb-up</v-icon>
+                        <v-icon small :color="isLiked(post.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
                         {{ Object.keys(post.likes).length }}
                       </v-col>
                     </v-row>
@@ -79,6 +79,16 @@ export default {
     },
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
+    },
+    // いいねしてれば、trueを返す
+    isLiked: function () {
+      return function (likes) {
+        for (var like of likes) {
+          if (like.user_id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
     }
   },
   methods: {
@@ -127,16 +137,6 @@ export default {
         this.getLikedPosts ()
       }
     },
-    // いいねしてれば、ピンクを返すメソッド
-    isLiked (post) {
-      for (var like of post.likes) {
-        if (like.user_id === this.loggedInUser.id) {
-          return 'pink'
-        } else {
-          return ''
-        }
-      }
-    }
   },
   // ログイン中はフォローしているユーザーの投稿を取得
   // ログアウト中は投稿一覧を取得
