@@ -39,7 +39,7 @@
                       <v-col>投稿日時：{{ post.date }}</v-col>
                       <!-- いいねの数を表示 -->
                       <v-col>
-                        <v-icon small color="pink">mdi-thumb-up</v-icon>
+                        <v-icon small :color="isLiked(post.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
                         {{ Object.keys(post.likes).length }}
                       </v-col>
                     </v-row>
@@ -79,6 +79,16 @@ export default {
     },
     loggedInUser () {
       return this.$store.state.auth.loggedInUser
+    },
+    // いいねしてれば、trueを返す
+    isLiked: function () {
+      return function (likes) {
+        for (var like of likes) {
+          if (like.user_id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
     }
   },
   methods: {

@@ -10,9 +10,11 @@ class Api::LikesController < ApplicationController
     end
   end
 
-  def delete
-    like = Like.find_by(question_id: params[:question_id], user_id: current_api_user.id)
-    like.destroy
+  def destroy
+    like = Like.find_by(params[:question_id], params[:user_id])
+    if like.destroy
+      render json: like
+    end
   end
 
   def index

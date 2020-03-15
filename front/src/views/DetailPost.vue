@@ -38,9 +38,13 @@
 
         <v-divider />
 
-        <!-- good, bad, コメント数 -->
         <v-card-text class="font-weight-bold">
-          <v-btn icon @click="like" :color="liked ? 'pink' : ''">
+          <!-- いいねしていない投稿のいいねボタン -->
+          <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
+            <v-icon>mdi-thumb-up</v-icon>
+          </v-btn>
+          <!-- いいねしている投稿のいいねボタン -->
+          <v-btn icon @click="like" v-else>
             <v-icon>mdi-thumb-up</v-icon>
           </v-btn>
         </v-card-text>
@@ -118,7 +122,6 @@ export default {
   data () {
     return {
       comment: '',
-      liked: true
     }
   },
   computed: {
@@ -154,6 +157,7 @@ export default {
         }
       })
     },
+    // いいねを登録
     like () {
       this.$http.post('http://localhost:3000/api/post/likes',
       {
@@ -164,22 +168,36 @@ export default {
       })
       .then(response => {
         if (response.status === 200) {
-          this.liked = true
+          // 詳細表示している投稿をいいねしたことを更新
+          this.$store.dispatch("post/getDetailPost", this.detailPost.id)
         }
       })
     },
-    isLiked () {
-      for (var detailPostLikeUserId of this.detailPost.likes) {
-        if (detailPostLikeUserId.user_id === this.loggedInUser.id) {
-           this.liked = false
-           break;
+    // いいねを外す
+    unlike () {
+      this.$http.delete('http://localhost:3000/api/post/likes/' + this.detailPost.id,
+      {
+        question_id: this.detailPost.id,
+        user_id: this.loggedInUser.id
+      })
+      .then(response => {
+        if (response.status === 200) {
+          this.$store.dispatch("post/getDetailPost", this.detailPost.id)
         }
-        return this.liked
+      })
+    },
+    // いいねしてれば、trueを返す
+    isLiked () {
+      const likes = this.detailPost.likes.find(like => {
+        return like.user_id === this.loggedInUser.id
+      })
+      if (likes) {
+        return true
+      }
+      else {
+        return false
       }
     }
-  },
-  mounted () {
-    this.isLiked ()
   }
 }
 </script>

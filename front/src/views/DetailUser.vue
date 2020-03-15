@@ -14,7 +14,7 @@
             </v-col>
             <v-col :cols=3 v-if="loggedIn">
               <!-- フォローしていなければフォローボタンを表示 -->
-              <v-btn @click="follow" v-if="!isFollowing ()">
+              <v-btn @click="follow" v-if="!isFollowing()">
                 <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
               </v-btn>
               <!-- フォローしていればアンフォローボタンを表示 -->
