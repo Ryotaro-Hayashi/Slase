@@ -72,6 +72,10 @@ ActiveRecord::Schema.define(version: 2020_03_14_021135) do
     t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
+    t.string "introduce", default: ""
+    t.integer "age", default: 1
+    t.string "sex", default: ""
+    t.string "address", default: ""
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

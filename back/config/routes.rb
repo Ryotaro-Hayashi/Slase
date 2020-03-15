@@ -2,8 +2,8 @@ Rails.application.routes.draw do
   # devise_for :users
 
   namespace 'api' do
-    # ユーザー認証のためのエンドポイント
-    mount_devise_token_auth_for 'User', at: 'auth'
+    # ユーザー認証のためのエンドポイント（controllersがないとプロフィール変更ができない）
+    mount_devise_token_auth_for 'User', at: 'auth', controllers: { registrations: 'api/auth/registrations' }
 
     # ユーザーを取得するためのエンドポイント
     resources :users, :only => [:index, :show]
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
       resources :likes, only: [:create, :destroy, :index]
 
-      # そのidのユーザーがいいねしているquestionを返すエンドポイント 
+      # そのidのユーザーがいいねしているquestionを返すエンドポイント
       get '/liked/:user_id', to: 'questions#liked_post'
     end
 

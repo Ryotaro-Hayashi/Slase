@@ -158,6 +158,23 @@ export const auth = {
           router.push("/")
         }
       })
+    },
+    updateProfile ({ commit}, data) {
+      axios.put('http://localhost:3000/api/auth', {
+        name: data.name,
+        introduce: data.introduce,
+        age: data.age,
+        sex: data.sex,
+        address: data.address
+      },
+      {
+        headers: data.token
+      })
+      .then(response => {
+        if (response.status === 200) {
+          commit("updateLoggedInUser", response.data.data)
+        }
+      })
     }
   }
 }
