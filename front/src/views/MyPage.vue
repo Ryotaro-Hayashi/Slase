@@ -31,18 +31,18 @@
 
               <v-card-text>
                 <v-container>
-                  <v-text-field label="ユーザー名"></v-text-field>
-                  <v-textarea label="自己紹介"></v-textarea>
-                  <v-text-field label="年齢"></v-text-field>
-                  <v-text-field label="性別"></v-text-field>
-                  <v-text-field label="場所"></v-text-field>
+                  <v-text-field label="ユーザー名" v-model="name"></v-text-field>
+                  <v-textarea label="自己紹介" v-model="introduce"></v-textarea>
+                  <v-text-field label="年齢" v-model="age"></v-text-field>
+                  <v-text-field label="性別" v-model="sex"></v-text-field>
+                  <v-text-field label="場所" v-model="address"></v-text-field>
                 </v-container>
               </v-card-text>
 
               <v-card-actions>
                 <v-spacer></v-spacer>
                 <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-                <v-btn color="blue darken-1" text @click="dialog = false">Save</v-btn>
+                <v-btn color="blue darken-1" text @click="updateProfile">Save</v-btn>
               </v-card-actions>
 
             </v-card>
@@ -124,7 +124,12 @@ export default {
   name: 'MyPage',
   data () {
     return {
-      dialog: false
+      dialog: false,
+      name: "testmanman",
+      introduce: "私は公立はこだて未来大学3年の林遼太朗です。",
+      age: 1,
+      sex: "男",
+      address: "北海道"
     }
   },
   computed: {
@@ -157,6 +162,9 @@ export default {
           }
         }
       }
+    },
+    token () {
+      return this.$store.state.auth.token
     }
   },
   methods: {
@@ -167,10 +175,20 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
+    updateProfile () {
+      this.$store.dispatch("auth/updateProfile",
+      {
+        name: this.name,
+        introduce: this.introduce,
+        age: this.age,
+        sex: this.sex,
+        address: this.address,
+        token: this.token
+      })
+    }
  },
  mounted () {
    this.getLoggedInUser(this.loggedInUser.id);
-   // this.getLoggedInUserFollowNum(this.loggedInUser.id);
  }
 
 }
