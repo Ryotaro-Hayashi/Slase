@@ -64,7 +64,7 @@
             </v-col>
           </v-row>
 
-          <!-- プロフィール説明文 -->
+          <!-- プロフィール説明 -->
           <v-row>
             <v-col>{{ loggedInUser.introduce }}</v-col>
             <v-col><v-icon>mdi-map-marker</v-icon>{{ loggedInUser.address }}</v-col>

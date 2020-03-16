@@ -27,7 +27,7 @@
                   </v-list-item-title>
                   <!-- プロフィール説明文 -->
                   <v-list-item-subtitle>
-                    プロフィール説明文
+                    {{ follower.introduce }}
                   </v-list-item-subtitle>
 
                   <v-divider></v-divider>

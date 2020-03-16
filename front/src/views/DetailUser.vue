@@ -24,11 +24,10 @@
             </v-col>
           </v-row>
 
+          <!-- プロフィール説明 -->
           <v-row>
-            <!-- プロフィール説明文 -->
-            <v-col>
-              <span class="yet">ここにプロフィール説明文を表示</span>
-            </v-col>
+            <v-col>{{ detailUser.introduce }}</v-col>
+            <v-col><v-icon>mdi-map-marker</v-icon>{{ detailUser.address }}</v-col>
           </v-row>
 
           <v-divider></v-divider>
