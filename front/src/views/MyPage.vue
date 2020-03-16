@@ -19,7 +19,8 @@
             <template v-slot:activator="{ on }">
 
               <!-- 編集ボタン -->
-              <v-btn v-on="on">編集</v-btn>
+              <!-- クリックして、ログインユーザーのプロフィールをdataに格納し、ダイアログを表示 -->
+              <v-btn v-on="on" @click="setProfile()">編集</v-btn>
 
             </template>
 
@@ -125,11 +126,12 @@ export default {
   data () {
     return {
       dialog: false,
-      name: "testmanman",
-      introduce: "私は公立はこだて未来大学3年の林遼太朗です。",
-      age: 1,
-      sex: "男",
-      address: "北海道"
+      // プロフィール情報
+      name: "",
+      introduce: "",
+      age: {},
+      sex: "",
+      address: ""
     }
   },
   computed: {
@@ -175,6 +177,7 @@ export default {
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
+    // プロフィールを更新
     updateProfile () {
       this.$store.dispatch("auth/updateProfile",
       {
@@ -185,6 +188,14 @@ export default {
         address: this.address,
         token: this.token
       })
+    },
+    setProfile () {
+      // dataにdispatchで更新したログインユーザー情報を格納
+      this.name = this.loggedInUser.name
+      this.introduce = this.loggedInUser.introduce
+      this.age = this.loggedInUser.age
+      this.sex = this.loggedInUser.sex
+      this.address = this.loggedInUser.address
     }
  },
  mounted () {
