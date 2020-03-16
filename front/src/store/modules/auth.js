@@ -159,12 +159,10 @@ export const auth = {
         }
       })
     },
-    updateProfile ({ commit}, data) {
+    updateProfile ({ dispatch }, data) {
       axios.put('http://localhost:3000/api/auth', {
         name: data.name,
         introduce: data.introduce,
-        age: data.age,
-        sex: data.sex,
         address: data.address
       },
       {
@@ -172,7 +170,8 @@ export const auth = {
       })
       .then(response => {
         if (response.status === 200) {
-          commit("updateLoggedInUser", response.data.data)
+          // ログインユーザー情報を更新
+          dispatch("getLoggedInUser", response.data.data.id)
         }
       })
     }

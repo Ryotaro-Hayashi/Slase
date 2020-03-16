@@ -4,8 +4,6 @@ class UserSerializer < ActiveModel::Serializer
              :name,
              :email,
              :introduce,
-             :age,
-             :sex,
              :address,
              :questions
 

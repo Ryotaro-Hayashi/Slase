@@ -34,8 +34,6 @@
                 <v-container>
                   <v-text-field label="ユーザー名" v-model="name"></v-text-field>
                   <v-textarea label="自己紹介" v-model="introduce"></v-textarea>
-                  <v-text-field label="年齢" v-model="age"></v-text-field>
-                  <v-text-field label="性別" v-model="sex"></v-text-field>
                   <v-text-field label="場所" v-model="address"></v-text-field>
                 </v-container>
               </v-card-text>
@@ -68,7 +66,8 @@
 
           <!-- プロフィール説明文 -->
           <v-row>
-            <v-col><span class="yet">ここにプロフィール説明文を表示</span></v-col>
+            <v-col>{{ loggedInUser.introduce }}</v-col>
+            <v-col><v-icon>mdi-map-marker</v-icon>{{ loggedInUser.address }}</v-col>
           </v-row>
 
           <v-divider></v-divider>
@@ -129,8 +128,6 @@ export default {
       // プロフィール情報
       name: "",
       introduce: "",
-      age: {},
-      sex: "",
       address: ""
     }
   },
@@ -183,8 +180,6 @@ export default {
       {
         name: this.name,
         introduce: this.introduce,
-        age: this.age,
-        sex: this.sex,
         address: this.address,
         token: this.token
       })
@@ -193,8 +188,6 @@ export default {
       // dataにdispatchで更新したログインユーザー情報を格納
       this.name = this.loggedInUser.name
       this.introduce = this.loggedInUser.introduce
-      this.age = this.loggedInUser.age
-      this.sex = this.loggedInUser.sex
       this.address = this.loggedInUser.address
     }
  },
