@@ -11,6 +11,7 @@ class CreateQuestions < ActiveRecord::Migration[5.2]
 
       # 誰が投稿したかが分かるようにuser.idを追加する
       t.references :user
+      t.references :comment
 
       t.timestamps
     end

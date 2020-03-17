@@ -38,11 +38,34 @@ module Api
         render json: question
       end
 
-      def mypost
-        # ユーザーのidでユーザーを取り出し
-        user = User.find(params[:id])
-        # 取り出したユーザーが作成したquestionを返す
-        render json: user.questions.order(created_at: :desc)
+      # フォローしているユーザーの投稿を返す
+      def followings_post
+        user = User.find(params[:user_id])
+        # userのフォローしているユーザー
+        followings = user.followings
+        # フォローしているユーザーのidを格納する配列
+        followings_id = []
+
+        # フォローしているユーザー1人1人を取り出す
+        followings.each do |following|
+          # フォローしているユーザーのidを格納
+          followings_id.push(following.id)
+        end
+
+        followings_id.push(user.id)
+
+        # フォローしているユーザーのidをuser_idに持つquestionを取り出す
+        question = Question.all.where(user_id: followings_id).order(created_at: :desc)
+
+        render json: question
+      end
+
+      # いいねした投稿を返す
+      def liked_post
+        user = User.find(params[:user_id])
+        liked_questions = user.liked_questions
+
+        render json: liked_questions
       end
 
     end

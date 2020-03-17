@@ -5,8 +5,15 @@
       <v-card width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
-          <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">latest</span>
+          <v-col cols="6">
+            <!-- ログイン時のタイトル -->
+            <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line @change="getPosts" v-if="loggedIn"></v-select>
+            <!-- ログアウト時のタイトル -->
+            <span class="title font-weight-bold" v-if="!loggedIn">
+              <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>latest
+            </span>
+
+          </v-col>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -28,8 +35,20 @@
                   <!-- 投稿者と投稿日時 -->
                   <v-list-item-subtitle>
                     <v-row>
-                      <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUserPosts(post.user)">{{ post.user.name }}</router-link></v-col>
+                      <v-col>投稿者：<router-link to="/detail/user" @click.native="getDetailUser(post.user.id)">{{ post.user.name }}</router-link></v-col>
                       <v-col>投稿日時：{{ post.date }}</v-col>
+                    </v-row>
+                    <v-row>
+                      <!-- いいねの数を表示 -->
+                      <v-col>
+                        <v-icon small :color="isLiked(post.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
+                        {{ Object.keys(post.likes).length }}
+                      </v-col>
+                      <!-- コメント数を表示 -->
+                      <v-col>
+                        <v-icon small :color="isCommented(post.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
+                        {{ Object.keys(post.comments).length }}
+                      </v-col>
                     </v-row>
                   </v-list-item-subtitle>
 
@@ -52,7 +71,41 @@ export default {
   name: 'Home',
   data () {
     return {
-      allPosts: ''
+      allPosts: '',
+      // 投稿表示の切り替え
+      type: 'フォローユーザーの投稿',
+      // 投稿表示の選択肢
+      states: [
+        'フォローユーザーの投稿', '全ての投稿', 'goodした投稿'
+      ],
+    }
+  },
+  computed: {
+    loggedIn () {
+      return this.$store.state.auth.loggedIn
+    },
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
+    },
+    // いいねしてれば、trueを返す
+    isLiked: function () {
+      return function (likes) {
+        for (var like of likes) {
+          if (like.user_id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
+    },
+    // コメントしてれば、trueを返す
+    isCommented: function () {
+      return function (comments) {
+        for (var comment of comments) {
+          if (comment.user.id === this.loggedInUser.id) {
+            return true
+          }
+        }
+      }
     }
   },
   methods: {
@@ -65,20 +118,52 @@ export default {
         }
       })
     },
+    // フォローしているユーザーの投稿一覧を取得
+    getFollowingsPosts () {
+      this.$http.get('http://localhost:3000/api/post/followings/' + this.loggedInUser.id)
+      .then(response => {
+        if (response.status === 200) {
+          this.allPosts = response.data
+        }
+      })
+    },
+    // いいねしている投稿一覧を取得
+    getLikedPosts () {
+      this.$http.get('http://localhost:3000/api/post/liked/' + this.loggedInUser.id)
+      .then(response => {
+        if (response.status === 200) {
+          this.allPosts = response.data
+        }
+      })
+    },
     // 投稿の詳細を取得
     getDetailPost (id) {
       this.$store.dispatch("post/getDetailPost", id)
     },
-    // 詳細表示するユーザーの投稿一覧を取得
-    getDetailUserPosts (user) {
-      this.$store.dispatch("post/getDetailUserPosts", user.id)
-      // 詳細表示しているユーザーを更新
-      this.$store.commit("auth/changeDetailUser", user)
-    }
+    // ユーザーの詳細を取得
+    getDetailUser (id) {
+      this.$store.dispatch("user/getDetailUser", id)
+    },
+    // 投稿一覧のソート
+    getPosts () {
+      if (this.type === '全ての投稿') {
+        this.getAllPosts ()
+      } else if (this.type === 'フォローユーザーの投稿') {
+        this.getFollowingsPosts ()
+      } else {
+        this.getLikedPosts ()
+      }
+    },
   },
-  // マウント時にステートの投稿一覧を更新
+  // ログイン中はフォローしているユーザーの投稿を取得
+  // ログアウト中は投稿一覧を取得
   mounted () {
-    this.getAllPosts();
+    if (this.loggedIn) {
+      this.getFollowingsPosts()
+    }
+    else {
+      this.getAllPosts()
+    }
   }
 }
 </script>

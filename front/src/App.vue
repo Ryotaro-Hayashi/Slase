@@ -13,6 +13,23 @@
             <!-- 名前とメアド -->
             <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            <v-row>
+              <!-- フォロー -->
+              <v-col>
+                <router-link to="/following">
+                  <span class="follow-num-space">{{ followingsNum }}</span>
+                  <span class="font-wight-light caption">フォロー</span>
+                </router-link>
+              </v-col>
+              <!-- フォロワー -->
+              <v-col>
+                <router-link to="/follower">
+                  <span class="follow-num-space">{{ followersNum }}</span>
+                  <span class="font-wight-light caption">フォロワー</span>
+                </router-link>
+              </v-col>
+            </v-row>
+
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -101,7 +118,7 @@
 
         <!-- マイページ -->
         <v-btn text to="/mypage" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-account-badge-horizontal</v-icon>マイページ
+          <v-icon class="icon-space">mdi-account-box</v-icon>マイページ
         </v-btn>
 
         <!-- ログイン -->
@@ -212,17 +229,28 @@ export default {
     },
     postSuccessSnackbar () {
       return this.$store.state.post.successSnackbar
+    },
+    followingsNum () {
+      return this.$store.state.user.followings.length
+    },
+    followersNum () {
+      return this.$store.state.user.followers.length
     }
-
   },
   methods: {
     signOut () {
       this.dialog = false
+      this.drawer = false
       this.$store.dispatch("auth/signOut")
       this.$router.push("/")
+      this.reload()
     },
     closeSnackbar () {
       this.$store.commit("auth/changeSuccessSnackbar", false)
+    },
+    // リロードする関数
+    reload () {
+      this.$router.go({path: this.$router.currentRoute.path, force: true})
     }
   }
 }
@@ -258,4 +286,10 @@ a {
 .yet {
   background-color: silver;
 }
+
+/* フォロー数とその次の文字との間に入れる空間のためのCSS */
+.follow-num-space {
+  margin-right: 5px;
+}
+
 </style>

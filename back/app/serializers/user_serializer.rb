@@ -1,10 +1,11 @@
 class UserSerializer < ActiveModel::Serializer
-  # user.question を利用可能にする
+
   attributes :id,
              :name,
              :email,
-             :created_at,
-             :password
+             :introduce,
+             :address,
+             :questions
 
   has_many :questions
 end

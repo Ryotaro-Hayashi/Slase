@@ -7,8 +7,11 @@ class QuestionSerializer < ActiveModel::Serializer
              :image,
              :date,
              :time,
-             :created_at,
-             :user
+             :user,
+             :comments,
+             :likes
 
-  has_one :user
+  has_many :comments
+  has_many :likes
+
 end

@@ -10,7 +10,28 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_01_27_094824) do
+ActiveRecord::Schema.define(version: 2020_03_14_021135) do
+
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.text "content", null: false
+    t.string "date"
+    t.string "time"
+    t.bigint "user_id"
+    t.bigint "question_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_comments_on_question_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "question_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["question_id"], name: "index_likes_on_question_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
+  end
 
   create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
@@ -19,9 +40,21 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.string "time"
     t.string "image"
     t.bigint "user_id"
+    t.bigint "comment_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["comment_id"], name: "index_questions_on_comment_id"
     t.index ["user_id"], name: "index_questions_on_user_id"
+  end
+
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.bigint "user_id"
+    t.bigint "follow_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["follow_id"], name: "index_relationships_on_follow_id"
+    t.index ["user_id", "follow_id"], name: "index_relationships_on_user_id_and_follow_id", unique: true
+    t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
   create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -39,6 +72,8 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.string "last_sign_in_ip"
     t.string "name", default: "", null: false
     t.string "email", default: "", null: false
+    t.string "introduce", default: ""
+    t.string "address", default: ""
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -48,4 +83,8 @@ ActiveRecord::Schema.define(version: 2020_01_27_094824) do
     t.index ["uid", "provider"], name: "index_users_on_uid_and_provider", unique: true
   end
 
+  add_foreign_key "likes", "questions"
+  add_foreign_key "likes", "users"
+  add_foreign_key "relationships", "users"
+  add_foreign_key "relationships", "users", column: "follow_id"
 end
