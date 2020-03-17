@@ -2,13 +2,13 @@ default: &default
   adapter: mysql2
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-  username: Slase
-  password: Rtrhys331
-  host: db
 
 development:
   <<: *default
   database: docker_development
+  username: Slase
+  password: Rtrhys331
+  host: db
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -16,7 +16,13 @@ development:
 test:
   <<: *default
   database: docker_test
+  username: Slase
+  password: Rtrhys331
+  host: db
 
 production:
   <<: *default
-  database: docker_production
+  database: Slase_production
+  username: root
+  password:
+  host: localhost
