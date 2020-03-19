@@ -124,7 +124,7 @@ export default {
     },
     // ユーザーをフォローするメソッド
     follow () {
-      this.$http.post('http://localhost:3000/api/relationships',
+      this.$http.post(process.env.VUE_APP_API_BASE_URL + '/api/relationships',
       {
         // フォローするユーザーのid
         follow_id: this.detailUser.id
@@ -143,7 +143,7 @@ export default {
     },
     // フォローを外す
     unfollow () {
-      this.$http.delete('http://localhost:3000/api/relationships/' + this.detailUser.id,
+      this.$http.delete(process.env.VUE_APP_API_BASE_URL + '/api/relationships/' + this.detailUser.id,
       {
         headers: this.token
       })
