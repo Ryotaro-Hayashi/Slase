@@ -160,7 +160,7 @@ export default {
     },
     // コメントをアップロード
     uploadComment () {
-      this.$http.post('http://localhost:3000/api/post/comments',
+      this.$http.post(process.env.VUE_APP_API_BASE_URL + '/api/post/comments',
       {
         user_id: this.loggedInUser.id,
         content: this.comment,
@@ -177,7 +177,7 @@ export default {
     },
     // いいねを登録
     like () {
-      this.$http.post('http://localhost:3000/api/post/likes',
+      this.$http.post(process.env.VUE_APP_API_BASE_URL + '/api/post/likes',
       {
         question_id: this.detailPost.id
       },
@@ -193,7 +193,7 @@ export default {
     },
     // いいねを外す
     unlike () {
-      this.$http.delete('http://localhost:3000/api/post/likes/' + this.detailPost.id,
+      this.$http.delete(process.env.VUE_APP_API_BASE_URL + '/api/post/likes/' + this.detailPost.id,
       {
         question_id: this.detailPost.id,
         user_id: this.loggedInUser.id

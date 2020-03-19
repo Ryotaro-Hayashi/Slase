@@ -24,7 +24,7 @@ export const user = {
   actions: {
     // 詳細表示するユーザー情報を取得
     getDetailUser ({ commit }, id) {
-      axios.get('http://localhost:3000/api/users/' + id)
+      axios.get(process.env.VUE_APP_API_BASE_URL + '/api/users/' + id)
       .then(response => {
         if (response.status === 200) {
           commit("updateDetailUser", response.data);
@@ -33,13 +33,13 @@ export const user = {
     },
     // フォロー・フォロワーを取得
     getFollows ({ commit }, id) {
-      axios.get('http://localhost:3000/api/followings/' + id)
+      axios.get(process.env.VUE_APP_API_BASE_URL + '/api/followings/' + id)
       .then(response => {
         if (response.status === 200) {
           commit("changeFollowings", response.data)
         }
       })
-      axios.get('http://localhost:3000/api/followers/' + id)
+      axios.get(process.env.VUE_APP_API_BASE_URL + '/api/followers/' + id)
       .then(response => {
         if (response.status === 200) {
           commit("changeFollowers", response.data)

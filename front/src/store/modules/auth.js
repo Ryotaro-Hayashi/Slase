@@ -50,7 +50,7 @@ export const auth = {
   actions: {
     // ログインユーザーの情報を取得
     getLoggedInUser ({ commit }, id) {
-      axios.get('http://localhost:3000/api/users/' + id)
+      axios.get(process.env.VUE_APP_API_BASE_URL + '/api/users/' + id)
       .then(response => {
         if (response.status === 200) {
           commit("updateLoggedInUser", response.data);
@@ -59,7 +59,7 @@ export const auth = {
     },
     // ユーザー登録処理
     signUp ({ dispatch, commit }, authData) {
-      axios.post('http://localhost:3000/api/auth', {
+      axios.post(process.env.VUE_APP_API_BASE_URL + '/api/auth', {
         name: authData.name,
         email: authData.email,
         password: authData.password,
@@ -95,7 +95,7 @@ export const auth = {
     },
     // ログイン処理
     signIn ({ dispatch, commit }, authData) {
-      axios.post('http://localhost:3000/api/auth/sign_in', {
+      axios.post(process.env.VUE_APP_API_BASE_URL + '/api/auth/sign_in', {
         email: authData.email,
         password: authData.password
       })
@@ -132,7 +132,7 @@ export const auth = {
       commit("user/changeFollowers", {}, {root: true})
     },
     changeEmail ({ commit }, data) {
-      axios.put('http://localhost:3000/api/auth', {
+      axios.put(process.env.VUE_APP_API_BASE_URL + '/api/auth', {
         email: data.email
       },
       {
@@ -146,7 +146,7 @@ export const auth = {
       })
     },
     changePassword ({ commit }, data) {
-      axios.put('http://localhost:3000/api/auth', {
+      axios.put(process.env.VUE_APP_API_BASE_URL + '/api/auth', {
         password: data.password
       },
       {
@@ -160,7 +160,7 @@ export const auth = {
       })
     },
     updateProfile ({ dispatch }, data) {
-      axios.put('http://localhost:3000/api/auth', {
+      axios.put(process.env.VUE_APP_API_BASE_URL + '/api/auth', {
         name: data.name,
         introduce: data.introduce,
         address: data.address

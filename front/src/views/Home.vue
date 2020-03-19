@@ -111,7 +111,7 @@ export default {
   methods: {
     // 投稿一覧を取得
     getAllPosts () {
-      this.$http.get('http://localhost:3000/api/post/questions')
+      this.$http.get(process.env.VUE_APP_API_BASE_URL + '/api/post/questions')
       .then(response => {
         if (response.status === 200) {
           this.allPosts = response.data
@@ -120,7 +120,7 @@ export default {
     },
     // フォローしているユーザーの投稿一覧を取得
     getFollowingsPosts () {
-      this.$http.get('http://localhost:3000/api/post/followings/' + this.loggedInUser.id)
+      this.$http.get(process.env.VUE_APP_API_BASE_URL + '/api/post/followings/' + this.loggedInUser.id)
       .then(response => {
         if (response.status === 200) {
           this.allPosts = response.data
@@ -129,7 +129,7 @@ export default {
     },
     // いいねしている投稿一覧を取得
     getLikedPosts () {
-      this.$http.get('http://localhost:3000/api/post/liked/' + this.loggedInUser.id)
+      this.$http.get(process.env.VUE_APP_API_BASE_URL + '/api/post/liked/' + this.loggedInUser.id)
       .then(response => {
         if (response.status === 200) {
           this.allPosts = response.data

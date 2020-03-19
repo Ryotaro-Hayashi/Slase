@@ -26,7 +26,7 @@ export const post = {
       formData.append("body", post.body)
       // urlのことはあまり気にしないで良い
       formData.append("image", post.image)
-      axios.post('http://localhost:3000/api/post/questions', formData,
+      axios.post(process.env.VUE_APP_API_BASE_URL + '/api/post/questions', formData,
       // リクエストヘッダーにトークンを追加
       {
         headers: post.token
@@ -43,7 +43,7 @@ export const post = {
     },
     // 投稿の詳細を取得
     getDetailPost ({ commit }, id) {
-      axios.get('http://localhost:3000/api/post/questions/' + id)
+      axios.get(process.env.VUE_APP_API_BASE_URL + '/api/post/questions/' + id)
       .then(response => {
         commit("changeDetailPost", response.data)
       })

@@ -36,7 +36,7 @@ module Slase
 
     config.generators.system_tests = nil
 
-    if Rails.env.development?
+    # if Rails.env.development?
       config.middleware.insert_before ActionDispatch::Static, Rack::Cors do
         allow do
           origins '*'
@@ -47,6 +47,6 @@ module Slase
             :methods => [:get, :post, :options, :patch, :delete]
         end
       end
-    end
+    # end
   end
 end
