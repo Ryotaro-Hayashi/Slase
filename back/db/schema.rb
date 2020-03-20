@@ -12,7 +12,7 @@
 
 ActiveRecord::Schema.define(version: 2020_03_14_021135) do
 
-  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "comments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.text "content", null: false
     t.string "date"
     t.string "time"
@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_021135) do
     t.index ["user_id"], name: "index_comments_on_user_id"
   end
 
-  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "likes", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "question_id"
     t.bigint "user_id"
     t.datetime "created_at", null: false
@@ -33,7 +33,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_021135) do
     t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
-  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "questions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "title", null: false
     t.text "body", null: false
     t.string "date"
@@ -47,7 +47,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_021135) do
     t.index ["user_id"], name: "index_questions_on_user_id"
   end
 
-  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "relationships", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.bigint "user_id"
     t.bigint "follow_id"
     t.datetime "created_at", null: false
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_021135) do
     t.index ["user_id"], name: "index_relationships_on_user_id"
   end
 
-  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci", force: :cascade do |t|
+  create_table "users", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "provider", default: "email", null: false
     t.string "uid", default: "", null: false
     t.string "encrypted_password", default: "", null: false
