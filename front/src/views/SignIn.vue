@@ -10,7 +10,7 @@
         </v-btn>
       </v-snackbar>
 
-      <v-card width="400px" class="mx-auto mt-10">
+      <v-card width="600px" class="mx-auto mt-10">
 
         <ValidationObserver v-slot="{ handleSubmit }">
           <!-- ロゴ -->
