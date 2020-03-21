@@ -25,7 +25,7 @@ services:
 
   front:
     build: ./front
-    command: /bin/sh -c "npm run serve"
+    command: /bin/sh -c "yarn serve --mode development"
     volumes:
       - ./front:/app
       # - frontend-node_modules:/app/node_modules

@@ -14,4 +14,4 @@ RUN apk update && \
 COPY . .
 
 EXPOSE 8080
-CMD ["npm", "run", "serve"]
+CMD ["yarn", "serve", "--mode", "development"]
