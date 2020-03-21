@@ -5,8 +5,6 @@ import vuetify from './plugins/vuetify';
 import store from './store/index'
 
 import axios from 'axios'
-// コンポーネントでaxiosを使えるように設定
-// コンポーネントで使う際は、this.$axios.getなどとして使う
 Vue.prototype.$http = axios;
 
 // vee-validateと必要なパッケージのインポート
