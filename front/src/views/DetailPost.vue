@@ -2,7 +2,7 @@
   <div class="detail-post">
     <v-app>
 
-      <v-card width="800px" class="mx-auto mt-10">
+      <v-card width="95%" max-width="600px" class="mx-auto">
 
         <v-card-title>
           <!-- アバター -->

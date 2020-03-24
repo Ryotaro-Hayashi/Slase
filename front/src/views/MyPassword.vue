@@ -1,7 +1,7 @@
 <template>
   <div class="my-password">
     <v-app>
-      <v-card width="600px" class="mx-auto mt-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10">
         <v-card-title>
           <p class="mx-auto">パスワードを変更</p>
         </v-card-title>

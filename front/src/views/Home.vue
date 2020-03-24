@@ -2,17 +2,16 @@
   <div class="home">
     <v-app>
 
-      <v-card width="600px" class="mx-auto mt-10 mb-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
-          <v-col cols="6">
+          <v-col cols="11" sm="6" md="6" lg="6">
             <!-- ログイン時のタイトル -->
             <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line @change="getPosts" v-if="loggedIn"></v-select>
             <!-- ログアウト時のタイトル -->
             <span class="title font-weight-bold" v-if="!loggedIn">
               <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>latest
             </span>
-
           </v-col>
         </v-card-title>
 

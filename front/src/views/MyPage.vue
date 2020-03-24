@@ -2,7 +2,7 @@
   <div class="my-page">
     <v-app>
 
-      <v-card width="800px" class="mx-auto mt-10 mb-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <v-card-text>
           <v-container>
             <v-row>
@@ -59,7 +59,7 @@
                 </router-link>
               </v-col>
               <!-- フォロワー -->
-              <v-col :cols="4" sm="2" md="2" lg="2">
+              <v-col :cols="4" sm="3" md="3" lg="3">
                 <router-link to="/follower">
                   <span class="follow-num-space title">{{ followersNum }}</span>
                   <span class="font-wight-light caption">フォロワー</span>
@@ -90,25 +90,28 @@
                   <v-list-item-title>
                     <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(loggedInUserPost.id)">{{ loggedInUserPost.title }}</router-link>
                   </v-list-item-title>
-                  <!-- 投稿者と投稿日時 -->
-                  <v-list-item-subtitle>
-                    <v-row>
-                      <v-col>投稿者：{{ loggedInUserPost.user.name }}</v-col>
-                      <v-col>投稿日時：{{ loggedInUserPost.date }}</v-col>
-                    </v-row>
-                    <v-row>
-                      <!-- いいねの数を表示 -->
-                      <v-col>
-                        <v-icon small :color="isLiked(loggedInUserPost.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
-                        {{ Object.keys(loggedInUserPost.likes).length }}
-                      </v-col>
-                      <!-- コメント数を表示 -->
-                      <v-col>
-                        <v-icon small :color="isCommented(loggedInUserPost.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
-                        {{ Object.keys(loggedInUserPost.comments).length }}
-                      </v-col>
-                    </v-row>
-                  </v-list-item-subtitle>
+
+                  <v-card-actions>
+                    <!-- 投稿者と投稿日時 -->
+                    <v-list-item-subtitle>
+                      <v-row dense>
+                        <v-col cols="12" sm="6" md="6" lg="6">投稿者：{{ loggedInUserPost.user.name }}</v-col>
+                        <v-col cols="12" sm="6" md="6" lg="6">投稿日時：{{ loggedInUserPost.date }}</v-col>
+                      </v-row>
+                      <v-row>
+                        <!-- いいねの数を表示 -->
+                        <v-col>
+                          <v-icon small :color="isLiked(loggedInUserPost.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
+                          {{ Object.keys(loggedInUserPost.likes).length }}
+                        </v-col>
+                        <!-- コメント数を表示 -->
+                        <v-col>
+                          <v-icon small :color="isCommented(loggedInUserPost.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
+                          {{ Object.keys(loggedInUserPost.comments).length }}
+                        </v-col>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-card-actions>
 
                   <v-divider></v-divider>
 

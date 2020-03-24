@@ -2,7 +2,7 @@
   <div class="Follower">
     <v-app>
 
-      <v-card width="600px" class="mx-auto mt-10 mb-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
