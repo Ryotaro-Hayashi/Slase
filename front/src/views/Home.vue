@@ -9,7 +9,7 @@
             <!-- タイムライン -->
             <v-list-item>
               <v-fab-transition>
-                <v-btn color="deep-purple" dark fixed width="170px" @click="getPosts(states[0])">
+                <v-btn :color="color[0]" dark type="dark" fixed width="170px" @click="getPosts(states[0])">
                   <span class="mr-auto">
                     <v-icon>mdi-format-list-bulleted-square</v-icon>タイムライン
                   </span>
@@ -20,7 +20,7 @@
             <!-- 全ての投稿 -->
             <v-list-item>
               <v-fab-transition>
-                <v-btn color="deep-purple" dark fixed width="170px" @click="getPosts(states[1])">
+                <v-btn :color="color[1]" dark fixed width="170px" @click="getPosts(states[1])">
                   <span class="mr-auto">
                     <v-icon>mdi-format-list-bulleted-square</v-icon>全ての投稿
                   </span>
@@ -31,7 +31,7 @@
             <!-- いいねした投稿 -->
             <v-list-item>
               <v-fab-transition>
-                <v-btn color="deep-purple" dark fixed width="170px" @click="getPosts(states[2])">
+                <v-btn :color="color[2]" dark fixed width="170px" @click="getPosts(states[2])">
                   <span class="mr-auto">
                     <v-icon>mdi-format-list-bulleted-square</v-icon>いいねした投稿
                   </span>
@@ -129,7 +129,10 @@ export default {
         'タイムライン', '全ての投稿', 'いいねした投稿'
       ],
       sort: "タイムライン",
-      type: "全ての投稿"
+      type: "全ての投稿",
+      color: [
+        'deep-purple', 'grey', 'grey'
+      ]
     }
   },
   computed: {
@@ -198,13 +201,20 @@ export default {
     },
     // 投稿一覧のソート
     getPosts (type) {
+      // 色をリセット
+      this.color = ["grey", "grey", "grey"]
+      // 表示するソート
       this.sort = type
-      if (this.sort === '全ての投稿') {
-        this.getAllPosts ()
-      } else if (this.sort === 'フォローユーザーの投稿') {
+
+      if (this.sort === 'タイムライン') {
         this.getFollowingsPosts ()
+        this.color[0] = "deep-purple"
+      } else if (this.sort === '全ての投稿') {
+        this.getAllPosts ()
+        this.color[1] = "deep-purple"
       } else {
         this.getLikedPosts ()
+        this.color[2] = "deep-purple"
       }
     },
   },
