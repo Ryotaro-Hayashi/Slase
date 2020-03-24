@@ -41,38 +41,42 @@
 
       <v-divider></v-divider>
 
-      <!-- dataオプションからリストを作成する方法 -->
-      <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+      <v-list>
+        <!-- dataオプションからリストを作成する方法 -->
+        <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
 
-        <v-list-item-icon>
-          <v-icon>{{ nav_list.icon}}</v-icon>
-        </v-list-item-icon>
+          <v-list-item-icon>
+            <v-icon>{{ nav_list.icon}}</v-icon>
+          </v-list-item-icon>
 
-        <v-list-item-content>
+          <v-list-item-content>
 
-          <v-list-item-title>
-            {{nav_list.name}}
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+            <v-list-item-title>
+              {{nav_list.name}}
+            </v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
 
       <!-- ドロップダウンメニューを作成 -->
       <v-menu offset-y>
         <template v-slot:activator="{on}">
-          <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
-          <v-list-item text v-on="on">
-            <!-- アイコン -->
-            <v-list-item-icon>
-              <v-icon class="icon-space">mdi-account</v-icon>
-            </v-list-item-icon>
+          <v-list>
+            <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
+            <v-list-item v-on="on">
+              <!-- アイコン -->
+              <v-list-item-icon>
+                <v-icon>mdi-account</v-icon>
+              </v-list-item-icon>
 
-            <v-list-item-content app>
-              <v-list-item-title>
-                アカウント設定<v-icon>mdi-menu-down</v-icon>
-              </v-list-item-title>
-            </v-list-item-content>
+              <v-list-item-content>
+                <v-list-item-title>
+                  アカウント設定<v-icon>mdi-menu-down</v-icon>
+                </v-list-item-title>
+              </v-list-item-content>
 
-          </v-list-item>
+            </v-list-item>
+        </v-list>
         </template>
 
         <!-- ポップアップの内容 -->
@@ -97,7 +101,7 @@
           <!-- ボタンだとデフォルトでクリックイベントが設定される -->
           <!-- クリックするとダイアログを表示 -->
           <!-- ログアウトボタン -->
-          <v-btn text v-on="on" v-show="loggedIn">
+          <v-btn v-on="on" v-show="loggedIn">
             <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
           </v-btn>
         </template>
@@ -127,10 +131,6 @@
 
       </v-dialog>
 
-      <!-- マイページ -->
-      <v-btn text to="/mypage" v-show="loggedIn">
-        <v-icon class="icon-space">mdi-account-box</v-icon>マイページ
-      </v-btn>
     </v-navigation-drawer>
 
     <!-- ナビゲーションバーの領域を確保 -->
@@ -214,7 +214,7 @@ export default {
       ],
       // dataオプションからリストを作成する方法
       nav_lists: [
-        {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
+        {name: 'マイページ', icon: 'mdi-account-box', link: '/mypage'},
         {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
       ],
 
