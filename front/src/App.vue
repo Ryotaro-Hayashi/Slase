@@ -41,42 +41,38 @@
 
       <v-divider></v-divider>
 
-      <v-list>
-        <!-- dataオプションからリストを作成する方法 -->
-        <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+      <!-- dataオプションからリストを作成する方法 -->
+      <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
 
-          <v-list-item-icon>
-            <v-icon>{{ nav_list.icon}}</v-icon>
-          </v-list-item-icon>
+        <v-list-item-icon>
+          <v-icon>{{ nav_list.icon}}</v-icon>
+        </v-list-item-icon>
 
-          <v-list-item-content>
+        <v-list-item-content>
 
-            <v-list-item-title>
-              {{nav_list.name}}
-            </v-list-item-title>
-          </v-list-item-content>
-        </v-list-item>
-      </v-list>
+          <v-list-item-title>
+            {{nav_list.name}}
+          </v-list-item-title>
+        </v-list-item-content>
+      </v-list-item>
 
       <!-- ドロップダウンメニューを作成 -->
       <v-menu offset-y>
         <template v-slot:activator="{on}">
-          <v-list>
-            <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
-            <v-list-item v-on="on">
-              <!-- アイコン -->
-              <v-list-item-icon>
-                <v-icon>mdi-account</v-icon>
-              </v-list-item-icon>
+          <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
+          <v-list-item v-on="on">
+            <!-- アイコン -->
+            <v-list-item-icon>
+              <v-icon>mdi-account</v-icon>
+            </v-list-item-icon>
 
-              <v-list-item-content>
-                <v-list-item-title>
-                  アカウント設定<v-icon>mdi-menu-down</v-icon>
-                </v-list-item-title>
-              </v-list-item-content>
+            <v-list-item-content>
+              <v-list-item-title>
+                アカウント設定<v-icon>mdi-menu-down</v-icon>
+              </v-list-item-title>
+            </v-list-item-content>
 
-            </v-list-item>
-        </v-list>
+          </v-list-item>
         </template>
 
         <!-- ポップアップの内容 -->
@@ -95,41 +91,45 @@
         </v-list>
       </v-menu>
 
-      <!-- ログアウト時に再確認するためのダイアログ -->
-      <v-dialog v-model="dialog" width="300px" class="mx-auto">
-        <template v-slot:activator="{ on }">
-          <!-- ボタンだとデフォルトでクリックイベントが設定される -->
-          <!-- クリックするとダイアログを表示 -->
-          <!-- ログアウトボタン -->
-          <v-btn v-on="on" v-show="loggedIn">
-            <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
-          </v-btn>
-        </template>
 
-        <!-- 表示するダイアログ -->
-        <v-card width="300px">
-          <!-- タイトル -->
-          <v-card-title>
-            <span class="mx-auto font-weight-bold title">ログアウトしますか？</span>
-          </v-card-title>
+        <!-- ログアウト時に再確認するためのダイアログ -->
+        <v-dialog v-model="dialog" width="300px" class="mx-auto">
+          <template v-slot:activator="{ on }">
+            <!-- ボタンだとデフォルトでクリックイベントが設定される -->
+            <!-- クリックするとダイアログを表示 -->
+            <v-card-actions>
+              <v-btn color="deep-purple" dark v-on="on" bottom absolute x-large width="90%">
+                <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
+              </v-btn>
+            </v-card-actions>
+          </template>
 
-          <v-card-actions>
-            <v-row justify="space-between">
 
-              <v-col class="center">
-                <v-btn @click="signOut" color="primary">ログアウト</v-btn>
-              </v-col>
+          <!-- 表示するダイアログ -->
+          <v-card width="300px">
+            <!-- タイトル -->
+            <v-card-title>
+              <span class="mx-auto font-weight-bold title">ログアウトしますか？</span>
+            </v-card-title>
 
-              <v-col class="center">
-                <v-btn @click="dialog = false">キャンセル</v-btn>
-              </v-col>
+            <v-card-actions>
+              <v-row justify="space-between">
 
-            </v-row>
-          </v-card-actions>
+                <v-col class="center">
+                  <v-btn @click="signOut" color="primary">ログアウト</v-btn>
+                </v-col>
 
-        </v-card>
+                <v-col class="center">
+                  <v-btn @click="dialog = false">キャンセル</v-btn>
+                </v-col>
 
-      </v-dialog>
+              </v-row>
+            </v-card-actions>
+
+          </v-card>
+
+        </v-dialog>
+
 
     </v-navigation-drawer>
 
@@ -147,10 +147,6 @@
       <v-toolbar-items>
         <!-- <v-btn>
           <v-icon class="icon-space">mdi-feature-search</v-icon>キーワード検索
-        </v-btn>
-
-        <v-btn>
-          <v-icon class="icon-space">mdi-label</v-icon>カテゴリ
         </v-btn>
 
         <v-btn>
@@ -215,7 +211,7 @@ export default {
       // dataオプションからリストを作成する方法
       nav_lists: [
         {name: 'マイページ', icon: 'mdi-account-box', link: '/mypage'},
-        {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
+        {name: 'Slaseについて', icon: 'mdi-help-box', link: '/mypage'}
       ],
 
       // 真偽でダイアログの表示を切り替える
