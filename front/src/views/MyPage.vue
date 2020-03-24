@@ -26,16 +26,29 @@
                   </template>
 
                   <!-- 表示するダイアログ -->
-                  <v-card width="800px" class="mx-auto">
+                  <v-card max-width="800px" class="mx-auto">
                     <v-card-title>
                       プロフィールを編集
                     </v-card-title>
 
                     <v-card-text>
                       <v-container>
-                        <v-text-field label="ユーザー名" v-model="name"></v-text-field>
-                        <v-textarea label="自己紹介" v-model="introduce"></v-textarea>
-                        <v-text-field label="場所" v-model="address"></v-text-field>
+                        <v-row>
+                          <v-col cols="6">
+                            <v-text-field label="ユーザー名" v-model="name"></v-text-field>
+                          </v-col>
+
+                          <v-col cols="6">
+                            <v-text-field label="位置情報" v-model="address"></v-text-field>
+                          </v-col>
+                        </v-row>
+
+                        <v-row>
+                          <v-col cols="12">
+                            <v-textarea label="自己紹介" v-model="introduce"></v-textarea>
+                          </v-col>
+                        </v-row>
+
                       </v-container>
                     </v-card-text>
 

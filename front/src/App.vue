@@ -91,7 +91,6 @@
         </v-list>
       </v-menu>
 
-
         <!-- ログアウト時に再確認するためのダイアログ -->
         <v-dialog v-model="dialog" width="300px" class="mx-auto">
           <template v-slot:activator="{ on }">
@@ -181,9 +180,9 @@
       </v-snackbar>
 
       <!-- 投稿作成ボタンを作成 -->
-      <v-fab-transition>
-        <v-btn color="pink" dark bottom right fab fixed to="/post">
-          <v-icon>mdi-plus</v-icon>
+      <v-fab-transition v-if="loggedIn">
+        <v-btn color="deep-purple" dark bottom right fab fixed to="/post">
+          <v-icon>mdi-pencil</v-icon>
         </v-btn>
       </v-fab-transition>
 
@@ -192,7 +191,7 @@
     </v-content>
 
     <!-- フッター -->
-    <v-footer color="#EEEEEE" light app>
+    <v-footer color="#EEEEEE" light>
       <span class="mx-auto">© 2020 Ryotaro Hayashi</span>
     </v-footer>
   </v-app>
