@@ -4,43 +4,42 @@
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
     <v-navigation-drawer app v-model="drawer" left temporary fixed>
       <v-list>
-        <v-list-item>
+        <v-list-item to="/mypage">
+          <!-- アバター -->
+          <v-list-item-avatar>
+            <v-img src="https://cdn.vuetifyjs.com/images/john.jpg"></v-img>
+          </v-list-item-avatar>
+
+          <!-- 名前とメアド -->
           <v-list-item-content>
-            <router-link to="/mypage">
-              <!-- アバター -->
-              <v-avatar>
-                <img src="https://cdn.vuetifyjs.com/images/john.jpg">
-              </v-avatar>
-              <!-- 名前とメアド -->
-              <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
-              <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
-            </router-link>
-
-            <v-row>
-              <!-- フォロー -->
-              <v-col>
-                <router-link to="/following">
-                  <span class="follow-num-space">{{ followingsNum }}</span>
-                  <span class="font-wight-light caption">フォロー</span>
-                </router-link>
-              </v-col>
-              <!-- フォロワー -->
-              <v-col>
-                <router-link to="/follower">
-                  <span class="follow-num-space">{{ followersNum }}</span>
-                  <span class="font-wight-light caption">フォロワー</span>
-                </router-link>
-              </v-col>
-            </v-row>
-
+            <v-list-item-title class="title">{{ loggedInUser.name }}</v-list-item-title>
+            <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
           </v-list-item-content>
+
         </v-list-item>
       </v-list>
+
+      <v-row>
+        <!-- フォロー -->
+        <v-col>
+          <router-link to="/following">
+            <span class="follow-num-space">{{ followingsNum }}</span>
+            <span class="font-wight-light caption">フォロー</span>
+          </router-link>
+        </v-col>
+        <!-- フォロワー -->
+        <v-col>
+          <router-link to="/follower">
+            <span class="follow-num-space">{{ followersNum }}</span>
+            <span class="font-wight-light caption">フォロワー</span>
+          </router-link>
+        </v-col>
+      </v-row>
 
       <v-divider></v-divider>
 
       <!-- dataオプションからリストを作成する方法 -->
-      <!-- <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+      <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
 
         <v-list-item-icon>
           <v-icon>{{ nav_list.icon}}</v-icon>
@@ -52,7 +51,7 @@
             {{nav_list.name}}
           </v-list-item-title>
         </v-list-item-content>
-      </v-list-item> -->
+      </v-list-item>
 
       <!-- ドロップダウンメニューを作成 -->
       <v-menu offset-y>
@@ -211,10 +210,10 @@ export default {
         {name: 'パスワード', icon: 'mdi-lock-reset', link: '/mypage/password'}
       ],
       // dataオプションからリストを作成する方法
-      // nav_lists: [
-      //   {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
-      //   {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
-      // ],
+      nav_lists: [
+        {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
+        {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
+      ],
 
       // 真偽でダイアログの表示を切り替える
       dialog: false
