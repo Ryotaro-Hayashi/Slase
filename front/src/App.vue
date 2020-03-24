@@ -2,7 +2,7 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-if="drawer">
+    <v-navigation-drawer app v-model="drawer" left temporary fixed>
       <v-list>
         <v-list-item>
           <v-list-item-content>
