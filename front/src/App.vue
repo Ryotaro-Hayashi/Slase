@@ -6,13 +6,16 @@
       <v-list>
         <v-list-item>
           <v-list-item-content>
-            <!-- アバター -->
-            <v-avatar>
-              <img src="https://cdn.vuetifyjs.com/images/john.jpg">
-            </v-avatar>
-            <!-- 名前とメアド -->
-            <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
-            <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            <router-link to="/mypage">
+              <!-- アバター -->
+              <v-avatar>
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg">
+              </v-avatar>
+              <!-- 名前とメアド -->
+              <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
+              <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            </router-link>
+
             <v-row>
               <!-- フォロー -->
               <v-col>
