@@ -52,14 +52,14 @@
 
             <v-row>
               <!-- フォロー -->
-              <v-col :cols="3">
+              <v-col :cols="4" sm="2" md="2" lg="2">
                 <router-link to="/following">
                   <span class="follow-num-space title">{{ followingsNum }}</span>
                   <span class="font-wight-light caption">フォロー</span>
                 </router-link>
               </v-col>
               <!-- フォロワー -->
-              <v-col :cols="3">
+              <v-col :cols="4" sm="2" md="2" lg="2">
                 <router-link to="/follower">
                   <span class="follow-num-space title">{{ followersNum }}</span>
                   <span class="font-wight-light caption">フォロワー</span>
