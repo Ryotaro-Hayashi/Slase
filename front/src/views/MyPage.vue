@@ -4,71 +4,76 @@
 
       <v-card width="800px" class="mx-auto mt-10 mb-10">
         <v-card-text>
-          <v-row>
-            <v-col :cols="9">
-              <!-- アバター -->
-              <v-avatar color="blue" tile size="100">
-                <v-icon large dark>mdi-account-circle</v-icon>
-              </v-avatar>
-              <!-- ユーザー名 -->
-              <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
-            </v-col>
-          </v-row>
+          <v-container>
+            <v-row>
+              <v-col cols="9" sm="10" md="10" lg="10">
+                <!-- アバター -->
+                <v-avatar color="blue" tile size="100">
+                  <v-icon large dark>mdi-account-circle</v-icon>
+                </v-avatar>
+                <!-- ユーザー名 -->
+                <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
+              </v-col>
 
-          <v-dialog v-model="dialog" persistent width="800px" class="mx-auto">
-            <template v-slot:activator="{ on }">
+              <v-col cols="3" sm="2" md="2" lg="2">
+                <v-dialog v-model="dialog" persistent width="800px" class="mx-auto">
+                  <template v-slot:activator="{ on }">
 
-              <!-- 編集ボタン -->
-              <!-- クリックして、ログインユーザーのプロフィールをdataに格納し、ダイアログを表示 -->
-              <v-btn v-on="on" @click="setProfile()">編集</v-btn>
+                    <!-- 編集ボタン -->
+                    <!-- クリックして、ログインユーザーのプロフィールをdataに格納し、ダイアログを表示 -->
+                    <v-btn v-on="on" @click="setProfile()">編集</v-btn>
 
-            </template>
+                  </template>
 
-            <!-- 表示するダイアログ -->
-            <v-card width="800px" class="mx-auto">
-              <v-card-title>
-                プロフィールを編集
-              </v-card-title>
+                  <!-- 表示するダイアログ -->
+                  <v-card width="800px" class="mx-auto">
+                    <v-card-title>
+                      プロフィールを編集
+                    </v-card-title>
 
-              <v-card-text>
-                <v-container>
-                  <v-text-field label="ユーザー名" v-model="name"></v-text-field>
-                  <v-textarea label="自己紹介" v-model="introduce"></v-textarea>
-                  <v-text-field label="場所" v-model="address"></v-text-field>
-                </v-container>
-              </v-card-text>
+                    <v-card-text>
+                      <v-container>
+                        <v-text-field label="ユーザー名" v-model="name"></v-text-field>
+                        <v-textarea label="自己紹介" v-model="introduce"></v-textarea>
+                        <v-text-field label="場所" v-model="address"></v-text-field>
+                      </v-container>
+                    </v-card-text>
 
-              <v-card-actions>
-                <v-spacer></v-spacer>
-                <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
-                <v-btn color="blue darken-1" text @click="updateProfile">Save</v-btn>
-              </v-card-actions>
+                    <v-card-actions>
+                      <v-spacer></v-spacer>
+                      <v-btn color="blue darken-1" text @click="dialog = false">Close</v-btn>
+                      <v-btn color="blue darken-1" text @click="updateProfile">Save</v-btn>
+                    </v-card-actions>
 
-            </v-card>
-          </v-dialog>
+                  </v-card>
+                </v-dialog>
+              </v-col>
+            </v-row>
 
-          <v-row>
-            <!-- フォロー -->
-            <v-col :cols="3">
-              <router-link to="/following">
-                <span class="follow-num-space title">{{ followingsNum }}</span>
-                <span class="font-wight-light caption">フォロー</span>
-              </router-link>
-            </v-col>
-            <!-- フォロワー -->
-            <v-col :cols="3">
-              <router-link to="/follower">
-                <span class="follow-num-space title">{{ followersNum }}</span>
-                <span class="font-wight-light caption">フォロワー</span>
-              </router-link>
-            </v-col>
-          </v-row>
+            <v-row>
+              <!-- フォロー -->
+              <v-col :cols="3">
+                <router-link to="/following">
+                  <span class="follow-num-space title">{{ followingsNum }}</span>
+                  <span class="font-wight-light caption">フォロー</span>
+                </router-link>
+              </v-col>
+              <!-- フォロワー -->
+              <v-col :cols="3">
+                <router-link to="/follower">
+                  <span class="follow-num-space title">{{ followersNum }}</span>
+                  <span class="font-wight-light caption">フォロワー</span>
+                </router-link>
+              </v-col>
+            </v-row>
 
-          <!-- プロフィール説明 -->
-          <v-row>
-            <v-col>{{ loggedInUser.introduce }}</v-col>
-            <v-col><v-icon>mdi-map-marker</v-icon>{{ loggedInUser.address }}</v-col>
-          </v-row>
+            <!-- プロフィール説明 -->
+            <v-row>
+              <v-col>{{ loggedInUser.introduce }}</v-col>
+              <v-col><v-icon>mdi-map-marker</v-icon>{{ loggedInUser.address }}</v-col>
+            </v-row>
+          </v-container>
+
 
           <v-divider></v-divider>
 
