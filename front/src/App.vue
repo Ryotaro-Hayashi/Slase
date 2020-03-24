@@ -2,7 +2,7 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-model="drawer" left temporary fixed>
+    <v-navigation-drawer app v-model="drawer" right temporary fixed>
       <v-list>
         <v-list-item to="/mypage">
           <!-- アバター -->
@@ -134,8 +134,6 @@
 
     <!-- ナビゲーションバーの領域を確保 -->
     <v-app-bar color="#FFFFFF" light app>
-      <!-- ナビゲーションメニュー（引き出し）の追加 -->
-      <v-app-bar-nav-icon @click="drawer=!drawer" v-if="loggedIn" />
       <!-- アイコン -->
       <v-toolbar-items>
         <v-btn text to="/">Slase</v-btn>
@@ -152,10 +150,18 @@
           <v-icon class="icon-space">mdi-email</v-icon>メッセージ
         </v-btn> -->
 
+        <!-- 投稿 -->
+        <v-btn text to="/post" v-if="loggedIn && !$vuetify.breakpoint.xs">
+          <v-icon class="icon-space">mdi-pencil</v-icon>投稿
+        </v-btn>
+
         <!-- ログイン -->
-        <v-btn text to="/signin" v-show="!loggedIn">
+        <v-btn text to="/signin" v-if="!loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
         </v-btn>
+
+        <!-- ナビゲーションメニュー（引き出し）の追加 -->
+        <v-app-bar-nav-icon @click="drawer=!drawer" v-if="loggedIn" />
 
       </v-toolbar-items>
     </v-app-bar>
@@ -180,7 +186,7 @@
       </v-snackbar>
 
       <!-- 投稿作成ボタンを作成 -->
-      <v-fab-transition v-if="loggedIn">
+      <v-fab-transition v-if="loggedIn && $vuetify.breakpoint.xs">
         <v-btn color="deep-purple" dark bottom right fab fixed to="/post">
           <v-icon>mdi-pencil</v-icon>
         </v-btn>

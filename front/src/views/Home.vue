@@ -2,67 +2,116 @@
   <div class="home">
     <v-app>
 
-      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
-        <!-- 表示切り替え -->
-        <v-card-title>
-          <v-col cols="11" sm="6" md="6" lg="6">
-            <!-- ログイン時のタイトル -->
-            <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line @change="getPosts" v-if="loggedIn"></v-select>
-            <!-- ログアウト時のタイトル -->
-            <span class="title font-weight-bold" v-if="!loggedIn">
-              <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>latest
-            </span>
-          </v-col>
-        </v-card-title>
+      <v-container>
+        <v-row>
+          <v-col cols="0" sm="3" md="2" lg="2" v-if="loggedIn && !$vuetify.breakpoint.xsOnly">
 
-        <v-divider></v-divider>
-
-        <v-card-text>
-          <v-list three-line>
-            <template v-for="post in allPosts">
-              <v-list-item :key="post.id">
-                <!-- アバター -->
-                <v-list-item-avatar color="blue" tile>
-                  <v-icon large dark>mdi-account-circle</v-icon>
-                </v-list-item-avatar>
-
-                <v-list-item-content>
-                  <!-- タイトル -->
-                  <v-list-item-title>
-                    <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link>
-                  </v-list-item-title>
-
-                  <v-card-actions>
-                    <!-- 投稿者と投稿日時 -->
-                    <v-list-item-subtitle>
-                      <v-row dense>
-                        <v-col cols="12" sm="6" md="6" lg="6">投稿者：<router-link to="/detail/user" @click.native="getDetailUser(post.user.id)">{{ post.user.name }}</router-link></v-col>
-                        <v-col cols="12" sm="6" md="6" lg="6">投稿日時：{{ post.date }}</v-col>
-                      </v-row>
-                      <v-row>
-                        <!-- いいねの数を表示 -->
-                        <v-col>
-                          <v-icon small :color="isLiked(post.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
-                          {{ Object.keys(post.likes).length }}
-                        </v-col>
-                        <!-- コメント数を表示 -->
-                        <v-col>
-                          <v-icon small :color="isCommented(post.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
-                          {{ Object.keys(post.comments).length }}
-                        </v-col>
-                      </v-row>
-                    </v-list-item-subtitle>
-                  </v-card-actions>
-
-                  <v-divider></v-divider>
-
-                </v-list-item-content>
+              <v-list-item>
+                <v-fab-transition>
+                  <v-btn color="deep-purple" dark fixed width="170px" @click="getPosts">
+                    <span class="mr-auto">
+                      <v-icon>mdi-format-list-bulleted-square</v-icon>タイムライン
+                    </span>
+                  </v-btn>
+                </v-fab-transition>
               </v-list-item>
-            </template>
-          </v-list>
-        </v-card-text>
 
-      </v-card>
+              <v-list-item>
+                <v-fab-transition>
+                  <v-btn color="deep-purple" dark fixed width="170px" @click="getPosts">
+                    <span class="mr-auto">
+                      <v-icon>mdi-format-list-bulleted-square</v-icon>全ての投稿
+                    </span>
+                  </v-btn>
+                </v-fab-transition>
+              </v-list-item>
+
+              <v-list-item>
+                <v-fab-transition>
+                  <v-btn color="deep-purple" dark fixed width="170px" @click="getPosts">
+                    <span class="mr-auto">
+                      <v-icon>mdi-format-list-bulleted-square</v-icon>いいねした投稿
+                    </span>
+                  </v-btn>
+                </v-fab-transition>
+              </v-list-item>
+
+          </v-col>
+
+          <v-col cols="12" sm="9" md="10" lg="8">
+            <v-card width="95%" max-width="600px" class="mx-auto">
+              <!-- 表示切り替え -->
+              <v-card-title>
+                <v-row align=center>
+                  <v-col cols="2" sm="1" md="1" lg="1">
+                    <!-- ログイン時のタイトル -->
+                    <!-- <v-select v-model="type" :items="states" prepend-icon="mdi-format-list-bulleted-square" single-line @change="getPosts" v-if="loggedIn"></v-select> -->
+                    <!-- ログアウト時のタイトル -->
+                      <v-icon large>mdi-format-list-bulleted-square</v-icon>
+                    <!-- </span> -->
+                  </v-col>
+
+                  <!-- ソートの種類 -->
+                  <v-col cols="10" sm="6" md="6" lg="6">
+                    <span class="title font-weight-bold">タイムライン</span>
+                  </v-col>
+                </v-row>
+              </v-card-title>
+
+              <v-divider></v-divider>
+
+              <v-card-text>
+                <v-list three-line>
+                  <template v-for="post in allPosts">
+                    <v-list-item :key="post.id">
+                      <!-- アバター -->
+                      <v-list-item-avatar color="blue" tile>
+                        <v-icon large dark>mdi-account-circle</v-icon>
+                      </v-list-item-avatar>
+
+                      <v-list-item-content>
+                        <!-- タイトル -->
+                        <v-list-item-title>
+                          <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(post.id)">{{ post.title }}</router-link>
+                        </v-list-item-title>
+
+                        <v-card-actions>
+                          <!-- 投稿者と投稿日時 -->
+                          <v-list-item-subtitle>
+                            <v-row dense>
+                              <v-col cols="12" sm="6" md="6" lg="6">投稿者：<router-link to="/detail/user" @click.native="getDetailUser(post.user.id)">{{ post.user.name }}</router-link></v-col>
+                              <v-col cols="12" sm="6" md="6" lg="6">投稿日時：{{ post.date }}</v-col>
+                            </v-row>
+                            <v-row>
+                              <!-- いいねの数を表示 -->
+                              <v-col>
+                                <v-icon small :color="isLiked(post.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
+                                {{ Object.keys(post.likes).length }}
+                              </v-col>
+                              <!-- コメント数を表示 -->
+                              <v-col>
+                                <v-icon small :color="isCommented(post.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
+                                {{ Object.keys(post.comments).length }}
+                              </v-col>
+                            </v-row>
+                          </v-list-item-subtitle>
+                        </v-card-actions>
+
+                        <v-divider></v-divider>
+
+                      </v-list-item-content>
+                    </v-list-item>
+                  </template>
+                </v-list>
+              </v-card-text>
+
+            </v-card>
+          </v-col>
+
+        </v-row>
+
+        <v-col cols="0" sm="0" md="0" lg="2" v-if="loggedIn && !$vuetify.breakpoint.xsOnly"></v-col>
+      </v-container>
 
     </v-app>
   </div>
