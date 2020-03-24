@@ -62,8 +62,6 @@
 
         <v-card-text class="font-weight-bold">
 
-          <v-card-actions />
-
           <!-- コメントがあれば表示 -->
           <span v-if="commentExist(detailPost.comments)">
             <v-divider />
@@ -77,34 +75,35 @@
             <v-list three-line>
               <template v-for="eachComment in detailPost.comments">
                 <v-list-item :key="eachComment.id">
-                  <!-- アバター -->
-                  <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
+                    <!-- アバター -->
                     <v-list-item-avatar color="blue" tile>
                       <v-icon dark>mdi-account-circle</v-icon>
                     </v-list-item-avatar>
-                  </router-link>
 
                   <v-list-item-content>
-
+                    <v-row>
+                      <v-col>
                         <v-list-item-title>
                           <!-- コメント投稿者 -->
                           <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
                             {{ eachComment.user.name }}
                           </router-link>
                         </v-list-item-title>
-
-                      <v-card-actions>
-
+                      </v-col>
+                      <v-col>
                         <!-- コメント投稿日時 -->
                         <v-list-item-subtitle>
                           {{ eachComment.date }}{{ eachComment.time}}
                         </v-list-item-subtitle>
+                      </v-col>
+                    </v-row>
 
-                    <!-- コメント内容 -->
-                    <v-list-item-text>
-                      {{ eachComment.content }}
-                    </v-list-item-text>
-                  </v-card-actions>
+                    <v-row>
+                      <!-- コメント内容 -->
+                      <v-list-item-text>
+                        {{ eachComment.content }}
+                      </v-list-item-text>
+                    </v-row>
 
                     <v-divider></v-divider>
                   </v-list-item-content>
@@ -114,7 +113,6 @@
 
           </span>
         </v-card-text>
-
 
       </v-card>
 
