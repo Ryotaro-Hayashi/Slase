@@ -2,52 +2,66 @@
   <div class="detail-post">
     <v-app>
 
-      <v-card width="95%" max-width="600px" class="mx-auto">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10">
+        <v-card-text>
+          <v-container>
+            <v-row dense align=center>
+              <!-- アバター -->
+              <v-col cols="2" sm="1" md="1" lg="1">
+                <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
+                  <v-avatar color="blue" tile>
+                    <v-icon large dark>mdi-account-circle</v-icon>
+                  </v-avatar>
+                </router-link>
+              </v-col>
 
-        <v-card-title>
-          <!-- アバター -->
-          <v-col :cols="1">
-            <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
-              <v-avatar color="blue" tile>
-                <v-icon large dark>mdi-account-circle</v-icon>
-              </v-avatar>
-            </router-link>
-          </v-col>
+              <!-- ユーザー名  -->
+              <v-col cols="8" sm="9" md="9" lg="9">
+                <v-card-title>
+                <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
+                  <span class="title font-weight-light">{{ detailPost.user.name }}</span>
+                </router-link>
+              </v-card-title>
+              </v-col>
 
-          <!-- ユーザー名  -->
-          <v-col :cols="5">
-            <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
-              <span class="title font-weight-light">{{ detailPost.user.name }}</span>
-            </router-link>
-          </v-col>
+              <!-- いいねボタン -->
+              <v-col cols="2" sm="2" md="2" lg="2">
+                <!-- いいねしていないとき -->
+                <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
+                  <v-icon>mdi-thumb-up</v-icon>
+                </v-btn>
+                <!-- いいねしているとき -->
+                <v-btn icon @click="like" v-else>
+                  <v-icon>mdi-thumb-up</v-icon>
+                </v-btn>
+              </v-col>
 
-          <!-- 投稿日時 -->
-          <v-col :cols="4">
-            <v-card-subtitle>{{ detailPost.date }}{{ detailPost.time }}に投稿</v-card-subtitle>
-          </v-col>
+              <!-- 投稿日時 -->
+              <v-col cols="12" sm="12" md="12" lg="12">
+                {{ detailPost.date }}{{ detailPost.time }}に投稿
+              </v-col>
 
-          <!-- いいねボタン -->
-          <v-col :cols="2">
-            <!-- いいねしていないとき -->
-            <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
-              <v-icon>mdi-thumb-up</v-icon>
-            </v-btn>
-            <!-- いいねしているとき -->
-            <v-btn icon @click="like" v-else>
-              <v-icon>mdi-thumb-up</v-icon>
-            </v-btn>
-          </v-col>
+            </v-row>
 
-        </v-card-title>
+            <!-- タイトル -->
+            <v-row>
+              <v-col class="headline font-weight-bold">
+                {{ detailPost.title }}
+              </v-col>
+            </v-row>
 
-        <!-- タイトル -->
-        <v-card-title>
-          <span class="headline font-weight-bold">{{ detailPost.title }}</span>
-        </v-card-title>
+            <v-row>
+              <v-col>
+                <!-- 本文 -->
+                {{ detailPost.body }}
+              </v-col>
+            </v-row>
+
+          </v-container>
+        </v-card-text>
 
         <v-card-text class="font-weight-bold">
-          <!-- 本文 -->
-          {{ detailPost.body }}
+
           <v-card-actions />
 
           <!-- コメントがあれば表示 -->
@@ -71,28 +85,26 @@
                   </router-link>
 
                   <v-list-item-content>
-                    <v-row>
-                      <v-col>
-                        <!-- コメント投稿者 -->
-                        <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
-                          <v-list-item-title>
-                            {{ eachComment.user.name }}
-                          </v-list-item-title>
-                        </router-link>
-                      </v-col>
 
-                      <v-col>
+                        <v-list-item-title>
+                          <!-- コメント投稿者 -->
+                          <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
+                            {{ eachComment.user.name }}
+                          </router-link>
+                        </v-list-item-title>
+
+                      <v-card-actions>
+
                         <!-- コメント投稿日時 -->
                         <v-list-item-subtitle>
                           {{ eachComment.date }}{{ eachComment.time}}
                         </v-list-item-subtitle>
-                      </v-col>
-                    </v-row>
 
                     <!-- コメント内容 -->
                     <v-list-item-text>
                       {{ eachComment.content }}
                     </v-list-item-text>
+                  </v-card-actions>
 
                     <v-divider></v-divider>
                   </v-list-item-content>
@@ -107,7 +119,7 @@
       </v-card>
 
       <!-- コメント追加エリア -->
-      <v-card width="800px" class="mx-auto mt-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10">
         <v-card-title>コメントを追加</v-card-title>
 
         <!-- コメント追加フォーム -->
