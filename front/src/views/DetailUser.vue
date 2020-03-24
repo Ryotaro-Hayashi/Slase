@@ -2,17 +2,16 @@
   <div class="detail-user">
     <v-app>
 
-      <v-card width="800px" class="mx-auto mt-10 mb-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <v-card-text>
           <!-- ユーザー情報 -->
           <v-row>
-            <v-col :cols=9>
+            <v-col cols="5" sm="8" md="8" lg="8">
               <v-avatar color="blue" tile size="100">
                 <v-icon large dark>mdi-account-circle</v-icon>
               </v-avatar>
-              <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
             </v-col>
-            <v-col :cols=3 v-if="loggedIn">
+            <v-col cols="7" sm="4" md="4" lg="4" v-if="loggedIn">
               <!-- フォローしていなければフォローボタンを表示 -->
               <v-btn @click="follow" v-if="!isFollowing()">
                 <v-icon class="icon-space">mdi-account-plus</v-icon>フォロー
@@ -24,9 +23,19 @@
             </v-col>
           </v-row>
 
+          <v-row>
+            <v-col>
+              <div class="display-1 font-weight-bold">{{ detailUser.name }}</div>
+            </v-col>
+          </v-row>
+
           <!-- プロフィール説明 -->
           <v-row>
             <v-col>{{ detailUser.introduce }}</v-col>
+          </v-row>
+
+          <!-- 位置情報 -->
+          <v-row>
             <v-col><v-icon>mdi-map-marker</v-icon>{{ detailUser.address }}</v-col>
           </v-row>
 
@@ -42,26 +51,32 @@
 
                 <v-list-item-content>
                   <!-- タイトル -->
-                  <v-list-item-title><router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(detailUserPost.id)">{{ detailUserPost.title }}</router-link></v-list-item-title>
-                  <!-- 投稿者と投稿日時 -->
-                  <v-list-item-subtitle>
-                    <v-row>
-                      <v-col>投稿者：{{ detailUserPost.user.name }}</v-col>
-                      <v-col>投稿日時：{{ detailUserPost.date }}</v-col>
-                    </v-row>
-                    <v-row>
-                      <!-- いいねの数を表示 -->
-                      <v-col>
-                        <v-icon small :color="isLiked(detailUserPost.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
-                        {{ Object.keys(detailUserPost.likes).length }}
-                      </v-col>
-                      <!-- コメント数を表示 -->
-                      <v-col>
-                        <v-icon small :color="isCommented(detailUserPost.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
-                        {{ Object.keys(detailUserPost.comments).length }}
-                      </v-col>
-                    </v-row>
-                  </v-list-item-subtitle>
+                  <v-list-item-title>
+                    <router-link class="title font-weight-bold" to="/detail/post" @click.native="getDetailPost(detailUserPost.id)">{{ detailUserPost.title }}</router-link>
+                  </v-list-item-title>
+
+                  <v-card-actions>
+                    <!-- 投稿者と投稿日時 -->
+                    <v-list-item-subtitle>
+                      <v-row dense>
+                        <v-col cols="12" sm="6" md="6" lg="6">投稿者：{{ detailUserPost.user.name }}</v-col>
+                        <v-col cols="12" sm="6" md="6" lg="6">投稿日時：{{ detailUserPost.date }}</v-col>
+                      </v-row>
+                      <v-row>
+                        <!-- いいねの数を表示 -->
+                        <v-col>
+                          <v-icon small :color="isLiked(detailUserPost.likes) ? 'pink' : ''">mdi-thumb-up</v-icon>
+                          {{ Object.keys(detailUserPost.likes).length }}
+                        </v-col>
+                        <!-- コメント数を表示 -->
+                        <v-col>
+                          <v-icon small :color="isCommented(detailUserPost.comments) ? 'pink' : ''">mdi-comment-multiple</v-icon>
+                          {{ Object.keys(detailUserPost.comments).length }}
+                        </v-col>
+                      </v-row>
+                    </v-list-item-subtitle>
+                  </v-card-actions>
+
                   <v-divider></v-divider>
                 </v-list-item-content>
               </v-list-item>

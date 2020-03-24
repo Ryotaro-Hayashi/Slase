@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <v-app>
-      <v-card class="mx-auto mt-10 mb-10" width="1200px">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <!-- 投稿ボタンを押した際にもvalidation -->
         <ValidationObserver v-slot="{ handleSubmit }">
           <!-- タイトル入力フォーム -->

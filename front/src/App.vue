@@ -2,17 +2,20 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-if="drawer">
+    <v-navigation-drawer app v-model="drawer" left temporary fixed>
       <v-list>
         <v-list-item>
           <v-list-item-content>
-            <!-- アバター -->
-            <v-avatar>
-              <img src="https://cdn.vuetifyjs.com/images/john.jpg">
-            </v-avatar>
-            <!-- 名前とメアド -->
-            <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
-            <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            <router-link to="/mypage">
+              <!-- アバター -->
+              <v-avatar>
+                <img src="https://cdn.vuetifyjs.com/images/john.jpg">
+              </v-avatar>
+              <!-- 名前とメアド -->
+              <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
+              <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+            </router-link>
+
             <v-row>
               <!-- フォロー -->
               <v-col>
@@ -85,6 +88,47 @@
           </v-list-item>
         </v-list>
       </v-menu>
+
+      <!-- ログアウト時に再確認するためのダイアログ -->
+      <v-dialog v-model="dialog" width="300px" class="mx-auto">
+        <template v-slot:activator="{ on }">
+          <!-- ボタンだとデフォルトでクリックイベントが設定される -->
+          <!-- クリックするとダイアログを表示 -->
+          <!-- ログアウトボタン -->
+          <v-btn text v-on="on" v-show="loggedIn">
+            <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
+          </v-btn>
+        </template>
+
+        <!-- 表示するダイアログ -->
+        <v-card width="300px">
+          <!-- タイトル -->
+          <v-card-title>
+            <span class="mx-auto font-weight-bold title">ログアウトしますか？</span>
+          </v-card-title>
+
+          <v-card-actions>
+            <v-row justify="space-between">
+
+              <v-col class="center">
+                <v-btn @click="signOut" color="primary">ログアウト</v-btn>
+              </v-col>
+
+              <v-col class="center">
+                <v-btn @click="dialog = false">キャンセル</v-btn>
+              </v-col>
+
+            </v-row>
+          </v-card-actions>
+
+        </v-card>
+
+      </v-dialog>
+
+      <!-- マイページ -->
+      <v-btn text to="/mypage" v-show="loggedIn">
+        <v-icon class="icon-space">mdi-account-box</v-icon>マイページ
+      </v-btn>
     </v-navigation-drawer>
 
     <!-- ナビゲーションバーの領域を確保 -->
@@ -116,51 +160,10 @@
           <v-icon class="icon-space">mdi-post</v-icon>投稿
         </v-btn>
 
-        <!-- マイページ -->
-        <v-btn text to="/mypage" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-account-box</v-icon>マイページ
-        </v-btn>
-
         <!-- ログイン -->
         <v-btn text to="/signin" v-show="!loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
         </v-btn>
-
-        <!-- ログアウト時に再確認するためのダイアログ -->
-        <v-dialog v-model="dialog" width="300px" class="mx-auto">
-          <template v-slot:activator="{ on }">
-            <!-- ボタンだとデフォルトでクリックイベントが設定される -->
-            <!-- クリックするとダイアログを表示 -->
-            <!-- ログアウトボタン -->
-            <v-btn text v-on="on" v-show="loggedIn">
-              <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
-            </v-btn>
-          </template>
-
-          <!-- 表示するダイアログ -->
-          <v-card width="300px">
-            <!-- タイトル -->
-            <v-card-title>
-              <span class="mx-auto font-weight-bold title">ログアウトしますか？</span>
-            </v-card-title>
-
-            <v-card-actions>
-              <v-row justify="space-between">
-
-                <v-col class="center">
-                  <v-btn @click="signOut" color="primary">ログアウト</v-btn>
-                </v-col>
-
-                <v-col class="center">
-                  <v-btn @click="dialog = false">キャンセル</v-btn>
-                </v-col>
-
-              </v-row>
-            </v-card-actions>
-
-          </v-card>
-
-        </v-dialog>
 
       </v-toolbar-items>
     </v-app-bar>
