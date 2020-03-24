@@ -153,11 +153,6 @@
           <v-icon class="icon-space">mdi-email</v-icon>メッセージ
         </v-btn> -->
 
-        <!-- 投稿 -->
-        <v-btn text to="/post" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-post</v-icon>投稿
-        </v-btn>
-
         <!-- ログイン -->
         <v-btn text to="/signin" v-show="!loggedIn">
           <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
@@ -184,6 +179,13 @@
           Close
         </v-btn>
       </v-snackbar>
+
+      <!-- 投稿作成ボタンを作成 -->
+      <v-fab-transition>
+        <v-btn color="pink" dark bottom right fab fixed to="/post">
+          <v-icon>mdi-plus</v-icon>
+        </v-btn>
+      </v-fab-transition>
 
       <router-view/>
 
