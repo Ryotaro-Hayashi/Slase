@@ -41,42 +41,30 @@
 
       <v-divider></v-divider>
 
-      <!-- dataオプションからリストを作成する方法 -->
-      <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+      <v-list>
+        <!-- dataオプションからリストを作成する方法 -->
+        <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
 
-        <v-list-item-icon>
-          <v-icon>{{ nav_list.icon}}</v-icon>
-        </v-list-item-icon>
+          <v-list-item-icon>
+            <v-icon>{{ nav_list.icon}}</v-icon>
+          </v-list-item-icon>
 
-        <v-list-item-content>
+          <v-list-item-content>
 
-          <v-list-item-title>
-            {{nav_list.name}}
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item>
+            <v-list-item-title>
+              {{nav_list.name}}
+            </v-list-item-title>
 
-      <!-- ドロップダウンメニューを作成 -->
-      <v-menu offset-y>
-        <template v-slot:activator="{on}">
-          <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
-          <v-list-item v-on="on">
-            <!-- アイコン -->
-            <v-list-item-icon>
-              <v-icon>mdi-account</v-icon>
-            </v-list-item-icon>
+          </v-list-item-content>
+        </v-list-item>
+      </v-list>
 
-            <v-list-item-content>
-              <v-list-item-title>
-                アカウント設定<v-icon>mdi-menu-down</v-icon>
-              </v-list-item-title>
-            </v-list-item-content>
-
-          </v-list-item>
+      <v-list-group prepend-icon="mdi-account" value="true">
+        <template v-slot:activator>
+          <v-list-item-title>アカウント</v-list-item-title>
         </template>
 
         <!-- ポップアップの内容 -->
-        <v-list>
           <v-list-item v-for="option in options" :key="option.name" :to="option.link">
             <!-- アイコン -->
             <v-list-item-icon>
@@ -88,8 +76,7 @@
             </v-list-item-content>
 
           </v-list-item>
-        </v-list>
-      </v-menu>
+        </v-list-group>
 
         <!-- ログアウト時に再確認するためのダイアログ -->
         <v-dialog v-model="dialog" width="300px" class="mx-auto">
@@ -128,6 +115,7 @@
           </v-card>
 
         </v-dialog>
+
 
 
     </v-navigation-drawer>
@@ -212,13 +200,13 @@ export default {
       // ナビゲーションメニューの引き出しを管理するプロパティ
       drawer: null,
       options: [
-        {name: 'メールアドレス', icon: 'mdi-email', link: '/mypage/email'},
-        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/mypage/password'}
+        {name: 'メールアドレス', icon: 'mdi-email', link: '/myemail'},
+        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/mypassword'}
       ],
       // dataオプションからリストを作成する方法
       nav_lists: [
         {name: 'マイページ', icon: 'mdi-account-box', link: '/mypage'},
-        {name: 'Slaseについて', icon: 'mdi-help-box', link: '/mypage'}
+        {name: 'Slaseについて', icon: 'mdi-help-box', link: '/about'}
       ],
 
       // 真偽でダイアログの表示を切り替える

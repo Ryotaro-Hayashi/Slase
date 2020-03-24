@@ -5,7 +5,7 @@
       <v-container>
         <v-row>
           <!-- スマホ以外のときのソートのためのナビゲーション -->
-          <v-col cols="0" sm="3" md="2" lg="2" v-if="loggedIn && !$vuetify.breakpoint.xsOnly">
+          <v-col sm="3" md="2" lg="2" v-if="loggedIn && !$vuetify.breakpoint.xsOnly">
             <!-- タイムライン -->
             <v-list-item>
               <v-fab-transition>
@@ -40,8 +40,14 @@
             </v-list-item>
           </v-col>
 
-          <v-col cols="12" sm="9" md="10" lg="8">
-            <v-card width="95%" max-width="600px" class="mx-auto">
+          <!-- スマホの時のソートのためのナビゲーション -->
+          <v-col cols="12" v-if="loggedIn && $vuetify.breakpoint.xsOnly">
+            <v-select v-model="sort" :items="states" single-line @change="getPosts" solo></v-select>
+          </v-col>
+
+          <!-- 投稿一覧表示 -->
+          <v-col cols="12" sm="9" md="10" lg="10">
+            <v-card width="100%" max-width="600px" class="mx-auto">
               <!-- 表示切り替え -->
               <v-card-title>
                 <v-row align=center>
@@ -110,8 +116,6 @@
           </v-col>
 
         </v-row>
-
-        <v-col cols="0" sm="0" md="0" lg="2" v-if="loggedIn && !$vuetify.breakpoint.xsOnly"></v-col>
       </v-container>
 
     </v-app>
