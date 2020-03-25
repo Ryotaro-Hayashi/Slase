@@ -70,11 +70,6 @@
               <!-- 投稿一覧表示 -->
               <v-card-text>
 
-                <!-- 表示する投稿がないときに表示するアラート -->
-                <v-alert dense tile max-width="350px" type="warning" v-if="!isNotEmpty(allPosts)">
-                  {{ message }}
-                </v-alert>
-
                 <v-list three-line>
                   <template v-for="post in allPosts">
                     <v-list-item :key="post.id">
@@ -117,9 +112,15 @@
                     </v-list-item>
                   </template>
                 </v-list>
+
+                <v-card-actions v-if="!isNotEmpty(allPosts)">
+                  {{ message }}
+                </v-card-actions>
+
               </v-card-text>
 
             </v-card>
+
           </v-col>
 
         </v-row>
@@ -240,7 +241,7 @@ export default {
       } else if (this.sort === '全ての投稿') {
         this.getAllPosts ()
         this.color[1] = "deep-purple"
-        this.message = "エラー"
+        this.message = ""
       } else {
         this.getLikedPosts ()
         this.color[2] = "deep-purple"

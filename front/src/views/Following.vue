@@ -6,7 +6,7 @@
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">Follow</span>
+          <span class="title font-weight-bold">フォロー</span>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -36,6 +36,11 @@
               </v-list-item>
             </template>
           </v-list>
+
+          <v-card-actions v-if="!isNotEmpty(followings)">
+            まだフォローがいません。
+          </v-card-actions>
+
         </v-card-text>
 
       </v-card>
@@ -55,6 +60,18 @@ export default {
   computed: {
     followings () {
       return this.$store.state.user.followings
+    },
+    // 配列が空でなければ、trueを返す
+    isNotEmpty: function () {
+      return function (followings) {
+        // JavaScriptでは条件文で空文字を評価できる
+        // 配列の1つ目の要素を評価する
+        if (followings[0]) {
+          return true
+        } else {
+          return false
+        }
+      }
     }
   },
   methods: {
