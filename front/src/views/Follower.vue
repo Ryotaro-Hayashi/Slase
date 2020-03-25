@@ -11,6 +11,10 @@
 
         <v-divider></v-divider>
 
+        <v-alert tile type="warning">
+          まだフォロワーがいません。
+        </v-alert>
+
         <v-card-text>
           <v-list three-line>
             <template v-for="follower in followers">

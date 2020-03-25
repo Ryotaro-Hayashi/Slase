@@ -45,7 +45,7 @@
             <v-select v-model="sort" :items="states" single-line @change="getPosts" solo></v-select>
           </v-col>
 
-          <!-- 投稿一覧表示 -->
+          <!-- ソートの種類 -->
           <v-col cols="12" sm="9" md="10" lg="10">
             <v-card width="100%" max-width="600px" class="mx-auto">
               <!-- 表示切り替え -->
@@ -67,7 +67,14 @@
 
               <v-divider></v-divider>
 
+              <!-- 投稿一覧表示 -->
               <v-card-text>
+
+                <!-- 表示する投稿がないときに表示するアラート -->
+                <v-alert dense tile max-width="350px" type="warning" v-if="!isNotEmpty(allPosts)">
+                  {{ message }}
+                </v-alert>
+
                 <v-list three-line>
                   <template v-for="post in allPosts">
                     <v-list-item :key="post.id">
@@ -136,7 +143,8 @@ export default {
       type: "全ての投稿",
       color: [
         'deep-purple', 'grey', 'grey'
-      ]
+      ],
+      message: ""
     }
   },
   computed: {
@@ -163,6 +171,18 @@ export default {
           if (comment.user.id === this.loggedInUser.id) {
             return true
           }
+        }
+      }
+    },
+    // 配列が空でなければ、trueを返す
+    isNotEmpty: function () {
+      return function (allPosts) {
+        // JavaScriptでは条件文で空文字を評価できる
+        // 配列の1つ目の要素を評価する
+        if (allPosts[0]) {
+          return true
+        } else {
+          return false
         }
       }
     }
@@ -211,14 +231,20 @@ export default {
       this.sort = type
 
       if (this.sort === 'タイムライン') {
+        // 投稿を取得
         this.getFollowingsPosts ()
+        // 色を設定
         this.color[0] = "deep-purple"
+        // 投稿が空だった時のメッセージを設定
+        this.message = "まだ投稿がありません。"
       } else if (this.sort === '全ての投稿') {
         this.getAllPosts ()
         this.color[1] = "deep-purple"
+        this.message = "エラー"
       } else {
         this.getLikedPosts ()
         this.color[2] = "deep-purple"
+        this.message = "まだいいねした投稿がありません。"
       }
     },
   },
