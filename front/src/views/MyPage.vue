@@ -83,10 +83,10 @@
                     </v-col>
                   </v-row>
 
-                  <!-- プロフィール説明 -->
+                  <!-- プロフィール説明と位置情報 -->
                   <v-row>
-                    <v-col>{{ loggedInUser.introduce }}</v-col>
-                    <v-col><v-icon>mdi-map-marker</v-icon>{{ loggedInUser.address }}</v-col>
+                    <v-col cols="12" v-if="!stringEmpty(loggedInUser.introduce)">{{ loggedInUser.introduce }}</v-col>
+                    <v-col cols="12" v-if="!stringEmpty(loggedInUser.address)"><v-icon>mdi-map-marker</v-icon>{{ loggedInUser.address }}</v-col>
                   </v-row>
                 </v-container>
 
@@ -136,11 +136,15 @@
                   </template>
                 </v-list>
 
+                <v-card-actions v-if="arrayEmpty(loggedInUser.questions)">
+                  まだ投稿がありません。
+                </v-card-actions>
+
               </v-card-text>
             </v-card>
           </v-col>
 
-          <v-col></v-col>
+          <!-- <v-col></v-col> -->
         </v-row>
       </v-container>
 
@@ -194,6 +198,28 @@ export default {
     },
     token () {
       return this.$store.state.auth.token
+    },
+    //
+    stringEmpty: function () {
+      return function (object) {
+        // 条件式内の真理値は、 "" であればfalse、文字列が入っていればtrue
+        if (object) {
+          return false
+        } else {
+          return true
+        }
+      }
+    },
+    // 配列が空でなければ、trueを返す
+    arrayEmpty: function () {
+      return function (myposts) {
+        // 条件式内の真理値は、nullであればfalse、オブジェクトが入っていればtrue
+        if (myposts[0]) {
+          return false
+        } else {
+          return true
+        }
+      }
     }
   },
   methods: {
@@ -213,6 +239,7 @@ export default {
         address: this.address,
         token: this.token
       })
+      this.dialog = false
     },
     setProfile () {
       // dataにdispatchで更新したログインユーザー情報を格納

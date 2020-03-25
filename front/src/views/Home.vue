@@ -145,7 +145,7 @@ export default {
       color: [
         'deep-purple', 'grey', 'grey'
       ],
-      message: ""
+      message: "まだ投稿がありません。"
     }
   },
   computed: {

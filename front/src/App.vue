@@ -59,7 +59,7 @@
         </v-list-item>
       </v-list>
 
-      <v-list-group prepend-icon="mdi-account" value="true">
+      <v-list-group prepend-icon="mdi-account">
         <template v-slot:activator>
           <v-list-item-title>アカウント</v-list-item-title>
         </template>
