@@ -60,12 +60,12 @@ export default new Router({
       component: DetailUser
     },
     {
-      path: '/mypage/email',
+      path: '/myemail',
       name: 'MyEmail',
       component: MyEmail
     },
     {
-      path: '/mypage/password',
+      path: '/mypassword',
       name: 'MyPasword',
       component: MyPassword
     },

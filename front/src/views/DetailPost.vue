@@ -81,8 +81,8 @@
                     </v-list-item-avatar>
 
                   <v-list-item-content>
-                    <v-row>
-                      <v-col>
+                    <v-row dense>
+                      <v-col cols="12">
                         <v-list-item-title>
                           <!-- コメント投稿者 -->
                           <router-link to="/detail/user" @click.native="getDetailUser(eachComment.user.id)">
@@ -90,7 +90,8 @@
                           </router-link>
                         </v-list-item-title>
                       </v-col>
-                      <v-col>
+
+                      <v-col cols="12">
                         <!-- コメント投稿日時 -->
                         <v-list-item-subtitle>
                           {{ eachComment.date }}{{ eachComment.time}}
@@ -99,10 +100,12 @@
                     </v-row>
 
                     <v-row>
-                      <!-- コメント内容 -->
-                      <v-list-item-text>
-                        {{ eachComment.content }}
-                      </v-list-item-text>
+                      <v-col>
+                        <!-- コメント内容 -->
+                        <v-list-item-text>
+                          {{ eachComment.content }}
+                        </v-list-item-text>
+                      </v-col>
                     </v-row>
 
                     <v-divider></v-divider>
