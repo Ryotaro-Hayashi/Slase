@@ -51,12 +51,13 @@
             </v-row>
 
             <v-row>
-              <v-col>
+              <v-col cols="12">
                 <!-- 本文 -->
                 {{ detailPost.body }}
               </v-col>
-              <v-col>
-                <v-img src="detailPost.image.url"></v-img>
+              <v-col cols="12">
+                <!-- S3では、srcをバインドしないと正しく表示されない -->
+                <v-img :src="detailPost.image.url"></v-img>
               </v-col>
             </v-row>
 
