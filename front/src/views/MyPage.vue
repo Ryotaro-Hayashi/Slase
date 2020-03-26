@@ -261,10 +261,10 @@ export default {
     },
     setProfile () {
       // dataにdispatchで更新したログインユーザー情報を格納
+      this.avatarUrl = this.loggedInUser.avatar.url
       this.name = this.loggedInUser.name
       this.introduce = this.loggedInUser.introduce
       this.address = this.loggedInUser.address
-      this.avatarUrl = this.loggedInUser.avatar.url
     },
     // 選択された画像ファイルの処理
     pickFile() {
