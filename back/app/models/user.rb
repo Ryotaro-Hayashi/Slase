@@ -47,4 +47,6 @@ class User < ActiveRecord::Base
   # ユーザーがいいねしている投稿
   has_many :liked_questions, through: :likes, source: :question
 
+  mount_uploader :avatar, AvatarUploader
+
 end

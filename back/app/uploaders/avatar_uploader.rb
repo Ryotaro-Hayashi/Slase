@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class AvatarUploader < CarrierWave::Uploader::Base
 
   if Rails.env.development?
     storage :file
@@ -28,5 +28,5 @@ class ImageUploader < CarrierWave::Uploader::Base
      var = :"@#{mounted_as}_secure_token"
      model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
-
+  
 end

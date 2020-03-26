@@ -5,6 +5,7 @@ class UserSerializer < ActiveModel::Serializer
              :email,
              :introduce,
              :address,
+             :avatar,
              :questions
 
   has_many :questions
