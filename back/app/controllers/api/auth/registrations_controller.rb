@@ -5,11 +5,11 @@ module Api
       private
       # ストロングバラメーター
       def sign_up_params
-        params.permit(:name, :email, :password, :password_confirmation, :introduce, :address)
+        params.permit(:name, :email, :password, :password_confirmation, :introduce, :address, :avatar)
       end
 
       def account_update_params
-        params.permit(:name, :email, :password, :password_confirmation, :introduce, :address)
+        params.permit(:name, :email, :password, :password_confirmation, :introduce, :address, :avatar)
       end
 
     end

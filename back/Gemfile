@@ -27,7 +27,7 @@ gem 'omniauth'
 # 画像のアップロードするためのGem
 gem 'carrierwave'
 # 画像をリサイズするためのGem
-# gem 'mini_magick'
+gem 'rmagick'
 
 # 画像をクラウドにアップロードするのをサポートするGem
 gem 'fog-aws'

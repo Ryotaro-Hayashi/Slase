@@ -74,8 +74,12 @@
                   <template v-for="post in allPosts">
                     <v-list-item :key="post.id">
                       <!-- アバター -->
-                      <v-list-item-avatar color="blue" tile>
+                      <!-- <v-list-item-avatar color="blue" tile>
                         <v-icon large dark>mdi-account-circle</v-icon>
+                      </v-list-item-avatar> -->
+
+                      <v-list-item-avatar tile>
+                        <img :src="post.user.avatar.url" alt="画像">
                       </v-list-item-avatar>
 
                       <v-list-item-content>
