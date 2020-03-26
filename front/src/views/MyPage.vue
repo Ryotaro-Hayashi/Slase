@@ -10,17 +10,10 @@
                 <v-container>
                   <v-row>
                     <v-col cols="9" sm="10" md="10" lg="10">
-                      <!-- アバター -->
-                      <!-- <v-avatar color="blue" tile size="100">
-                        <v-icon large dark>mdi-account-circle</v-icon>
-                      </v-avatar> -->
-
-                      <!-- <v-avatar>
+                      <v-avatar tile size="80">
                         <img :src="loggedInUser.avatar.url">
-                      </v-avatar> -->
+                      </v-avatar>
 
-                      <!-- ユーザー名 -->
-                      <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                     </v-col>
 
                     <v-col cols="3" sm="2" md="2" lg="2">
@@ -42,23 +35,23 @@
                           <v-card-text>
                             <v-container>
                               <v-row>
-                                <v-col cols="6">
-                                  <v-avatar>
+                                <v-col cols="2">
+                                  <v-avatar tile>
                                     <img :src="avatarUrl">
                                   </v-avatar>
                                 </v-col>
 
-                                <v-col cols="6">
+                                <v-col cols="10">
                                   <v-text-field v-model="avatarName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
                                   <input ref="image" type="file" accept="image/jpeg, image/png" @change="onAvatarChange" style="display: none"/>
                                 </v-col>
 
                                 <v-col cols="6">
-                                  <v-text-field label="ユーザー名" v-model="name"></v-text-field>
+                                  <v-text-field label="ユーザー名" v-model="name" prepend-icon="mdi-account-box"></v-text-field>
                                 </v-col>
 
                                 <v-col cols="6">
-                                  <v-text-field label="位置情報" v-model="address"></v-text-field>
+                                  <v-text-field label="位置情報" v-model="address" prepend-icon="mdi-map-marker"></v-text-field>
                                 </v-col>
                               </v-row>
 
@@ -80,6 +73,11 @@
                         </v-card>
                       </v-dialog>
                     </v-col>
+                  </v-row>
+
+                  <v-row>
+                    <!-- ユーザー名 -->
+                    <v-col class="display-1 font-weight-bold">{{ loggedInUser.name }}</v-col>
                   </v-row>
 
                   <v-row>
@@ -263,6 +261,7 @@ export default {
     },
     setProfile () {
       // dataにdispatchで更新したログインユーザー情報を格納
+      this.avatarUrl = this.loggedInUser.avatar.url
       this.name = this.loggedInUser.name
       this.introduce = this.loggedInUser.introduce
       this.address = this.loggedInUser.address

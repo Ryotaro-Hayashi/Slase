@@ -160,11 +160,15 @@ export const auth = {
       })
     },
     updateProfile ({ dispatch }, data) {
-      axios.put(process.env.VUE_APP_API_BASE_URL + '/api/auth', {
-        name: data.name,
-        introduce: data.introduce,
-        address: data.address
-      },
+      // 画像を送信するためのフォームデータ
+      let formData = new FormData()
+      // urlのことはあまり気にしないで良い
+      formData.append("avatar", data.avatar)
+      formData.append("name", data.name)
+      formData.append("introduce", data.introduce)
+      formData.append("address", data.address)
+      axios.put(process.env.VUE_APP_API_BASE_URL + '/api/auth', formData,
+      // リクエストヘッダーにトークンを追加
       {
         headers: data.token
       })
