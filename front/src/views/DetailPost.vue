@@ -26,11 +26,11 @@
 
               <!-- いいねボタン -->
               <v-col cols="2" sm="2" md="2" lg="2">
-                <!-- いいねしていないとき -->
+                <!-- いいねしているとき -->
                 <v-btn icon @click="unlike" v-if="isLiked()" color="pink">
                   <v-icon>mdi-thumb-up</v-icon>
                 </v-btn>
-                <!-- いいねしているとき -->
+                <!-- いいねしていないとき -->
                 <v-btn icon @click="like" v-else>
                   <v-icon>mdi-thumb-up</v-icon>
                 </v-btn>
@@ -51,12 +51,13 @@
             </v-row>
 
             <v-row>
-              <v-col>
+              <v-col cols="12">
                 <!-- 本文 -->
                 {{ detailPost.body }}
               </v-col>
-              <v-col>
-                <v-img src="detailPost.image.url"></v-img>
+              <v-col cols="12">
+                <!-- S3では、srcをバインドしないと正しく表示されない -->
+                <v-img :src="detailPost.image.url"></v-img>
               </v-col>
             </v-row>
 
