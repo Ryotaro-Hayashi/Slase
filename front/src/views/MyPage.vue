@@ -264,6 +264,7 @@ export default {
       this.name = this.loggedInUser.name
       this.introduce = this.loggedInUser.introduce
       this.address = this.loggedInUser.address
+      this.avatarUrl = this.loggedInUser.avatar.url
     },
     // 選択された画像ファイルの処理
     pickFile() {
