@@ -12,6 +12,10 @@ class AvatarUploader < CarrierWave::Uploader::Base
     "uploads/#{model.class.to_s.underscore}/#{mounted_as}/#{model.id}"
   end
 
+  def default_url(*args)
+    "/images/" + [version_name, "default_user.png"].compact.join('_')
+  end
+
   # 許可する画像の拡張子
   def extension_whitelist
     %w(jpg jpeg gif png)
