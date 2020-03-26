@@ -10,17 +10,10 @@
                 <v-container>
                   <v-row>
                     <v-col cols="9" sm="10" md="10" lg="10">
-                      <!-- アバター -->
-                      <!-- <v-avatar color="blue" tile size="100">
-                        <v-icon large dark>mdi-account-circle</v-icon>
-                      </v-avatar> -->
-
-                      <!-- <v-avatar>
+                      <v-avatar size="80">
                         <img :src="loggedInUser.avatar.url">
-                      </v-avatar> -->
+                      </v-avatar>
 
-                      <!-- ユーザー名 -->
-                      <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                     </v-col>
 
                     <v-col cols="3" sm="2" md="2" lg="2">
@@ -80,6 +73,11 @@
                         </v-card>
                       </v-dialog>
                     </v-col>
+                  </v-row>
+
+                  <v-row>
+                    <!-- ユーザー名 -->
+                    <v-col class="display-1 font-weight-bold">{{ loggedInUser.name }}</v-col>
                   </v-row>
 
                   <v-row>
