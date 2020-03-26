@@ -13,7 +13,7 @@ class AvatarUploader < CarrierWave::Uploader::Base
   end
 
   def default_url(*args)
-    "/images/" + [version_name, "default_user.png"].compact.join('_')
+    "https://slase-photos.s3-ap-northeast-1.amazonaws.com/default/user.png"
   end
 
   # 許可する画像の拡張子
@@ -32,5 +32,5 @@ class AvatarUploader < CarrierWave::Uploader::Base
      var = :"@#{mounted_as}_secure_token"
      model.instance_variable_get(var) or model.instance_variable_set(var, SecureRandom.uuid)
   end
-  
+
 end
