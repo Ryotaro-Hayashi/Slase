@@ -8,11 +8,11 @@ CarrierWave.configure do |config|
   if Rails.env.production?
     config.cache_storage = :fog
     config.fog_provider = 'fog/aws'
-    config.fog_directory = 'rails-photos'
+    config.fog_directory = 'slase/slase-photos'
     config.fog_credentials = {
       provider: 'AWS',
-      aws_access_key_id: Rails.application.credentials.aws[:access_key_id],
-      aws_secret_access_key: Rails.application.credentials.aws[:secret_access_key],
+      aws_access_key_id: 'AKIAZ3BBQJWBXSXL3WOO',
+      aws_secret_access_key: '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',
       region: 'ap-northeast-1',
       path_style: true
     }
