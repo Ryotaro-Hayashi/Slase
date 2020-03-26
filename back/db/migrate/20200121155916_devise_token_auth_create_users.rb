@@ -40,7 +40,7 @@ class DeviseTokenAuthCreateUsers < ActiveRecord::Migration[5.2]
       t.string :email, null: false, default: ""
       t.string :introduce, default: ""
       t.string :address, default: ""
-      t.string :avatar, default: "https://slase-photos.s3-ap-northeast-1.amazonaws.com/default/user.png"
+      t.string :avatar
 
       ## Tokens
       t.text :tokens

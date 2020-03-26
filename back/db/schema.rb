@@ -74,7 +74,7 @@ ActiveRecord::Schema.define(version: 2020_03_14_021135) do
     t.string "email", default: "", null: false
     t.string "introduce", default: ""
     t.string "address", default: ""
-    t.string "avatar", default: "https://slase-photos.s3-ap-northeast-1.amazonaws.com/default/user.png"
+    t.string "avatar"
     t.text "tokens"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
