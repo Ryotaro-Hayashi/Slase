@@ -55,6 +55,9 @@
                 <!-- 本文 -->
                 {{ detailPost.body }}
               </v-col>
+              <v-col>
+                <v-img src="detailPost.image.url"></v-img>
+              </v-col>
             </v-row>
 
           </v-container>
