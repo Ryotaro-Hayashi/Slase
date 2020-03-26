@@ -29,6 +29,9 @@ gem 'carrierwave'
 # 画像をリサイズするためのGem
 # gem 'mini_magick'
 
+# 画像をクラウドにアップロードするのをサポートするGem
+gem 'fog'
+
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
 end
