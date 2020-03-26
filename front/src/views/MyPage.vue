@@ -253,6 +253,7 @@ export default {
     updateProfile () {
       this.$store.dispatch("auth/updateProfile",
       {
+        avatar: this.avatarFile,
         name: this.name,
         introduce: this.introduce,
         address: this.address,
