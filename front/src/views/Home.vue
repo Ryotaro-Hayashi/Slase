@@ -79,9 +79,8 @@
                       </v-list-item-avatar> -->
 
                       <v-list-item-avatar tile>
-                        <img :src="post.user.image.url" alt="画像">
+                        <img :src="post.user.avatar.url" alt="画像">
                       </v-list-item-avatar>
-
 
                       <v-list-item-content>
                         <!-- タイトル -->

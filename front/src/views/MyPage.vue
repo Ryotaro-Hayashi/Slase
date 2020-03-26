@@ -11,9 +11,14 @@
                   <v-row>
                     <v-col cols="9" sm="10" md="10" lg="10">
                       <!-- アバター -->
-                      <v-avatar color="blue" tile size="100">
+                      <!-- <v-avatar color="blue" tile size="100">
                         <v-icon large dark>mdi-account-circle</v-icon>
-                      </v-avatar>
+                      </v-avatar> -->
+
+                      <!-- <v-avatar>
+                        <img :src="loggedInUser.avatar.url">
+                      </v-avatar> -->
+
                       <!-- ユーザー名 -->
                       <div class="display-1 font-weight-bold">{{ loggedInUser.name }}</div>
                     </v-col>
@@ -37,6 +42,17 @@
                           <v-card-text>
                             <v-container>
                               <v-row>
+                                <v-col cols="6">
+                                  <v-avatar>
+                                    <img :src="avatarUrl">
+                                  </v-avatar>
+                                </v-col>
+
+                                <v-col cols="6">
+                                  <v-text-field v-model="avatarName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
+                                  <input ref="image" type="file" accept="image/jpeg, image/png" @change="onAvatarChange" style="display: none"/>
+                                </v-col>
+
                                 <v-col cols="6">
                                   <v-text-field label="ユーザー名" v-model="name"></v-text-field>
                                 </v-col>
@@ -162,7 +178,10 @@ export default {
       // プロフィール情報
       name: "",
       introduce: "",
-      address: ""
+      address: "",
+      avatarUrl: '',
+      avatarFile: '',
+      avatarName: ''
     }
   },
   computed: {
@@ -246,6 +265,25 @@ export default {
       this.name = this.loggedInUser.name
       this.introduce = this.loggedInUser.introduce
       this.address = this.loggedInUser.address
+    },
+    // 選択された画像ファイルの処理
+    pickFile() {
+      this.$refs.image.click()
+    },
+    // 画像の読み取り
+    onAvatarChange(e) {
+      // filesプロパティは複数ファイルを管理できるように配列になっている
+      const files = e.target.files
+      this.avatarName = files[0].name
+      // FileReaderはファイルの読み取りアクセスを行うオブジェクト
+      const fr = new FileReader()
+      // ファイルをDataURIとして読み込むメソッドで、img要素のsrc属性に指定すればブラウザに表示できる。
+      fr.readAsDataURL(files[0])
+      // 読み込み（load）終わったら中身が発火する
+      fr.addEventListener("load", () => {
+        this.avatarUrl = fr.result
+        this.avatarFile = files[0]
+      })
     }
  },
  mounted () {
