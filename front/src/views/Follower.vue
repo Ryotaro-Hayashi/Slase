@@ -2,11 +2,11 @@
   <div class="Follower">
     <v-app>
 
-      <v-card width="600px" class="mx-auto mt-10 mb-10">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <!-- 表示切り替え -->
         <v-card-title>
           <v-icon class="icon-space">mdi-format-list-bulleted-square</v-icon>
-          <span class="title font-weight-bold">Follower</span>
+          <span class="title font-weight-bold">フォロワー</span>
         </v-card-title>
 
         <v-divider></v-divider>
@@ -36,6 +36,11 @@
               </v-list-item>
             </template>
           </v-list>
+
+          <v-card-actions v-if="!isNotEmpty(followers)">
+            まだフォロワーがいません。
+          </v-card-actions>
+
         </v-card-text>
 
       </v-card>
@@ -55,6 +60,18 @@ export default {
   computed: {
     followers () {
       return this.$store.state.user.followers
+    },
+    // 配列が空でなければ、trueを返す
+    isNotEmpty: function () {
+      return function (followers) {
+        // JavaScriptでは条件文で空文字を評価できる
+        // 配列の1つ目の要素を評価する
+        if (followers[0]) {
+          return true
+        } else {
+          return false
+        }
+      }
     }
   },
   methods: {

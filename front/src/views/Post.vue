@@ -1,7 +1,7 @@
 <template>
   <div class="post">
     <v-app>
-      <v-card class="mx-auto mt-10 mb-10" width="1200px">
+      <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <!-- 投稿ボタンを押した際にもvalidation -->
         <ValidationObserver v-slot="{ handleSubmit }">
           <!-- タイトル入力フォーム -->
@@ -22,12 +22,12 @@
           <v-card-text>
             <v-row>
               <!-- 画像アップロードフォーム -->
-              <v-col>
+              <v-col cols="7" sm="5" md="5" lg="5">
                 <v-text-field v-model="imageName" label="画像アップロード" prepend-icon="mdi-file-document" @click="pickFile"/>
                 <input ref="image" type="file" accept="image/jpeg, image/png" @change="onImageChange" style="display: none"/>
               </v-col>
               <!-- プレビューゾーン -->
-              <v-col>
+              <v-col cols="12" sm="7" md="7" lg="5">
                 <v-img :src="imageUrl" />
               </v-col>
             </v-row>

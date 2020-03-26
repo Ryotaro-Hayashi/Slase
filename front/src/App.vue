@@ -2,76 +2,69 @@
 <div id="app">
   <v-app>
     <!-- レスポンシブなナビゲーションメニューの追加とdrawerで管理 -->
-    <v-navigation-drawer app v-if="drawer">
+    <v-navigation-drawer app v-model="drawer" right temporary fixed>
       <v-list>
-        <v-list-item>
+        <v-list-item to="/mypage">
+          <!-- アバター -->
+          <v-list-item-avatar>
+            <v-img src="https://cdn.vuetifyjs.com/images/john.jpg"></v-img>
+          </v-list-item-avatar>
+
+          <!-- 名前とメアド -->
           <v-list-item-content>
-            <!-- アバター -->
-            <v-avatar>
-              <img src="https://cdn.vuetifyjs.com/images/john.jpg">
-            </v-avatar>
-            <!-- 名前とメアド -->
-            <v-list-item-title>{{ loggedInUser.name }}</v-list-item-title>
+            <v-list-item-title class="title">{{ loggedInUser.name }}</v-list-item-title>
             <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
-            <v-row>
-              <!-- フォロー -->
-              <v-col>
-                <router-link to="/following">
-                  <span class="follow-num-space">{{ followingsNum }}</span>
-                  <span class="font-wight-light caption">フォロー</span>
-                </router-link>
-              </v-col>
-              <!-- フォロワー -->
-              <v-col>
-                <router-link to="/follower">
-                  <span class="follow-num-space">{{ followersNum }}</span>
-                  <span class="font-wight-light caption">フォロワー</span>
-                </router-link>
-              </v-col>
-            </v-row>
+          </v-list-item-content>
+
+        </v-list-item>
+
+        <v-list-item>
+          <v-row>
+            <!-- フォロー -->
+            <v-col>
+              <router-link to="/following">
+                <span class="follow-num-space">{{ followingsNum }}</span>
+                <span class="font-wight-light caption">フォロー</span>
+              </router-link>
+            </v-col>
+            <!-- フォロワー -->
+            <v-col>
+              <router-link to="/follower">
+                <span class="follow-num-space">{{ followersNum }}</span>
+                <span class="font-wight-light caption">フォロワー</span>
+              </router-link>
+            </v-col>
+          </v-row>
+        </v-list-item>
+
+      </v-list>
+
+      <v-divider></v-divider>
+
+      <v-list>
+        <!-- dataオプションからリストを作成する方法 -->
+        <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
+
+          <v-list-item-icon>
+            <v-icon>{{ nav_list.icon}}</v-icon>
+          </v-list-item-icon>
+
+          <v-list-item-content>
+
+            <v-list-item-title>
+              {{nav_list.name}}
+            </v-list-item-title>
 
           </v-list-item-content>
         </v-list-item>
       </v-list>
 
-      <v-divider></v-divider>
-
-      <!-- dataオプションからリストを作成する方法 -->
-      <!-- <v-list-item v-for="nav_list in nav_lists" :key="nav_list.name" :to="nav_list.link">
-
-        <v-list-item-icon>
-          <v-icon>{{ nav_list.icon}}</v-icon>
-        </v-list-item-icon>
-
-        <v-list-item-content>
-
-          <v-list-item-title>
-            {{nav_list.name}}
-          </v-list-item-title>
-        </v-list-item-content>
-      </v-list-item> -->
-
-      <!-- ドロップダウンメニューを作成 -->
-      <v-menu offset-y>
-        <template v-slot:activator="{on}">
-          <!-- ポップアップを追加したい要素に対しv-on="on"を追加 -->
-          <v-list-item text v-on="on">
-            <!-- アイコン -->
-            <v-list-item-icon>
-              <v-icon class="icon-space">mdi-account</v-icon>
-            </v-list-item-icon>
-
-            <v-list-item-content app>
-              <v-list-item-title>
-                アカウント設定<v-icon>mdi-menu-down</v-icon>
-              </v-list-item-title>
-            </v-list-item-content>
-
-          </v-list-item>
+      <v-list-group prepend-icon="mdi-account">
+        <template v-slot:activator>
+          <v-list-item-title>アカウント</v-list-item-title>
         </template>
 
         <!-- ポップアップの内容 -->
-        <v-list>
           <v-list-item v-for="option in options" :key="option.name" :to="option.link">
             <!-- アイコン -->
             <v-list-item-icon>
@@ -83,59 +76,20 @@
             </v-list-item-content>
 
           </v-list-item>
-        </v-list>
-      </v-menu>
-    </v-navigation-drawer>
-
-    <!-- ナビゲーションバーの領域を確保 -->
-    <v-app-bar color="#FFFFFF" light app>
-      <!-- ナビゲーションメニュー（引き出し）の追加 -->
-      <v-app-bar-nav-icon @click="drawer=!drawer" v-if="loggedIn" />
-      <!-- アイコン -->
-      <v-toolbar-items>
-        <v-btn text to="/">Slase</v-btn>
-      </v-toolbar-items>
-
-      <v-spacer></v-spacer>
-
-      <v-toolbar-items>
-        <!-- <v-btn>
-          <v-icon class="icon-space">mdi-feature-search</v-icon>キーワード検索
-        </v-btn>
-
-        <v-btn>
-          <v-icon class="icon-space">mdi-label</v-icon>カテゴリ
-        </v-btn>
-
-        <v-btn>
-          <v-icon class="icon-space">mdi-email</v-icon>メッセージ
-        </v-btn> -->
-
-        <!-- 投稿 -->
-        <v-btn text to="/post" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-post</v-icon>投稿
-        </v-btn>
-
-        <!-- マイページ -->
-        <v-btn text to="/mypage" v-show="loggedIn">
-          <v-icon class="icon-space">mdi-account-box</v-icon>マイページ
-        </v-btn>
-
-        <!-- ログイン -->
-        <v-btn text to="/signin" v-show="!loggedIn">
-          <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
-        </v-btn>
+        </v-list-group>
 
         <!-- ログアウト時に再確認するためのダイアログ -->
         <v-dialog v-model="dialog" width="300px" class="mx-auto">
           <template v-slot:activator="{ on }">
             <!-- ボタンだとデフォルトでクリックイベントが設定される -->
             <!-- クリックするとダイアログを表示 -->
-            <!-- ログアウトボタン -->
-            <v-btn text v-on="on" v-show="loggedIn">
-              <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
-            </v-btn>
+            <v-card-actions>
+              <v-btn color="deep-purple" dark v-on="on" bottom absolute x-large width="90%">
+                <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
+              </v-btn>
+            </v-card-actions>
           </template>
+
 
           <!-- 表示するダイアログ -->
           <v-card width="300px">
@@ -162,6 +116,41 @@
 
         </v-dialog>
 
+
+
+    </v-navigation-drawer>
+
+    <!-- ナビゲーションバーの領域を確保 -->
+    <v-app-bar color="#FFFFFF" light app>
+      <!-- アイコン -->
+      <v-toolbar-items>
+        <v-btn text to="/">Slase</v-btn>
+      </v-toolbar-items>
+
+      <v-spacer></v-spacer>
+
+      <v-toolbar-items>
+        <!-- <v-btn>
+          <v-icon class="icon-space">mdi-feature-search</v-icon>キーワード検索
+        </v-btn>
+
+        <v-btn>
+          <v-icon class="icon-space">mdi-email</v-icon>メッセージ
+        </v-btn> -->
+
+        <!-- 投稿 -->
+        <v-btn text to="/post" v-if="loggedIn && !$vuetify.breakpoint.xs">
+          <v-icon class="icon-space">mdi-pencil</v-icon>投稿
+        </v-btn>
+
+        <!-- ログイン -->
+        <v-btn text to="/signin" v-if="!loggedIn">
+          <v-icon class="icon-space">mdi-account-arrow-left</v-icon>ログイン
+        </v-btn>
+
+        <!-- ナビゲーションメニュー（引き出し）の追加 -->
+        <v-app-bar-nav-icon @click="drawer=!drawer" v-if="loggedIn" />
+
       </v-toolbar-items>
     </v-app-bar>
 
@@ -184,12 +173,19 @@
         </v-btn>
       </v-snackbar>
 
+      <!-- 投稿作成ボタンを作成 -->
+      <v-fab-transition v-if="loggedIn && $vuetify.breakpoint.xs">
+        <v-btn color="deep-purple" dark bottom right fab fixed to="/post">
+          <v-icon>mdi-pencil</v-icon>
+        </v-btn>
+      </v-fab-transition>
+
       <router-view/>
 
     </v-content>
 
     <!-- フッター -->
-    <v-footer color="#EEEEEE" light app>
+    <v-footer color="#EEEEEE" light>
       <span class="mx-auto">© 2020 Ryotaro Hayashi</span>
     </v-footer>
   </v-app>
@@ -204,14 +200,14 @@ export default {
       // ナビゲーションメニューの引き出しを管理するプロパティ
       drawer: null,
       options: [
-        {name: 'メールアドレス', icon: 'mdi-email', link: '/mypage/email'},
-        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/mypage/password'}
+        {name: 'メールアドレス', icon: 'mdi-email', link: '/myemail'},
+        {name: 'パスワード', icon: 'mdi-lock-reset', link: '/mypassword'}
       ],
       // dataオプションからリストを作成する方法
-      // nav_lists: [
-      //   {name: 'アカウント設定', icon: 'mdi-account', link: '/user/edit'},
-      //   {name: 'プロフィール設定', icon: 'mdi-account-card-details', link: '/profile'}
-      // ],
+      nav_lists: [
+        {name: 'マイページ', icon: 'mdi-account-box', link: '/mypage'},
+        {name: 'Slaseについて', icon: 'mdi-help-box', link: '/about'}
+      ],
 
       // 真偽でダイアログの表示を切り替える
       dialog: false
