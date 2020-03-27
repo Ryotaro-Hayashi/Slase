@@ -16,8 +16,8 @@
             <template v-for="follower in followers">
               <v-list-item :key="follower.id">
                 <!-- アバター -->
-                <v-list-item-avatar color="blue" tile>
-                  <v-icon large dark>mdi-account-circle</v-icon>
+                <v-list-item-avatar tile>
+                  <img :src="follower.avatar.url">
                 </v-list-item-avatar>
 
                 <v-list-item-content>

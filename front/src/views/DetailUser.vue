@@ -7,8 +7,8 @@
           <!-- ユーザー情報 -->
           <v-row>
             <v-col cols="5" sm="8" md="8" lg="8">
-              <v-avatar color="blue" tile size="100">
-                <v-icon large dark>mdi-account-circle</v-icon>
+              <v-avatar tile size="80">
+                <img :src="detailUser.avatar.url">
               </v-avatar>
             </v-col>
             <v-col cols="7" sm="4" md="4" lg="4" v-if="loggedIn">
@@ -45,8 +45,8 @@
             <template v-for="detailUserPost in detailUser.questions">
               <v-list-item :key="detailUserPost.id">
                 <!-- アバター -->
-                <v-list-item-avatar color="blue" tile>
-                  <v-icon large dark>mdi-account-circle</v-icon>
+                <v-list-item-avatar tile>
+                  <img :src="detailUserPost.user.avatar.url">
                 </v-list-item-avatar>
 
                 <v-list-item-content>

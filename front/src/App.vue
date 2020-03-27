@@ -6,8 +6,8 @@
       <v-list>
         <v-list-item to="/mypage">
           <!-- アバター -->
-          <v-list-item-avatar>
-            <v-img src="https://cdn.vuetifyjs.com/images/john.jpg"></v-img>
+          <v-list-item-avatar tile>
+            <img :src="loggedInUser.avatar.url">
           </v-list-item-avatar>
 
           <!-- 名前とメアド -->

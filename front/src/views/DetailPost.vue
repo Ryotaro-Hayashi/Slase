@@ -9,8 +9,8 @@
               <!-- アバター -->
               <v-col cols="2" sm="1" md="1" lg="1">
                 <router-link to="/detail/user" @click.native="getDetailUser(detailPost.user.id)">
-                  <v-avatar color="blue" tile>
-                    <v-icon large dark>mdi-account-circle</v-icon>
+                  <v-avatar tile>
+                    <img :src="detailPost.user.avatar.url">
                   </v-avatar>
                 </router-link>
               </v-col>
@@ -79,9 +79,9 @@
             <v-list three-line>
               <template v-for="eachComment in detailPost.comments">
                 <v-list-item :key="eachComment.id">
-                    <!-- アバター -->
-                    <v-list-item-avatar color="blue" tile>
-                      <v-icon dark>mdi-account-circle</v-icon>
+                    <!-- コメント主のアバター -->
+                    <v-list-item-avatar tile>
+                      <img :src="eachComment.user.avatar.url">
                     </v-list-item-avatar>
 
                   <v-list-item-content>
