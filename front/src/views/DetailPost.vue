@@ -196,10 +196,8 @@ export default {
     like () {
       this.$http.post(process.env.VUE_APP_API_BASE_URL + '/api/post/likes',
       {
-        question_id: this.detailPost.id
-      },
-      {
-        headers: this.token
+        question_id: this.detailPost.id,
+        user_id: this.loggedInUser.id
       })
       .then(response => {
         if (response.status === 200) {
