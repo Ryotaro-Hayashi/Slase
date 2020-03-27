@@ -28,7 +28,8 @@
               </v-col>
               <!-- プレビューゾーン -->
               <v-col cols="12" sm="7" md="7" lg="5">
-                <v-img :src="imageUrl" />
+                <v-img :src="image[0]" />
+                <v-img :src="image[1]" />
               </v-col>
             </v-row>
           </v-card-text>
@@ -55,7 +56,8 @@ export default {
     body: '',
     imageUrl: '',
     imageFile: '',
-    imageName: ''
+    imageName: '',
+    image: []
   }),
   computed: {
     // トークンを取得
@@ -69,7 +71,7 @@ export default {
       this.$store.dispatch("post/post", {
         title: this.title,
         body: this.body,
-        image: this.imageFile,
+        image: this.image,
         token: this.token
       })
     },
@@ -90,6 +92,7 @@ export default {
       fr.addEventListener("load", () => {
         this.imageUrl = fr.result
         this.imageFile = files[0]
+        this.image.push(this.imageUrl)
       })
     }
   }
