@@ -53,7 +53,9 @@
             <v-row>
               <v-col cols="12">
                 <!-- 本文 -->
-                {{ detailPost.body }}
+                <strong style="white-space:pre-wrap; word-wrap:break-word;">
+                  {{ detailPost.body }}
+                </strong>
               </v-col>
               <v-col cols="12">
                 <!-- S3では、srcをバインドしないと正しく表示されない -->
