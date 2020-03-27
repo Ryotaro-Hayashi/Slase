@@ -111,8 +111,8 @@
                   <template v-for="loggedInUserPost in loggedInUser.questions">
                     <v-list-item :key="loggedInUserPost.id">
                       <!-- アバター -->
-                      <v-list-item-avatar color="blue" tile>
-                        <v-icon large dark>mdi-account-circle</v-icon>
+                      <v-list-item-avatar tile>
+                        <img :src="loggedInUserPost.user.avatar.url">
                       </v-list-item-avatar>
 
                       <v-list-item-content>

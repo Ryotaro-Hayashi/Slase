@@ -126,7 +126,7 @@ export const auth = {
     signOut ({ commit }) {
       commit("changeSuccessSnackbar", false)
       commit("updateLoggedIn", false);
-      commit("updateLoggedInUser", {name: ""})
+      commit("updateLoggedInUser", {name: "", avatar: {url: ""}})
       commit("updateToken", {})
       commit("user/changeFollowings", {}, {root: true})
       commit("user/changeFollowers", {}, {root: true})

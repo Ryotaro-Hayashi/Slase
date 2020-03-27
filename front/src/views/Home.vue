@@ -5,39 +5,91 @@
       <v-container>
         <v-row>
           <!-- スマホ以外のときのソートのためのナビゲーション -->
-          <v-col sm="3" md="2" lg="2" v-if="loggedIn && !$vuetify.breakpoint.xsOnly">
+          <v-col sm="3" md="2" lg="5" v-if="loggedIn && !$vuetify.breakpoint.xsOnly">
             <!-- タイムライン -->
             <v-list-item>
-              <v-fab-transition>
-                <v-btn :color="color[0]" dark type="dark" fixed width="170px" @click="getPosts(states[0])">
+              <span class="mx-auto">
+                <v-btn :color="color[0]" dark fixed width="150px" @click="getPosts(states[0])" class="mx-auto">
                   <span class="mr-auto">
                     <v-icon>mdi-format-list-bulleted-square</v-icon>タイムライン
                   </span>
                 </v-btn>
-              </v-fab-transition>
+              </span>
             </v-list-item>
 
             <!-- 全ての投稿 -->
             <v-list-item>
-              <v-fab-transition>
-                <v-btn :color="color[1]" dark fixed width="170px" @click="getPosts(states[1])">
+              <span class="mx-auto">
+                <v-btn :color="color[1]" dark fixed width="150px" @click="getPosts(states[1])">
                   <span class="mr-auto">
                     <v-icon>mdi-format-list-bulleted-square</v-icon>全ての投稿
                   </span>
                 </v-btn>
-              </v-fab-transition>
+              </span>
             </v-list-item>
 
             <!-- いいねした投稿 -->
             <v-list-item>
-              <v-fab-transition>
-                <v-btn :color="color[2]" dark fixed width="170px" @click="getPosts(states[2])">
+              <span class="mx-auto">
+                <v-btn :color="color[2]" dark fixed width="150px" @click="getPosts(states[2])">
                   <span class="mr-auto">
                     <v-icon>mdi-format-list-bulleted-square</v-icon>いいねした投稿
                   </span>
                 </v-btn>
-              </v-fab-transition>
+              </span>
             </v-list-item>
+
+            <v-list-item class="fixed">
+              <span class="ml-auto">
+                <v-card width="400px" class="mt-10">
+                  <v-list-item to="/mypage">
+                    <!-- アバター -->
+                    <v-list-item-avatar tile fixed>
+                      <img :src="loggedInUser.avatar.url">
+                    </v-list-item-avatar>
+
+                    <!-- 名前とメアド -->
+                    <v-list-item-content>
+                      <v-list-item-title class="title">{{ loggedInUser.name }}</v-list-item-title>
+                      <v-list-item-subtitle>{{ loggedInUser.email }}</v-list-item-subtitle>
+                    </v-list-item-content>
+
+                  </v-list-item>
+
+                  <v-divider />
+
+                  <v-list-item>
+                    <v-col>
+                      <router-link to="/mypage">
+                        <span class="follow-num-space title">{{ loggedInUser.questions.length }}</span>
+                        <span class="font-wight-light caption">投稿</span>
+                      </router-link>
+                    </v-col>
+
+                    <v-divider vertical />
+
+                    <!-- フォロー -->
+                    <v-col>
+                      <router-link to="/following">
+                        <span class="follow-num-space title">{{ followingsNum }}</span>
+                        <span class="font-wight-light caption">フォロー</span>
+                      </router-link>
+                    </v-col>
+
+                    <v-divider vertical />
+
+                    <!-- フォロワー -->
+                    <v-col>
+                      <router-link to="/follower">
+                        <span class="follow-num-space title">{{ followersNum }}</span>
+                        <span class="font-wight-light caption">フォロワー</span>
+                      </router-link>
+                    </v-col>
+                  </v-list-item>
+                </v-card>
+              </span>
+            </v-list-item>
+
           </v-col>
 
           <!-- スマホの時のソートのためのナビゲーション -->
@@ -46,8 +98,8 @@
           </v-col>
 
           <!-- ソートの種類 -->
-          <v-col cols="12" sm="9" md="10" lg="10">
-            <v-card width="100%" max-width="600px" class="mx-auto">
+          <v-col cols="12" sm="loggedIn ? '9' : '12'" md="loggedIn ? '10' : '12'" :lg="loggedIn ? '7' : '12'">
+            <v-card width="95%" max-width="600px" class="loggedIn ? mr-auto : mx-auto">
               <!-- 表示切り替え -->
               <v-card-title>
                 <v-row align=center>
@@ -187,6 +239,12 @@ export default {
           return false
         }
       }
+    },
+    followingsNum () {
+      return this.$store.state.user.followings.length
+    },
+    followersNum () {
+      return this.$store.state.user.followers.length
     }
   },
   methods: {
@@ -264,4 +322,7 @@ export default {
 </script>
 
 <style lang="css" scoped>
+.fixed {
+  position: fixed;
+}
 </style>

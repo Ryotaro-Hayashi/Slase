@@ -6,8 +6,8 @@
       <v-list>
         <v-list-item to="/mypage">
           <!-- アバター -->
-          <v-list-item-avatar>
-            <v-img src="https://cdn.vuetifyjs.com/images/john.jpg"></v-img>
+          <v-list-item-avatar tile>
+            <img :src="loggedInUser.avatar.url">
           </v-list-item-avatar>
 
           <!-- 名前とメアド -->
@@ -84,7 +84,7 @@
             <!-- ボタンだとデフォルトでクリックイベントが設定される -->
             <!-- クリックするとダイアログを表示 -->
             <v-card-actions>
-              <v-btn color="deep-purple" dark v-on="on" bottom absolute x-large width="90%">
+              <v-btn color="deep-purple" dark v-on="on" bottom x-large width="90%" class="mt-10">
                 <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
               </v-btn>
             </v-card-actions>
