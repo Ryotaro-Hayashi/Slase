@@ -99,7 +99,7 @@
 
           <!-- ソートの種類 -->
           <v-col cols="12" sm="loggedIn ? '9' : '12'" md="loggedIn ? '10' : '12'" :lg="loggedIn ? '7' : '12'">
-            <v-card width="95%" max-width="600px" class="loggedIn ? mr-auto :mx-auto">
+            <v-card width="95%" max-width="600px" class="loggedIn ? mr-auto : mx-auto">
               <!-- 表示切り替え -->
               <v-card-title>
                 <v-row align=center>
@@ -171,7 +171,7 @@
                 </v-card-actions>
 
               </v-card-text>
-              
+
             </v-card>
 
           </v-col>

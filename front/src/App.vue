@@ -149,11 +149,7 @@
         </v-btn>
 
         <!-- ナビゲーションメニュー（引き出し）の追加 -->
-        <v-btn icon @click="drawer=!drawer" v-if="loggedIn">
-          <v-avatar tile>
-            <img :src="loggedInUser.avatar.url">
-          </v-avatar>
-        </v-btn>
+        <v-app-bar-nav-icon @click="drawer=!drawer" v-if="loggedIn" />
 
       </v-toolbar-items>
     </v-app-bar>
