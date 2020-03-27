@@ -54,6 +54,8 @@
 
               </v-list-item>
 
+              <v-divider />
+
               <v-list-item>
                 <v-col>
                   <router-link to="/mypage">
@@ -61,6 +63,9 @@
                     <span class="font-wight-light caption">投稿</span>
                   </router-link>
                 </v-col>
+
+                <v-divider vertical />
+
                 <!-- フォロー -->
                 <v-col>
                   <router-link to="/following">
@@ -68,6 +73,9 @@
                     <span class="font-wight-light caption">フォロー</span>
                   </router-link>
                 </v-col>
+
+                <v-divider vertical />
+                
                 <!-- フォロワー -->
                 <v-col>
                   <router-link to="/follower">
