@@ -84,7 +84,7 @@
             <!-- ボタンだとデフォルトでクリックイベントが設定される -->
             <!-- クリックするとダイアログを表示 -->
             <v-card-actions>
-              <v-btn color="deep-purple" dark v-on="on" bottom absolute x-large width="90%">
+              <v-btn color="deep-purple" dark v-on="on" bottom x-large width="90%" class="mt-10">
                 <v-icon class="icon-space">mdi-account-arrow-right</v-icon>ログアウト
               </v-btn>
             </v-card-actions>
