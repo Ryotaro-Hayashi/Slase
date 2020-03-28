@@ -4,6 +4,11 @@
       <v-card width="95%" max-width="600px" class="mx-auto mt-10 mb-10">
         <!-- 投稿ボタンを押した際にもvalidation -->
         <ValidationObserver v-slot="{ handleSubmit }">
+          <!-- ロゴ -->
+          <v-card-title>
+            <p class="mx-auto">Slase-logo</p><br>
+          </v-card-title>
+          
           <!-- タイトル入力フォーム -->
           <v-card-text>
             <!-- validationを付与 -->
@@ -34,11 +39,75 @@
           </v-card-text>
 
           <v-card-text>
-            <!-- 投稿ボタンのためのスペースを用意 -->
+            <!-- プレビューボタンのためのスペースを用意 -->
             <v-card-actions class="mt-5">
-              <v-btn class="info ml-auto" @click="handleSubmit(post)">投稿</v-btn>
+              <!-- プレビューボタン -->
+              <v-dialog v-model="dialog" width="600px" class="mx-auto">
+                <template v-slot:activator="{ on }">
+                  <v-btn class="info ml-auto" v-on="on" @click="setProfile()">プレビュー</v-btn>
+                </template>
+
+                <!-- ダイアログで表示する内容 -->
+                <v-card>
+                  <v-card-text>
+                    <v-container>
+                      <v-row>
+                        <!-- アバター -->
+                        <v-col cols="8" sm="9" md="9" lg="9">
+                          <v-avatar tile>
+                            <img :src="loggedInUser.avatar.url">
+                          </v-avatar>
+                        </v-col>
+
+                        <!-- いいねアイコン -->
+                        <v-col cols="2" sm="2" md="2" lg="2">
+                          <v-btn icon>
+                            <v-icon>mdi-thumb-up</v-icon>
+                          </v-btn>
+                        </v-col>
+
+                        <!-- 投稿日時 -->
+                        <v-col cols="12" sm="12" md="12" lg="12">
+                          投稿日時
+                        </v-col>
+                      </v-row>
+
+                      <!-- タイトル -->
+                      <v-row>
+                        <v-col class="headline font-weight-bold">
+                          {{ title }}
+                        </v-col>
+                      </v-row>
+
+                      <v-row>
+                        <v-col cols="12">
+                          <!-- 本文 -->
+                          <strong style="white-space:pre-wrap; word-wrap:break-word;">
+                            {{ body }}
+                          </strong>
+                        </v-col>
+
+                        <v-col cols="12">
+                          <!-- 添付画像 -->
+                          <v-img :src="imageUrl"></v-img>
+                        </v-col>
+                      </v-row>
+
+                    </v-container>
+                  </v-card-text>
+
+                  <v-card-actions>
+                    <v-spacer></v-spacer>
+                    <v-btn color="blue darken-1" text @click="dialog = false">キャンセル</v-btn>
+                    <v-btn color="blue darken-1" text @click="handleSubmit(post)">投稿</v-btn>
+                  </v-card-actions>
+
+                </v-card>
+              </v-dialog>
             </v-card-actions>
           </v-card-text>
+
+
 
       </ValidationObserver>
       </v-card>
@@ -51,6 +120,7 @@
 export default {
   name: 'Post',
   data: () => ({
+    dialog: false,
     title: '',
     body: '',
     imageUrl: '',
@@ -61,7 +131,10 @@ export default {
     // トークンを取得
     token () {
       return this.$store.state.auth.token
-    }
+    },
+    loggedInUser () {
+      return this.$store.state.auth.loggedInUser
+    },
   },
   methods: {
     // 投稿
