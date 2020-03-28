@@ -89,7 +89,7 @@
                       </router-link>
                     </v-col>
                     <!-- フォロワー -->
-                    <v-col :cols="4" sm="3" md="3" lg="3">
+                    <v-col :cols="5" sm="3" md="3" lg="3">
                       <router-link to="/follower">
                         <span class="follow-num-space title">{{ followersNum }}</span>
                         <span class="font-wight-light caption">フォロワー</span>

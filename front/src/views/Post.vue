@@ -55,7 +55,7 @@ export default {
     body: '',
     imageUrl: '',
     imageFile: '',
-    imageName: ''
+    imageName: '',
   }),
   computed: {
     // トークンを取得
