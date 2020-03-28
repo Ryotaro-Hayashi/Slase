@@ -26,6 +26,7 @@ export const post = {
       formData.append("body", post.body)
       // urlのことはあまり気にしないで良い
       formData.append("image", post.image)
+
       axios.post(process.env.VUE_APP_API_BASE_URL + '/api/post/questions', formData,
       // リクエストヘッダーにトークンを追加
       {
